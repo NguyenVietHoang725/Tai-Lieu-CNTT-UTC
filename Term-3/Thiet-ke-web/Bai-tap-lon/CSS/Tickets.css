@@ -1,0 +1,618 @@
+/* Dark Theme */
+body.bg-dark section h2 {
+  color: #ffd700;
+}
+
+body.bg-dark .slider-btn svg.size-6 {
+  color: #ffd700;
+}
+
+body.bg-dark .day-selector {
+  border-color: #ffd700;
+}
+
+body.bg-dark .day {
+  color: #393e46;
+  border-color: #ffd700;
+  background-color: #ffff80;
+}
+
+body.bg-dark .day.active {
+  background-color: #686d76;
+  color: #fff;
+}
+
+body.bg-dark .movie-list-container {
+  border-color: #ffd700;
+}
+
+body.bg-dark .sticky-header {
+  background-color: #ffff80;
+  color: #393e46;
+  border-color: #ffd700;
+}
+
+body.bg-dark .movie-item {
+  border-color: #ffd700;
+  background-color: #ffff80;
+}
+
+body.bg-dark .movie-item:hover {
+  background-color: #686d76;
+}
+
+body.bg-dark .movie-item.selected {
+  color: #fff;
+  background-color: #686d76;
+}
+
+body.bg-dark .time-list-container {
+  border-color: #ffd700;
+}
+
+body.bg-dark .time-list-container h5 {
+  background-color: #ffff80;
+  color: #393e46;
+  border-color: #ffd700;
+}
+
+body.bg-dark .time-slot {
+  border-color: #ffd700;
+  background-color: #ffff80;
+  color: #393e46;
+}
+
+body.bg-dark .time-slot.selected {
+  background-color: #686d76;
+  color: #fff;
+}
+
+body.bg-dark .time-slot:hover {
+  background-color: #ffd700;
+  color: #393e46;
+}
+
+body.bg-dark .screen {
+  background-color: #f3c623;
+}
+
+body.bg-dark .seat {
+  color: #393e46;
+  border-color: #ffd700;
+}
+
+body.bg-dark .seat.booked {
+  color: #fff;
+}
+
+body.bg-dark .seat-map-container {
+  border-color: #ffd700;
+}
+
+body.bg-dark .selected-seats-info,
+body.bg-dark .total-amount-info {
+  background-color: #fffbe0;
+}
+
+body.bg-dark .payment-details {
+  border-color: #ffd700;
+}
+
+body.bg-dark .payment-method-label {
+  color: #ffd700;
+}
+
+body.bg-dark .qr-code-section {
+  border-color: #ffd700;
+}
+
+body.bg-dark .qr-title {
+  color: #ffd700;
+}
+
+body.bg-dark .qr-code-display {
+  border-color: #ffd700;
+}
+
+body.bg-dark .payment-button.active {
+  background-color: #ffd700;
+  color: #393e46;
+}
+
+body.bg-dark #create-qr-button {
+  background-color: #ffd700;
+  border-color: #393e46;
+  color: #393e46;
+}
+
+body.bg-dark #pay-button {
+  background-color: #ffd700;
+  border-color: #393e46;
+  color: #393e46;
+}
+
+.showtimes {
+  padding-bottom: 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin: 40px 0 20px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #393e46;
+  text-transform: uppercase;
+}
+
+.day-selector-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Khoảng cách giữa các nút và thanh ngày */
+  width: 100%;
+  overflow: hidden;
+}
+
+.day-selector {
+  width: 700px;
+  border: 5px solid #393e46;
+  border-radius: 5px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+}
+
+/* Định dạng chung cho nút SVG */
+.slider-btn {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-btn svg.size-6 {
+  width: 48px;
+  height: 48px;
+  color: #333; /* Màu sắc cho SVG, có thể thay đổi theo theme */
+  transition: color 0.2s ease-in-out;
+}
+
+/* Hiệu ứng khi hover vào nút SVG */
+.slider-btn:hover svg {
+  color: #007bff; /* Màu khi hover, có thể thay đổi */
+}
+
+.day {
+  flex: 1;
+  max-width: 100px;
+  background-color: #686d76;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 0;
+  border-right: 2px solid #393e46;
+  transition: background-color 0.3s ease;
+}
+
+.day:nth-child(7) {
+  border-right: none;
+}
+
+.day:last-child {
+  border-right: none;
+}
+
+.day.active {
+  color: #393e46;
+  background-color: #ffd700;
+}
+
+.schedule-content {
+  display: flex;
+  justify-content: center; /* Căn giữa toàn bộ bố cục */
+  gap: 10px; /* Giảm khoảng cách giữa các cột */
+  padding: 20px 0 0 15px; /* Giảm padding tổng thể */
+}
+
+/* Cột trái: Danh sách phim */
+.movie-list-container {
+  max-height: 300px; /* Giới hạn chiều cao */
+  overflow-y: auto; /* Cho phép cuộn */
+  text-align: left; /* Căn trái nội dung */
+  width: 30%; /* Chiều rộng cột */
+  border: 4px solid #393e46; /* Viền đỏ cho cột */
+  box-sizing: border-box; /* Bao gồm padding và border trong kích thước */
+  position: relative; /* Đảm bảo position sticky hoạt động */
+}
+
+.sticky-header {
+  position: sticky; /* Giữ tiêu đề ở trên cùng khi cuộn */
+  top: 0; /* Vị trí trên cùng của container */
+  background-color: #686d76; /* Nền trắng cho dễ đọc */
+  z-index: 10; /* Đảm bảo tiêu đề không bị ẩn */
+  border-bottom: 4px solid #393e46; /* Viền dưới cho tiêu đề */
+}
+
+.movie-list {
+  list-style: none; /* Bỏ dấu đầu dòng */
+  padding: 0; /* Bỏ padding */
+  margin: 0; /* Bỏ margin */
+}
+
+.movie-list-container h5 {
+  padding: 10px 0; /* Khoảng cách trên và dưới cho tiêu đề */
+  font-weight: bold; /* Chữ đậm cho tiêu đề */
+  color: #fff; /* Màu chữ đỏ */
+}
+
+.movie-item {
+  padding: 10px; /* Padding cho mỗi mục phim */
+  margin: 8px 5px 5px 8px; /* Khoảng cách giữa các mục phim */
+  border: 1px solid transparent; /* Viền trong suốt ban đầu */
+  border-radius: 0;
+  display: block;
+  cursor: pointer; /* Con trỏ khi di chuột */
+  transition: border-color 0.3s ease, background-color 0.3s ease; /* Hiệu ứng chuyển tiếp */
+}
+
+.movie-item:hover {
+  border-color: #393e46; /* Màu viền khi được chọn */
+  background-color: #fffbe0;
+}
+
+.movie-item.selected {
+  border-color: #393e46;
+  background-color: #ffd700;
+}
+
+/* Cột phải: Danh sách khung giờ */
+.time-list-container {
+  text-align: center;
+  width: 50%;
+  max-width: 350px;
+  border: 4px solid #393e46;
+  box-sizing: border-box;
+}
+
+.time-list-container h5 {
+  padding: 10px; /* Khoảng cách giữa tiêu đề và danh sách giờ chiếu */
+  font-weight: bold;
+  color: #fff;
+  background-color: #686d76;
+  border-bottom: 4px solid #393e46; /* Viền dưới cho tiêu đề */
+}
+
+.time-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.time-slot {
+  max-width: 90px;
+  flex: 1 1 90px;
+  padding: 10px 15px;
+  border: 2px solid #393e46;
+  border-radius: 20px;
+  background-color: #f1f1f1;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+  transition: background-color 0.3s ease;
+}
+
+.time-slot.active {
+  display: inline-block;
+  background-color: #393e46;
+  color: #fff;
+}
+
+.time-slot:hover {
+  background-color: #fffbe0;
+  color: #393e46;
+}
+
+.time-slot.selected {
+  background-color: #ffd700;
+  color: #393e46;
+}
+
+.note {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #ff6600;
+}
+
+/* Responsive - Điều chỉnh kích thước chữ và padding cho các màn hình nhỏ */
+@media (max-width: 768px) {
+  .day {
+    font-size: 14px;
+    padding: 8px 0; /* Giảm padding cho các ô */
+  }
+}
+
+@media (max-width: 576px) {
+  .day {
+    font-size: 12px;
+    padding: 6px 0; /* Giảm padding cho các ô */
+  }
+}
+
+/* Container của các hàng ghế */
+#seat-map {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Khoảng cách giữa các hàng */
+}
+
+.seat-selection.active {
+  display: block; /* Hiển thị khi có class `active` */
+}
+
+/* Căn chỉnh mỗi hàng ghế */
+.seat-map .row {
+  display: flex;
+  gap: 5px; /* Khoảng cách giữa các ghế */
+  justify-content: center; /* Căn giữa hàng ghế */
+}
+
+/* Ghế thường */
+.seat.single-seat {
+  width: 40px; /* Kích thước chiều rộng ghế */
+  height: 40px; /* Kích thước chiều cao ghế */
+  background-color: #d3d3d3; /* Màu xám cho ghế thường */
+  border: 1px solid #888; /* Đường viền ghế */
+  text-align: center; /* Căn giữa văn bản */
+  line-height: 40px; /* Căn giữa văn bản theo chiều dọc */
+  cursor: pointer; /* Hiệu ứng con trỏ khi di chuột */
+  font-size: 14px; /* Kích thước chữ */
+  border-radius: 5px; /* Bo góc cho ghế */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi di chuột */
+}
+
+/* Ghế VIP */
+.seat.vip {
+  width: 40px; /* Kích thước ghế VIP giống ghế thường */
+  height: 40px; /* Kích thước ghế VIP giống ghế thường */
+  background-color: #ffd700; /* Màu vàng cho ghế VIP */
+  border: 1px solid #888; /* Đường viền ghế VIP */
+  text-align: center; /* Căn giữa văn bản */
+  line-height: 40px; /* Căn giữa văn bản theo chiều dọc */
+  cursor: pointer; /* Hiệu ứng con trỏ khi di chuột */
+  font-size: 14px; /* Kích thước chữ */
+  border-radius: 5px; /* Bo góc cho ghế */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi di chuột */
+}
+
+/* Ghế đôi */
+.seat.double-seat {
+  width: 85px; /* Rộng hơn ghế đơn */
+  height: 40px; /* Chiều cao giống ghế đơn */
+  background-color: #ff69b4; /* Màu hồng cho ghế đôi */
+  border: 1px solid #888; /* Đường viền ghế */
+  text-align: center; /* Căn giữa văn bản */
+  line-height: 40px; /* Căn giữa văn bản theo chiều dọc */
+  cursor: pointer; /* Hiệu ứng con trỏ khi di chuột */
+  font-size: 14px; /* Kích thước chữ */
+  border-radius: 5px; /* Bo góc cho ghế */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu khi di chuột */
+}
+
+/* Ghế đã đặt */
+.seat.booked {
+  color: #fff;
+  background-color: #000; /* Màu cho ghế đã đặt */
+  cursor: not-allowed; /* Không cho phép click */
+}
+
+/* Ghế đã chọn */
+.seat.selected {
+  background-color: #4caf50; /* Màu xanh lá cho ghế đã chọn */
+  color: #fff; /* Màu chữ trắng */
+}
+
+/* Hover cho ghế khả dụng */
+.seat.available:hover:not(.booked):not(.selected) {
+  background-color: #b3e5fc; /* Màu cho ghế khả dụng khi hover */
+}
+
+/* Đường ngang tượng trưng cho màn hình */
+.screen {
+  width: 75%; /* Chiều rộng 75% */
+  height: 20px; /* Chiều cao đường ngang */
+  background-color: #333; /* Màu nền của màn hình */
+  margin: 10px auto; /* Khoảng cách dưới đường ngang và căn giữa */
+}
+
+/* Chú thích màn hình */
+.screen-label {
+  margin-bottom: 50px; /* Khoảng cách dưới chú thích màn hình */
+  font-weight: bold; /* Làm đậm chữ */
+}
+
+/* Căn chỉnh lại các ô ghế trong legend */
+.legend-item {
+  display: flex; /* Hiển thị các item trong legend dưới dạng flex */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  margin-right: 15px; /* Khoảng cách giữa các item */
+}
+
+/* Căn chỉnh ô ghế và chữ */
+.legend-item span {
+  width: 30px; /* Chiều rộng đồng nhất cho ô ghế */
+  height: 30px; /* Chiều cao đồng nhất cho ô ghế */
+  display: inline-block; /* Hiển thị dưới dạng khối */
+  border: 1px solid #888; /* Viền cho các ô */
+  margin-right: 5px; /* Khoảng cách giữa ô ghế và chữ */
+}
+
+/* Căn chỉnh lại các ô ghế trong legend */
+.legend .seat {
+  width: 30px; /* Chiều rộng đồng nhất */
+  height: 30px; /* Chiều cao đồng nhất */
+  display: inline-block; /* Hiển thị dưới dạng khối */
+  border: 1px solid #888; /* Viền cho các ô */
+  margin-right: 5px; /* Khoảng cách giữa các ô */
+}
+
+/* Ghế VIP trong legend */
+.legend .seat.vip {
+  border-radius: 0;
+  background-color: #ffd700; /* Màu vàng cho ghế VIP */
+}
+
+/* Ghế thường trong legend */
+.legend .seat.available {
+  background-color: #d3d3d3; /* Màu xám cho ghế thường */
+}
+
+/* Ghế đôi trong legend */
+.legend .seat.double-seat {
+  border-radius: 0;
+  background-color: #ff69b4; /* Màu hồng cho ghế đôi */
+}
+
+/* Ghế đã chọn trong legend */
+.legend .seat.selected {
+  background-color: #4caf50; /* Màu xanh lá cho ghế đã chọn */
+}
+
+/* Ghế đã đặt trong legend */
+.legend .seat.booked {
+  cursor: auto;
+  background-color: #000; /* Màu đen cho ghế đã đặt */
+}
+
+/* Border cho phần bảng ghế */
+.seat-map-container {
+  border: 2px solid #888; /* Đường viền cho bảng ghế */
+  padding: 20px; /* Khoảng cách bên trong */
+  border-radius: 10px; /* Bo góc cho border */
+  margin-top: 20px; /* Khoảng cách dưới bảng ghế */
+  margin-bottom: 20px; /* Khoảng cách dưới bảng ghế */
+}
+
+/* Phần tổng kết */
+.summary {
+  margin-bottom: 15px; /* Khoảng cách dưới phần tổng kết */
+  padding: 15px; /* Thêm padding cho phần tổng kết */
+  display: flex; /* Sử dụng flex để chia thành hai cột */
+  justify-content: space-between; /* Căn giữa các cột */
+}
+
+/* Thông tin ghế đã chọn và tổng tiền */
+.selected-seats-info,
+.total-amount-info {
+  margin: 10px 0; /* Khoảng cách giữa các phần */
+  padding: 10px; /* Khoảng cách bên trong */
+  border-radius: 5px; /* Bo góc cho từng phần */
+  background-color: #e0e0e0; /* Màu nền nhẹ cho các phần thông tin */
+  display: flex; /* Sử dụng flex để căn chỉnh tốt hơn */
+  justify-content: space-between; /* Căn giữa các phần bên trong */
+}
+
+/* Nhãn và giá trị */
+.label {
+  font-weight: bold; /* Đậm cho nhãn */
+  margin: 0; /* Bỏ khoảng cách mặc định */
+  color: #555; /* Màu chữ nhẹ hơn cho nhãn */
+}
+
+.value {
+  font-size: 18px; /* Kích thước chữ lớn hơn cho giá trị */
+  color: #333; /* Màu chữ tối cho giá trị */
+}
+
+.payment-details {
+  border: 4px solid #393e46;
+  border-radius: 10px;
+  padding: 15px;
+  margin-left: 15px;
+}
+
+/* Nhãn phương thức thanh toán */
+.payment-method-label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px; /* Khoảng cách dưới nhãn */
+}
+
+/* Phương thức thanh toán */
+.payment-options .payment-button {
+  border: none;
+  background-color: #f5f5f5;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s; /* Thêm hiệu ứng chuyển động */
+}
+
+.payment-options .payment-button:hover {
+  background-color: #e0e0e0; /* Hiệu ứng hover */
+  transform: translateY(-2px); /* Di chuyển nhẹ lên trên khi hover */
+}
+
+.payment-options .payment-button img {
+  width: 72px;
+  height: auto;
+}
+
+.payment-options .payment-button.active {
+  background-color: #686d76;
+  color: #fff;
+}
+
+#create-qr-button {
+  background-color: #686d76;
+  border-color: #393e46;
+  color: #fff;
+}
+
+#pay-button {
+  background-color: #686d76;
+  border-color: #393e46;
+  color: #fff;
+}
+
+/* Phần hiển thị QR Code */
+.qr-code-section {
+  width: 50%;
+  border: 4px solid #393e46;
+  border-radius: 10px;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Căn giữa theo chiều ngang */
+  justify-content: center; /* Căn giữa theo chiều dọc */
+}
+/* Tiêu đề QR Code */
+.qr-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* Hiển thị QR Code */
+.qr-code-display {
+  border: 2px solid #393e46;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  width: 100%; /* Lấp đầy chiều rộng phần tử cha */
+  max-width: 200px; /* Chiều rộng tối đa cho QR Code */
+  height: 200px; /* Chiều cao cố định */
+  display: flex; /* Sử dụng flexbox để căn giữa mã QR */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  margin: 0 auto; /* Căn giữa phần tử theo chiều ngang */
+}
