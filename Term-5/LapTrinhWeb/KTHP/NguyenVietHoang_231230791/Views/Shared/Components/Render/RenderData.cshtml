@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NguyenVietHoang_231230791.Models.Xe>
+
+<div class="table-responsive" data-simplebar>
+    <table class="table table-borderless align-middle text-nowrap">
+        <thead>
+            <tr>
+                <th scope="col">Xe</th>
+                <th scope="col">Tên công ty</th>
+                <th scope="col">Số chỗ ngồi</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="me-4">
+                                <img src="~/images/cars/@item.Anh"
+                                     width="50"
+                                     class="rounded-circle"
+                                     alt="@item.SoXe" />
+                            </div>
+
+                            <div>
+                                <h6 class="mb-1 fw-bolder">@item.SoXe</h6>
+                                <p class="fs-3 mb-0">@item.MauXe</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="fs-3 fw-normal mb-0">@item.MaCongTyNavigation.TenCongTy</p>
+                    </td>
+                    <td>
+                        <p class="fs-3 fw-normal mb-0 text-success">
+                            @item.SoChoNgoi
+                        </p>
+                    </td>
+                    <td>
+                        <span>Edit | Delete</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

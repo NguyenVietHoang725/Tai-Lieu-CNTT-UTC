@@ -1,0 +1,144 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethiltweb\\dethi210702\\views\\shared\\nguyenviethoang_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|solutionrelative:views\\shared\\nguyenviethoang_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethiltweb\\dethi210702\\wwwroot\\js\\bootstrap.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|solutionrelative:wwwroot\\js\\bootstrap.min.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethiltweb\\dethi210702\\views\\shared\\nguyenviethoang_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|solutionrelative:views\\shared\\nguyenviethoang_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethiltweb\\dethi210702\\viewcomponents\\renderviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|solutionrelative:viewcomponents\\renderviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethiltweb\\dethi210702\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethiltweb\\dethi210702\\models\\navitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|solutionrelative:models\\navitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethiltweb\\dethi210702\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0A70264F-A0A3-464F-80C8-D62A0135EEB1}|DeThi210702.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NguyenVietHoang_Layout.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T00:11:29.107Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "bootstrap.min.js",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\wwwroot\\js\\bootstrap.min.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\bootstrap.min.js",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\wwwroot\\js\\bootstrap.min.js",
+              "RelativeToolTip": "wwwroot\\js\\bootstrap.min.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAACsDgAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-12-06T10:39:31.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T10:31:58.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "NavItem.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Models\\NavItem.cs",
+              "RelativeDocumentMoniker": "Models\\NavItem.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Models\\NavItem.cs",
+              "RelativeToolTip": "Models\\NavItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T10:28:40.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T10:18:58.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RenderViewComponent.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\ViewComponents\\RenderViewComponent.cs",
+              "RelativeDocumentMoniker": "ViewComponents\\RenderViewComponent.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\ViewComponents\\RenderViewComponent.cs",
+              "RelativeToolTip": "ViewComponents\\RenderViewComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T10:17:18.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NguyenVietHoang_Header.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Views\\Shared\\NguyenVietHoang_Header.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\NguyenVietHoang_Header.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThiLTWeb\\DeThi210702\\Views\\Shared\\NguyenVietHoang_Header.cshtml",
+              "RelativeToolTip": "Views\\Shared\\NguyenVietHoang_Header.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T00:13:13.722Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

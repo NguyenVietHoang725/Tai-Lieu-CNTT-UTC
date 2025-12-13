@@ -1,0 +1,48 @@
+﻿
+<!DOCTYPE HTML>
+<head>
+	<title>Free Home Shoppe Website Template | Home :: w3layouts</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+<body>
+	<!-- Begin Wrap -->
+	<div class="wrap">
+		<!-- Begin Header -->
+		@* <partial name="NguyenVietHoang_Header" /> *@
+        @await Component.InvokeAsync("Render")
+		<!-- End Header -->
+		<!-- Begin Main -->
+        @RenderBody()
+		<!-- End Main -->
+	</div>
+	<!-- End Wrap -->
+	<!-- Begin Footer -->
+    <partial name="NguyenVietHoang_Footer" />
+	<!-- End Footer -->
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$(".loai-link").on("click", function (e) {
+			e.preventDefault(); // Ngăn load lại trang
+			var maloai = $(this).data("maloai");
+
+			$.ajax({
+				url: '/Home/LocHangTheoLoai',
+				type: 'GET',
+				data: { maloai: maloai },
+				success: function (result) {
+					$(".ajax-container").html(result);
+				},
+				error: function () {
+					alert("Không thể tải dữ liệu hàng hóa.");
+				}
+			});
+		});
+	});
+</script>
+</html>
+

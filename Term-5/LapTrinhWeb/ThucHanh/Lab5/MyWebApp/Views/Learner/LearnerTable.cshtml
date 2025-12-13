@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<Learner>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Mã</th>
+            <th>Tên</th>
+            <th>Họ</th>
+            <th>Ngành</th>
+            <th>Ngày nhập học</th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.LearnerID</td>
+                <td>@s.FirstMidName</td>
+                <td>@s.LastName</td>
+                <td>@s.Major.MajorName</td>
+                <td>@s.EnrollmentDate</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@s.LearnerID">Edit</a>|
+                    <a asp-action="Delete" asp-route-id="@s.LearnerID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

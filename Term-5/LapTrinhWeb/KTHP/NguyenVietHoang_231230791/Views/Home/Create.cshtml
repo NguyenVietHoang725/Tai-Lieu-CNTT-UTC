@@ -1,0 +1,58 @@
+﻿@model NguyenVietHoang_231230791.Models.Xe
+
+@{
+    ViewData["Title"] = "Create New Car";
+}
+
+<main id="main" class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title fw-semibold mb-4">Thêm Xe Mới</h5>
+            <form asp-action="Create" method="post">
+
+                <div class="mb-3">
+                    <label asp-for="SoXe" class="form-label">Biển Số Xe</label>
+                    <input asp-for="SoXe" class="form-control" required />
+                    <span asp-validation-for="SoXe" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="MauXe" class="form-label">Màu Xe</label>
+                    <input asp-for="MauXe" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SoChoNgoi" class="form-label">Số Chỗ Ngồi</label>
+                    <input asp-for="SoChoNgoi" type="number" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Công Ty</label>
+                    <select asp-for="MaCongTy" class="form-select" asp-items="ViewBag.MaCongTy">
+                        <option value="">-- Chọn Công Ty --</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Loại Xe</label>
+                    <select asp-for="MaLoaiXe" class="form-select" asp-items="ViewBag.MaLoaiXe">
+                        <option value="">-- Chọn Loại Xe --</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Anh" class="form-label">Ảnh (Tên file)</label>
+                    <input asp-for="Anh" class="form-control" placeholder="Ví dụ: xe1.jpg" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </form>
+        </div>
+    </div>
+</main>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

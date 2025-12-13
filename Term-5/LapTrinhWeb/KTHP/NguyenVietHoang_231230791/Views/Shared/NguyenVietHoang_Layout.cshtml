@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Spike2512V11_15</title>
+    <link rel="shortcut icon" type="image/png" href="~/images/logos/favicon.png" />
+    <link rel="stylesheet" href="~/css/styles.min.css" />
+</head>
+
+<body>
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- LeftSidebar Start -->
+        <partial name="NguyenVietHoang_LeftSideBar" />
+        <!--  LeftSidebar End -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
+            <partial name="NguyenVietHoang_Header" />
+            <!--  Header End -->
+            <!-- Main Start -->
+            @RenderBody()
+            <!-- Main End -->
+            <!-- Footer Start -->
+            <partial name="NguyenVietHoang_Footer" />
+            <!-- Footer End -->
+        </div>
+    </div>
+    <script src="~/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/app.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(document).on('click', '.page-link-ajax', function (e) {
+            e.preventDefault();
+
+            var pageNumber = $(this).data("page"); 
+
+            $.ajax({
+                url: '/Home/PhanTrangXe',
+                type: 'GET',
+                data: { page: pageNumber }, 
+                success: function (result) {
+                    $("#content-area").html(result);
+                },
+                error: function (xhr, status, error) {
+                    console.log(error); 
+                    alert("Không thể tải dữ liệu trang này.");
+                }
+            });
+        });
+    });
+</script>
+</html>

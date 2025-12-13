@@ -1,0 +1,120 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model MyWebApp.Models.Student
+
+<div>
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info">
+            @ViewBag.Message
+        </div>
+    }
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <form asp-controller="Student" asp-action="Create" method="post" class="mt-3" enctype="multipart/form-data">
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Name" class="form-control" placeholder="Họ tên" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Email" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+            </div>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <!-- Mật khẩu: bắt nhập lại nếu có lỗi -->
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Password" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Password" class="form-control" placeholder="Password" type="password" />
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Branch" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-for="Branch" class="custom-select mr-sm-2" asp-items="Html.GetEnumSelectList<Branch>()">
+                    <option value="">Select Branch</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="IsRegular" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input type="checkbox" class="custom-control-input" asp-for="IsRegular" />
+            </div>
+            <span asp-validation-for="IsRegular" class="text-danger"></span>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="DateOfBirth" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="DateOfBirth" class="form-control" type="date" />
+            </div>
+            <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Gender" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                @foreach (var gender in ViewBag.AllGenders)
+                {
+                    <label class="radio-inline">
+                        <input type="radio" asp-for="Gender" value="@gender" id="Gender@(gender)" /> @gender <br />
+                    </label>
+                }
+            </div>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Address" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <textarea asp-for="Address" class="form-control" placeholder="Địa chỉ"></textarea>
+            </div>
+        </div>
+
+        <!-- Thêm field Điểm -->
+        <div style="margin-top:7px" class="form-group row">
+            <label asp-for="Score" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Score" class="form-control" type="number" step="0.1" min="0" max="10" placeholder="Điểm (0.0 - 10.0)" />
+            </div>
+            <span asp-validation-for="Score" class="text-danger"></span>
+        </div>
+
+        <!-- Upload ảnh đại diện + giữ lại khi lỗi -->
+        <div style="margin-top:7px" class="form-group row">
+            <label for="file" class="col-sm-2 col-form-label">Profile Image</label>
+            <div class="col-sm-10">
+                <input type="file" name="file" class="form-control-file" accept=".jpg,.png" />
+                <!-- Giữ lại đường dẫn ảnh cũ khi postback -->
+                <input type="hidden" asp-for="ImagePath" />
+                @if (!string.IsNullOrEmpty(Model?.ImagePath))
+                {
+                    <div style="margin-top:10px">
+                        <img src="@Model.ImagePath" alt="Ảnh hiện tại" style="width:120px;height:auto;" />
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div style="margin-top:10px" class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </form>
+</div>

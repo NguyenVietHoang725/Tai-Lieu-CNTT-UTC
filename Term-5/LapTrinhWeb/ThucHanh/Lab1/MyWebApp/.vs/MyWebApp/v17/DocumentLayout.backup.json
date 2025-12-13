@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|e:\\00_university\\term_05\\laptrinhweb\\thuchanh\\lab1\\mywebapp\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|solutionrelative:controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|e:\\00_university\\term_05\\laptrinhweb\\thuchanh\\lab1\\mywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|e:\\00_university\\term_05\\laptrinhweb\\thuchanh\\lab1\\mywebapp\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|solutionrelative:models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|e:\\00_university\\term_05\\laptrinhweb\\thuchanh\\lab1\\mywebapp\\views\\student\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|solutionrelative:views\\student\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|e:\\00_university\\term_05\\laptrinhweb\\thuchanh\\lab1\\mywebapp\\views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DD3706FA-61D2-4F16-94C7-BA4E2B546A82}|MyWebApp.csproj|solutionrelative:views\\student\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T16:01:29.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Views\\Student\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Student\\Create.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Views\\Student\\Create.cshtml",
+              "RelativeToolTip": "Views\\Student\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T16:01:11.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Views\\Student\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Student\\Index.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Views\\Student\\Index.cshtml",
+              "RelativeToolTip": "Views\\Student\\Index.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAEIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-10T16:00:49.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\StudentController.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "Controllers\\StudentController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAADsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T15:55:52.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Student.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "Models\\Student.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\ThucHanh\\Lab1\\MyWebApp\\Models\\Student.cs",
+              "RelativeToolTip": "Models\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-10T15:54:17.33Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

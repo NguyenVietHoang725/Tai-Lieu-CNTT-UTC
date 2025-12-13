@@ -1,0 +1,10 @@
+﻿@model IEnumerable<NguyenVietHoang_231230791.Models.HangHoa>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/NguyenVietHoang_Layout.cshtml";
+}
+<a asp-action="Create" asp-controller="Home" class="btn btn-success mb-2">
+	Thêm Hàng Hóa Mới
+</a>
+
+<partial name="NguyenVietHoang_MainContent" model="Model" />

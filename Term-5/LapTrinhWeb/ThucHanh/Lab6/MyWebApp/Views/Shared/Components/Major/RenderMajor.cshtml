@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<Major>
+<ul class="nav">
+    @foreach(var m in Model)
+    {
+        <li class="nav-item" id="@m.MajorID">
+            <a class="nav-link">@m.MajorName</a>
+        </li>
+    }
+</ul>

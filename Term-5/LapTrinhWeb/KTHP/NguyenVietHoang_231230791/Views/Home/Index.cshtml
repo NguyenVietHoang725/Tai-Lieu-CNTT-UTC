@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/NguyenVietHoang_Layout.cshtml";
+}
+
+<main id="main" class="container-fluid">
+    <div class="card w-100">
+        <div class="card-body p-4">
+
+            <div id="content-area">
+                @await Component.InvokeAsync("Render")
+            </div>
+
+        </div>
+    </div>
+</main>

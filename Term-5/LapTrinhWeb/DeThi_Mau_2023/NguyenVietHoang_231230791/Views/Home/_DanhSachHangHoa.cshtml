@@ -1,0 +1,22 @@
+﻿@model IEnumerable<NguyenVietHoang_231230791.Models.HangHoa>
+
+<div class="section group">
+	@foreach (var item in Model)
+	{
+		<div class="grid_1_of_4 images_1_of_4">
+			<a href="#">
+				<img src="@Url.Content("~/images/" + item.Anh)" alt="@item.TenHang" />
+			</a>
+			<h2>@item.TenHang</h2>
+			<div class="price-details">
+				<div class="price-number">
+					<p><span class="rupees">@item.Gia</span></p>
+				</div>
+				<div class="add-cart">
+					<h4><a href="#">Add to Cart</a></h4>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	}
+</div>

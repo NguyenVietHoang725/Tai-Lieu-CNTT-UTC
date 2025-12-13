@@ -1,0 +1,70 @@
+﻿<aside id="aside" class="left-sidebar">
+    <!-- Sidebar scroll Start-->
+    <div class="scroll-sidebar" data-simplebar>
+        <div class="d-flex mb-4 align-items-center justify-content-between">
+            <a href="index.html" class="text-nowrap logo-img ms-0 ms-md-1">
+                <img src="images/logos/dark-logo.svg" width="180" alt="">
+            </a>
+            <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                <i class="ti ti-x fs-8"></i>
+            </div>
+        </div>
+
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <div class="nav-small-cap">
+                <a asp-controller="Home" asp-action="Create" class="btn btn-primary w-100">Create New</a>
+            </div>
+
+            <!--Provider Start-->
+            <div class="nav-small-cap mt-0">
+                <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
+                <span class="hide-menu">Provider</span>
+            </div>
+            <ul id="sidebarnav" class="mb-0 pb-2">
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link primary-hover-bg" aria-expanded="false">
+                        <span class="aside-icon p-2 bg-light-primary rounded-3">
+                            <i class="ti ti-aperture fs-7 text-primary"></i>
+                        </span>
+                        <span class="hide-menu ms-2 ps-1">Provider</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link sidebar-link warning-hover-bg" aria-expanded="false">
+                        <span class="aside-icon p-2 bg-light-warning rounded-3">
+                            <i class="ti ti-article fs-7 text-warning"></i>
+                        </span>
+                        <span class="hide-menu ms-2 ps-1">Provider</span>
+                    </a>
+                </li>
+            </ul>
+            <!--Provider End-->
+            <!--Pagination Start-->
+            <div class="nav-small-cap mt-0">
+                <i class="ti ti-dots nav-small-cap-icon fs-5"></i>
+                <span class="hide-menu">Pagination</span>
+            </div>
+            <ul class="sidebar-list mb-0">
+                <li class="sidebar-list-item">
+                    <a href="javascript:void(0)" class="page-link-ajax sidebar-link" data-page="1">
+                        <span class="hide-menu ms-2">Xe 1 -> 4</span>
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="javascript:void(0)" class="page-link-ajax sidebar-link" data-page="2">
+                        <span class="hide-menu ms-2">Xe 5 -> 8</span>
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="javascript:void(0)" class="page-link-ajax sidebar-link" data-page="3">
+                        <span class="hide-menu ms-2">Xe 9 -> 12</span>
+                    </a>
+                </li>
+            </ul>
+            <!--Pagination End-->
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!--idebar scroll End-->
+</aside>

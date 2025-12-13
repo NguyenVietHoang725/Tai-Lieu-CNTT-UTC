@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Learner>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/MyLayoutHelper.cshtml";
+}
+<div class="ms-2 mx-2">
+    <h1>Learner List</h1>
+    @await Component.InvokeAsync("Major")
+
+    <div class="input-group w-25 my-2">
+        <input id="keyword" class="form-control" placeholder="Search learner..." />
+        <button id="btnSearch" class="btn btn-primary" type="button">Search</button>
+    </div>
+
+    <div id="content">
+        @await Html.PartialAsync("LearnerTable", Model)
+    </div>
+
+    <a asp-action="Create" class="btn btn-primary">Create New Student</a>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Sự kiện click phân trang
+        $('body').on('click', 'li.page-item', function (e) {
+            var page = $(this).attr("page");
+            var mid = $(this).attr("mid");
+            var keyword = $(this).attr("keyword");
+            $.ajax({
+                url: "@Url.Action("LearnerFilter", "Learner")",
+                type: "GET",
+                data: { mid: mid, keyword: keyword, pageIndex: page },
+                success: function (response) {
+                    $("#content").html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Ajax error:", status, error);
+                }
+            });
+        });
+
+        // Sự kiện click lọc theo ngành
+        $('body').on('click', '.nav-item', function () {
+            var mid = $(this).attr('id');
+            var keyword = $('#keyword').val(); // nếu đang tìm kiếm
+            $.ajax({
+                url: "@Url.Action("LearnerFilter", "Learner")",
+                type: "GET",
+                data: { mid: mid, keyword: keyword, pageIndex: 1 },
+                success: function (response) {
+                    $("#content").html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Filter error:", status, error);
+                }
+            });
+        });
+
+        // Sự kiện click tìm kiếm
+        $('#btnSearch').on('click', function () {
+            var keyword = $('#keyword').val();
+            $.ajax({
+                url: "@Url.Action("LearnerFilter", "Learner")",
+                type: "GET",
+                data: { keyword: keyword, pageIndex: 1 },
+                success: function (response) {
+                    $("#content").html(response);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Search error:", status, error);
+                }
+            });
+        });
+    </script>
+}

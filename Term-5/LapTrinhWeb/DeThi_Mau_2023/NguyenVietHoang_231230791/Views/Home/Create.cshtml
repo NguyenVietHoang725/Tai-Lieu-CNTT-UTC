@@ -1,0 +1,41 @@
+﻿@model NguyenVietHoang_231230791.Models.HangHoa
+
+@{
+    ViewData["Title"] = "Thêm Hàng Hóa Mới";
+}
+
+<h2>Thêm Hàng Hóa Mới</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label>Loại hàng:</label>
+        <select asp-for="MaLoai" asp-items="@(new SelectList(ViewBag.MaLoai, "MaLoai", "TenLoai"))"></select>
+        <span asp-validation-for="MaLoai" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Tên hàng:</label>
+        <input asp-for="TenHang" />
+        <span asp-validation-for="TenHang" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Giá:</label>
+        <input asp-for="Gia" />
+        <span asp-validation-for="Gia" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label>Ảnh:</label>
+        <input asp-for="Anh" />
+        <span asp-validation-for="Anh" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Create</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

@@ -1,0 +1,169 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\views\\shared\\nguyenviethoang_maincontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\shared\\nguyenviethoang_maincontent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\viewcomponents\\renderviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:viewcomponents\\renderviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\views\\shared\\components\\render\\renderdata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\shared\\components\\render\\renderdata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\views\\shared\\nguyenviethoang_footer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\shared\\nguyenviethoang_footer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\views\\shared\\nguyenviethoang_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\shared\\nguyenviethoang_header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\template_thikthp\\nguyenviethoang_231230791\\views\\shared\\nguyenviethoang_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A3A994BA-5323-4761-87DC-83EBFE6FF6E5}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\shared\\nguyenviethoang_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T01:42:38.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T01:41:55.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RenderData.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\Components\\Render\\RenderData.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Components\\Render\\RenderData.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\Components\\Render\\RenderData.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Components\\Render\\RenderData.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T01:41:05.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RenderViewComponent.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\ViewComponents\\RenderViewComponent.cs",
+              "RelativeDocumentMoniker": "ViewComponents\\RenderViewComponent.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\ViewComponents\\RenderViewComponent.cs",
+              "RelativeToolTip": "ViewComponents\\RenderViewComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T01:35:53.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T01:34:15.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NguyenVietHoang_MainContent.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_MainContent.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\NguyenVietHoang_MainContent.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_MainContent.cshtml",
+              "RelativeToolTip": "Views\\Shared\\NguyenVietHoang_MainContent.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T01:33:52.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "NguyenVietHoang_Footer.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_Footer.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\NguyenVietHoang_Footer.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_Footer.cshtml",
+              "RelativeToolTip": "Views\\Shared\\NguyenVietHoang_Footer.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T01:33:21.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NguyenVietHoang_Header.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_Header.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\NguyenVietHoang_Header.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_Header.cshtml",
+              "RelativeToolTip": "Views\\Shared\\NguyenVietHoang_Header.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T01:32:53.89Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "NguyenVietHoang_Layout.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\Template_ThiKTHP\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T01:30:48.733Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

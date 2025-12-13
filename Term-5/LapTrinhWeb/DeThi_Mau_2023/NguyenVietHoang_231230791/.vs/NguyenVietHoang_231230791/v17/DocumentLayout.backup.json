@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethi_mau_2023\\nguyenviethoang_231230791\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethi_mau_2023\\nguyenviethoang_231230791\\views\\shared\\nguyenviethoang_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\shared\\nguyenviethoang_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethi_mau_2023\\nguyenviethoang_231230791\\views\\shared\\components\\render\\renderloaihang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\shared\\components\\render\\renderloaihang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethi_mau_2023\\nguyenviethoang_231230791\\views\\home\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\home\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethi_mau_2023\\nguyenviethoang_231230791\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethi_mau_2023\\nguyenviethoang_231230791\\models\\loaihang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|solutionrelative:models\\loaihang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethi_mau_2023\\nguyenviethoang_231230791\\views\\home\\_danhsachhanghoa.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|solutionrelative:views\\home\\_danhsachhanghoa.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|e:\\00_university\\term_05\\laptrinhweb\\dethi_mau_2023\\nguyenviethoang_231230791\\models\\hanghoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7D791A9D-DF2E-49B2-81BC-05DECFD90462}|NguyenVietHoang_231230791.csproj|solutionrelative:models\\hanghoa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NguyenVietHoang_Layout.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\NguyenVietHoang_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-08T00:00:52.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Home\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Create.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Home\\Create.cshtml",
+              "RelativeToolTip": "Views\\Home\\Create.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T10:46:40.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T03:58:56.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HangHoa.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Models\\HangHoa.cs",
+              "RelativeDocumentMoniker": "Models\\HangHoa.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Models\\HangHoa.cs",
+              "RelativeToolTip": "Models\\HangHoa.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T03:52:53.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "_DanhSachHangHoa.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Home\\_DanhSachHangHoa.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\_DanhSachHangHoa.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Home\\_DanhSachHangHoa.cshtml",
+              "RelativeToolTip": "Views\\Home\\_DanhSachHangHoa.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T03:37:43.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RenderLoaiHang.cshtml",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Shared\\Components\\Render\\RenderLoaiHang.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\Components\\Render\\RenderLoaiHang.cshtml",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Views\\Shared\\Components\\Render\\RenderLoaiHang.cshtml",
+              "RelativeToolTip": "Views\\Shared\\Components\\Render\\RenderLoaiHang.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAwCMAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-22T03:35:12.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAwwC0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T03:33:48.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoaiHang.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Models\\LoaiHang.cs",
+              "RelativeDocumentMoniker": "Models\\LoaiHang.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhWeb\\DeThi_Mau_2023\\NguyenVietHoang_231230791\\Models\\LoaiHang.cs",
+              "RelativeToolTip": "Models\\LoaiHang.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T03:33:35.672Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
