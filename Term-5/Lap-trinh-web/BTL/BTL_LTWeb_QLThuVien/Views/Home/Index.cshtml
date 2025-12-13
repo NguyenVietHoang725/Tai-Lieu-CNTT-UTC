@@ -1,0 +1,451 @@
+﻿@* File: Views/Home/Index.cshtml (Thiết kế Gộp Khối và Tách Card mới) *@
+@using Library_Manager.Models;
+@using Microsoft.AspNetCore.Http;
+
+@{
+    ViewData["Title"] = "Tổng Quan Hệ Thống";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // 1. KHAI BÁO LOGIC (GIỮ NGUYÊN)
+    var account = ViewBag.CurrentAccount as TTaiKhoan;
+    var employee = ViewBag.CurrentEmployee as TNhanVien;
+    string greeting = "Xin chào";
+    int hour = DateTime.Now.Hour;
+    if (hour >= 5 && hour < 11) { greeting = "Chào buổi sáng"; }
+    else if (hour >= 11 && hour < 14) { greeting = "Chào buổi trưa"; }
+    else if (hour >= 14 && hour < 18) { greeting = "Chào buổi chiều"; }
+    else { greeting = "Chào buổi tối"; }
+
+    var vaiTro = account?.MaVtNavigation?.MaVt;
+    var tenVaiTro = account?.MaVtNavigation?.TenVt;
+    var badgeVaiTroClass = "bg-label-secondary";
+    if (vaiTro == "QTV") { badgeVaiTroClass = "bg-label-primary"; }
+    else if (vaiTro == "QLB") { badgeVaiTroClass = "bg-label-info"; }
+    else if (vaiTro == "QLT") { badgeVaiTroClass = "bg-label-success"; }
+    else if (vaiTro == "QLM") { badgeVaiTroClass = "bg-label-warning"; }
+
+    var gioiTinh = (employee?.GioiTinh == "M" ? "Nam" : employee?.GioiTinh == "F" ? "Nữ" : "-");
+    var badgeGioiTinhClass = gioiTinh == "Nam" ? "bg-label-info" :
+          gioiTinh == "Nữ" ? "bg-label-danger" :
+          "bg-label-secondary";
+
+    var userRole = Context.Session.GetString("UserRole");
+    bool CanAccess(params string[] roles) => roles.Contains(userRole);
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+
+        <div class="col-lg-12 mb-4 order-0">
+            @* Sử dụng text-body cho text phụ (Dashboard /) và text-primary cho vai trò *@
+            <h4 class="fw-bold py-3 mb-4"><span class="text-body fw-light">Dashboard /</span> Tổng Quan Quản Trị (<span class="text-primary">@tenVaiTro</span>)</h4>
+        </div>
+
+        @* ========================================================================
+            KHỐI 1: CÁ NHÂN, TÀI KHOẢN & TRUY CẬP CÁ NHÂN (GIỮ NGUYÊN)
+            ======================================================================== *@
+        @if (employee != null && account != null)
+        {
+            <div class="col-lg-12 mb-4 order-0">
+                <div class="card p-3">
+                    <div class="row">
+
+                        @* ----------------------- PHẦN THÔNG TIN CÁ NHÂN ----------------------- *@
+                        <div class="col-lg-8 col-md-12">
+                            <h5 class="text-primary mb-3"><i class='bx bxs-user-badge me-2'></i> @greeting, <strong class="text-primary">@employee.HoDem @employee.Ten!</strong></h5>
+                            <div class="row">
+                                @* Thẻ 1: Mã NV *@
+                                <div class="col-md-6 mb-2">
+                                    <p class="text-body mb-0">
+                                        <span class="text-muted me-2">Mã NV:</span>
+                                        <span class="fw-bold text-body">@employee.MaNv</span>
+                                    </p>
+                                </div>
+                                @* Thẻ 2: Phụ trách *@
+                                <div class="col-md-6 mb-2">
+                                    <p class="text-body mb-0">
+                                        <span class="text-muted me-2">Phụ trách:</span>
+                                        <span class="fw-bold text-body">@employee.PhuTrach</span>
+                                    </p>
+                                </div>
+                                @* Thẻ 3: Email *@
+                                <div class="col-md-6 mb-2">
+                                    <p class="text-body mb-0">
+                                        <span class="text-muted me-2">Email:</span>
+                                        <span class="text-body">@employee.Email</span>
+                                    </p>
+                                </div>
+                                @* Thẻ 4: Giới tính *@
+                                <div class="col-md-6 mb-2">
+                                    <p class="text-body mb-0">
+                                        <span class="text-muted me-2">Giới tính:</span>
+                                        <span class="badge @badgeGioiTinhClass">@gioiTinh</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        @* Thanh ngang chia cắt cho chế độ Mobile/Tablet *@
+                        <div class="d-lg-none d-md-block col-12"><hr class="my-3" /></div>
+
+
+                        @* ----------------------- PHẦN TÀI KHOẢN & THAO TÁC ----------------------- *@
+                        <div class="col-lg-4 col-md-12 ps-lg-4 mt-md-3 mt-lg-0 border-start border-md-0">
+                            <h5 class="text-primary mb-3"><i class='bx bxs-key me-2'></i> Tài khoản</h5>
+                            <div class="row mb-3">
+                                @* Tên Đăng nhập *@
+                                <div class="col-6">
+                                    <p class="text-body mb-0">
+                                        <span class="text-muted me-2">Tên ĐN:</span>
+                                        <span class="fw-bold text-body">@account.TenDangNhap</span>
+                                    </p>
+                                </div>
+                                @* Vai trò *@
+                                <div class="col-6">
+                                    <p class="text-body mb-0">
+                                        <span class="text-muted me-2">Vai trò:</span>
+                                        <span class="badge @badgeVaiTroClass fs-6">@tenVaiTro</span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="d-grid">
+                                <a asp-controller="TaiKhoan"
+                                                     asp-action="Details"
+                                                     asp-route-id="@account.MaTk"
+                                                     class="btn btn-sm btn-primary">
+                                    <i class="bx bx-detail me-1"></i> Xem chi tiết Tài khoản
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+        @* --- KẾT THÚC KHỐI CÁ NHÂN --- *@
+
+        <hr class="my-3">
+
+        @* ========================================================================
+            KHỐI 2: QUẢN LÝ MƯỢN/TRẢ
+            ======================================================================== *@
+        @if (CanAccess("QTV", "QLM"))
+        {
+            <div class="col-lg-12 mb-4">
+                <div class="card h-100">
+                    <h5 class="card-header text-primary"><i class='bx bxs-check-square me-2'></i> Quản Lý Mượn/Trả</h5>
+                    <div class="card-body">
+                        <div class="row">
+
+                            @* 1. SÁCH QUÁ HẠN *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-danger text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>SÁCH QUÁ HẠN</strong></h6>
+                                        <h2 class="card-text text-primary">@ViewBag.OverdueLoans</h2>
+                                        <small class="text-body fw-semibold">Cần thu hồi ngay</small>
+                                    </div>
+                                </div>
+                            </div>
+                            @* 2. TỔNG ĐANG MƯỢN *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-primary text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>TỔNG ĐANG MƯỢN</strong></h6>
+                                        <h2 class="card-text text-primary">@ViewBag.TotalLoans</h2>
+                                        <small class="text-body fw-semibold">GD trong ngày: +@ViewBag.LoansToday</small>
+                                    </div>
+                                </div>
+                            </div>
+                            @* 3. XỬ LÝ GIAO DỊCH (THAO TÁC NHANH) *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-primary text-center d-flex flex-column justify-content-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>XỬ LÝ GIAO DỊCH</strong></h6>
+                                        <a asp-controller="GiaoDichMuonTra"
+                                                                 asp-action="Create"
+                                                                 class="btn btn-primary mt-2">
+                                            <i class='bx bx-barcode-reader me-1'></i> Bắt đầu
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            @* 4. 5 Giao Dịch Quá Hạn Lâu Nhất *@
+                            <div class="col-lg-6 mb-4">
+                                <h6 class="text-primary mb-3 border-bottom pb-1"><i class='bx bx-list-ol me-1'></i> 5 Giao Dịch Quá Hạn Lâu Nhất</h6>
+                                <div class="table-responsive">
+                                    <table class="table card-table table-sm">
+                                        <tbody class="table-border-bottom-0">
+                                            @foreach (var item in ViewBag.OverdueList)
+                                            {
+                                                <tr>
+                                                    <td class="text-body"><i class='bx bxs-book-reader me-2'></i> @item.TenSach</td>
+                                                    <td class="text-body">@item.DocGia</td>
+                                                    <td class="text-end"><span class="badge bg-label-danger">@item.NgayHenTra</span></td>
+                                                </tr>
+                                            }
+                                            @if (((List<dynamic>)ViewBag.OverdueList).Count == 0)
+                                            {
+                                                <tr class="text-body fst-italic"><td colspan="3" class="text-center">Không có sách quá hạn.</td></tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end bg-transparent border-top">
+                        <a asp-controller="GiaoDichMuonTra"
+                                         asp-action="Index"
+                                         class="btn btn-sm btn-primary">
+                            Xem tất cả Giao dịch <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        }
+        @* --- KẾT THÚC KHỐI MƯỢN/TRẢ --- *@
+
+        <hr class="my-3">
+
+        @* ========================================================================
+            KHỐI 3: QUẢN LÝ TÀI LIỆU
+            ======================================================================== *@
+        @if (CanAccess("QTV", "QLT"))
+        {
+            <div class="col-lg-12 mb-4">
+                <div class="card h-100">
+                    <h5 class="card-header text-primary"><i class='bx bxs-box me-2'></i> Quản Lý Tài Liệu (Kho)</h5>
+                    <div class="card-body">
+                        <div class="row">
+
+                            @* 1. ĐẦU SÁCH CẦN NHẬP *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-warning text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>ĐẦU SÁCH CẦN BỔ SUNG</strong></h6>
+                                        <h2 class="card-text text-primary">@ViewBag.LowStockCount</h2>
+                                        <small class="text-body fw-semibold">Tồn kho &lt; 3 bản</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                            @* 2. BẢN SÁCH SẴN SÀNG *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-primary text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>BẢN SÁCH SẴN SÀNG</strong></h6>
+                                        <h2 class="card-text text-primary">@ViewBag.AvailableCopies</h2>
+                                        <small class="text-body fw-semibold">Tổng: @ViewBag.TotalCopies</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                            @* 3. NHẬP LIỆU NHANH (THAO TÁC NHANH) *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-primary text-center d-flex flex-column justify-content-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>NHẬP LIỆU NHANH</strong></h6>
+                                        <a asp-controller="TaiLieu"
+                                                                 asp-action="Create"
+                                                                 class="btn btn-primary mt-2">
+                                            Thêm Tài liệu mới
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            @* 4. 5 Tài Liệu Cần Bổ Sung Gấp *@
+                            <div class="col-lg-12 mb-4">
+                                <h6 class="text-primary mb-3 border-bottom pb-1"><i class='bx bx-alarm-exclamation me-1'></i> 5 Tài Liệu Cần Bổ Sung Gấp</h6>
+                                <div class="table-responsive">
+                                    <table class="table card-table table-sm">
+                                        <tbody class="table-border-bottom-0">
+                                            @foreach (var item in ViewBag.LowStockList)
+                                            {
+                                                <tr>
+                                                    @* Đã giảm chiều rộng cột tên tài liệu cho hai nút *@
+                                                    <td class="text-body w-50" style="max-width: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                                        <i class='bx bx-book me-2'></i> @item.TenTl
+                                                    </td>
+                                                    <td class="text-body w-25">
+                                                        <span class="badge @(item.SoBanSanSang == 0 ? "bg-label-danger" : "bg-label-warning") me-1">@item.SoBanSanSang bản</span>
+                                                    </td>
+                                                    @* Sửa: Link Xem (Details) và Nhập Bản sao (Create) *@
+                                                    <td class="text-end w-25">
+                                                        <div class="d-flex justify-content-end gap-2">
+                                                            @* Button Xem (Details) *@
+                                                            <a asp-controller="TaiLieu"
+                                                                                               asp-action="Details"
+                                                                                               asp-route-id="@item.MaTl"
+                                                                                               class="btn btn-icon btn-sm btn-label-info waves-effect"
+                                                                                               data-bs-toggle="tooltip" data-bs-placement="top" title="Xem chi tiết">
+                                                                <i class='bx bx-detail'></i>
+                                                            </a>
+                                                            @* Button Nhập Bản Sao (Create) - ĐÃ SỬA CONTROLLER CHÍNH XÁC *@
+                                                            <a asp-controller="BanSao"
+                                                                                               asp-action="Create"
+                                                                                               asp-route-MaTl="@item.MaTl"
+                                                                                               class="btn btn-icon btn-sm btn-label-primary waves-effect"
+                                                                                               data-bs-toggle="tooltip" data-bs-placement="top" title="Nhập Bản sao mới">
+                                                                <i class='bx bx-plus'></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            @if (((List<dynamic>)ViewBag.LowStockList).Count == 0)
+                                            {
+                                                <tr class="text-body fst-italic"><td colspan="3" class="text-center">Tất cả tài liệu đều đủ tồn kho.</td></tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end bg-transparent border-top">
+                        <a asp-controller="TaiLieu"
+                                         asp-action="Index"
+                                         class="btn btn-sm btn-primary">
+                            Quản lý Tài liệu <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        }
+        @* --- KẾT THÚC KHỐI TÀI LIỆU --- *@
+
+        <hr class="my-3">
+
+        @* ========================================================================
+            KHỐI 4: QUẢN LÝ BẠN ĐỌC
+            ======================================================================== *@
+        @if (CanAccess("QTV", "QLB"))
+        {
+            <div class="col-lg-12 mb-4">
+                <div class="card">
+                    <h5 class="card-header text-primary"><i class='bx bxs-group me-2'></i> Quản Lý Bạn Đọc</h5>
+                    <div class="card-body">
+                        <div class="row">
+
+                            @* 1. THẺ BẠN ĐỌC BỊ KHÓA *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-danger text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>THẺ BẠN ĐỌC BỊ KHÓA</strong></h6>
+                                        <h2 class="card-text text-primary">@ViewBag.LockedReaders</h2>
+                                        <small class="text-body fw-semibold">Cần giải quyết vi phạm</small>
+                                    </div>
+                                </div>
+                            </div>
+                            @* 2. TỔNG ĐỘC GIẢ *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-primary text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>TỔNG ĐỘC GIẢ</strong></h6>
+                                        <h2 class="card-text text-primary">@ViewBag.TotalReaders</h2>
+                                        <small class="text-body fw-semibold">Thành viên mới: +@(((List<dynamic>)ViewBag.NewReadersList).Count)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            @* 3. ĐĂNG KÝ MỚI (THAO TÁC NHANH) *@
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 border border-primary text-center">
+                                    <div class="card-body">
+                                        <h6 class="card-title text-body"><strong>ĐĂNG KÝ MỚI</strong></h6>
+                                        <a asp-controller="BanDoc"
+                                                                 asp-action="Create"
+                                                                 class="btn btn-primary mt-2">
+                                            Đăng ký độc giả
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            @* 4. 5 Độc Giả Mới Nhất *@
+                            <div class="col-lg-6 mb-4">
+                                <h6 class="text-primary mb-3 border-bottom pb-1"><i class='bx bx-user-pin me-1'></i> 5 Độc Giả Mới Nhất</h6>
+                                <div class="table-responsive">
+                                    <table class="table card-table table-sm">
+                                        <tbody class="table-border-bottom-0">
+                                            @foreach (var item in ViewBag.NewReadersList)
+                                            {
+                                                <tr>
+                                                    <td class="text-body"><i class='bx bx-user me-2'></i> @item.Ten</td>
+                                                    <td class="text-end text-body">
+                                                        @if (item.NgayTao != null)
+                                                        {
+                                                            @item.NgayTao
+                                                        }
+                                                        else
+                                                        {
+                                                            @:N/A
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            }
+                                            @if (((List<dynamic>)ViewBag.NewReadersList).Count == 0)
+                                            {
+                                                <tr class="text-body fst-italic"><td colspan="2" class="text-center">Không có độc giả mới.</td></tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            @* 5. Thẻ Độc Giả Sắp/Đã Hết Hạn *@
+                            <div class="col-lg-6 mb-4">
+                                <h6 class="text-primary mb-3 border-bottom pb-1"><i class='bx bx-calendar-x me-1'></i> 5 Thẻ Độc Giả Sắp/Đã Hết Hạn</h6>
+                                <div class="table-responsive">
+                                    <table class="table card-table table-sm">
+                                        <tbody class="table-border-bottom-0">
+                                            @foreach (var item in ViewBag.ExpiringReaders)
+                                            {
+                                                var badgeClass = item.IsExpired ? "bg-label-danger" : "bg-label-warning";
+                                                var icon = item.IsExpired ? "bx-x-circle" : "bx-alarm";
+                                                <tr>
+                                                    <td class="text-body"><i class='bx @icon me-2'></i> @item.DocGia</td>
+                                                    <td class="text-end"><span class="badge @badgeClass">@item.NgayHetHan</span></td>
+                                                </tr>
+                                            }
+                                            @if (((List<dynamic>)ViewBag.ExpiringReaders).Count == 0)
+                                            {
+                                                <tr class="text-body fst-italic"><td colspan="2" class="text-center">Không có thẻ sắp/đã hết hạn trong 30 ngày tới.</td></tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end bg-transparent border-top">
+                        <a asp-controller="BanDoc"
+                                         asp-action="Index"
+                                         class="btn btn-sm btn-primary">
+                            Quản lý Bạn đọc <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        }
+        @* --- KẾT THÚC KHỐI BẠN ĐỌC --- *@
+
+    </div>
+</div>
+
+@section Scripts {
+}

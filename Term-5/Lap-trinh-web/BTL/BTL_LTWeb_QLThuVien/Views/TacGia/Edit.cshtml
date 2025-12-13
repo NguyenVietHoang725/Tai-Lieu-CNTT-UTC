@@ -1,0 +1,131 @@
+﻿@model Library_Manager.Models.TTacGia
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Tác giả";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Lấy tên quốc gia để hiển thị tham khảo (MaQgNavigation phải được Include trong Controller)
+    var tenQuocGia = Model.MaQgNavigation != null ? Model.MaQgNavigation.TenQg : Model.MaQg;
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* Tiêu đề trang, sử dụng text-primary để áp dụng theme color *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-pencil fs-2 me-2 border p-1 rounded-2'></i> Chỉnh sửa thông tin Tác giả
+    </h1>
+
+    @* PHẦN HIỂN THỊ THÔNG BÁO TEMP DATA (Nếu có lỗi từ Controller trả về) *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="alertMessage" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card">
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chỉnh sửa thông tin cho: <span class="text-primary fw-bold">@Model.HoDem @Model.Ten</span></h5>
+        </div>
+
+        <form asp-action="Edit" id="editTacGiaForm">
+            <div class="card-body">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                @* Mã Tác giả và Mã Quốc gia là Hidden fields *@
+                <input type="hidden" asp-for="MaTg" />
+                <input type="hidden" asp-for="MaQg" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        @* Mã Tác giả (Chỉ hiển thị) *@
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Mã Tác giả</label>
+                            <input value="@Model.MaTg" class="form-control" disabled />
+                        </div>
+
+                        @* Quốc gia (Chỉ hiển thị - Không thể sửa) *@
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Quốc gia (Không thể sửa)</label>
+                            <input value="@tenQuocGia" class="form-control" disabled />
+                            <small class="form-text text-warning">Mã tác giả được sinh theo Quốc gia, không thể thay đổi.</small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        @* Họ đệm *@
+                        <div class="mb-3">
+                            <label asp-for="HoDem" class="form-label text-primary">Họ đệm</label>
+                            <input asp-for="HoDem" class="form-control" />
+                            <span asp-validation-for="HoDem" class="text-danger"></span>
+                        </div>
+
+                        @* Tên *@
+                        <div class="mb-3">
+                            <label asp-for="Ten" class="form-label text-primary">Tên</label>
+                            <input asp-for="Ten" class="form-control" />
+                            <span asp-validation-for="Ten" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-between">
+
+                    @* KHỐI BÊN TRÁI: Nút Quay lại *@
+                    <div>
+                        <a asp-action="Index" class="btn btn-outline-primary">
+                            @* Sửa thành btn-outline-primary *@
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                        </a>
+                    </div>
+
+                    @* KHỐI BÊN PHẢI: Lưu & Xem chi tiết *@
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary" id="submitButton">
+                            <i class="bx bx-save me-1"></i> Lưu thay đổi
+                        </button>
+
+                        <a asp-action="Details" asp-route-id="@Model?.MaTg" class="btn btn-info">
+                            @* Sửa thành btn-info *@
+                            <i class="bx bx-detail me-1"></i> Xem chi tiết
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @* Đảm bảo Validation scripts được load *@
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // --- Logic chặn double submit ---
+        document.addEventListener('DOMContentLoaded', function () {
+            const editForm = document.getElementById('editTacGiaForm');
+            const submitButton = document.getElementById('submitButton');
+
+            if (editForm && submitButton) {
+                editForm.addEventListener('submit', function (e) {
+                    // Kiểm tra validation client-side
+                    if ($(editForm).valid()) {
+                        // Vô hiệu hóa nút Submit
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Đang lưu...';
+                    }
+                });
+            }
+        });
+    </script>
+}

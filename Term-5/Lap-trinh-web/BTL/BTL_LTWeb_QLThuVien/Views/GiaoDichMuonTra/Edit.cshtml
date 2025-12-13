@@ -1,0 +1,290 @@
+﻿@model Library_Manager.Models.TGiaoDichMuonTra
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Giao dịch: " + Model.MaGd;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLM");
+}
+
+@* ========================================================================
+    KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+    ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-pencil fs-2 me-2 border p-1 rounded-2'></i> Chỉnh sửa Giao dịch Mượn/Trả
+    </h1>
+
+    @* Thông báo lỗi/thành công từ TempData (Nếu có) *@
+    <div id="alertPlaceholder">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-@TempData["StatusMessage"] alert-dismissible fade show" role="alert">
+                @Html.Raw(TempData["Message"])
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+    </div>
+
+    @* --- KHỐI: CARD BAO QUANH BIỂU MẪU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tiêu đề cố định *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chỉnh sửa thông tin cho Giao dịch: <span class="text-info fw-bold">@Model.MaGd</span></h5>
+        </div>
+
+        <form asp-action="Edit" asp-route-id="@Model.MaGd">
+            @* BODY CỦA CARD: Chứa Biểu mẫu nhập liệu *@
+            <div class="card-body">
+
+                @* Phần hiển thị lỗi tổng thể *@
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                @* Hidden Fields - GIỮ CÁC KHÓA VÀ TRƯỜNG CỐ ĐỊNH *@
+                <input type="hidden" asp-for="MaGd" />
+                <input type="hidden" asp-for="MaTbd" /> @* Giữ MaTbd (Thẻ bạn đọc) *@
+                <input type="hidden" asp-for="NgayMuon" value="@Model.NgayMuon.ToString("yyyy-MM-dd")" /> @* Giữ Ngày Mượn *@
+                <input type="hidden" asp-for="MaTk" /> @* Giữ MaTk (Sẽ được Controller tự động ghi đè) *@
+
+
+                @* CHIA BIỂU MẪU THÀNH 2 CỘT *@
+                <div class="row">
+
+                    @* --- CỘT 1: THÔNG TIN CHÍNH (6/12) --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-info-circle me-1'></i> Thông tin chung
+                        </h6>
+
+                        @* Mã Thẻ Bạn đọc (Read-only) *@
+                        <div class="mb-3">
+                            <label class="form-label">Thẻ Bạn đọc (Không thể thay đổi)</label>
+                            <div class="border p-2 rounded bg-light">
+                                <span class="fw-semibold me-2">@Model.MaTbd</span>
+                                (@(Model.MaTbdNavigation?.MaBdNavigation != null ?
+                                                                (Model.MaTbdNavigation.MaBdNavigation.HoDem + " " + Model.MaTbdNavigation.MaBdNavigation.Ten) :
+                                                                "(Không rõ)"))
+                            </div>
+                        </div>
+
+                        @* Ngày Mượn (Read-only) *@
+                        <div class="mb-3">
+                            <label class="form-label">Ngày Mượn (Cố định)</label>
+                            <div class="border p-2 rounded bg-light">
+                                <span class="fw-semibold">@Model.NgayMuon.ToString("dd/MM/yyyy")</span>
+                            </div>
+                        </div>
+
+                        @* Ngày Hẹn Trả (Có thể sửa) *@
+                        <div class="mb-3">
+                            <label asp-for="NgayHenTra" class="form-label">Ngày Hẹn Trả</label>
+                            <input asp-for="NgayHenTra" class="form-control" type="date" value="@Model.NgayHenTra.ToString("yyyy-MM-dd")" />
+                            <span asp-validation-for="NgayHenTra" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* --- CỘT 2: TRẠNG THÁI & THỜI GIAN TRẢ (6/12) --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-calendar me-1'></i> Trạng thái & Thời gian trả
+                        </h6>
+
+                        @* Trạng Thái (Select) *@
+                        <div class="mb-3">
+                            <label asp-for="TrangThai" class="form-label">Trạng thái</label>
+                            <select asp-for="TrangThai" class="form-select">
+                                <option value="Đang mượn">Đang mượn</option>
+                                <option value="Đã trả">Đã trả</option>
+                                <option value="Quá hạn">Quá hạn</option>
+                            </select>
+                            <span asp-validation-for="TrangThai" class="text-danger"></span>
+                        </div>
+
+                        @* Ngày Trả (Thực tế) *@
+                        <div class="mb-3">
+                            <label asp-for="NgayTra" class="form-label">Ngày Trả (Thực tế)</label>
+                            <input asp-for="NgayTra" class="form-control" type="date" value="@(Model.NgayTra.HasValue? Model.NgayTra.Value.ToString("yyyy-MM-dd") : "")" />
+                            <span asp-validation-for="NgayTra" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mt-4 mb-4" />
+
+                @* === KHỐI CHI TIẾT CÁC BẢN SAO (HIỂN THỊ VÀ CẬP NHẬT AJAX) === *@
+                <h6 class="text-muted text-uppercase mb-3 mt-0">
+                    <i class='bx bx-book-bookmark me-1'></i> Danh sách Bản sao đã mượn (@Model.TGiaoDichBanSao.Count)
+                </h6>
+
+                <div class="table-responsive text-nowrap">
+                    <table class="table table-hover" id="banSaoTable">
+                        <thead>
+                            <tr>
+                                <th>Mã BS</th>
+                                <th>Tên Tài liệu</th>
+                                <th>Mã TL</th>
+                                <th>Tình trạng trả</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach (var item in Model.TGiaoDichBanSao)
+                            {
+                                <tr data-mabs="@item.MaBs">
+                                    <td><span class="fw-semibold">@item.MaBs</span></td>
+                                    <td>@(item.MaBsNavigation?.MaTlNavigation?.TenTl ?? "(Không rõ tên)")</td>
+                                    <td>@(item.MaBsNavigation?.MaTl ?? "(Không rõ mã)")</td>
+                                    <td class="status-cell">
+                                        @{
+                                            var tinhTrangText = item.TinhTrang ? "Đã trả" : "Đang mượn";
+                                            var tinhTrangClass = item.TinhTrang ? "bg-label-success" : "bg-label-warning";
+                                        }
+                                        <span class="badge @tinhTrangClass status-badge">@tinhTrangText</span>
+                                    </td>
+                                    <td>
+                                        @if (!item.TinhTrang)
+                                        {
+                                            <button type="button"
+                                                    class="btn btn-xs btn-success btn-return-book"
+                                                    data-magd="@item.MaGd"
+                                                    data-mabs="@item.MaBs"
+                                                    title="Đánh dấu đã trả">
+                                                <i class="bx bx-check-circle"></i> Trả sách
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted small">Đã trả</span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div> @* End card-body *@
+
+            @* FOOTER CỦA CARD: Nút Lưu, Quay lại và Chi tiết (BỐ CỤC MỚI) *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI DANH SÁCH (TRÁI) - Dùng btn-outline-primary *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* KHỐI NÚT PHẢI (Lưu và Chi tiết) *@
+                    <div class="d-flex gap-2">
+
+                        @* NÚT LƯU *@
+                        <button type="submit" class="btn btn-primary @(canEdit ? "" : "disabled")" id="submitButton">
+                            <i class="bx bx-save me-1"></i> Lưu thay đổi
+                        </button>
+
+                        @* NÚT CHUYỂN QUA CHI TIẾT *@
+                        <a asp-action="Details" asp-route-id="@Model?.MaGd" class="btn btn-info">
+                            <i class="bx bx-detail me-1"></i> Xem chi tiết Giao dịch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div> @* End card *@
+</div> @* End container-xxl *@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Hàm hiển thị thông báo
+        function showToast(message, type = 'success') {
+            const alertPlaceholder = document.getElementById('alertPlaceholder');
+            if (!alertPlaceholder) return;
+
+            // Xóa thông báo cũ
+            alertPlaceholder.innerHTML = '';
+
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible fade show" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('');
+            alertPlaceholder.appendChild(wrapper);
+
+            // Tự động ẩn sau 5 giây
+            setTimeout(() => {
+                $('.alert').alert('close');
+            }, 5000);
+        }
+
+        $(document).ready(function () {
+            // Xử lý sự kiện click nút "Trả sách"
+            $('.btn-return-book').click(function () {
+                var btn = $(this);
+                var maGd = btn.data('magd');
+                var maBs = btn.data('mabs');
+                var row = btn.closest('tr');
+
+                // Xác nhận trước khi trả sách
+                if (!confirm(`Xác nhận đánh dấu bản sao ${maBs} đã được trả?`)) {
+                    return;
+                }
+
+                // Vô hiệu hóa nút và hiển thị trạng thái loading
+                btn.prop('disabled', true);
+                btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...');
+
+                // Gọi AJAX
+                $.ajax({
+                    url: '@Url.Action("UpdateBanSaoStatus", "GiaoDichMuonTra")',
+                    type: 'POST',
+                    data: {
+                        maGd: maGd,
+                        maBs: maBs,
+                        tinhTrang: true // true = Đã trả
+                    },
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    success: function (response) {
+                        if (response.success) {
+                            // Cập nhật giao diện
+                            row.find('.status-badge')
+                                .removeClass('bg-label-warning')
+                                .addClass('bg-label-success')
+                                .text('Đã trả');
+
+                            btn.closest('td').html('<span class="text-muted small">Đã trả</span>');
+
+                            // Hiển thị thông báo thành công
+                            showToast(`Đã đánh dấu bản sao <strong>${maBs}</strong> là Đã trả thành công.`, 'success');
+                        } else {
+                            // Hiển thị lỗi từ server
+                            showToast(response.message || 'Có lỗi xảy ra khi cập nhật trạng thái.', 'danger');
+
+                            // Khôi phục nút
+                            btn.prop('disabled', false);
+                            btn.html('<i class="bx bx-check-circle"></i> Trả sách');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        // Xử lý lỗi AJAX
+                        showToast('Lỗi kết nối server. Vui lòng thử lại.', 'danger');
+
+                        // Khôi phục nút
+                        btn.prop('disabled', false);
+                        btn.html('<i class="bx bx-check-circle"></i> Trả sách');
+                    }
+                });
+            });
+        });
+    </script>
+}

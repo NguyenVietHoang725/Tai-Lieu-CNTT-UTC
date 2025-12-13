@@ -1,0 +1,131 @@
+﻿@model Library_Manager.Models.TBanSao
+
+@{
+    ViewData["Title"] = "Chi tiết Bản sao: " + Model.MaBs;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    // Logic cho Badge Tình trạng
+    var tinhTrang = Model.TrangThai;
+    var badgeClass = tinhTrang switch
+    {
+        "Có sẵn" => "bg-label-success",
+        "Đang mượn" => "bg-label-warning",
+        "Hỏng" => "bg-label-danger",
+        _ => "bg-label-secondary",
+    };
+
+    // Giả định quyền chỉnh sửa tương tự QLT
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-detail bxs-copy-alt fs-2 me-2'></i> Chi tiết Bản sao
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH DỮ LIỆU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Hiển thị Mã Bản sao *@
+        <div class="card-header d-flex justify-content-between align-items-center border-bottom">
+            <h5 class="card-title mb-0">
+                Thông tin Bản sao: <span class="text-primary fw-bold">@Model.MaBs</span>
+            </h5>
+            <small class="text-muted">ID: <span class="fw-bold">@Model.MaBs</span></small>
+        </div>
+
+        @* BODY CỦA CARD: Hiển thị chi tiết bản sao *@
+        <div class="card-body">
+
+            @* === 1. THÔNG TIN BẢN SAO VÀ TÌNH TRẠNG === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-copy me-1'></i> Thông tin chung
+            </h6>
+            <div class="row mb-4">
+
+                @* Cột 1 *@
+                <div class="col-md-6">
+                    @* Mã Bản sao *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Bản sao</label>
+                        <p class="fw-bold text-primary mb-0">@Model.MaBs</p>
+                    </div>
+                    @* Tình trạng *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Tình trạng hiện tại</label>
+                        <p class="mb-0">
+                            <span class="badge @badgeClass fs-6">@tinhTrang</span>
+                        </p>
+                    </div>
+                </div>
+
+                @* Cột 2 *@
+                <div class="col-md-6">
+                    @* Mã Tài liệu *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Tài liệu gốc</label>
+                        <p class="mb-0">@Model.MaTl</p>
+                    </div>
+                    @* Tên Tài liệu *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Tên Tài liệu</label>
+                        <p class="fw-semibold mb-0">@Model.MaTlNavigation?.TenTl</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+            @* === 2. THÔNG TIN GIAO DỊCH (Nếu có) === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-transfer me-1'></i> Lịch sử Mượn/Trả (Giao dịch)
+            </h6>
+            <div class="mb-3">
+                @if (Model.TGiaoDichBanSao.Any())
+                {
+                    <p class="text-muted">Bản sao này đã có **@Model.TGiaoDichBanSao.Count** giao dịch. Hãy kiểm tra Controller của bạn để hiển thị chi tiết lịch sử giao dịch tại đây.</p>
+                }
+                else
+                {
+                    <p class="text-muted fst-italic">Chưa có giao dịch mượn/trả nào cho bản sao này.</p>
+                }
+            </div>
+
+        </div> @* End card-body *@
+
+        @* FOOTER CỦA CARD: Chứa các nút Hành động *@
+        <div class="card-footer border-top pt-3">
+            <div class="d-flex gap-3">
+                @* Nút Sửa *@
+                <a asp-action="Edit" asp-route-id="@Model?.MaBs" class="btn btn-primary @(canEdit ? "" : "disabled")">
+                    <i class="bx bx-pencil me-1"></i> Sửa thông tin
+                </a>
+
+                @* Nút Quay lại Danh sách Bản sao (Index) *@
+                <a asp-action="Index" asp-route-id="@Model.MaTl" class="btn btn-secondary">
+                    <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách Bản sao
+                </a>
+
+                @* Nút Quay lại Chi tiết Tài liệu gốc *@
+                <a asp-controller="TaiLieu" asp-action="Details" asp-route-id="@Model.MaTl" class="btn btn-info">
+                    <i class="bx bx-book me-1"></i> Xem chi tiết Tài liệu gốc
+                </a>
+            </div>
+        </div>
+
+    </div> @* End card *@
+</div> @* End container-xxl *@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

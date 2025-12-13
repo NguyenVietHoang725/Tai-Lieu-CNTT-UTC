@@ -1,0 +1,184 @@
+﻿@model Library_Manager.Models.TTheBanDoc
+
+@{
+    ViewData["Title"] = "Tạo mới Thẻ Bạn đọc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Lấy thông tin người tạo từ ViewBag
+    var maTk = ViewBag.MaTkDangNhap as string;
+    var tenNhanVien = ViewBag.HoTenNhanVien as string;
+}
+
+@* ========================================================================
+    KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+    ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN HIỂN THỊ THÔNG BÁO LỖI TỪ TEMP DATA (Khi Controller return View) --- *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="alertPlaceholder" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-plus fs-2 me-2 border p-1 rounded-2'></i> @ViewData["Title"]
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH BIỂU MẪU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tiêu đề cố định *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Nhập thông tin thẻ bạn đọc mới</h5>
+        </div>
+
+        <form asp-action="Create">
+            @* BODY CỦA CARD: Chứa Biểu mẫu nhập liệu *@
+            <div class="card-body">
+
+                @* Phần hiển thị lỗi tổng thể *@
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                @* TÁI CẤU TRÚC: CHIA BIỂU MẪU THÀNH 2 CỘT *@
+                <div class="row">
+
+                    @* --- CỘT 1: THÔNG TIN CƠ BẢN (6/12) --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-info-circle me-1'></i> Thông tin thẻ
+                        </h6>
+
+                        @* Mã Bạn đọc (Dropdown) *@
+                        <div class="mb-3">
+                            <label asp-for="MaBd" class="form-label">Bạn đọc</label>
+                            <select asp-for="MaBd" class="form-select" asp-items="ViewBag.MaBd">
+                                <option value="">-- Chọn bạn đọc (Chưa có thẻ) --</option>
+                            </select>
+                            <span asp-validation-for="MaBd" class="text-danger"></span>
+                        </div>
+
+                        @* Trạng Thái (Dropdown - Đã thêm selected cho Hoạt động) *@
+                        <div class="mb-3">
+                            <label asp-for="TrangThai" class="form-label">Trạng thái</label>
+                            <select asp-for="TrangThai" class="form-select">
+                                @* Thêm selected cho Hoạt động *@
+                                <option value="Hoạt động" selected>Hoạt động</option>
+                                <option value="Khóa">Khóa</option>
+                            </select>
+                            <span asp-validation-for="TrangThai" class="text-danger"></span>
+                        </div>
+
+                        @* Mã Tài khoản (Readonly) - Tùy chọn hiển thị *@
+                        <div class="mb-3">
+                            <label class="form-label">Người tạo (Mã TK)</label>
+                            <input type="text" class="form-control" value="@(tenNhanVien) (@maTk)" readonly />
+                        </div>
+                    </div>
+
+                    @* --- CỘT 2: THÔNG TIN THỜI HẠN (6/12) --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-calendar me-1'></i> Thông tin thời hạn
+                        </h6>
+
+                        @* Ngày Cấp (READONLY & HIDDEN INPUT) *@
+                        <div class="mb-3">
+                            <label asp-for="NgayCap" class="form-label">Ngày Cấp (Tự động)</label>
+                            @* Hiển thị ngày cấp dưới dạng text readonly *@
+                            <input type="text" class="form-control" value="@Model.NgayCap.ToString("dd/MM/yyyy")" readonly />
+                            @* Gửi giá trị NgayCap đi trong form (quan trọng) *@
+                            <input type="hidden" asp-for="NgayCap" />
+                        </div>
+
+                        @* Ngày Hết Hạn (CÓ THỂ SỬA) *@
+                        <div class="mb-3">
+                            <label asp-for="NgayHetHan" class="form-label">Ngày Hết Hạn</label>
+                            <input asp-for="NgayHetHan" class="form-control" type="date" />
+                            <span asp-validation-for="NgayHetHan" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div> @* End card-body *@
+
+            @* FOOTER CỦA CARD: Nút Tạo mới và Quay lại (Đã sửa bố cục) *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI DANH SÁCH (TRÁI) *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* NÚT TẠO MỚI (PHẢI) *@
+                    <button type="submit" value="Create" class="btn btn-primary" id="submitButton">
+                        <i class="bx bx-plus me-1"></i> Tạo mới
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div> @* End card *@
+</div> @* End container-xxl *@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Hàm hiển thị thông báo lỗi tại chỗ (Không tự động ẩn)
+        function showToast(message, type = 'danger') {
+            const alertPlaceholder = document.getElementById('alertPlaceholder');
+            if (!alertPlaceholder) return;
+            alertPlaceholder.innerHTML = '';
+
+            if (type === 'danger') {
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = [
+                    `<div class="alert alert-danger alert-dismissible" role="alert">`,
+                    `   <div>${message}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
+                ].join('');
+                alertPlaceholder.appendChild(wrapper);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form[asp-action="Create"]');
+            const submitButton = document.getElementById('submitButton');
+
+            // 1. Logic vô hiệu hóa nút khi submit
+            if (form && submitButton) {
+                form.addEventListener('submit', function() {
+                    if ($(form).valid()) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...';
+                    }
+                });
+            }
+
+            // 2. Logic hiển thị thông báo từ TempData (chỉ chạy khi có lỗi)
+            @if (TempData["StatusMessage"] != null && TempData["Message"] != null)
+            {
+                        if (TempData["StatusMessage"].ToString() == "danger")
+                        {
+                                    <text>
+                                        setTimeout(function() {
+                                            showToast('@Html.Raw(TempData["Message"])', '@TempData["StatusMessage"]');
+
+                                            // Kích hoạt lại nút submit sau khi trang load lại nếu có lỗi
+                                            if (submitButton) {
+                                                submitButton.disabled = false;
+                                                submitButton.innerHTML = '<i class="bx bx-plus me-1"></i> Tạo mới';
+                                            }
+                                        }, 10);
+                                    </text>
+                        }
+            }
+        });
+    </script>
+}

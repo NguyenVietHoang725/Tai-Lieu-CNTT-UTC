@@ -1,0 +1,101 @@
+﻿@model Library_Manager.Models.TBanSao
+
+@{
+    ViewData["Title"] = "Xóa Bản sao: " + Model.MaBs;
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    
+    // Logic cho Badge Tình trạng
+    var tinhTrang = Model.TrangThai;
+    var badgeClass = tinhTrang switch
+    {
+        "Có sẵn" => "bg-label-success",
+        "Đang mượn" => "bg-label-warning",
+        "Hỏng" => "bg-label-danger",
+        _ => "bg-label-secondary", 
+    }; 
+    var maTlGoc = ViewBag.MaTlGoc ?? Model.MaTl; // Lấy MaTl từ ViewBag hoặc Model
+}
+
+<div class="container-xxl flex-grow-1 container-p-y"> 
+
+    <h1 class="fw-bold text-danger mb-4">
+        <i class='bx bx-trash fs-2 me-2 border p-1 rounded-2'></i> Xác nhận xóa Bản sao
+    </h1>
+
+    @* --- KHỐI CẢNH BÁO XÓA --- *@
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">CẢNH BÁO QUAN TRỌNG!</h4>
+        <p>Bạn đang chuẩn bị **xóa vĩnh viễn** Bản sao **@Model.MaBs** của Tài liệu **@Model.MaTlNavigation?.TenTl**.</p>
+        @if (Model.TGiaoDichBanSao.Count > 0)
+        {
+            <p class="fw-bold">Lưu ý: Bản sao này có **@Model.TGiaoDichBanSao.Count** giao dịch liên quan. Việc xóa có thể ảnh hưởng đến lịch sử mượn trả.</p>
+        }
+        <p class="mb-0">Hành động này **không thể hoàn tác**. Vui lòng kiểm tra kỹ thông tin trước khi xác nhận.</p>
+    </div>
+
+    @* --- KHỐI: CARD BAO QUANH THÔNG TIN CHI TIẾT --- *@
+    <div class="card">
+
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chi tiết Bản sao: <span class="text-danger fw-bold">@Model.MaBs</span></h5>
+        </div>
+
+        <div class="card-body"> @*cite: 8*@
+
+            <div class="row">
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-copy me-1'></i> Thông tin Bản sao 
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Mã Bản sao:</dt>
+                        <dd class="col-sm-8 fw-bold text-danger">@Model.MaBs</dd>
+
+                        <dt class="col-sm-4 text-muted">Tình trạng:</dt>
+                        <dd class="col-sm-8"><span class="badge @badgeClass">@tinhTrang</span></dd>
+
+                        <dt class="col-sm-4 text-muted">Số giao dịch:</dt>
+                        <dd class="col-sm-8">@Model.TGiaoDichBanSao.Count</dd> 
+                    </dl>
+                </div>
+
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-book me-1'></i> Tài liệu gốc 
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Mã Tài liệu:</dt>
+                        <dd class="col-sm-8">@Model.MaTl</dd> 
+
+                        <dt class="col-sm-4 text-muted">Tên Tài liệu:</dt>
+                        <dd class="col-sm-8 fw-bold">@Model.MaTlNavigation?.TenTl</dd>
+                    </dl>
+                </div>
+            </div> 
+
+        </div> @* End card-body *@
+
+        @* FOOTER CỦA CARD: Nút Xác nhận và Quay lại *@
+        <div class="card-footer border-top pt-3">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MaBs" />
+                @* Sử dụng MaTl gốc để quay về Index đúng ngữ cảnh sau khi xóa *@
+                <input type="hidden" name="MaTl" value="@maTlGoc" /> 
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI (TRÁI) *@
+                    <a asp-action="Index" asp-route-id="@maTlGoc" class="btn btn-secondary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách Bản sao
+                    </a>
+
+                    @* NÚT XÁC NHẬN XÓA (PHẢI CÙNG) *@
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="bx bx-trash me-1"></i> XÁC NHẬN XÓA
+                    </button>
+
+                </div>
+            </form> 
+        </div>
+
+    </div> @* End card *@
+</div> @* End container-xxl *@

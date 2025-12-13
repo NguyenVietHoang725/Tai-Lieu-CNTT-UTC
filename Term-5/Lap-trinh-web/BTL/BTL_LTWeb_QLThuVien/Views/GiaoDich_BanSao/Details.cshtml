@@ -1,0 +1,150 @@
+﻿@model IEnumerable<Library_Manager.Models.TGiaoDichBanSao>
+
+@{
+    ViewData["Title"] = "Chi tiết Giao dịch Mượn/Trả";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Lấy thông tin chung từ bản ghi đầu tiên, vì chúng đều thuộc 1 giao dịch
+    var firstLink = Model.FirstOrDefault();
+}
+
+@* --- Logic phân quyền --- *@
+@{
+    var userRole = Context.Session.GetString("UserRole");
+    // QLB = Quản lý bạn đọc/mượn trả. QTV = Quản trị viên
+    bool canEdit = (userRole == "QTV" || userRole == "QLB");
+
+    // Lấy đường dẫn và query string của trang hiện tại để dùng cho nút "Quay lại"
+    var currentUrl = Context.Request.Path + Context.Request.QueryString;
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-book-bookmark me-2'></i> Chi tiết Giao dịch
+    </h1>
+
+    @if (firstLink != null)
+    {
+        @* --- CARD BAO GÓI NỘI DUNG --- *@
+        <div class="card shadow-sm">
+
+            @* --- HEADER (Hiển thị Mã Giao dịch) --- *@
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">
+                    Giao dịch: <span class="text-primary fw-bold">@firstLink.MaGd</span>
+                </h5>
+                <small class="text-muted">
+                    Ngày mượn: <span class="fw-bold">@firstLink.MaGdNavigation?.NgayMuon.ToString("dd/MM/yyyy")</span>
+                </small>
+            </div>
+
+            @* --- BODY --- *@
+            <div class="card-body">
+
+                @* === 1. Thông tin Giao dịch (Thông tin chung - Hiển thị 1 lần) === *@
+                <h6 class="text-muted text-uppercase mb-3">
+                    <i class='bx bx-transfer-alt me-1'></i> Thông tin Giao dịch
+                </h6>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label d-block text-secondary">Mã Giao dịch</label>
+                        <p class="fw-semibold mb-0">
+                            @firstLink.MaGd
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label d-block text-secondary">Bạn đọc mượn</label>
+                        <p class="fw-semibold mb-0">
+                            @(firstLink.MaGdNavigation?.MaTbdNavigation?.MaBdNavigation != null ?
+                                                    (firstLink.MaGdNavigation.MaTbdNavigation.MaBdNavigation.HoDem + " " + firstLink.MaGdNavigation.MaTbdNavigation.MaBdNavigation.Ten) :
+                                                    "(Không rõ)")
+                    </p>
+                </div>
+            </div>
+
+                <hr class="mb-4">
+
+                @* === 2. Danh sách Bản sao (Dùng vòng lặp) === *@
+                <h6 class="text-muted text-uppercase mb-3">
+                    <i class='bx bx-book me-1'></i> Danh sách Bản sao trong Giao dịch
+                </h6>
+
+            @foreach (var link in Model)
+                {
+                    <div class="row mb-4 border-bottom pb-3">
+                        @* --- Cột thông tin bản sao (Giữ nguyên) --- *@
+                        <div class="col-md-7">
+                            <div class="mb-2">
+                                <label class="form-label text-secondary d-block">Mã Bản sao</label>
+                                <p class="fw-semibold mb-0">
+                                    @link.MaBs
+                                </p>
+                            </div>
+                            <div>
+                                <label class="form-label text-secondary d-block">Tên tài liệu</label>
+                                <p class="fw-semibold mb-0">
+                                    @(link.MaBsNavigation?.MaTlNavigation?.TenTl ?? "(Không rõ)")
+                                    @* Link đến chi tiết Tài liệu *@
+                                    <a asp-controller="Tailieu" asp-action="Details" asp-route-id="@link.MaBsNavigation.MaTl" asp-route-returnUrl="@currentUrl"
+                                       class="btn btn-xs btn-outline-info ms-2" title="Xem chi tiết Bản sao">
+                                        <i class="bx bx-book"></i>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        @* --- Cột Trạng thái Bản sao trong Giao dịch (MỚI) --- *@
+                        <div class="col-md-5">
+                            <label class="form-label d-block text-secondary">Trạng thái Bản sao</label>
+                            @{
+                                // Dựa trên thuộc tính bool TinhTrang mới
+                                var isReturned = link.TinhTrang; // true: Đã hoàn tất/Trả, false: Đang mượn
+                                var ttText = isReturned ? "Đã trả/Hoàn tất" : "Đang mượn";
+                                var badgeClass = isReturned ? "bg-label-success" : "bg-label-warning";
+                            }
+                            <p class="mb-0">
+                                <span class="badge @badgeClass fs-6">@ttText</span>
+                            </p>
+
+                            @* Thêm thông tin chi tiết trạng thái bản sao hiện tại (Trạng thái chung của tBanSao) *@
+                            <label class="form-label d-block text-secondary mt-2">Trạng thái hiện tại</label>
+                            <p class="mb-0 fw-semibold">
+                                @link.MaBsNavigation.TrangThai
+                            </p>
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+            @* --- FOOTER (CÁC NÚT HÀNH ĐỘNG CHUNG) --- *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex gap-3">
+                    @* Nút Quay lại *@
+                    <div>
+                        @if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+                        {
+                            // Nếu có returnUrl, quay lại trang đó
+                            <a href="@ViewBag.ReturnUrl" class="btn btn-outline-primary">
+                                <i class="bx bx-arrow-back me-1"></i> Quay lại
+                            </a>
+                        }
+                        else
+                        {
+                            // Nếu không, quay về trang Index mặc định
+                            <a asp-controller="TGiaoDichMuonTra" asp-action="Index" class="btn btn-outline-primary">
+                                <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">Không có thông tin để hiển thị.</div>
+    }
+</div>

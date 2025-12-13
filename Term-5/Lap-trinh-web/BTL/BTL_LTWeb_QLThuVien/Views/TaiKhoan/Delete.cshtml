@@ -1,0 +1,121 @@
+﻿@model Library_Manager.Models.TTaiKhoan
+
+@{
+    ViewData["Title"] = "Xóa Tài khoản: " + Model.TenDangNhap;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* ========================================================================
+    KHỐI 1: LOGIC BADGE (Để hiển thị chi tiết)
+    ======================================================================== *@
+@{
+    // Logic cho Badge Trạng Thái
+    var trangThai = Model.TrangThai;
+    var badgeTrangThaiClass = trangThai == "Hoạt động" ? "bg-label-success" : "bg-label-danger";
+
+    // Logic cho Badge Vai Trò
+    var vaiTro = Model.MaVtNavigation?.MaVt;
+    var tenVaiTro = Model.MaVtNavigation?.TenVt ?? "(Chưa gán)";
+    var badgeVaiTroClass = "bg-label-secondary"; // Mặc định
+    if (vaiTro == "QTV") { badgeVaiTroClass = "bg-label-primary"; }
+    else if (vaiTro == "QLB") { badgeVaiTroClass = "bg-label-info"; }
+    else if (vaiTro == "QLT") { badgeVaiTroClass = "bg-label-warning"; }
+    else if (vaiTro == "QLM") { badgeVaiTroClass = "bg-label-primary"; }
+}
+
+@* ========================================================================
+    KHỐI 2: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+    ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 2.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-danger mb-4">
+        <i class='bx bx-trash fs-2 me-2 border p-1 rounded-2'></i> Xác nhận xóa Tài khoản
+    </h1>
+
+    @* --- KHỐI CẢNH BÁO XÓA --- *@
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">CẢNH BÁO QUAN TRỌNG!</h4>
+        <p>Bạn đang chuẩn bị **xóa vĩnh viễn** tài khoản <strong class="fs-5">@Model.TenDangNhap</strong> (Mã: <strong>@Model.MaTk</strong>). Hành động này không thể hoàn tác.</p>
+        <p>Việc xóa tài khoản có thể ảnh hưởng đến các giao dịch hoặc lịch sử do tài khoản này thực hiện.</p>
+        <p class="mb-0">Vui lòng kiểm tra kỹ thông tin bên dưới trước khi xác nhận.</p>
+    </div>
+
+    @* --- KHỐI: CARD BAO QUANH THÔNG TIN CHI TIẾT --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tên tài khoản *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chi tiết tài khoản: <span class="text-danger fw-bold">@Model.TenDangNhap</span></h5>
+        </div>
+
+        @* BODY CỦA CARD: Hiển thị chi tiết *@
+        <div class="card-body">
+            <div class="row">
+
+                @* --- CỘT 1: THÔNG TIN ĐĂNG NHẬP --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bxs-user-account me-1'></i> Thông tin Đăng nhập
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-5 text-muted">Mã Tài khoản:</dt>
+                        <dd class="col-sm-7 fw-bold text-danger">@Model.MaTk</dd>
+
+                        <dt class="col-sm-5 text-muted">Tên Đăng nhập:</dt>
+                        <dd class="col-sm-7">@Model.TenDangNhap</dd>
+
+                        <dt class="col-sm-5 text-muted">Ngày tạo:</dt>
+                        <dd class="col-sm-7">@Model.NgayTao.ToString("dd/MM/yyyy")</dd>
+                    </dl>
+                </div>
+
+                @* --- CỘT 2: QUYỀN & LIÊN KẾT --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-sitemap me-1'></i> Quyền & Liên kết
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-5 text-muted">Vai trò:</dt>
+                        <dd class="col-sm-7"><span class="badge @badgeVaiTroClass">@tenVaiTro</span></dd>
+
+                        <dt class="col-sm-5 text-muted">Trạng thái:</dt>
+                        <dd class="col-sm-7"><span class="badge @badgeTrangThaiClass">@trangThai</span></dd>
+
+                        <dt class="col-sm-5 text-muted">Nhân viên liên kết:</dt>
+                        @if (Model.MaNvNavigation != null)
+                        {
+                            <dd class="col-sm-7">@Model.MaNvNavigation.HoDem @Model.MaNvNavigation.Ten</dd>
+                        }
+                        else
+                        {
+                            <dd class="col-sm-7 text-muted fst-italic">(Chưa liên kết)</dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+        </div> @* End card-body *@
+
+
+        @* FOOTER CỦA CARD: Nút Xác nhận và Quay lại (Đã điều chỉnh) *@
+        <div class="card-footer border-top pt-3">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MaTk" />
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI (TRÁI) - Đã đổi sang btn-outline-primary *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* NÚT XÁC NHẬN XÓA (PHẢI CÙNG) - Đã đổi icon *@
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="bx bx-check me-1"></i> XÁC NHẬN XÓA
+                    </button>
+
+                </div>
+            </form>
+        </div>
+
+    </div> @* End card *@
+</div> @* End container-xxl *@

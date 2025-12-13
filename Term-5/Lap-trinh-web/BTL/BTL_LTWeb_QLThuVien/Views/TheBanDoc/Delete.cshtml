@@ -1,0 +1,113 @@
+﻿@model Library_Manager.Models.TTheBanDoc
+
+@{
+    ViewData["Title"] = "Xóa Thẻ Bạn đọc";
+}
+
+@* Logic hiển thị badge Trạng Thái *@
+@{
+    var trangThai = Model.TrangThai;
+    var badgeClass = "bg-label-secondary"; // Mặc định
+
+    if (trangThai == "Hoạt động" || trangThai == "Còn hạn")
+    {
+        badgeClass = "bg-label-success";
+    }
+    else if (trangThai == "Đã khóa" || trangThai == "Hết hạn" || trangThai == "Khóa")
+    {
+        badgeClass = "bg-label-danger";
+    }
+}
+
+@* ========================================================================
+    KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+    ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-danger mb-4">
+        <i class='bx bx-trash fs-2 me-2 border p-1 rounded-2'></i> Xác nhận xóa thẻ bạn đọc
+    </h1>
+
+    @* --- KHỐI CẢNH BÁO XÓA --- *@
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">CẢNH BÁO QUAN TRỌNG!</h4>
+        <p>
+            Bạn đang chuẩn bị <strong>xóa vĩnh viễn</strong> thẻ <strong>@Model.MaTbd</strong>.
+            Hành động này không thể hoàn tác.
+        </p>
+        <p class="mb-0">Vui lòng kiểm tra kỹ thông tin bên dưới trước khi xác nhận.</p>
+    </div>
+
+    @* --- KHỐI: CARD BAO QUANH THÔNG TIN CHI TIẾT --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Mã thẻ *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chi tiết thẻ: <span class="text-danger fw-bold">@Model.MaTbd</span></h5>
+        </div>
+
+        @* BODY CỦA CARD: Hiển thị chi tiết (Dùng cấu trúc 2 cột) *@
+        <div class="card-body">
+
+            <div class="row">
+
+                @* --- THÔNG TIN THẺ (Cột 1) --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-id-card me-1'></i> Thông tin thẻ
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Mã Thẻ:</dt>
+                        <dd class="col-sm-8 fw-bold text-danger">@Model.MaTbd</dd>
+
+                        <dt class="col-sm-4 text-muted">Ngày Cấp:</dt>
+                        <dd class="col-sm-8">@Model.NgayCap.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4 text-muted">Ngày Hết Hạn:</dt>
+                        <dd class="col-sm-8">@Model.NgayHetHan?.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4 text-muted">Trạng Thái:</dt>
+                        <dd class="col-sm-8"><span class="badge @badgeClass">@trangThai</span></dd>
+                    </dl>
+                </div>
+
+                @* --- THÔNG TIN BẠN ĐỌC SỞ HỮU (Cột 2) --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-user me-1'></i> Bạn đọc sở hữu
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Họ Tên:</dt>
+                        <dd class="col-sm-8">@(Model.MaBdNavigation != null ? Model.MaBdNavigation.HoDem + " " + Model.MaBdNavigation.Ten : "(Không rõ)")</dd>
+
+                        <dt class="col-sm-4 text-muted">Mã Bạn đọc:</dt>
+                        <dd class="col-sm-8">@Model.MaBd</dd>
+                    </dl>
+                </div>
+            </div>
+
+        </div> @* End card-body *@
+
+        @* FOOTER CỦA CARD: Nút Xác nhận và Quay lại (ĐÃ SỬA BỐ CỤC) *@
+        <div class="card-footer border-top pt-3">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MaTbd" />
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI (TRÁI) *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* NÚT XÁC NHẬN XÓA (PHẢI CÙNG) *@
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="bx bx-trash me-1"></i> XÁC NHẬN XÓA
+                    </button>
+
+                </div>
+            </form>
+        </div>
+
+    </div> @* End card *@
+</div> @* End container-xxl *@

@@ -1,0 +1,454 @@
+﻿@{
+    ViewData["Title"] = "Thống kê - Báo cáo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/vendor/libs/apex-charts/apex-charts.css" />
+    <style>
+        .year-input-wrapper {
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .year-compare-input {
+            display: inline-block;
+            width: 80px;
+        }
+
+        .year-compare-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .remove-year-btn {
+            margin-left: 4px;
+        }
+    </style>
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-pie-chart-alt-2 fa-border fs-1 me-2'></i>Thống kê thư viện
+    </h1>
+
+    @* 1. THỐNG KÊ THẺ BẠN ĐỌC MỚI *@
+    <div class="card mb-4">
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-3 py-3">
+            <h4 class="mb-0 fw-semibold text-info">
+                <i class="bx bx-id-card me-2"></i>
+                Thống kê Thẻ Bạn đọc mới
+            </h4>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <div class="btn-group" role="group">
+                    <input type="radio" class="btn-check" name="banDocViewMode" id="banDocYearMode" autocomplete="off" checked>
+                    <label class="btn btn-outline-info btn-sm" for="banDocYearMode">Theo năm</label>
+
+                    <input type="radio" class="btn-check" name="banDocViewMode" id="banDocCompareMode" autocomplete="off">
+                    <label class="btn btn-outline-info btn-sm" for="banDocCompareMode">So sánh nhiều năm</label>
+                </div>
+
+                <div id="banDocYearSelector">
+                    <label for="yearSelectorBanDoc" class="form-label mb-0 text-nowrap me-2">
+                        <i class="bx bx-calendar me-1"></i>
+                        Năm:
+                    </label>
+                    <input type="number" id="yearSelectorBanDoc" class="form-control form-control-sm d-inline-block me-2"
+                           style="width: 100px;" min="2000" max="2100" value="2025">
+                    <a id="exportBanDocExcelLink" href="#" class="btn btn-info btn-sm" target="_blank">
+                        <i class="fas fa-file-excel me-2"></i> Xuất Excel
+                    </a>
+                </div>
+
+                <div id="banDocYearCompare" style="display: none;" class="year-compare-container">
+                    <label class="form-label mb-0 text-nowrap me-2">
+                        <i class="bx bx-calendar me-1"></i>
+                        So sánh:
+                    </label>
+                    <div id="banDocYearInputs" class="d-flex gap-2 flex-wrap">
+                        <div class="year-input-wrapper">
+                            <input type="number" class="form-control form-control-sm year-compare-input"
+                                   min="2000" max="2100" value="2024">
+                            <button type="button" class="btn btn-sm btn-outline-danger remove-year-btn" style="display: none;">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                        <div class="year-input-wrapper">
+                            <input type="number" class="form-control form-control-sm year-compare-input"
+                                   min="2000" max="2100" value="2025">
+                            <button type="button" class="btn btn-sm btn-outline-danger remove-year-btn" style="display: none;">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-info" id="addYearBanDoc">
+                        <i class="bx bx-plus"></i>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-info" id="updateChartBanDoc">
+                        Cập nhật
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="banDocBarChart" class="chart-container"></div>
+        </div>
+    </div>
+
+    @* 2. THỐNG KÊ TÀI LIỆU MỚI *@
+    <div class="card mb-4">
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-3 py-3">
+            <h4 class="mb-0 fw-semibold text-warning">
+                <i class="bx bx-book-add me-2"></i>
+                Thống kê Tài liệu mới
+            </h4>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <div class="btn-group" role="group">
+                    <input type="radio" class="btn-check" name="taiLieuViewMode" id="taiLieuYearMode" autocomplete="off" checked>
+                    <label class="btn btn-outline-warning btn-sm" for="taiLieuYearMode">Theo năm</label>
+
+                    <input type="radio" class="btn-check" name="taiLieuViewMode" id="taiLieuCompareMode" autocomplete="off">
+                    <label class="btn btn-outline-warning btn-sm" for="taiLieuCompareMode">So sánh nhiều năm</label>
+                </div>
+
+                <div id="taiLieuYearSelector">
+                    <label for="yearSelectorTaiLieu" class="form-label mb-0 text-nowrap me-2">
+                        <i class="bx bx-calendar me-1"></i>
+                        Năm:
+                    </label>
+                    <input type="number" id="yearSelectorTaiLieu" class="form-control form-control-sm d-inline-block me-2"
+                           style="width: 100px;" min="2000" max="2100" value="2025">
+                    <a id="exportTaiLieuExcelLink" href="#" class="btn btn-warning btn-sm" target="_blank">
+                        <i class="fas fa-file-excel me-2"></i> Xuất Excel
+                    </a>
+                </div>
+
+                <div id="taiLieuYearCompare" style="display: none;" class="year-compare-container">
+                    <label class="form-label mb-0 text-nowrap me-2">
+                        <i class="bx bx-calendar me-1"></i>
+                        So sánh:
+                    </label>
+                    <div id="taiLieuYearInputs" class="d-flex gap-2 flex-wrap">
+                        <div class="year-input-wrapper">
+                            <input type="number" class="form-control form-control-sm year-compare-input"
+                                   min="2000" max="2100" value="2024">
+                            <button type="button" class="btn btn-sm btn-outline-warning remove-year-btn" style="display: none;">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                        <div class="year-input-wrapper">
+                            <input type="number" class="form-control form-control-sm year-compare-input"
+                                   min="2000" max="2100" value="2025">
+                            <button type="button" class="btn btn-sm btn-outline-warning remove-year-btn" style="display: none;">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-warning" id="addYearTaiLieu">
+                        <i class="bx bx-plus"></i>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-warning" id="updateChartTaiLieu">
+                        Cập nhật
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="taiLieuMoiBarChart" class="chart-container"></div>
+        </div>
+    </div>
+
+    @* 3. TỔNG QUAN TỒN KHO & BẢN SAO THEO THỂ LOẠI *@
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <h4 class="mb-0 fw-semibold text-success">
+                <i class="bx bx-tachometer me-2"></i>
+                Tổng quan Tồn kho & Bản sao
+            </h4>
+            <button type="button" class="btn btn-sm btn-outline-success" id="toggleDetailBtn">
+                <i class="bx bx-chevron-down" id="toggleIcon"></i>
+                <span id="toggleText">Xem chi tiết</span>
+            </button>
+        </div>
+        <div class="card-body">
+            @* Cards thống kê tổng quan *@
+            <div id="summaryCards" class="mb-4">
+                <div class="row g-3">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card bg-label-primary">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Tổng bản sao</h6>
+                                        <h3 class="mb-0" id="totalBanSao">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="avatar">
+                                        <span class="avatar-initial rounded bg-primary text-white">
+                                            <i class="bx bx-library fs-3"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card bg-label-success">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Có sẵn</h6>
+                                        <h3 class="mb-0" id="totalCoSan">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="avatar">
+                                        <span class="avatar-initial rounded bg-success text-white">
+                                            <i class="bx bx-check-circle fs-3"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card bg-label-warning">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Đang mượn</h6>
+                                        <h3 class="mb-0" id="totalDangMuon">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="avatar">
+                                        <span class="avatar-initial rounded bg-warning text-white">
+                                            <i class="bx bx-time-five fs-3"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card bg-label-info">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="mb-1">Tỷ lệ có sẵn</h6>
+                                        <h3 class="mb-0" id="tyLeCoSan">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="avatar">
+                                        <span class="avatar-initial rounded bg-info text-white">
+                                            <i class="bx bx-pie-chart-alt-2 fs-3"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @* Chi tiết theo thể loại - Ẩn mặc định *@
+            <div id="categoryDetail" style="display: none;">
+                <hr>
+                <h5 class="mb-3">
+                    <i class="bx bx-list-ul me-2"></i>
+                    Chi tiết theo thể loại
+                </h5>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="categoryTable">
+                        <thead>
+                            <tr>
+                                <th>Thể loại</th>
+                                <th class="text-center">Tổng số</th>
+                                <th class="text-center">Có sẵn</th>
+                                <th class="text-center">Đang mượn</th>
+                                <th class="text-center">Tỷ lệ có sẵn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div class="spinner-border" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* 4. THỐNG KÊ LƯỢT MƯỢN SÁCH *@
+    <div class="card mb-4">
+        <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-3 py-3">
+            <h4 class="mb-0 fw-semibold text-primary">
+                <i class="bx bx-bar-chart-alt-2 me-2"></i>
+                Thống kê lượt mượn sách
+            </h4>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+                <div class="btn-group" role="group">
+                    <input type="radio" class="btn-check" name="muonViewMode" id="muonYearMode" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary btn-sm" for="muonYearMode">Theo năm</label>
+
+                    <input type="radio" class="btn-check" name="muonViewMode" id="muonCompareMode" autocomplete="off">
+                    <label class="btn btn-outline-primary btn-sm" for="muonCompareMode">So sánh nhiều năm</label>
+                </div>
+
+                <div id="muonYearSelector">
+                    <label for="yearSelector" class="form-label mb-0 text-nowrap me-2">
+                        <i class="bx bx-calendar me-1"></i>
+                        Năm:
+                    </label>
+                    <input type="number" id="yearSelector" class="form-control form-control-sm d-inline-block me-2"
+                           style="width: 100px;" min="2000" max="2100" value="2025">
+                    <a id="exportExcelLink" href="#" class="btn btn-success btn-sm" target="_blank">
+                        <i class="fas fa-file-excel me-2"></i> Xuất Excel
+                    </a>
+                </div>
+
+                <div id="muonYearCompare" style="display: none;" class="year-compare-container">
+                    <label class="form-label mb-0 text-nowrap me-2">
+                        <i class="bx bx-calendar me-1"></i>
+                        So sánh:
+                    </label>
+                    <div id="muonYearInputs" class="d-flex gap-2 flex-wrap">
+                        <div class="year-input-wrapper">
+                            <input type="number" class="form-control form-control-sm year-compare-input"
+                                   min="2000" max="2100" value="2024">
+                            <button type="button" class="btn btn-sm btn-outline-danger remove-year-btn" style="display: none;">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                        <div class="year-input-wrapper">
+                            <input type="number" class="form-control form-control-sm year-compare-input"
+                                   min="2000" max="2100" value="2025">
+                            <button type="button" class="btn btn-sm btn-outline-danger remove-year-btn" style="display: none;">
+                                <i class="bx bx-x"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-primary" id="addYearMuon">
+                        <i class="bx bx-plus"></i>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-primary" id="updateChartMuon">
+                        Cập nhật
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="horizontalBarChart" class="chart-container"></div>
+        </div>
+    </div>
+
+    @* 5. THỐNG KÊ TÀI KHOẢN THEO VAI TRÒ *@
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <h4 class="mb-0 fw-semibold text-danger">
+                <i class="bx bx-user-check me-2"></i>
+                Thống kê Tài khoản theo Vai trò
+            </h4>
+        </div>
+        <div class="card-body">
+            <div id="vaiTroDonutChart" class="chart-container">
+                <div class="d-flex justify-content-center align-items-center" style="height: 350px;">
+                    <div class="spinner-border text-danger" role="status">
+                        <span class="visually-hidden">Loading chart...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@* MODAL HIỂN THỊ CHI TIẾT THỂ LOẠI *@
+<div class="modal fade" id="categoryDetailModal" tabindex="-1" aria-labelledby="modalCategoryTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCategoryTitle">
+                    Chi tiết thể loại
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalCategoryBody">
+                <div class="d-flex justify-content-center p-3">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="~/js/user-statistics.js"></script>
+    <script src="~/js/chart-statistics.js"></script>
+    <script src="~/js/document-statistics.js"></script>
+
+    <script>
+        const BASE_URL_MUON = "@Url.Action("ExportLuotMuonToExcel", "ThongKe", new { year = 0 })".replace('year=0', 'year=');
+        const BASE_URL_BANDOC = "@Url.Action("ExportBanDocMoiToExcel", "ThongKe", new { year = 0 })".replace('year=0', 'year=');
+        const BASE_URL_TAILIEU = "@Url.Action("ExportTaiLieuMoiToExcel", "ThongKe", new { year = 0 })".replace('year=0', 'year=');
+
+        function updateExportMuonLink(selectedYear) {
+            const exportLink = document.getElementById('exportExcelLink');
+            if (exportLink) {
+                exportLink.href = `${BASE_URL_MUON}${selectedYear}`;
+            }
+        }
+
+        function updateExportBanDocLink(selectedYear) {
+            const exportLink = document.getElementById('exportBanDocExcelLink');
+            if (exportLink) {
+                exportLink.href = `${BASE_URL_BANDOC}${selectedYear}`;
+            }
+        }
+
+        function updateExportTaiLieuLink(selectedYear) {
+            const exportLink = document.getElementById('exportTaiLieuExcelLink');
+            if (exportLink) {
+                exportLink.href = `${BASE_URL_TAILIEU}${selectedYear}`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentYear = new Date().getFullYear();
+
+            document.getElementById('yearSelector').value = currentYear;
+            document.getElementById('yearSelectorBanDoc').value = currentYear;
+            document.getElementById('yearSelectorTaiLieu').value = currentYear;
+
+            updateExportMuonLink(currentYear);
+            updateExportBanDocLink(currentYear);
+            updateExportTaiLieuLink(currentYear);
+        });
+    </script>
+}

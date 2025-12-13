@@ -1,0 +1,73 @@
+﻿@model Library_Manager.Models.TDinhDang
+
+@{
+    ViewData["Title"] = "Xóa Định dạng";
+    var tenDd = Model.TenDd;
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-danger mb-4">
+        <i class='bx bx-trash fs-2 me-2 border p-1 rounded-2'></i> Xác nhận xóa Định dạng
+    </h1>
+
+    @* --- KHỐI CẢNH BÁO XÓA --- *@
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">CẢNH BÁO QUAN TRỌNG!</h4>
+        <p>
+            @Html.Raw($"Bạn đang chuẩn bị <strong>xóa vĩnh viễn</strong> định dạng <strong>{tenDd}</strong> (Mã: <strong>{Model.MaDd}</strong>). Hành động này không thể hoàn tác.")
+        </p>
+        <p class="mb-0">Vui lòng kiểm tra kỹ thông tin bên dưới trước khi xác nhận.</p>
+    </div>
+
+    @* --- KHỐI: CARD BAO QUANH THÔNG TIN CHI TIẾT --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tên Định dạng *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chi tiết Định dạng: <span class="text-danger fw-bold">@Model.TenDd</span></h5>
+        </div>
+
+        @* BODY CỦA CARD: Hiển thị chi tiết *@
+        <div class="card-body">
+
+            @* === THÔNG TIN CƠ BẢN === *@
+            <h6 class="text-muted text-uppercase mb-4 mt-4">
+                <i class='bx bx-info-circle me-1'></i> Chi tiết Định dạng
+            </h6>
+            <dl class="row mb-0">
+                <dt class="col-sm-4 text-muted">Mã Định dạng:</dt>
+                <dd class="col-sm-8 fw-bold text-danger">@Model.MaDd</dd>
+
+                <dt class="col-sm-4 text-muted">Tên Định dạng:</dt>
+                <dd class="col-sm-8">@Model.TenDd</dd>
+            </dl>
+
+        </div> @* End card-body *@
+
+        @* FOOTER CỦA CARD: Nút Xác nhận và Quay lại *@
+        <div class="card-footer border-top pt-3">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MaDd" />
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI (TRÁI) - Dùng btn-outline-primary *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* NÚT XÁC NHẬN XÓA (PHẢI CÙNG) *@
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="bx bx-trash me-1"></i> XÁC NHẬN XÓA
+                    </button>
+
+                </div>
+            </form>
+        </div>
+
+    </div> @* End card *@
+</div> @* End container-xxl *@

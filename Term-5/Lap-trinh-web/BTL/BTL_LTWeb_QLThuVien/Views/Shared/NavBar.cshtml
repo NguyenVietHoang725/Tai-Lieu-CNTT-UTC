@@ -1,0 +1,89 @@
+﻿@*
+    File này (Navbar) đã chính xác.
+    Nó đang đọc các Session key "hoTen" và "tenVaiTro" (viết thường)
+    mà AccountController đã lưu sau khi đăng nhập thành công.
+*@
+
+<nav class="layout-navbar navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+     id="layout-navbar">
+    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+            <i class="bx bx-menu bx-sm"></i>
+        </a>
+    </div>
+
+    <ul class="navbar-nav flex-row align-items-center ms-auto">
+
+        <!-- Change Light/Dark Theme -->
+        <li class="nav-item me-3">
+            <div class="form-check form-switch d-flex ai-c" style="margin: 0; padding: 0;">
+                <label class="form-check-label me-2 text-nowrap c-grey-700" for="theme-toggle" style="font-size: 12px; margin-right: 8px;">
+                    <i class="bx bx-sun" style="margin-right: 4px;"></i><span class="theme-label">Light</span>
+                </label>
+                <input class="form-check-input" type="checkbox" id="theme-toggle" style="margin: 0;">
+                <label class="form-check-label ms-2 text-nowrap c-grey-700" for="theme-toggle" style="font-size: 12px; margin-left: 8px;">
+                    <span class="theme-label">Dark</span><i class="bx bx-moon" style="margin-left: 4px;"></i>
+                </label>
+            </div>
+        </li>
+        <!--/ Change Light/Dark Theme -->
+        <!-- User -->
+        <li class="nav-item navbar-dropdown dropdown-user dropdown me-3">
+
+            <!-- Phần Toggle (luôn hiển thị) -->
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="javascript:void(0);" data-bs-toggle="dropdown">
+                <div class="avatar avatar-online">
+                    <img src="~/Assets/img/avatars/avatar.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                </div>
+                <span class="fw-semibold d-none d-md-block ms-2">
+                    @Context.Session.GetString("hoTen") <!-- Đọc "hoTen" -->
+                </span>
+            </a>
+
+            <!-- Phần Dropdown (khi click) -->
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" href="#">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="avatar avatar-online">
+                                    <img src="~/Assets/img/avatars/avatar.jpg" alt class="w-px-40 h-auto rounded-circle" />
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <span class="fw-semibold d-block">
+                                    @Context.Session.GetString("hoTen") <!-- Đọc "hoTen" -->
+                                </span>
+                                <small class="text-muted">
+                                    @Context.Session.GetString("tenVaiTro") <!-- Đọc "tenVaiTro" -->
+                                </small>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <div class="dropdown-divider"></div>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        <i class="bx bx-key me-2"></i>
+                        <span class="align-middle">Thay đổi mật khẩu</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="javascript:void(0);">
+                        <i class="bx bx-power-off me-2"></i>
+                        <span class="align-middle">
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-link p-0 m-0 align-baseline" style="text-decoration: none; color: inherit;">
+                                    Đăng xuất
+                                </button>
+                            </form>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!--/ User -->
+    </ul>
+</nav>

@@ -1,0 +1,144 @@
+﻿@model Library_Manager.Models.TBanDoc
+
+@{
+    ViewData["Title"] = "Chi tiết Bạn đọc: " + Model.Ten;
+
+    // Logic hiển thị badge Giới tính
+    var gioiTinh = Model.GioiTinhHienThi;
+    var badgeClass = gioiTinh == "Nam" ? "bg-label-info" :
+                         gioiTinh == "Nữ" ? "bg-label-danger" :
+                         "bg-label-secondary";
+
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLB");
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-detail bxs-user-detail fs-2 me-2'></i> Chi tiết Bạn đọc
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH DỮ LIỆU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Hiển thị tên bạn đọc và ID *@
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                Thông tin chi tiết của <span class="text-primary fw-bold">@Model.HoDem @Model.Ten</span>
+            </h5>
+            <small class="text-muted">Mã BD: <span class="fw-bold">@Model.MaBd</span></small>
+        </div>
+
+        @* BODY CỦA CARD: CHIA THÀNH CÁC PHẦN DÙNG GRID (Gọn gàng 2 cột) *@
+        <div class="card-body">
+
+            @* === 1. THÔNG TIN CÁ NHÂN (CƠ BẢN) === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-user me-1'></i> Thông tin cá nhân
+            </h6>
+            <div class="row mb-4">
+
+                @* Cột 1 *@
+                <div class="col-md-6">
+                    @* Họ Đệm *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Họ Đệm</label>
+                        <p class="fw-semibold mb-0">@Model.HoDem</p>
+                    </div>
+                    @* Tên *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Tên</label>
+                        <p class="fw-semibold mb-0">@Model.Ten</p>
+                    </div>
+                    @* Ngày Sinh *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Ngày Sinh</label>
+                        <p class="mb-0">@Model.NgaySinh.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+
+                @* Cột 2 *@
+                <div class="col-md-6">
+                    @* Giới Tính *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Giới Tính</label>
+                        <p class="mb-0">
+                            <span class="badge @badgeClass fs-6">@gioiTinh</span>
+                        </p>
+                    </div>
+
+                    @* Mã Bạn đọc *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Bạn đọc</label>
+                        <p class="text-primary fw-bold mb-0">@Model.MaBd</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+            @* === 2. THÔNG TIN LIÊN HỆ === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-phone me-1'></i> Thông tin liên hệ
+            </h6>
+            <div class="row">
+                @* Cột 1 (Liên hệ) *@
+                <div class="col-md-6">
+                    @* Email *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Email</label>
+                        <p class="mb-0">@Html.DisplayFor(model => model.Email)</p>
+                    </div>
+                    @* Số Điện Thoại *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Số Điện Thoại</label>
+                        <p class="mb-0">@Html.DisplayFor(model => model.Sdt)</p>
+                    </div>
+                </div>
+
+                @* Cột 2 (Địa chỉ) *@
+                <div class="col-md-6">
+                    @* Địa Chỉ *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Địa Chỉ</label>
+                        <p class="mb-0">@Html.DisplayFor(model => model.DiaChi)</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        @* FOOTER CỦA CARD: Chứa các nút Hành động (Đã sửa bố cục) *@
+        <div class="card-footer border-top pt-3">
+            <div class="d-flex justify-content-between">
+
+                @* Nút Quay lại (TRÁI) - Dùng btn-outline-primary *@
+                <div>
+                    @if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+                    {
+                        <a href="@ViewBag.ReturnUrl" class="btn btn-outline-primary">
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Index" class="btn btn-outline-primary">
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                        </a>
+                    }
+                </div>
+
+                @* Nút Sửa (PHẢI) *@
+                <a asp-action="Edit" asp-route-id="@Model?.MaBd" class="btn btn-primary @(canEdit ? "" : "disabled")">
+                    <i class="bx bx-pencil me-1"></i> Sửa thông tin
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

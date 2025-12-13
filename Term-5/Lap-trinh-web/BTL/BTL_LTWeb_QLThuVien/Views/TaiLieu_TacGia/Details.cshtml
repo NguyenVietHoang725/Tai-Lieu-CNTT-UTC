@@ -1,0 +1,129 @@
+﻿@model IEnumerable<Library_Manager.Models.TTaiLieuTacGia>
+
+@{
+    ViewData["Title"] = "Chi tiết Tài liệu - Tác giả";
+    // Lấy thông tin chung từ bản ghi đầu tiên, vì chúng đều giống nhau
+    var firstLink = Model.FirstOrDefault();
+}
+
+@* --- Logic phân quyền --- *@
+@{
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLTL");
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-book-open me-2'></i> Chi tiết Tài liệu - Tác giả
+    </h1>
+
+    @if (firstLink != null)
+    {
+        @* --- CARD BAO GÓI NỘI DUNG --- *@
+        <div class="card shadow-sm">
+
+            @* --- HEADER (Hiển thị tên và mã tài liệu) --- *@
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">
+                    <span class="text-primary fw-bold">@firstLink.MaTlNavigation?.TenTl</span>
+                </h5>
+                <small class="text-muted">
+                    Mã TL: <span class="fw-bold">@firstLink.MaTlNavigation?.MaTl</span>
+                </small>
+            </div>
+
+            @* --- BODY --- *@
+            <div class="card-body">
+
+                @* === 1. Thông tin chung về tài liệu (Hiển thị 1 lần) === *@
+                <h6 class="text-muted text-uppercase mb-3">
+                    <i class='bx bx-book-content me-1'></i> Thông tin tài liệu
+                </h6>
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary d-block">Mã Tài liệu</label>
+                        <p class="fw-semibold mb-0 text-primary">@firstLink.MaTlNavigation?.MaTl</p>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-secondary d-block">Tên Tài liệu</label>
+                        <p class="fw-semibold mb-0">@firstLink.MaTlNavigation?.TenTl</p>
+                    </div>
+                </div>
+
+                <hr class="mb-4">
+
+                @* === 2. Danh sách tác giả (Dùng vòng lặp) === *@
+                <h6 class="text-muted text-uppercase mb-3">
+                    <i class='bx bx-group me-1'></i> Danh sách tác giả & vai trò
+                </h6>
+
+                @foreach (var link in Model)
+                {
+                    <div class="row mb-4 border-bottom pb-3">
+                        @* --- Cột thông tin tác giả --- *@
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label text-secondary d-block">Mã Tác giả</label>
+                                <p class="fw-semibold mb-0 text-primary">@link.MaTgNavigation?.MaTg</p>
+                            </div>
+                            <div class="mb-0">
+                                <label class="form-label text-secondary d-block">Tên Tác giả</label>
+                                <p class="fw-semibold mb-0">@link.MaTgNavigation?.HoDem @link.MaTgNavigation?.Ten</p>
+                            </div>
+                        </div>
+
+                        @* --- Cột thông tin vai trò --- *@
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label d-block text-secondary">Vai trò</label>
+                                @{
+                                    var vaiTro = string.IsNullOrEmpty(link.VaiTro) ? "Không xác định" : link.VaiTro;
+                                    var badgeClass = vaiTro.Contains("Chính") ? "bg-label-success" :
+                                    vaiTro.Contains("Phụ") ? "bg-label-warning" :
+                                    "bg-label-secondary";
+                                }
+                                <p class="mb-0">
+                                    <span class="badge @badgeClass fs-6">@vaiTro</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            @* --- FOOTER (CÁC NÚT HÀNH ĐỘNG) --- *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex gap-3">
+                    @* Nút này cần xác định lại sẽ Edit cái gì, có thể là edit tài liệu hoặc quay về trang index để edit từng liên kết *@
+                    @* <a asp-action="Edit" asp-route-id="@firstLink?.MaTl" class="btn btn-primary @(canEdit ? "" : "disabled")">
+                        <i class="bx bx-pencil me-1"></i> Sửa thông tin
+                    </a> *@
+
+                    <div>
+                        @if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+                        {
+                            // Nếu có returnUrl, quay lại trang đó
+                            <a href="@ViewBag.ReturnUrl" class="btn btn-secondary">
+                                <i class="bx bx-arrow-back me-1"></i> Quay lại
+                            </a>
+                        }
+                        else
+                        {
+                            // Nếu không, quay về trang Index mặc định 
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                            </a>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning">Không có thông tin để hiển thị.</div>
+    }
+</div>

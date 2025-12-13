@@ -1,0 +1,146 @@
+﻿@* ========================================================================
+   KHỐI 1: KHAI BÁO MODEL VÀ VIEWDATA
+   ======================================================================== *@
+@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<Library_Manager.Models.TTaiLieuTacGia>
+
+@{
+    ViewData["Title"] = "Quản lý Tác giả Tài liệu";
+    // Nếu có MaTl được truyền từ route (contextual index), hiển thị tên Tài liệu
+    var maTl = Context.Request.Query["MaTl"];
+    var tenTaiLieu = ViewBag.TenTaiLieu ?? "Tất cả Tài liệu"; // Lấy tên TL từ ViewBag nếu có
+
+    // Quyền chỉnh sửa: Giả sử chỉ QTV và QLT có thể thêm/sửa/xóa
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* ========================================================================
+   KHỐI 2: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 2.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-sitemap fa-border fs-1 me-2'></i>
+        @if (!string.IsNullOrEmpty(maTl))
+        {
+            <span class="text-secondary">Tác giả của:</span> 
+            @tenTaiLieu
+        }
+        else
+        {
+            <span>Liên kết Tác giả - Tài liệu</span>
+        }
+    </h1>
+
+    <div class="card">
+        @* --- PHẦN 2.2: THANH TÁC VỤ (SEARCH & CREATE) --- *@
+        <div class="card-header border-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+
+                @* Thanh Tìm kiếm (SearchBar Partial) - Bỏ qua nếu là Contextual Index *@
+                @if (string.IsNullOrEmpty(maTl))
+                {
+                    <div class="flex-grow-1 me-3">
+                        <partial name="SearchBar" />
+                    </div>
+                }
+
+                @* Nút Thêm mới - Cố định bên phải *@
+                <div class="flex-shrink-0 @(string.IsNullOrEmpty(maTl) ? "" : "w-100") text-end">
+                    <p class="m-0">
+                        <a asp-action="Create" class="btn btn-primary text-nowrap @(canEdit ? "" : "disabled")">
+                            <i class="bx bx-link-alt me-1"></i> Liên kết mới
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        @* ========================================================================
+           KHỐI 3: BẢNG DỮ LIỆU VÀ PHÂN TRANG
+           ======================================================================== *@
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="myTable">
+                @* Đã bỏ text-nowrap để tên TL có thể xuống dòng *@
+
+                @* --- PHẦN 3.1: TIÊU ĐỀ BẢNG (THEAD) --- *@
+                <thead id="myTableHead">
+                    <tr>
+                        <th style="min-width: 200px;">Tác giả</th>
+                        @if (string.IsNullOrEmpty(maTl)) // Chỉ hiển thị cột Tài liệu nếu là index tổng thể
+                        {
+                            <th style="min-width: 250px;">Tài liệu</th>
+                        }
+                        <th style="white-space: nowrap;">Vai trò</th>
+                        <th style="min-width: 120px;">Hành động</th>
+                    </tr>
+                </thead>
+
+                @* --- PHẦN 3.2: NỘI DUNG BẢNG (TBODY) --- *@
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                @* Cột Tác giả *@
+                                <td style="white-space: nowrap;">
+                                    **@item.MaTgNavigation?.HoDem @item.MaTgNavigation?.Ten**
+                                </td>
+
+                                @* Cột Tài liệu (Chỉ hiển thị trong Index tổng thể) *@
+                                @if (string.IsNullOrEmpty(maTl))
+                                {
+                                    <td>@item.MaTlNavigation?.TenTl</td>
+                                }
+
+                                @* Cột Vai trò *@
+                                <td style="white-space: nowrap;">
+                                    <span class="badge bg-label-secondary">
+                                        @Html.DisplayFor(modelItem => item.VaiTro)
+                                    </span>
+                                </td>
+
+                                @* Cột Hành động (Sử dụng MaTl và MaTg làm khóa chính kép) *@
+                                <td>
+                                    <div class="d-flex w-100 justify-content-around">
+                                        @* 1. Sửa (Edit) *@
+                                        <a asp-action="Edit" asp-route-MaTl="@item.MaTl" asp-route-MaTg="@item.MaTg"
+                                                                 class="btn btn-icon btn-label-primary waves-effect @(canEdit ? "" : "disabled")"
+                                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Sửa Vai trò">
+                                            <i class='bx bx-pencil'></i>
+                                        </a>
+
+                                        @* 2. Xóa (Delete) *@
+                                        <a asp-action="Delete" asp-route-MaTl="@item.MaTl" asp-route-MaTg="@item.MaTg"
+                                                                 class="btn btn-icon btn-label-danger waves-effect @(canEdit ? "" : "disabled")"
+                                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Xóa liên kết">
+                                            <i class='bx bx-trash'></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="@(string.IsNullOrEmpty(maTl) ? 4 : 3)" class="text-center text-muted py-5">
+                                <i class='bx bx-info-circle me-1'></i> Không có liên kết Tác giả - Tài liệu nào.
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @* --- PHẦN 3.3: PHÂN TRANG (PAGINATION) --- *@
+        <div class="card-footer pt-0">
+            <partial name="_Pagination" />
+        </div>
+    </div>
+</div>

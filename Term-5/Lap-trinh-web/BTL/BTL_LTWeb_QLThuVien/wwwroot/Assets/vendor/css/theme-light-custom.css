@@ -1,0 +1,360 @@
+﻿/*==================================================================================
+// LIGHT THEME CUSTOM CSS (ĐÃ ĐỒNG BỘ)
+// Tên theme: theme-light-custom
+// Áp dụng khi <html> có data-theme="theme-light-custom"
+// Bảng màu cốt lõi: Xanh Đậm (#303481), Xanh Nhạt (#D6E6F2), Trắng (#F5F5F5), Vàng (#FFF200)
+==================================================================================*/
+
+/* -----------------------------------------------------------------------------
+ * 0. KHAI BÁO CUSTOM PROPERTIES (BIẾN CSS)
+ * -----------------------------------------------------------------------------*/
+html[data-theme="theme-light-custom"] {
+    /* -------------------- MÀU CƠ BẢN (4 MÀU CHÍNH) -------------------- */
+    --color-primary-dark: #303481; /* Xanh Dương Đậm (Text, Link, Button, Active) */
+    --color-body-bg: #D6E6F2; /* Xanh Dương Nhạt (Nền Content/Body) */
+    --color-light-bg: #F5F5F5; /* Trắng/Rất Nhạt (Navbar, Sidebar, Card) */
+    --color-high-contrast-text: #FFF200; /* Vàng (Text trên nền Xanh Đậm) */
+    --color-text-on-contrast: var(--color-primary-dark); /* Xanh Đậm (Chữ trên nền Vàng) */
+    /* -------------------- MÀU DẪN XUẤT (SHADES & TINTS) -------------------- */
+    --custom-text-main: var(--color-primary-dark);
+    --custom-text-heading: var(--color-primary-dark);
+    --custom-text-muted: #8897aa; /* Màu chữ phụ/nhẹ */
+    --custom-primary: var(--color-primary-dark);
+    --custom-primary-dark: var(--color-primary-dark);
+    --custom-primary-dark-hover: #1f2260; /* Sắc thái đậm hơn khi hover */
+    --custom-primary-tint: rgba(48, 52, 129, 0.1); /* Nền nhạt (Active Menu, Label Primary) */
+    /* Nền chung và Viền */
+    --custom-body-bg: var(--color-body-bg);
+    --custom-card-bg: var(--color-light-bg);
+    --custom-primary-bg-light: var(--color-light-bg);
+    --custom-primary-bg-dark: var(--color-light-bg); /* Giữ lại cho đồng bộ, nhưng không dùng */
+    --custom-footer-bg: #ebecec;
+    --custom-hover-bg-light: #d6d7d9;
+    --custom-border-color: #d9dee3;
+    --custom-menu-header-text: #8897aa;
+    /* MÀU TRẠNG THÁI */
+    --custom-info: #0da9e6;
+    --custom-danger: #ff3e1d;
+    --custom-info-tint: rgba(13, 169, 230, 0.1); /* Nền Info nhạt */
+    --custom-danger-tint: rgba(255, 62, 29, 0.1); /* Nền Danger nhạt */
+    /* Ánh xạ biến sang Bootstrap Variables */
+    --bs-body-bg: var(--custom-body-bg);
+    --bs-body-color: var(--custom-text-main);
+}
+
+/* -----------------------------------------------------------------------------
+ * 1. KHU VỰC CHUNG (BODY, FONT, LINKS, HEADING, CARD, BORDER)
+ * -----------------------------------------------------------------------------*/
+
+/* 1.1. Body & Text */
+html[data-theme="theme-light-custom"] {
+    color: var(--custom-text-main);
+}
+    /* Đảm bảo text-body, text-muted, text-secondary đổi màu đúng theo theme */
+    html[data-theme="theme-light-custom"] .text-body {
+        color: var(--custom-text-main) !important;
+    }
+
+    html[data-theme="theme-light-custom"] .text-muted,
+    html[data-theme="theme-light-custom"] .text-secondary {
+        color: var(--custom-text-muted) !important;
+    }
+
+    /* 1.2. Links */
+    html[data-theme="theme-light-custom"] a {
+        color: var(--custom-primary);
+    }
+
+        html[data-theme="theme-light-custom"] a:hover {
+            color: var(--custom-primary-dark-hover);
+        }
+
+    /* 1.3. Headings */
+    html[data-theme="theme-light-custom"] h1,
+    html[data-theme="theme-light-custom"] h2,
+    html[data-theme="theme-light-custom"] h3,
+    html[data-theme="theme-light-custom"] h4,
+    html[data-theme="theme-light-custom"] h5,
+    html[data-theme="theme-light-custom"] h6 {
+        color: var(--custom-text-heading);
+    }
+
+    /* 1.4. Card, Dropdown, Border */
+    html[data-theme="theme-light-custom"] .card,
+    html[data-theme="theme-light-custom"] .list-group-item,
+    html[data-theme="theme-light-custom"] .dropdown-menu,
+    html[data-theme="theme-light-custom"] .modal-content,
+    html[data-theme="theme-light-custom"] .offcanvas {
+        background-color: var(--custom-card-bg) !important;
+        border-color: var(--custom-border-color) !important;
+    }
+
+    html[data-theme="theme-light-custom"] .border,
+    html[data-theme="theme-light-custom"] .card-header,
+    html[data-theme="theme-light-custom"] .card-footer {
+        border-color: var(--custom-border-color) !important;
+    }
+
+    /* FIX: Icon Border trong H1 */
+    html[data-theme="theme-light-custom"] .text-primary.border {
+        border-color: var(--custom-primary-dark) !important;
+    }
+
+    /* -----------------------------------------------------------------------------
+ * 2. NAVBAR (bg-navbar-theme)
+ * -----------------------------------------------------------------------------*/
+    html[data-theme="theme-light-custom"] .bg-navbar-theme {
+        background-color: var(--custom-primary-bg-light) !important;
+        color: var(--custom-text-heading);
+        backdrop-filter: none;
+    }
+
+        html[data-theme="theme-light-custom"] .bg-navbar-theme .navbar-nav > .nav-link,
+        html[data-theme="theme-light-custom"] .bg-navbar-theme .navbar-text {
+            color: var(--custom-text-heading);
+        }
+
+            html[data-theme="theme-light-custom"] .bg-navbar-theme .navbar-nav > .nav-link:hover,
+            html[data-theme="theme-light-custom"] .bg-navbar-theme .navbar-nav .show > .nav-link {
+                color: var(--custom-primary-dark-hover);
+            }
+
+    /* -----------------------------------------------------------------------------
+ * 3. MENU / SIDEBAR (bg-menu-theme)
+ * -----------------------------------------------------------------------------*/
+    html[data-theme="theme-light-custom"] .bg-menu-theme {
+        background-color: var(--custom-primary-bg-light) !important;
+        color: var(--custom-text-heading);
+    }
+
+        /* 3.1. Menu Link (Default) */
+        html[data-theme="theme-light-custom"] .bg-menu-theme .menu-link {
+            color: var(--custom-text-heading);
+        }
+
+            /* 3.2. Menu Link (Hover / Open) */
+            html[data-theme="theme-light-custom"] .bg-menu-theme .menu-link:hover,
+            html[data-theme="theme-light-custom"] .bg-menu-theme .menu-item.open:not(.menu-item-closing) > .menu-toggle {
+                color: var(--custom-primary-dark-hover);
+                background-color: var(--custom-hover-bg-light) !important;
+            }
+
+        /* 3.3. Menu Item Active */
+        html[data-theme="theme-light-custom"] .bg-menu-theme .menu-inner > .menu-item.active > .menu-link {
+            color: var(--custom-primary);
+            background-color: var(--custom-primary-tint) !important;
+        }
+
+        /* 3.4. Dấu nhấn Menu Active dọc */
+        html[data-theme="theme-light-custom"] .bg-menu-theme .menu-inner > .menu-item.active:before {
+            background: var(--custom-primary);
+        }
+
+        /* 3.5. Menu Header */
+        html[data-theme="theme-light-custom"] .bg-menu-theme .menu-header {
+            color: var(--custom-menu-header-text);
+        }
+
+    /* 3.6. APP BRANDING (Logo Text) */
+    html[data-theme="theme-light-custom"] .app-brand-text.menu-text {
+        color: var(--custom-primary-dark) !important; /* Xanh Đậm cho chữ "Quản lý" */
+    }
+
+        html[data-theme="theme-light-custom"] .app-brand-text.menu-text .fs-tiny {
+            color: var(--custom-primary-dark-hover) !important; /* Xanh Đậm hơn cho chữ "THƯ VIỆN" */
+            opacity: 0.9;
+        }
+
+    /* -----------------------------------------------------------------------------
+ * 4. FOOTER (bg-footer-theme)
+ * -----------------------------------------------------------------------------*/
+    html[data-theme="theme-light-custom"] .bg-footer-theme {
+        background-color: var(--custom-footer-bg) !important;
+        color: var(--custom-text-heading);
+    }
+
+    /* -----------------------------------------------------------------------------
+ * 5. FORM CONTROLS & BUTTONS
+ * -----------------------------------------------------------------------------*/
+
+    /* 5.1. Input / Select */
+    html[data-theme="theme-light-custom"] .form-control,
+    html[data-theme="theme-light-custom"] .form-select,
+    html[data-theme="theme-light-custom"] .input-group-text {
+        background-color: var(--custom-card-bg);
+        border-color: var(--custom-border-color);
+        color: var(--custom-text-main);
+    }
+
+    /* 5.2. Button Primary (Nền Xanh Đậm, Chữ Vàng) */
+    html[data-theme="theme-light-custom"] .btn-primary {
+        color: var(--color-high-contrast-text) !important; /* <--- MÀU VÀNG */
+        background-color: var(--custom-primary-dark) !important;
+        border-color: var(--custom-primary-dark) !important;
+    }
+
+        html[data-theme="theme-light-custom"] .btn-primary:hover {
+            background-color: var(--custom-primary-dark-hover) !important;
+            border-color: var(--custom-primary-dark-hover) !important;
+            color: var(--color-high-contrast-text) !important;
+        }
+
+    /* 5.3. Button Outline Primary (Viền Xanh Đậm, Chữ Xanh Đậm) */
+    html[data-theme="theme-light-custom"] .btn-outline-primary {
+        color: var(--custom-primary);
+        border-color: var(--custom-primary);
+    }
+
+        html[data-theme="theme-light-custom"] .btn-outline-primary:hover {
+            color: var(--color-high-contrast-text); /* Chữ Vàng khi hover */
+            background-color: var(--custom-primary);
+        }
+
+    /* 5.4. Text Primary (Dùng cho Tiêu đề, Icon) */
+    html[data-theme="theme-light-custom"] .text-primary {
+        color: var(--custom-primary-dark) !important;
+    }
+
+    /* -----------------------------------------------------------------------------
+ * 6. TABLE & PAGINATION
+ * -----------------------------------------------------------------------------*/
+
+    /* 6.1. Table Dark (Tiêu đề bảng: LIGHT MODE) */
+    /* === NỀN XANH ĐẬM, CHỮ VÀNG === */
+    html[data-theme="theme-light-custom"] #myTableHead.table-dark {
+        background-color: var(--color-primary-dark) !important;
+        color: var(--color-high-contrast-text) !important;
+    }
+
+        html[data-theme="theme-light-custom"] #myTableHead.table-dark th {
+            color: var(--color-high-contrast-text) !important;
+            background-color: var(--color-primary-dark) !important;
+            border-color: #202356 !important;
+        }
+
+    /* Table Body/Row hover (Dùng màu tối nhẹ để phân biệt) */
+    html[data-theme="theme-light-custom"] .table.table-hover > tbody > tr:hover > * {
+        background-color: var(--custom-hover-bg-light) !important;
+    }
+
+    /* 6.2. Pagination (Chữ Xanh Đậm, Active Nền Xanh Đậm, Chữ Vàng) */
+    /* Màu chữ mặc định (Không active) */
+    html[data-theme="theme-light-custom"] .pagination .page-link,
+    html[data-theme="theme-light-custom"] .pagination .page-item:not(.active) .page-link {
+        color: var(--custom-text-heading); /* Xanh Đậm */
+        background-color: var(--color-body-bg); /* Nền trắng/nhạt của Card */
+        border-color: var(--custom-border-color); /* Viền chung */
+    }
+
+        /* Hover state */
+        html[data-theme="theme-light-custom"] .pagination .page-link:hover {
+            color: var(--custom-primary-dark-hover);
+            background-color: var(--custom-hover-bg-light);
+            border-color: var(--custom-border-color);
+        }
+
+    /* Màu Active */
+    html[data-theme="theme-light-custom"] .pagination .page-item.active .page-link {
+        color: var(--color-high-contrast-text); /* Chữ Vàng */
+        background-color: var(--custom-primary-dark); /* Nền Xanh Đậm */
+        border-color: var(--custom-primary-dark); /* Viền Xanh Đậm */
+    }
+
+    /* -----------------------------------------------------------------------------
+ * 7. UTILITIES: BADGES & ICON BUTTONS
+ * -----------------------------------------------------------------------------*/
+
+    /* NEW: General Button Icon Style (Áp dụng hiệu ứng hover) */
+    html[data-theme="theme-light-custom"] .btn-icon {
+        transition: all 0.2s ease-in-out;
+    }
+
+        html[data-theme="theme-light-custom"] .btn-icon:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+        }
+
+    /* 7.2. Button Icon (btn-label-*) */
+
+    /* Info */
+    html[data-theme="theme-light-custom"] .btn-label-info {
+        background-color: var(--custom-info-tint) !important;
+        color: var(--custom-info) !important;
+        border-color: var(--custom-border-color);
+    }
+
+        html[data-theme="theme-light-custom"] .btn-label-info:hover {
+            background-color: rgba(13, 169, 230, 0.2) !important; /* Slightly darker tint on hover */
+        }
+
+    /* Primary */
+    html[data-theme="theme-light-custom"] .btn-label-primary {
+        background-color: var(--custom-primary-tint) !important;
+        color: var(--custom-primary) !important;
+        border-color: var(--custom-border-color);
+    }
+
+        html[data-theme="theme-light-custom"] .btn-label-primary:hover {
+            background-color: rgba(48, 52, 129, 0.15) !important; /* Slightly darker tint on hover */
+        }
+
+    /* Danger */
+    html[data-theme="theme-light-custom"] .btn-label-danger {
+        background-color: var(--custom-danger-tint) !important;
+        color: var(--custom-danger) !important;
+        border-color: var(--custom-border-color);
+    }
+
+        html[data-theme="theme-light-custom"] .btn-label-danger:hover {
+            background-color: rgba(255, 62, 29, 0.15) !important; /* Slightly darker tint on hover */
+        }
+
+    /* -----------------------------------------------------------------------------
+ * 8. PHẦN BỔ SUNG
+ * -----------------------------------------------------------------------------*/
+
+    /* 8.1. SCROLLBAR */
+    html[data-theme="theme-light-custom"] ::-webkit-scrollbar-thumb {
+        background-color: rgba(48, 52, 129, 0.2);
+    }
+
+    /* 8.2. CUSTOM NAV-PILLS (_DanhMuc) */
+
+    /* Default state (Chữ Xanh Đậm) */
+    html[data-theme="theme-light-custom"] .nav-pills .nav-link {
+        color: var(--custom-primary-dark);
+        border: 1px solid var(--custom-border-color);
+        background-color: transparent; /* Nền trong suốt trên nền Card */
+        margin: 0.25rem; /* Khoảng cách giữa các pill */
+        border-radius: 0.5rem;
+    }
+
+        /* Hover state (Nền Xanh Nhạt/Hover, Chữ Xanh Đậm) */
+        html[data-theme="theme-light-custom"] .nav-pills .nav-link:not(.active):hover {
+            color: var(--custom-primary-dark-hover);
+            background-color: var(--custom-hover-bg-light); /* Màu xám nhạt khi hover */
+            border-color: var(--custom-border-color);
+        }
+
+        /* Active state (Nền Xanh Đậm, Chữ Vàng) */
+        html[data-theme="theme-light-custom"] .nav-pills .nav-link.active {
+            color: var(--color-high-contrast-text) !important; /* <--- MÀU VÀNG */
+            background-color: var(--custom-primary-dark) !important; /* <--- NỀN XANH ĐẬM */
+            border-color: var(--custom-primary-dark) !important;
+            box-shadow: 0 0.125rem 0.25rem rgba(48, 52, 129, 0.2); /* Thêm bóng nhẹ cho Pill active */
+        }
+
+    /* 8.3. ALERTS */
+    html[data-theme="theme-light-custom"] .alert-primary {
+        color: var(--custom-primary-dark);
+        background-color: var(--custom-primary-tint);
+        border-color: rgba(48, 52, 129, 0.2);
+    }
+
+    /* 8.4. MODAL & OFFCANVAS */
+    html[data-theme="theme-light-custom"] .modal-content,
+    html[data-theme="theme-light-custom"] .offcanvas {
+        background-color: var(--custom-card-bg);
+        color: var(--custom-text-main);
+        border-color: var(--custom-border-color);
+    }

@@ -1,0 +1,102 @@
+﻿@model Library_Manager.Models.TTaiLieuTacGia
+
+@{
+    ViewData["Title"] = "Xóa Liên kết Tác giả - Tài liệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-danger mb-4">
+        <i class='bx bx-trash fs-2 me-2 border p-1 rounded-2'></i> Xác nhận xóa Liên kết
+    </h1>
+
+    @* --- KHỐI CẢNH BÁO XÓA --- *@
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">CẢNH BÁO QUAN TRỌNG!</h4>
+        <p>
+            Bạn đang chuẩn bị **xóa vĩnh viễn liên kết** giữa Tác giả
+            **@Model.MaTgNavigation?.HoDem @Model.MaTgNavigation?.Ten** và Tài liệu
+            **@Model.MaTlNavigation?.TenTl**.
+        </p>
+        <p class="mb-0">Hành động này không thể hoàn tác. Vui lòng kiểm tra kỹ thông tin bên dưới trước khi xác nhận.</p>
+    </div>
+
+    @* --- KHỐI: CARD BAO QUANH THÔNG TIN CHI TIẾT --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Thông tin liên kết *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chi tiết liên kết</h5>
+        </div>
+
+        @* BODY CỦA CARD: Hiển thị chi tiết (Dùng cấu trúc DL) *@
+        <div class="card-body">
+
+            <div class="row">
+
+                @* --- THÔNG TIN LIÊN KẾT (Cột 1) --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-info-circle me-1'></i> Chi tiết
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Tài liệu:</dt>
+                        <dd class="col-sm-8 fw-bold">
+                            @Model.MaTlNavigation?.TenTl
+                            <span class="text-danger small ms-1">(@Model.MaTl)</span>
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted">Tác giả:</dt>
+                        <dd class="col-sm-8 fw-bold">
+                            @Model.MaTgNavigation?.HoDem @Model.MaTgNavigation?.Ten
+                            <span class="text-danger small ms-1">(@Model.MaTg)</span>
+                        </dd>
+
+                        <dt class="col-sm-4 text-muted">Vai trò:</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-label-secondary">@Model.VaiTro</span>
+                        </dd>
+                    </dl>
+                </div>
+
+                @* CỘT 2: Cảnh báo liên quan *@
+                <div class="col-md-6 pt-3">
+                    <p class="text-muted fst-italic mt-5">
+                        Lưu ý: Việc xóa liên kết này **không xóa** thông tin về Tài liệu hay Tác giả, chỉ loại bỏ mối quan hệ giữa chúng.
+                    </p>
+                </div>
+
+            </div>
+
+        </div> @* End card-body *@
+
+        @* FOOTER CỦA CARD: Nút Xác nhận và Quay lại *@
+        <div class="card-footer border-top pt-3">
+            <form asp-action="Delete">
+                @* Khóa chính kép (Hidden Fields) *@
+                <input type="hidden" asp-for="MaTl" />
+                <input type="hidden" asp-for="MaTg" />
+
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI (TRÁI) - Quay về Index của Tài liệu MaTl *@
+                    <a asp-action="Index" asp-route-MaTl="@Model.MaTl" class="btn btn-secondary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách Tác giả
+                    </a>
+
+                    @* NÚT XÁC NHẬN XÓA (PHẢI CÙNG) *@
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="bx bx-trash me-1"></i> XÁC NHẬN XÓA LIÊN KẾT
+                    </button>
+
+                </div>
+            </form>
+        </div>
+
+    </div> @* End card *@
+</div> @* End container-xxl *@

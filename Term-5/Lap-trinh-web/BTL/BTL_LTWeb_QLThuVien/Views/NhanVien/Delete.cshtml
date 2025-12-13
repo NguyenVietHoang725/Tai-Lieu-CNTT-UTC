@@ -1,0 +1,110 @@
+﻿@model Library_Manager.Models.TNhanVien
+
+@{
+    ViewData["Title"] = "Xóa Nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-danger mb-4">
+        <i class='bx bx-trash fs-2 me-2 border p-1 rounded-2'></i> Xác nhận xóa nhân viên
+    </h1>
+
+    @* --- KHỐI CẢNH BÁO XÓA --- *@
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">CẢNH BÁO QUAN TRỌNG!</h4>
+        <p>Bạn đang chuẩn bị <strong>xóa vĩnh viễn</strong> nhân viên <strong>@Model.HoDem @Model.Ten</strong> (Mã: <strong>@Model.MaNv</strong>). Hành động này không thể hoàn tác.</p>
+        <p class="mb-0">Vui lòng kiểm tra kỹ thông tin bên dưới trước khi xác nhận.</p>
+    </div>
+
+    @* --- KHỐI: CARD BAO QUANH THÔNG TIN CHI TIẾT --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tên nhân viên *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chi tiết nhân viên: <span class="text-danger fw-bold">@Model.HoDem @Model.Ten</span></h5>
+        </div>
+
+        @* BODY CỦA CARD: Hiển thị chi tiết (Dùng cấu trúc 2 cột) *@
+        <div class="card-body">
+
+            <div class="row">
+
+                @* --- THÔNG TIN CÁ NHÂN (Cột 1) --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-user me-1'></i> Thông tin cá nhân
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Mã Nhân viên:</dt>
+                        <dd class="col-sm-8 fw-bold text-danger">@Model.MaNv</dd>
+
+                        <dt class="col-sm-4 text-muted">Họ Đệm:</dt>
+                        <dd class="col-sm-8">@Model.HoDem</dd>
+
+                        <dt class="col-sm-4 text-muted">Tên:</dt>
+                        <dd class="col-sm-8">@Model.Ten</dd>
+
+                        <dt class="col-sm-4 text-muted">Ngày Sinh:</dt>
+                        <dd class="col-sm-8">@Model.NgaySinh.ToString("dd/MM/yyyy")</dd>
+
+                        @{
+                            var gioiTinh = (Model.GioiTinh == "M" ? "Nam" : Model.GioiTinh == "F" ? "Nữ" : "-");
+                            var badgeClass = gioiTinh == "Nam" ? "bg-label-info" : (gioiTinh == "Nữ" ? "bg-label-danger" : "bg-label-secondary");
+                        }
+                        <dt class="col-sm-4 text-muted">Giới Tính:</dt>
+                        <dd class="col-sm-8"><span class="badge @badgeClass">@gioiTinh</span></dd>
+                    </dl>
+                </div>
+
+                @* --- THÔNG TIN LIÊN HỆ & CÔNG VIỆC (Cột 2) --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-phone me-1'></i> Thông tin liên hệ & Công việc
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Địa Chỉ:</dt>
+                        <dd class="col-sm-8">@Model.DiaChi</dd>
+
+                        <dt class="col-sm-4 text-muted">SĐT:</dt>
+                        <dd class="col-sm-8">@Model.Sdt</dd>
+
+                        <dt class="col-sm-4 text-muted">Email:</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        <dt class="col-sm-4 text-muted">Phụ trách:</dt>
+                        <dd class="col-sm-8">@Model.PhuTrach</dd>
+                    </dl>
+                </div>
+            </div>
+
+        </div> @* End card-body *@
+
+        @* FOOTER CỦA CARD: Nút Xác nhận và Quay lại (Đã sửa bố cục) *@
+        <div class="card-footer border-top pt-3">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="MaNv" />
+                <div class="d-flex justify-content-between">
+                    @* Sửa: Dùng justify-content-between *@
+
+                    @* NÚT QUAY LẠI (TRÁI) - Dùng btn-outline-primary *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* NÚT XÁC NHẬN XÓA (PHẢI CÙNG) *@
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="bx bx-trash me-1"></i> XÁC NHẬN XÓA
+                    </button>
+
+                </div>
+            </form>
+        </div>
+
+    </div> @* End card *@
+</div> @* End container-xxl *@

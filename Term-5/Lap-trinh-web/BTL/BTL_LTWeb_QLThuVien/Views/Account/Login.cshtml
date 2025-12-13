@@ -1,0 +1,228 @@
+﻿@{
+    // KHỐI 1.1: CẤU HÌNH RAZOR
+    // Thiết lập Layout là null để trang này hiển thị độc lập.
+    Layout = null;
+}
+@model TTaiKhoan
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <!-- ========================================================================
+        KHỐI 2: HTML HEAD VÀ TẢI TÀI NGUYÊN
+        ======================================================================== -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Đăng nhập - Quản lý Thư Viện</title>
+
+    <!-- Tải Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tải Font Inter và Font Awesome cho icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Cấu hình Tailwind và CSS Tùy chỉnh -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#1a2e70',
+                        'dark-blue-text': '#023859',
+                        'card-bg': '#EAF3FF', /* Màu nền card bo góc */
+                        'btn-primary': '#274B8D', /* Màu nút Đăng nhập */
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Thiết lập ảnh nền chính (bg-login.jpg) */
+            background-image: url('../Assets/img/bg-login.jpg');
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            background-color: #1a2e70;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Container chứa form, đặt ở lớp trên cùng */
+        .login-card-container {
+            position: relative;
+            z-index: 10;
+        }
+
+            /* Đảm bảo hình ảnh phụ đè lên border card và được căn chỉnh */
+            .login-card-container .ornament-image-plane {
+                position: absolute;
+                z-index: 20;
+                top: -30px;
+                right: 0;
+                width: 200px; /* Kích thước phù hợp */
+                transform: translate(5%, -5%) rotate(-5deg); /* Dịch chuyển ra ngoài góc trên phải */
+            }
+
+            .login-card-container .ornament-image-curve {
+                position: absolute;
+                z-index: 20;
+                bottom: -8px;
+                left: -4px;
+                width: 100px; /* Kích thước phù hợp */
+                transform: translate(-15%, 5%) rotate(10deg); /* Dịch chuyển ra ngoài góc dưới trái */
+            }
+
+        /* Style cho input field container */
+        .input-item {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+            transition: border-color 0.2s;
+        }
+
+            .input-item:focus-within {
+                border-color: #274B8D;
+                box-shadow: 0 0 0 2px rgba(39, 75, 141, 0.2);
+            }
+
+            .input-item .icon-wrapper {
+                padding: 12px;
+                color: #274B8D;
+                background: #f7f7f7;
+                border-right: 1px solid #ccc;
+            }
+    </style>
+</head>
+
+<body>
+
+    <!-- ========================================================================
+        KHỐI 3: NỘI DUNG CHÍNH (FORM VÀ LAYOUT)
+        ======================================================================== -->
+
+    <div class="login-card-container w-full max-w-md mx-auto">
+
+        <!-- Logo Chính (Khoảng cách tăng lên) -->
+        <div class="flex flex-col items-center mb-14 mt-[-20px]">
+            <img src="~/Assets/img/logo_login.png"
+                 onerror="this.onerror=null;this.src='https://placehold.co/300x80/1a2e70/FFFFFF?text=QUẢN+LÝ+THƯ+VIỆN';"
+                 alt="Logo Quản Lý Thư Viện"
+                 class="w-auto h-17 md:h-19" />
+        </div>
+
+        <!-- Khối Card Đăng Nhập -->
+        <div class="bg-card-bg p-12 rounded-2xl shadow-2xl relative">
+
+            <!-- Hình ảnh phụ: Máy bay giấy 1 (login-line-1.png) -->
+            <img src="~/Assets/img/login-line-1.png"
+                 onerror="this.onerror=null;this.src='https://placehold.co/100x50/EAF3FF/274B8D?text=Plane1';"
+                 class="ornament-image-plane" alt="Máy bay giấy">
+
+            <!-- Hình ảnh phụ: Đường cong 2 (login-line-2.png) -->
+            <img src="~/Assets/img/login-line-2.png"
+                 onerror="this.onerror=null;this.src='https://placehold.co/100x50/EAF3FF/274B8D?text=Curve2';"
+                 class="ornament-image-curve" alt="Đường cong">
+
+
+            <!-- Nội dung chính bên trong Card -->
+            <div class="relative z-10">
+                <h4 class="text-xl font-extrabold text-dark-blue-text text-center mb-4 uppercase tracking-wide">HỆ THỐNG QUẢN LÝ THƯ VIỆN</h4>
+                <h2 class="text-3xl font-extrabold text-dark-blue-text text-center mb-6 uppercase tracking-wide">ĐĂNG NHẬP</h2>
+
+                <!-- Form Đăng Nhập Chính -->
+                <form asp-action="Login" asp-controller="Account" method="post" class="space-y-4">
+
+                    <!-- Hiển thị lỗi chung -->
+                    <div asp-validation-summary="ModelOnly" class="text-red-600 text-sm p-2 bg-red-100 rounded"></div>
+
+                    <!-- Input Tên Đăng Nhập -->
+                    <div>
+                        <div class="input-item">
+                            <span class="icon-wrapper"><i class="fas fa-user"></i></span>
+                            <input type="text"
+                                   asp-for="TenDangNhap"
+                                   class="w-full p-3 text-gray-700 placeholder-gray-400 bg-white"
+                                   placeholder="Tài khoản hoặc Email"
+                                   autofocus />
+                        </div>
+                        <span asp-validation-for="TenDangNhap" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <!-- Input Mật Khẩu -->
+                    <div>
+                        <div class="input-item">
+                            <span class="icon-wrapper"><i class="fas fa-lock"></i></span>
+                            <input type="password"
+                                   asp-for="MatKhau"
+                                   id="password-input"
+                                   class="w-full p-3 text-gray-700 bg-white"
+                                   placeholder="Nhập mật khẩu" />
+                            <!-- Icon Toggle Mật Khẩu -->
+                            <span class="p-3 text-gray-500 cursor-pointer" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <span asp-validation-for="MatKhau" class="text-red-500 text-xs mt-1 block"></span>
+                    </div>
+
+                    <!-- Quên Mật Khẩu & Trợ Giúp -->
+                    <div class="flex justify-between text-sm pt-2">
+                        <a href="auth-forgot-password-basic.html" class="text-dark-blue-text hover:underline font-medium">Quên mật khẩu?</a>
+                        <a href="#" class="text-dark-blue-text hover:text-btn-primary flex items-center gap-1">
+                            <i class="fas fa-question-circle"></i> Trợ giúp!
+                        </a>
+                    </div>
+
+                    <!-- Nút Đăng Nhập (Submit) -->
+                    <button type="submit" class="w-full py-3 bg-btn-primary text-white font-bold rounded-lg hover:bg-indigo-900 transition duration-200 shadow-md mt-6">
+                        ĐĂNG NHẬP
+                    </button>
+
+                </form>
+                <!-- /Form Đăng Nhập Chính -->
+            </div>
+        </div>
+        <!-- /Khối Card Đăng Nhập -->
+    </div>
+
+    <!-- ========================================================================
+        KHỐI 4: TẢI SCRIPT VÀ LOGIC
+        ======================================================================== -->
+    <!-- Tải jQuery (cần thiết cho logic của bạn) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Logic xóa dữ liệu (Logic gốc của bạn)
+            sessionStorage.removeItem("objUserN");
+            localStorage.removeItem('strChucNang');
+            localStorage.removeItem('strChucNang_Id');
+
+            // Logic hiện/ẩn mật khẩu
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password-input');
+
+            if (togglePassword && passwordInput) {
+                togglePassword.addEventListener('click', function () {
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+
+                    // Đổi icon
+                    this.querySelector('i').classList.toggle('fa-eye');
+                    this.querySelector('i').classList.toggle('fa-eye-slash');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

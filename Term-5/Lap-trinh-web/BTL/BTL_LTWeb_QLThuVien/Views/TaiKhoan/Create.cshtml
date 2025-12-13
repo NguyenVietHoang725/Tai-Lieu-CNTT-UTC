@@ -1,0 +1,251 @@
+﻿@model Library_Manager.Models.TTaiKhoan
+
+@{
+    ViewData["Title"] = "Tạo mới Tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN HIỂN THỊ THÔNG BÁO TỪ TEMP DATA (Khi Controller return View) --- *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="alertPlaceholder" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-plus fs-2 me-2 border p-1 rounded-2'></i> Tạo mới Tài khoản
+    </h1>
+
+    <div class="card">
+
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Nhập thông tin tài khoản mới</h5>
+        </div>
+
+        <form asp-action="Create">
+            <div class="card-body">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <div class="row">
+
+                    @* ========================================================= *@
+                    @* --- CỘT 1: THÔNG TIN ĐĂNG NHẬP (6/12) --- *@
+                    @* ========================================================= *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bxs-user-account me-1'></i> Thông tin Đăng nhập
+                        </h6>
+
+                        @* Tên Đăng nhập *@
+                        <div class="mb-3">
+                            <label asp-for="TenDangNhap" class="form-label">Tên đăng nhập</label>
+                            <input asp-for="TenDangNhap" class="form-control" autocomplete="new-password" placeholder="Ví dụ: hoten@company.com" />
+                            <span asp-validation-for="TenDangNhap" class="text-danger"></span>
+                        </div>
+
+                        @* Mật khẩu (MatKhau) - ĐÃ DÙNG NÚT TRONG SUỐT *@
+                        <div class="mb-3">
+                            <label asp-for="MatKhau" class="form-label">Tạo mật khẩu</label>
+                            <div class="input-group">
+                                <input asp-for="MatKhau" id="MatKhau" class="form-control" type="password" placeholder="Nhập mật khẩu" autocomplete="new-password" />
+
+                                @* THAY ĐỔI TẠI ĐÂY: Dùng button trong suốt, không viền *@
+                                <button type="button" class="btn border-0 bg-transparent text-secondary show-hide-password" title="Hiển thị/Ẩn mật khẩu" style="box-shadow: none;">
+                                    <i class="bx bx-hide"></i>
+                                </button>
+                            </div>
+                            <span asp-validation-for="MatKhau" class="text-danger"></span>
+                        </div>
+
+                        @* Nhập lại mật khẩu (MatKhauConfirm) - ĐÃ DÙNG NÚT TRONG SUỐT *@
+                        <div class="mb-3">
+                            <label for="MatKhauConfirm" class="form-label">Nhập lại mật khẩu</label>
+                            <div class="input-group">
+                                <input id="MatKhauConfirm" name="MatKhauConfirm" class="form-control" type="password" placeholder="Xác nhận mật khẩu" autocomplete="new-password" />
+
+                                @* THAY ĐỔI TẠI ĐÂY: Dùng button trong suốt, không viền *@
+                                <button type="button" class="btn border-0 bg-transparent text-secondary show-hide-password" title="Hiển thị/Ẩn mật khẩu" style="box-shadow: none;">
+                                    <i class="bx bx-hide"></i>
+                                </button>
+                            </div>
+                            <span data-valmsg-for="MatKhauConfirm" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* ========================================================= *@
+                    @* --- CỘT 2: QUYỀN & LIÊN KẾT (6/12) --- *@
+                    @* ========================================================= *@
+                    <div class="col-md-6 pt-3 border-start">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-sitemap me-1'></i> Quyền & Liên kết
+                        </h6>
+
+                        @* Mã Nhân viên liên kết (Dropdown) *@
+                        <div class="mb-3">
+                            <label asp-for="MaNv" class="form-label">Nhân viên liên kết</label>
+                            <select asp-for="MaNv" class="form-select" asp-items="ViewBag.MaNv">
+                                <option value="">-- Chọn Nhân viên --</option>
+                            </select>
+                            <div class="form-text text-info">Chỉ hiển thị các nhân viên chưa có tài khoản.</div>
+                            <span asp-validation-for="MaNv" class="text-danger"></span>
+                        </div>
+
+                        @* Vai trò (Select) *@
+                        <div class="mb-3">
+                            <label asp-for="MaVt" class="form-label">Vai trò</label>
+                            <select asp-for="MaVt" class="form-select" asp-items="ViewBag.MaVt">
+                                <option value="">-- Chọn Vai trò --</option>
+                            </select>
+                            <span asp-validation-for="MaVt" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div> @* End card-body *@
+
+            @* FOOTER CỦA CARD: Nút Tạo mới và Quay lại *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI DANH SÁCH (TRÁI) *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* NÚT TẠO MỚI (PHẢI) *@
+                    <button type="submit" value="Create" class="btn btn-primary" id="submitButton">
+                        <i class="bx bx-plus me-1"></i> Tạo mới
+                    </button>
+
+                </div>
+            </div>
+        </form>
+    </div> @* End card *@
+</div> @* End container-xxl *@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Hàm hiển thị thông báo lỗi tại chỗ (Không tự động ẩn)
+        function showToast(message, type = 'danger') {
+            const alertPlaceholder = document.getElementById('alertPlaceholder');
+            if (!alertPlaceholder) return;
+            alertPlaceholder.innerHTML = '';
+
+            if (type === 'danger') {
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = [
+                    `<div class="alert alert-danger alert-dismissible" role="alert">`,
+                    `   <div>${message}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
+                ].join('');
+                alertPlaceholder.appendChild(wrapper);
+            }
+        }
+
+        // Hàm bật/tắt hiển thị mật khẩu (Logic không đổi)
+        function setupPasswordToggle() {
+            document.querySelectorAll('.show-hide-password').forEach(toggleButton => {
+
+                // Tìm input tương ứng (nằm ngay trước nút button trong input-group)
+                const passwordInput = toggleButton.previousElementSibling;
+
+                if (passwordInput && passwordInput.tagName === 'INPUT') {
+                    toggleButton.addEventListener('click', function () {
+                        const icon = toggleButton.querySelector('i');
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            icon.className = 'bx bx-show';
+                        } else {
+                            passwordInput.type = 'password';
+                            icon.className = 'bx bx-hide';
+                        }
+                    });
+                }
+            });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form[asp-action="Create"]');
+            const submitButton = document.getElementById('submitButton');
+            const TenDangNhapInput = document.getElementById('TenDangNhap');
+            const MatKhauInput = document.getElementById('MatKhau');
+            const MatKhauConfirmInput = document.getElementById('MatKhauConfirm');
+
+            // Thiết lập nút toggle cho cả hai trường mật khẩu
+            setupPasswordToggle();
+
+            // --- ĐẢM BẢO CLEAR INPUT KHI LOAD TRANG (Khắc phục autofill/back button) ---
+            if (TenDangNhapInput) {
+                TenDangNhapInput.value = "";
+            }
+            if (MatKhauInput) {
+                MatKhauInput.value = "";
+            }
+            if (MatKhauConfirmInput) {
+                MatKhauConfirmInput.value = "";
+            }
+            // ---------------------------------------------------------------------------------
+
+
+            // --- VALIDATION CLIENT-SIDE: Mật khẩu và Nhập lại mật khẩu phải khớp ---
+            if (form) {
+                // Đăng ký phương thức validation tùy chỉnh cho client side
+                $.validator.unobtrusive.adapters.add(
+                    "equalto", ['other'], function (options) {
+                        options.rules["equalTo"] = "#" + options.params.other;
+                        options.messages["equalTo"] = options.message;
+                    }
+                );
+
+                // Thêm rules cho MatKhauConfirm (nếu MatKhau không null thì MatKhauConfirm phải khớp)
+                $("#MatKhauConfirm").rules("add", {
+                    equalTo: "#MatKhau",
+                    messages: {
+                        equalTo: "Mật khẩu xác nhận không khớp.",
+                    }
+                });
+            }
+
+            // 1. Logic vô hiệu hóa nút khi submit
+            if (form && submitButton) {
+                form.addEventListener('submit', function() {
+                    // Cần kiểm tra validation trước khi vô hiệu hóa
+                    if ($(form).valid()) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...';
+                    }
+                });
+            }
+
+            // 2. Logic hiển thị thông báo từ TempData (chỉ chạy khi có lỗi)
+            @if (TempData["StatusMessage"] != null && TempData["Message"] != null)
+            {
+                            if (TempData["StatusMessage"].ToString() == "danger")
+                            {
+                                            <text>
+                                                setTimeout(function() {
+                                                    showToast('@Html.Raw(TempData["Message"])', '@TempData["StatusMessage"]');
+
+                                                    // Kích hoạt lại nút submit sau khi trang load lại nếu có lỗi
+                                                    if (submitButton) {
+                                                        submitButton.disabled = false;
+                                                        submitButton.innerHTML = '<i class="bx bx-plus me-1"></i> Tạo mới';
+                                                    }
+                                                }, 10);
+                                            </text>
+                            }
+            }
+        });
+    </script>
+}

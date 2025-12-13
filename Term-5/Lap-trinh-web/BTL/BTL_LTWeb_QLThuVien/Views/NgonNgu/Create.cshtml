@@ -1,0 +1,77 @@
+﻿@model Library_Manager.Models.TNgonNgu
+
+@{
+    ViewData["Title"] = "Tạo mới Ngôn ngữ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-plus fs-2 me-2 border p-1 rounded-2'></i> Tạo mới thông tin Ngôn ngữ
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH BIỂU MẪU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tiêu đề cố định *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Nhập thông tin Ngôn ngữ mới</h5>
+        </div>
+
+        <form asp-action="Create">
+            @* BODY CỦA CARD: Chứa Biểu mẫu nhập liệu *@
+            <div class="card-body">
+
+                @* Phần hiển thị lỗi tổng thể *@
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <div class="row">
+                    <div class="col-md-6 pt-3">
+
+                        @* Mã Ngôn ngữ *@
+                        <div class="mb-3">
+                            <label asp-for="MaNn" class="form-label">Mã Ngôn ngữ</label>
+                            <input asp-for="MaNn" class="form-control" />
+                            <span asp-validation-for="MaNn" class="text-danger"></span>
+                        </div>
+
+                        @* Tên Ngôn ngữ *@
+                        <div class="mb-3">
+                            <label asp-for="TenNn" class="form-label">Tên Ngôn ngữ</label>
+                            <input asp-for="TenNn" class="form-control" />
+                            <span asp-validation-for="TenNn" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </div> @* End card-body *@
+
+            @* FOOTER CỦA CARD: Nút Tạo mới và Quay lại *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-start gap-3">
+
+                    @* NÚT TẠO MỚI *@
+                    <button type="submit" value="Create" class="btn btn-primary">
+                        <i class="bx bx-plus me-1"></i> Tạo mới
+                    </button>
+
+                    @* NÚT QUAY LẠI DANH SÁCH *@
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div> @* End card *@
+</div> @* End container-xxl *@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

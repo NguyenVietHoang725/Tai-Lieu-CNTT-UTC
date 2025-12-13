@@ -1,0 +1,229 @@
+﻿@* ========================================================================
+    KHỐI 1: KHAI BÁO MODEL VÀ VIEWDATA
+    ======================================================================== *@
+@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<Library_Manager.Models.TTaiLieu>
+
+@{
+    ViewData["Title"] = "Quản lý Tài liệu"; // Tiêu đề trang
+    var userRole = Context.Session.GetString("UserRole"); // Lấy vai trò người dùng từ Session
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/Assets/css/custom-filter.css" />
+}
+
+@* ========================================================================
+    KHỐI 2: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+    ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- KHỐI HIỂN THỊ THÔNG BÁO TỪ TEMP DATA (CHO THÀNH CÔNG/THẤT BẠI) --- *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="indexAlertMessage" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @* --- PHẦN 2.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-book-open fa-border fs-1 me-2'></i> Danh sách Tài liệu
+    </h1>
+
+    <div class="card">
+        @* --- PHẦN 2.2: THANH TÁC VỤ (SEARCH & CREATE) --- *@
+        <div class="card-header border-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+
+                @* Thanh Tìm kiếm (SearchBar Partial) - Chiếm phần lớn không gian *@
+                <div class="flex-grow-1 me-3">
+                    <partial name="SearchBar" />
+                </div>
+
+                @* Nút Thêm mới - Cố định bên phải *@
+                <div class="flex-shrink-0 ">
+                    <p class="m-0">
+                        <a asp-action="Create" class="btn btn-primary text-nowrap @(canEdit ? "" : "disabled")">
+                            <i class="bx bx-plus me-1"></i> Thêm Tài liệu mới
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        @* ========================================================================
+            KHỐI 3: BẢNG DỮ LIỆU VÀ PHÂN TRANG
+            ======================================================================== *@
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="myTable">
+
+                @* --- PHẦN 3.1: TIÊU ĐỀ BẢNG (THEAD) --- *@
+                <thead id="myTableHead">
+                    <tr>
+                        <th style="min-width: 250px;">Tên tài liệu</th>
+
+                        <th class="filterable-header" data-filter="category">
+                            Thể loại
+                            @if (!string.IsNullOrEmpty(ViewBag.SelectedCategory))
+                            {
+                                <span class="filter-active-badge"></span>
+                            }
+                            <div class="filter-dropdown">
+                                <div class="filter-dropdown-header">Lọc theo Thể loại</div>
+                                <div class="filter-options">
+                                    <div class="filter-option @(string.IsNullOrEmpty(ViewBag.SelectedCategory) ? "selected" : "")" data-value="">
+                                        <div class="filter-option-checkbox"></div>
+                                        <span>Tất cả</span>
+                                    </div>
+                                    @if (ViewBag.Categories != null)
+                                    {
+                                        foreach (var c in ViewBag.Categories as List<string>)
+                                        {
+                                            <div class="filter-option @(ViewBag.SelectedCategory == c ? "selected" : "")" data-value="@c">
+                                                <div class="filter-option-checkbox"></div>
+                                                <span>@c</span>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </th>
+
+                        <th class="filterable-header" data-filter="publisher" style="width: 250px; white-space: nowrap;">
+                            Nhà xuất bản
+                            @if (!string.IsNullOrEmpty(ViewBag.SelectedPublisher))
+                            {
+                                <span class="filter-active-badge"></span>
+                            }
+                            <div class="filter-dropdown">
+                                <div class="filter-dropdown-header">Lọc theo Nhà xuất bản</div>
+                                <div class="filter-options">
+                                    <div class="filter-option @(string.IsNullOrEmpty(ViewBag.SelectedPublisher) ? "selected" : "")" data-value="">
+                                        <div class="filter-option-checkbox"></div>
+                                        <span>Tất cả</span>
+                                    </div>
+                                    @if (ViewBag.Publishers != null)
+                                    {
+                                        foreach (var p in ViewBag.Publishers as List<string>)
+                                        {
+                                            <div class="filter-option @(ViewBag.SelectedPublisher == p ? "selected" : "")" data-value="@p">
+                                                <div class="filter-option-checkbox"></div>
+                                                <span>@p</span>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </th>
+
+
+                        <th class="filterable-header" data-filter="language" style="width: 120px; white-space: nowrap;">
+                            Ngôn ngữ
+                            @if (!string.IsNullOrEmpty(ViewBag.SelectedLanguage))
+                            {
+                                <span class="filter-active-badge"></span>
+                            }
+                            <div class="filter-dropdown">
+                                <div class="filter-dropdown-header">Lọc theo Ngôn ngữ</div>
+                                <div class="filter-options">
+                                    <div class="filter-option @(string.IsNullOrEmpty(ViewBag.SelectedLanguage) ? "selected" : "")" data-value="">
+                                        <div class="filter-option-checkbox"></div>
+                                        <span>Tất cả</span>
+                                    </div>
+                                    @if (ViewBag.Languages != null)
+                                    {
+                                        foreach (var l in ViewBag.Languages as List<string>)
+                                        {
+                                            <div class="filter-option @(ViewBag.SelectedLanguage == l ? "selected" : "")" data-value="@l">
+                                                <div class="filter-option-checkbox"></div>
+                                                <span>@l</span>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </th>
+
+                        <th style="width: 120px; white-space: nowrap;">Hành động</th>
+                    </tr>
+                </thead>
+
+                @* --- PHẦN 3.2: NỘI DUNG BẢNG (TBODY) -- *@
+                <tbody id="tableBodyContainer">
+                    @Html.Partial("_FilterTable", Model)
+                </tbody>
+            </table>
+        </div>
+
+        @* --- PHẦN 3.3: PHÂN TRANG (PAGINATION) --- *@
+        <div class="card-footer pt-0">
+            <partial name="_Pagination" />
+        </div>
+
+        <div>
+            @if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+            {
+                // Nếu có returnUrl, quay lại trang đó
+                <a href="@ViewBag.ReturnUrl" class="btn btn-secondary">
+                    <i class="bx bx-arrow-back me-1"></i> Quay lại
+                </a>
+            }
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Assets/js/custom-filter.js"></script>
+
+    <script>
+        // LOGIC LỌC AJAX (GIỮ NGUYÊN)
+        function filterTaiLieu() {
+            const searchString = $('#searchString').val();
+            const category = $('#category').val();
+            const publisher = $('#publisher').val();
+            const language = $('#language').val();
+
+            $.ajax({
+                url: '/TaiLieu/FilterTaiLieu',
+                type: 'GET',
+                data: {
+                    searchString: searchString,
+                    category: category,
+                    publisher: publisher,
+                    language: language
+                },
+                success: function (result) {
+                    $('#tableBodyContainer').html(result);
+                }
+            });
+        }
+
+        // Gọi filter khi chọn dropdown hoặc nhấn tìm kiếm
+        $('.filter-option').click(function () {
+            filterTaiLieu();
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const alertElement = document.getElementById('indexAlertMessage');
+
+            // Chỉ chạy nếu có thông báo và là thông báo thành công (success/info)
+            @if (TempData["StatusMessage"] != null && TempData["StatusMessage"].ToString() == "success")
+            {
+                    <text>
+                        if (alertElement) {
+                            // Tự động ẩn sau 5 giây (5000ms)
+                            setTimeout(() => {
+                                // Sử dụng Bootstrap/jQuery để ẩn alert
+                                $(alertElement).alert('close');
+                            }, 5000);
+                        }
+                    </text>
+            }
+        });
+    </script>
+}

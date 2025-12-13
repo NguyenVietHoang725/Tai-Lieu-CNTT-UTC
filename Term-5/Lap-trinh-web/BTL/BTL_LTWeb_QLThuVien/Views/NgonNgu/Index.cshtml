@@ -1,0 +1,113 @@
+﻿@* ========================================================================
+   KHỐI 1: KHAI BÁO MODEL VÀ VIEWDATA
+   ======================================================================== *@
+@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<Library_Manager.Models.TNgonNgu>
+
+@{
+    ViewData["Title"] = "Quản lý Ngôn ngữ"; // Tiêu đề trang
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Giả định: Thêm logic phân quyền đơn giản (nếu cần)
+    var userRole = Context.Session.GetString("UserRole");
+    // Giả sử QTV (Quản trị viên) và QLS (Quản lý Sách) có quyền chỉnh sửa/thêm/xóa Ngôn ngữ
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+}
+
+@* ========================================================================
+   KHỐI 2: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <partial name="_DanhMuc" />
+
+    @* --- PHẦN 2.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-globe fa-border fs-1 me-2'></i> Thông tin Ngôn ngữ
+    </h1>
+
+    <div class="card">
+        @* --- PHẦN 2.2: THANH TÁC VỤ (SEARCH & CREATE) --- *@
+        <div class="card-header border-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+
+                @* Thanh Tìm kiếm (SearchBar Partial) - Chiếm phần lớn không gian *@
+                <div class="flex-grow-1 me-3">
+                    <partial name="SearchBar" />
+                </div>
+
+                @* Nút Thêm mới - Cố định bên phải *@
+                <div class="flex-shrink-0 ">
+                    <p class="m-0">
+                        <a asp-action="Create" class="btn btn-primary text-nowrap @(canEdit ? "" : "disabled")">
+                            <i class="bx bx-plus me-1"></i> Thêm Ngôn ngữ mới
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        @* ========================================================================
+           KHỐI 3: BẢNG DỮ LIỆU VÀ PHÂN TRANG
+           ======================================================================== *@
+        <div class="table-responsive">
+            <table class="table table-bordered text-nowrap table-hover" id="myTable">
+
+                @* --- PHẦN 3.1: TIÊU ĐỀ BẢNG (THEAD) --- *@
+                <thead id="myTableHead">
+                    <tr>
+                        <th style="min-width: 100px; white-space: nowrap;">Mã Ngôn ngữ</th>
+                        <th>Tên Ngôn ngữ</th>
+                        <th style="min-width: 120px;">Hành động</th>
+                    </tr>
+                </thead>
+
+                @* --- PHẦN 3.2: NỘI DUNG BẢNG (TBODY) --- *@
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <span class="badge bg-label-secondary">
+                                    @Html.DisplayFor(modelItem => item.MaNn)
+                                </span>
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.TenNn)</td>
+                            <td>
+                                <div class="d-flex w-100 justify-content-around">
+
+                                    @* 1. Chi tiết (Details) *@
+                                    <a asp-action="Details" asp-route-id="@item.MaNn"
+                                                           class="btn btn-icon btn-label-info waves-effect"
+                                                           data-bs-toggle="tooltip" data-bs-placement="top" title="Chi tiết">
+                                        <i class='bx bx-detail'></i>
+                                    </a>
+
+                                    @* 2. Sửa (Edit) *@
+                                    <a asp-action="Edit" asp-route-id="@item.MaNn"
+                                                           class="btn btn-icon btn-label-primary waves-effect @(canEdit ? "" : "disabled")"
+                                                           data-bs-toggle="tooltip" data-bs-placement="top" title="Sửa">
+                                        <i class='bx bx-pencil'></i>
+                                    </a>
+
+                                    @* 3. Xóa (Delete) *@
+                                    <a asp-action="Delete" asp-route-id="@item.MaNn"
+                                                           class="btn btn-icon btn-label-danger waves-effect @(canEdit ? "" : "disabled")"
+                                                           data-bs-toggle="tooltip" data-bs-placement="top" title="Xóa">
+                                        <i class='bx bx-trash'></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @* --- PHẦN 3.3: PHÂN TRANG (PAGINATION) --- *@
+        <div class="card-footer pt-0">
+            @* Partial view cho PagedList *@
+            <partial name="_Pagination" />
+        </div>
+    </div>
+</div>

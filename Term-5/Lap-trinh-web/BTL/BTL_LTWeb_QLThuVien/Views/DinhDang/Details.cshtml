@@ -1,0 +1,78 @@
+﻿@model Library_Manager.Models.TDinhDang
+
+@{
+    // Tiêu đề trang, sử dụng tên Định dạng để hiển thị
+    ViewData["Title"] = "Chi tiết Định dạng: " + Model.TenDd;
+
+    // Logic kiểm tra quyền chỉnh sửa/xóa
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-detail bxs-category fs-2 me-2'></i> Chi tiết Định dạng
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH DỮ LIỆU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Hiển thị tên Định dạng và ID *@
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                Thông tin chi tiết của <span class="text-primary fw-bold">@Model.TenDd</span>
+            </h5>
+            <small class="text-muted">Mã Định dạng: <span class="fw-bold">@Model.MaDd</span></small>
+        </div>
+
+        @* BODY CỦA CARD: HIỂN THỊ DỮ LIỆU CHÍNH *@
+        <div class="card-body">
+
+            @* === THÔNG TIN CƠ BẢN === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-info-circle me-1'></i> Chi tiết Định dạng
+            </h6>
+
+            <div class="row">
+                <div class="col-12">
+
+                    @* Mã Định dạng *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Định dạng</label>
+                        <p class="text-primary fw-bold mb-0">@Model.MaDd</p>
+                    </div>
+
+                    @* Tên Định dạng *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Tên Định dạng</label>
+                        <p class="fw-semibold mb-0">@Model.TenDd</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        @* FOOTER CỦA CARD: Chứa các nút Hành động *@
+        <div class="card-footer border-top pt-3">
+            <div class="d-flex justify-content-between">
+
+                @* Nút Quay lại (TRÁI) - Dùng btn-outline-primary *@
+                <a asp-action="Index" class="btn btn-outline-primary">
+                    <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                </a>
+
+                @* Nút Sửa (PHẢI) *@
+                <a asp-action="Edit" asp-route-id="@Model?.MaDd" class="btn btn-primary @(canEdit ? "" : "disabled")">
+                    <i class="bx bx-pencil me-1"></i> Sửa thông tin
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,156 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<Library_Manager.Models.TTheBanDoc>
+
+@{
+    ViewData["Title"] = "Quản lý Thẻ Bạn đọc";
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLB");
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- KHỐI HIỂN THỊ THÔNG BÁO TỪ TEMP DATA (CHO THÀNH CÔNG/THẤT BẠI) --- *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="indexAlertMessage" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @* --- PHẦN 2.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-id-card fa-border fs-1 me-2'></i> @ViewData["Title"]
+    </h1>
+
+    <div class="card">
+        @* --- PHẦN 2.2: THANH TÁC VỤ (SEARCH & CREATE) --- *@
+        <div class="card-header border-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+
+                @* Thanh Tìm kiếm (SearchBar Partial) - Chiếm phần lớn không gian *@
+                <div class="flex-grow-1 me-3">
+                    <partial name="SearchBar" />
+                </div>
+
+                @* Nút Thêm mới - Cố định bên phải *@
+                <div class="flex-shrink-0 ">
+                    <p class="m-0">
+                        <a asp-action="Create" class="btn btn-primary text-nowrap @(canEdit ? "" : "disabled")">
+                            <i class="bx bx-plus me-1"></i> Thêm Thẻ mới
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        @* ========================================================================
+            KHỐI 3: BẢNG DỮ LIỆU VÀ PHÂN TRANG
+            ======================================================================== *@
+        <div class="table-responsive">
+            <table class="table table-bordered text-nowrap table-hover" id="myTable">
+
+                @* --- PHẦN 3.1: TIÊU ĐỀ BẢNG (THEAD) --- *@
+                <thead id="myTableHead">
+                    <tr>
+                        <th style="white-space: nowrap;">Mã Thẻ</th>
+                        <th style="white-space: nowrap;">Tên Bạn Đọc</th>
+                        <th>Ngày Cấp</th>
+                        <th>Ngày Hết Hạn</th>
+                        <th style="white-space: nowrap;">Trạng Thái</th>
+                        <th style="min-width: 120px;">Hành động</th>
+                    </tr>
+                </thead>
+
+                @* --- PHẦN 3.2: NỘI DUNG BẢNG (TBODY) --- *@
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="white-space: nowrap;">@Html.DisplayFor(modelItem => item.MaTbd)</td>
+                            <td style="white-space: nowrap;">
+                                @(item.MaBdNavigation != null ? item.MaBdNavigation.HoDem + " " + item.MaBdNavigation.Ten : "(Không có thông tin)")
+                            </td>
+                            <td>@item.NgayCap.ToString("dd/MM/yyyy")</td>
+                            <td>@item.NgayHetHan?.ToString("dd/MM/yyyy")</td>
+                            <td style="white-space: nowrap;">
+                                @{
+                                    var trangThai = item.TrangThai;
+                                    var badgeClass = "bg-label-secondary";
+
+                                    if (trangThai == "Hoạt động" || trangThai == "Còn hạn")
+                                    {
+                                        badgeClass = "bg-label-success";
+                                    }
+                                    else if (trangThai == "Đã khóa" || trangThai == "Hết hạn" || trangThai == "Khóa")
+                                    {
+                                        badgeClass = "bg-label-danger";
+                                    }
+                                }
+                                <span class="badge @badgeClass">
+                                    @trangThai
+                                </span>
+                            </td>
+                            <td>
+                                <div class="d-flex w-100 justify-content-around">
+
+                                    @* 1. Chi tiết Thẻ (Details TTheBanDoc) *@
+                                    <a asp-action="Details" asp-route-id="@item.MaTbd"
+                                       class="btn btn-icon btn-label-info waves-effect"
+                                       data-bs-toggle="tooltip" data-bs-placement="top" title="Chi tiết Thẻ">
+                                        <i class='bx bx-detail'></i>
+                                    </a>
+
+                                    @* 2. Sửa Thẻ (Edit TTheBanDoc) *@
+                                    <a asp-action="Edit" asp-route-id="@item.MaTbd"
+                                       class="btn btn-icon btn-label-primary waves-effect @(canEdit ? "" : "disabled")"
+                                       data-bs-toggle="tooltip" data-bs-placement="top" title="Sửa thẻ">
+                                        <i class='bx bx-pencil'></i>
+                                    </a>
+
+                                    @* 3. Xóa Thẻ (Delete TTheBanDoc) *@
+                                    <a asp-action="Delete" asp-route-id="@item.MaTbd"
+                                       class="btn btn-icon btn-label-danger waves-effect @(canEdit ? "" : "disabled")"
+                                       data-bs-toggle="tooltip" data-bs-placement="top" title="Xóa thẻ">
+                                        <i class='bx bx-trash'></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @* --- PHẦN 3.3: PHÂN TRANG (PAGINATION) --- *@
+        <div class="card-footer pt-0">
+            <partial name="_Pagination" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const alertElement = document.getElementById('indexAlertMessage');
+
+            // Chỉ chạy nếu có thông báo và là thông báo thành công
+            @if (TempData["StatusMessage"] != null && TempData["StatusMessage"].ToString() == "success")
+            {
+                    <text>
+                        if (alertElement) {
+                            // Tự động ẩn sau 5 giây (5000ms)
+                            setTimeout(() => {
+                                // Sử dụng Bootstrap/jQuery để ẩn alert
+                                $(alertElement).alert('close');
+                            }, 5000);
+                        }
+                    </text>
+            }
+        });
+    </script>
+}

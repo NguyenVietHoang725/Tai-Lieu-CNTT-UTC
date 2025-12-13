@@ -1,0 +1,163 @@
+﻿@model Library_Manager.Models.TBanSao
+
+@{
+    ViewData["Title"] = "Tạo mới Bản sao";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-plus fs-2 me-2 border p-1 rounded-2'></i> Tạo mới Bản sao
+    </h1>
+
+    @* ✅ HIỂN THỊ THÔNG BÁO *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="alertPlaceholder" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    else
+    {
+        <div id="alertPlaceholder"></div>
+    }
+
+    <div class="card">
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Nhập thông tin bản sao mới</h5>
+        </div>
+
+        @* ✅ FORM VỚI ROUTE CHÍNH XÁC *@
+        <form asp-action="Create" asp-route-MaTl="@ViewBag.SelectedMaTl" method="post" id="createBanSaoForm">
+            <div class="card-body">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <div class="row">
+
+                    @* --- CỘT 1: THÔNG TIN BẢN SAO --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-copy me-1'></i> Thông tin Bản sao
+                        </h6>
+
+                        <div class="alert alert-info mb-4" role="alert">
+                            <i class='bx bx-info-circle me-1'></i> <strong>Mã Bản sao (MaBS)</strong> sẽ được hệ thống tự động sinh ra sau khi bạn nhấn Tạo Bản sao.
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="TrangThai" class="form-label">Tình trạng <span class="text-danger">*</span></label>
+                            <select asp-for="TrangThai" class="form-select">
+                                <option value="">-- Chọn Tình trạng --</option>
+                                <option value="Có sẵn" selected>Có sẵn</option>
+                                <option value="Đang mượn">Đang mượn</option>
+                                <option value="Hỏng">Hỏng</option>
+                                <option value="Thất lạc">Thất lạc</option>
+                            </select>
+                            <span asp-validation-for="TrangThai" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* --- CỘT 2: TÀI LIỆU GỐC --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-book me-1'></i> Liên kết Tài liệu
+                        </h6>
+
+                        <div class="mb-3">
+                            <label asp-for="MaTl" class="form-label">Chọn Tài liệu gốc <span class="text-danger">*</span></label>
+                            <select asp-for="MaTl" class="form-select" asp-items="ViewBag.MaTl">
+                                <option value="">-- Chọn Tài liệu (Mã - Tên) --</option>
+                            </select>
+                            <span asp-validation-for="MaTl" class="text-danger"></span>
+                        </div>
+
+                        <p class="text-muted fst-italic mt-4">
+                            <i class='bx bx-info-circle me-1'></i>
+                            Lưu ý: Nếu bạn tạo bản sao từ trang Chi tiết Tài liệu, Mã Tài liệu đã được điền sẵn.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-start gap-3">
+                    <button type="submit" class="btn btn-primary" id="submitButton">
+                        <i class="bx bx-plus me-1"></i> Tạo Bản sao
+                    </button>
+
+                    <a asp-action="Index" asp-route-id="@ViewBag.SelectedMaTl" class="btn btn-secondary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // ✅ HÀM HIỂN THỊ TOAST
+        function showToast(message, type = 'success') {
+            const alertPlaceholder = document.getElementById('alertPlaceholder');
+            if (!alertPlaceholder) return;
+
+            alertPlaceholder.innerHTML = '';
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible fade show" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('');
+
+            alertPlaceholder.appendChild(wrapper);
+
+            if (type !== 'danger') {
+                setTimeout(() => {
+                    $(wrapper).alert('close');
+                }, 5000);
+            }
+        }
+
+        // ✅ XỬ LÝ SUBMIT FORM
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('createBanSaoForm');
+            const submitButton = document.getElementById('submitButton');
+
+            if (form && submitButton) {
+                form.addEventListener('submit', function(e) {
+                    // Kiểm tra validation
+                    if ($(form).valid()) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Đang tạo...';
+                    }
+                });
+            }
+
+            // ✅ HIỂN THỊ THÔNG BÁO TỪ TEMPDATA
+            @if (TempData["StatusMessage"] != null && TempData["Message"] != null)
+            {
+                    <text>
+                    setTimeout(function() {
+                        showToast('@Html.Raw(TempData["Message"])', '@TempData["StatusMessage"]');
+
+                        // Kích hoạt lại nút submit nếu có lỗi
+                        if ('@TempData["StatusMessage"]' === 'danger') {
+                            if (submitButton) {
+                                submitButton.disabled = false;
+                                submitButton.innerHTML = '<i class="bx bx-plus me-1"></i> Tạo Bản sao';
+                            }
+                        }
+                    }, 100);
+                    </text>
+            }
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

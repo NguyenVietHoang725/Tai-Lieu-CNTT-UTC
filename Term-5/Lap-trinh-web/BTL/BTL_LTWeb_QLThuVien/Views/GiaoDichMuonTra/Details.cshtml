@@ -1,0 +1,192 @@
+﻿@model Library_Manager.Models.TGiaoDichMuonTra
+
+@{
+    ViewData["Title"] = "Chi tiết Giao dịch: " + Model.MaGd;
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLM");
+}
+
+@* Logic cho Badge Trạng Thái (Copy từ Index) *@
+@{
+    var trangThai = Model.TrangThai;
+    var badgeClass = "bg-label-secondary"; // Mặc định
+    if (trangThai == "Đã trả") { badgeClass = "bg-label-success"; }
+    else if (trangThai == "Quá hạn") { badgeClass = "bg-label-danger"; }
+    else if (trangThai == "Đang mượn") { badgeClass = "bg-label-warning"; }
+}
+
+@{
+    // Lấy đường dẫn và query string của trang hiện tại
+    var currentUrl = Context.Request.Path + Context.Request.QueryString;
+}
+
+
+@* ========================================================================
+    KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+    ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-detail fs-2 me-2'></i> Chi tiết Giao dịch Mượn/Trả
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH DỮ LIỆU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Hiển thị Mã Giao dịch *@
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                Thông tin Giao dịch
+            </h5>
+            <small class="text-muted">Mã GD: <span class="fw-bold">@Model.MaGd</span></small>
+        </div>
+
+        @* BODY CỦA CARD: CHIA THÀNH CÁC PHẦN DÙNG GRID (Gọn gàng 2 cột) *@
+        <div class="card-body">
+
+            @* === 1. THÔNG TIN GIAO DỊCH === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-transfer-alt me-1'></i> Thông tin Giao dịch
+            </h6>
+            <div class="row mb-4">
+
+                @* Cột 1 *@
+                <div class="col-md-6">
+                    @* Mã GD *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Giao dịch</label>
+                        <p class="text-primary fw-bold mb-0">@Model.MaGd</p>
+                    </div>
+                    @* Trạng Thái *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Trạng Thái</label>
+                        <p class="mb-0"><span class="badge @badgeClass fs-6">@trangThai</span></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Tài liệu mượn</label>
+                        <a asp-controller="GiaoDich_BanSao"
+                           asp-action="Details"
+                           asp-route-id="@Model?.MaGd"
+                           asp-route-returnUrl="@Context.Request.Path"
+                           ** class="btn btn-warning">
+                            <i class='bx bx-group me-1'></i> Xem danh sách (@Model.TGiaoDichBanSao.Count)
+                        </a>
+                    </div>
+                </div>
+
+                @* Cột 2 *@
+                <div class="col-md-6">
+                    @* Ngày Mượn *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Ngày Mượn</label>
+                        <p class="mb-0">@Model.NgayMuon.ToString("dd/MM/yyyy")</p>
+                    </div>
+                    @* Ngày Hẹn Trả *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Ngày Hẹn Trả</label>
+                        <p class="mb-0">@Model.NgayHenTra.ToString("dd/MM/yyyy")</p>
+                    </div>
+                    @* Ngày Trả (Thực tế) *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Ngày Trả (Thực tế)</label>
+                        <p class="mb-0">@(Model.NgayTra?.ToString("dd/MM/yyyy") ?? "(Chưa trả)")</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+            @* === 2. THÔNG TIN BÊN LIÊN QUAN === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-user-pin me-1'></i> Thông tin Các bên
+            </h6>
+            <div class="row">
+
+                @* Cột 1 (Bạn đọc) *@
+                <div class="col-md-6">
+                    @* Tên Bạn đọc *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Bạn đọc mượn</label>
+                        <p class="fw-semibold mb-0">
+                            @(Model.MaTbdNavigation?.MaBdNavigation != null ?
+                                                        (Model.MaTbdNavigation.MaBdNavigation.HoDem + " " + Model.MaTbdNavigation.MaBdNavigation.Ten) :
+                                                        "(Không rõ)")
+
+                            @* Link to Reader *@
+                            @if (Model.MaTbdNavigation?.MaBd != null)
+                            {
+                                <a asp-controller="BanDoc" 
+                                    asp-action="Details" 
+                                    asp-route-id="@Model.MaTbdNavigation.MaBd"
+                                    asp-route-returnUrl="@Context.Request.Path"
+                                   class="btn btn-xs btn-outline-info ms-2" title="Xem chi tiết Bạn đọc">
+                                    <i class='bx bx-user'></i>
+                                </a>
+                            }
+                        </p>
+                    </div>
+                    @* Mã Thẻ BD *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Thẻ Bạn đọc (sử dụng)</label>
+                        <p class="mb-0">
+                            @Model.MaTbd
+                            @* Link to Card *@
+                            <a asp-controller="TheBanDoc" 
+                            asp-action="Details" 
+                            asp-route-id="@Model.MaTbd"
+                               asp-route-returnUrl="@currentUrl"
+                               class="btn btn-xs btn-outline-info ms-2" title="Xem chi tiết Thẻ">
+                                <i class="bx bx-id-card"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                @* Cột 2 (Nhân viên) *@
+                <div class="col-md-6">
+                    @* Nhân viên xử lý *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Nhân viên xử lý</label>
+                        <p class="mb-0">
+                            @* @Model.MaTk *@
+                            @(Model.MaTkNavigation?.MaNvNavigation != null ?
+                                                        (Model.MaTkNavigation.MaNvNavigation.HoDem + " " + Model.MaTkNavigation.MaNvNavigation.Ten) :
+                                                        "(Không rõ)")
+                            @* Link to Staff Account *@
+                            @if (Model.MaTkNavigation?.MaNv != null)
+                            {
+                                <a asp-controller="NhanVien" 
+                                asp-action="Details" 
+                                asp-route-id="@Model.MaTkNavigation.MaNv"
+                                asp-route-returnUrl="@Context.Request.Path"
+                                class="btn btn-xs btn-outline-secondary ms-2" title="Xem chi tiết Nhân viên">
+                                    <i class="bx bx-user-circle"></i>
+                                </a>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div> @* End card-body *@
+
+        @* FOOTER CỦA CARD: Chứa các nút Hành động (ĐÃ CHỈNH SỬA) *@
+        <div class="card-footer border-top pt-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <a asp-action="Index"
+                   class="btn btn-outline-primary">
+                    <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                </a>
+                <a asp-action="Edit"
+                   asp-route-id="@Model?.MaGd"
+                   class="btn btn-primary @(canEdit ? "" : "disabled")">
+                    <i class="bx bx-pencil me-1"></i> Sửa giao dịch
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+

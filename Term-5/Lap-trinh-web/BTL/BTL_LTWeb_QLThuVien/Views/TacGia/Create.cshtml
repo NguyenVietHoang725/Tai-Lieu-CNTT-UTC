@@ -1,0 +1,94 @@
+﻿@model Library_Manager.Models.TTacGia
+
+@{
+    ViewData["Title"] = "Tạo mới Tác giả";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN HIỂN THỊ THÔNG BÁO TỪ TEMP DATA (Nếu có lỗi từ Controller trả về) --- *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="alertMessage" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-plus fs-2 me-2 border p-1 rounded-2'></i> Tạo mới thông tin Tác giả
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH BIỂU MẪU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tiêu đề cố định *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Nhập thông tin Tác giả mới</h5>
+        </div>
+
+        <form asp-action="Create">
+            @* BODY CỦA CARD: Chứa Biểu mẫu nhập liệu *@
+            <div class="card-body">
+
+                @* Phần hiển thị lỗi tổng thể (Nếu cần) *@
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <div class="row">
+                    <div class="col-md-6 pt-3">
+
+                        @* Trường chọn Quốc gia (Mã Quốc gia sẽ dùng để sinh Mã Tác giả) *@
+                        <div class="mb-3">
+                            <label asp-for="MaQg" class="form-label">Quốc gia</label>
+                            <select asp-for="MaQg" class="form-select" asp-items="ViewBag.MaQg">
+                                <option value="" disabled selected>-- Chọn Quốc gia --</option>
+                            </select>
+                            <span asp-validation-for="MaQg" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            @* Họ Đệm *@
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="HoDem" class="form-label">Họ Đệm</label>
+                                <input asp-for="HoDem" class="form-control" />
+                                <span asp-validation-for="HoDem" class="text-danger"></span>
+                            </div>
+
+                            @* Tên *@
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Ten" class="form-label">Tên</label>
+                                <input asp-for="Ten" class="form-control" />
+                                <span asp-validation-for="Ten" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> @* End card-body *@
+
+            @* FOOTER CỦA CARD: Nút Tạo mới và Quay lại *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI DANH SÁCH (TRÁI) - Dùng btn-outline-primary *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* NÚT TẠO MỚI (PHẢI) *@
+                    <button type="submit" value="Create" class="btn btn-primary">
+                        <i class="bx bx-plus me-1"></i> Tạo mới
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div> @* End card *@
+</div> @* End container-xxl *@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

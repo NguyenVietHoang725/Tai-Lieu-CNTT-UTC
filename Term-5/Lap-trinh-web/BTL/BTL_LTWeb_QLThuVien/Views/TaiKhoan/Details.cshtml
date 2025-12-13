@@ -1,0 +1,223 @@
+﻿@model Library_Manager.Models.TTaiKhoan
+
+@{
+    ViewData["Title"] = "Chi tiết Tài khoản: " + Model.TenDangNhap;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var currentUrl = Context.Request.Path + Context.Request.QueryString;
+}
+
+
+@* ========================================================================
+    KHỐI 1: LOGIC PHÂN QUYỀN VÀ BADGE
+    ======================================================================== *@
+@{
+    var userRole = Context.Session.GetString("UserRole");
+
+    var currentMaTk = Context.Session.GetString("MaTk");
+    bool isSelfAccount = (currentMaTk == Model.MaTk);
+
+    bool canEdit = (userRole == "QTV" || isSelfAccount);
+
+    bool isSelfViewFromHome = isSelfAccount && string.IsNullOrEmpty(ViewBag.ReturnUrl);
+
+    // Logic cho Badge Trạng Thái
+    var trangThai = Model.TrangThai;
+    var badgeTrangThaiClass = trangThai == "Hoạt động" ? "bg-label-success" : "bg-label-danger";
+
+    // Logic cho Badge Vai Trò
+    var vaiTro = Model.MaVtNavigation?.MaVt; // Giả sử MaVt là "QTV", "QLB", "NV"
+    var tenVaiTro = Model.MaVtNavigation?.TenVt ?? "(Chưa gán)";
+    var badgeVaiTroClass = "bg-label-secondary"; // Mặc định
+    if (vaiTro == "QTV") { badgeVaiTroClass = "bg-label-primary"; }
+    else if (vaiTro == "QLB") { badgeVaiTroClass = "bg-label-info"; }
+    else if (vaiTro == "QLT") { badgeVaiTroClass = "bg-label-warning"; }
+    else if (vaiTro == "QLM") { badgeVaiTroClass = "bg-label-primary"; }
+}
+
+
+@* ========================================================================
+    KHỐI 2: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+    ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 2.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bxs-user-detail fs-2 me-2 border p-1 rounded-2'></i> Chi tiết Tài khoản
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH DỮ LIỆU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Hiển thị tên tài khoản và ID *@
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                Thông tin của <span class="text-primary fw-bold">@Model.TenDangNhap</span>
+            </h5>
+            <small class="text-muted">Mã TK: <span class="fw-bold">@Model.MaTk</span></small>
+        </div>
+
+        @* BODY CỦA CARD: CHIA THÀNH 2 CỘT *@
+        <div class="card-body">
+            <div class="row">
+
+                @* --- CỘT 1: THÔNG TIN ĐĂNG NHẬP --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bxs-user-account me-1'></i> Thông tin Đăng nhập
+                    </h6>
+
+                    @* Mã Tài khoản *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Tài khoản</label>
+                        <p class="fw-semibold mb-0">@Model.MaTk</p>
+                    </div>
+
+                    @* Tên Đăng nhập *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Tên Đăng nhập</label>
+                        <p class="fw-semibold mb-0">@Model.TenDangNhap</p>
+                    </div>
+
+                    @* Mật khẩu (Dùng nút trong suốt) *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mật khẩu (Đã Hash)</label>
+                        <div class="input-group w-75">
+                            <input id="MatKhauHashed" value="@Model.MatKhau" class="form-control" type="password" readonly />
+
+                            @* Nút trong suốt, không viền *@
+                            <button type="button" class="btn border-0 bg-transparent text-secondary show-hide-password"
+                                    title="Hiển thị/Ẩn mật khẩu" style="box-shadow: none;">
+                                <i class="bx bx-hide"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    @* Ngày tạo *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Ngày tạo</label>
+                        <p class="mb-0">@Model.NgayTao.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+
+                @* --- CỘT 2: QUYỀN & LIÊN KẾT --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-sitemap me-1'></i> Quyền & Liên kết
+                    </h6>
+
+                    @* Vai trò *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Vai trò</label>
+                        <p class="mb-0"><span class="badge @badgeVaiTroClass fs-6">@tenVaiTro</span></p>
+                    </div>
+
+                    @* Trạng thái *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Trạng thái</label>
+                        <p class="mb-0"><span class="badge @badgeTrangThaiClass fs-6">@trangThai</span></p>
+                    </div>
+
+                    @* Nhân viên liên kết *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Nhân viên liên kết</label>
+                        @if (Model.MaNvNavigation != null)
+                        {
+                            <p class="mb-0">
+                                @Model.MaNvNavigation.HoDem @Model.MaNvNavigation.Ten
+
+                                <a asp-controller="NhanVien"
+                                   asp-action="Details"
+                                   asp-route-id="@Model.MaNv"
+                                   asp-route-returnUrl="@currentUrl"
+                                   class="btn btn-xs btn-outline-info ms-2 py-0 px-1"
+                                   data-bs-toggle="tooltip" title="Xem chi tiết Nhân viên">
+                                    <i class='bx bx-link-external'></i>
+                                </a>
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="mb-0 text-muted fst-italic">(Chưa liên kết)</p>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @* FOOTER CỦA CARD: Chứa các nút Hành động *@
+        <div class="card-footer border-top pt-3">
+            <div class="d-flex justify-content-between">
+
+                @* KHỐI NÚT TRÁI (Quay lại) - Dùng btn-outline-primary *@
+                <div>
+                    @if (isSelfViewFromHome) // <--- LOGIC MỚI: Nếu xem tài khoản của chính mình TỪ HOME
+                    {
+                        // Chỉ hiển thị nút Quay lại về Trang chủ
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-primary">
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại Trang chủ
+                        </a>
+                    }
+                    else if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+                    {
+                        // Quay lại URL trước đó (Nếu có)
+                        <a href="@ViewBag.ReturnUrl" class="btn btn-outline-primary">
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại
+                        </a>
+                    }
+                    else
+                    {
+                        // Quay lại Danh sách Tài khoản (Mặc định cho QTV)
+                        <a asp-action="Index" class="btn btn-outline-primary">
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                        </a>
+                    }
+                </div>
+
+                @* KHỐI NÚT PHẢI (Sửa) - Dùng btn-primary *@
+                @if (!isSelfViewFromHome) // <--- LOGIC MỚI: Chỉ hiển thị nút Sửa nếu KHÔNG phải chế độ xem nhanh từ Home
+                {
+                    <a asp-action="Edit" asp-route-id="@Model?.MaTk"
+                       asp-route-returnUrl="@currentUrl"
+                       class="btn btn-primary @(canEdit ? "" : "disabled")">
+                        <i class="bx bx-pencil me-1"></i> Sửa tài khoản
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Hàm bật/tắt hiển thị mật khẩu (Lấy từ view Create)
+        function setupPasswordToggle() {
+            document.querySelectorAll('.show-hide-password').forEach(toggleButton => {
+
+                // Tìm input tương ứng (nằm ngay trước nút button trong input-group)
+                const passwordInput = toggleButton.previousElementSibling;
+
+                if (passwordInput && passwordInput.tagName === 'INPUT') {
+                    toggleButton.addEventListener('click', function () {
+                        const icon = toggleButton.querySelector('i');
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            icon.className = 'bx bx-show';
+                        } else {
+                            passwordInput.type = 'password';
+                            icon.className = 'bx bx-hide';
+                        }
+                    });
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Áp dụng hàm toggle cho trường mật khẩu (đã hash)
+            setupPasswordToggle();
+        });
+    </script>
+}

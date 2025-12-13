@@ -1,0 +1,96 @@
+﻿@model Library_Manager.Models.TTacGia
+
+@{
+    // Tiêu đề trang, sử dụng Họ tên Tác giả để hiển thị
+    ViewData["Title"] = "Chi tiết Tác giả: " + Model.HoDem + " " + Model.Ten;
+
+    // Logic kiểm tra quyền chỉnh sửa/xóa (Giả định QTV/QLS có quyền)
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLS");
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-detail bxs-pen fs-2 me-2'></i> Chi tiết Tác giả
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH DỮ LIỆU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Hiển thị Họ tên Tác giả và Mã TG *@
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                Thông tin chi tiết của <span class="text-primary fw-bold">@Model.HoDem @Model.Ten</span>
+            </h5>
+            <small class="text-muted">Mã TG: <span class="fw-bold">@Model.MaTg</span></small>
+        </div>
+
+        @* BODY CỦA CARD: CHIA THÀNH CÁC PHẦN DÙNG GRID (Gọn gàng 2 cột) *@
+        <div class="card-body">
+
+            @* === 1. THÔNG TIN CƠ BẢN === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-user me-1'></i> Thông tin Tác giả
+            </h6>
+            <div class="row mb-4">
+
+                @* Cột 1 *@
+                <div class="col-md-6">
+                    @* Mã Tác giả *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Tác giả</label>
+                        <p class="text-primary fw-bold mb-0">@Model.MaTg</p>
+                    </div>
+
+                    @* Họ Đệm *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Họ Đệm</label>
+                        <p class="fw-semibold mb-0">@Model.HoDem</p>
+                    </div>
+                </div>
+
+                @* Cột 2 *@
+                <div class="col-md-6">
+                    @* Tên *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Tên</label>
+                        <p class="fw-semibold mb-0">@Model.Ten</p>
+                    </div>
+
+                    @* Quốc gia (Mới) *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Quốc gia</label>
+                        <p class="fw-semibold mb-0">
+                            @(Model.MaQgNavigation != null ? Model.MaQgNavigation.TenQg : "Chưa xác định")
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        @* FOOTER CỦA CARD: Chứa các nút Hành động *@
+        <div class="card-footer border-top pt-3">
+            @* ĐÃ SỬA: Thêm class justify-content-between để đẩy hai nút ra hai phía *@
+            <div class="d-flex justify-content-between">
+
+                @* 1. Nút Quay lại (ĐƯA LÊN TRƯỚC, BÊN TRÁI) *@
+                <a asp-action="Index" class="btn btn-outline-primary">
+                    <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                </a>
+
+                @* 2. Nút Sửa (ĐƯA RA SAU, BÊN PHẢI) *@
+                <a asp-action="Edit" asp-route-id="@Model?.MaTg" class="btn btn-primary @(canEdit ? "" : "disabled")">
+                    <i class="bx bx-pencil me-1"></i> Sửa thông tin
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</div>

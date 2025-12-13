@@ -1,0 +1,91 @@
+﻿@model Library_Manager.Models.TTaiLieuTacGia
+
+@{
+    ViewData["Title"] = "Tạo Liên kết Tác giả - Tài liệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-link-alt fs-2 me-2 border p-1 rounded-2'></i> Tạo Liên kết Tác giả mới
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH BIỂU MẪU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tiêu đề cố định *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Thiết lập mối quan hệ giữa Tài liệu và Tác giả</h5>
+        </div>
+
+        <form asp-action="Create">
+            @* BODY CỦA CARD: Chứa Biểu mẫu nhập liệu *@
+            <div class="card-body">
+
+                @* Phần hiển thị lỗi tổng thể *@
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                <div class="row">
+                    @* --- CỘT CHÍNH: CHỌN VÀ ĐẶT VAI TRÒ (Dùng col-md-6 để gọn) --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-group me-1'></i> Thiết lập liên kết
+                        </h6>
+
+                        @* Mã Tài liệu (Select) *@
+                        <div class="mb-3">
+                            <label asp-for="MaTl" class="form-label">Chọn Tài liệu</label>
+                            <select asp-for="MaTl" class="form-select" asp-items="ViewBag.MaTl">
+                                <option value="">-- Chọn Tài liệu --</option>
+                            </select>
+                            <span asp-validation-for="MaTl" class="text-danger"></span>
+                        </div>
+
+                        @* Mã Tác giả (Select) *@
+                        <div class="mb-3">
+                            <label asp-for="MaTg" class="form-label">Chọn Tác giả</label>
+                            <select asp-for="MaTg" class="form-select" asp-items="ViewBag.MaTg">
+                                <option value="">-- Chọn Tác giả --</option>
+                            </select>
+                            <span asp-validation-for="MaTg" class="text-danger"></span>
+                        </div>
+
+                        @* Vai trò *@
+                        <div class="mb-3">
+                            <label asp-for="VaiTro" class="form-label">Vai trò</label>
+                            <input asp-for="VaiTro" class="form-control" placeholder="Ví dụ: Tác giả chính, Dịch giả..." />
+                            <span asp-validation-for="VaiTro" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div> @* End card-body *@
+
+            @* FOOTER CỦA CARD: Nút Tạo mới và Quay lại *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-start gap-3">
+
+                    @* NÚT TẠO MỚI *@
+                    <button type="submit" value="Create" class="btn btn-primary">
+                        <i class="bx bx-plus me-1"></i> Tạo liên kết
+                    </button>
+
+                    @* NÚT QUAY LẠI DANH SÁCH *@
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div> @* End card *@
+</div> @* End container-xxl *@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,109 @@
+﻿@model Library_Manager.Models.TTaiLieu
+
+@{
+    ViewData["Title"] = "Xóa Tài liệu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* ========================================================================
+   KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+   ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-danger mb-4">
+        <i class='bx bx-trash fs-2 me-2 border p-1 rounded-2'></i> Xác nhận xóa Tài liệu
+    </h1>
+
+    @* --- KHỐI CẢNH BÁO XÓA --- *@
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">CẢNH BÁO QUAN TRỌNG!</h4>
+        <p>Bạn đang chuẩn bị **xóa vĩnh viễn** tài liệu **@Model.TenTl** (Mã: **@Model.MaTl**). Hành động này không thể hoàn tác.</p>
+        <p class="mb-0">Vui lòng kiểm tra kỹ thông tin bên dưới trước khi xác nhận.</p>
+    </div>
+
+    @* --- KHỐI: CARD BAO QUANH THÔNG TIN CHI TIẾT --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Tên tài liệu *@
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Chi tiết tài liệu: <span class="text-danger fw-bold">@Model.TenTl</span></h5>
+        </div>
+
+        @* BODY CỦA CARD: Hiển thị chi tiết (Dùng cấu trúc 2 cột như Details) *@
+        <div class="card-body">
+
+            <div class="row">
+
+                @* --- CỘT 1: THÔNG TIN XUẤT BẢN --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-file me-1'></i> Thông số chính
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Mã Tài liệu:</dt>
+                        <dd class="col-sm-8 fw-bold text-danger">@Model.MaTl</dd>
+
+                        <dt class="col-sm-4 text-muted">Nhà xuất bản:</dt>
+                        <dd class="col-sm-8">@Model.MaNxbNavigation?.TenNxb</dd>
+
+                        <dt class="col-sm-4 text-muted">Năm/Lần XB:</dt>
+                        <dd class="col-sm-8">@Model.NamXuatBan (@Model.LanXuatBan)</dd>
+
+                        <dt class="col-sm-4 text-muted">Số Trang:</dt>
+                        <dd class="col-sm-8">@Model.SoTrang</dd>
+
+                        <dt class="col-sm-4 text-muted">Khổ cỡ:</dt>
+                        <dd class="col-sm-8">@Model.KhoCo</dd>
+                    </dl>
+                </div>
+
+                @* --- CỘT 2: PHÂN LOẠI & LIÊN KẾT --- *@
+                <div class="col-md-6 pt-3">
+                    <h6 class="text-muted text-uppercase mb-3 mt-0">
+                        <i class='bx bx-category me-1'></i> Phân loại & Tổng hợp
+                    </h6>
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 text-muted">Thể loại:</dt>
+                        <dd class="col-sm-8">@Model.MaThLNavigation?.TenThL</dd>
+
+                        <dt class="col-sm-4 text-muted">Ngôn ngữ:</dt>
+                        <dd class="col-sm-8">@Model.MaNnNavigation?.TenNn</dd>
+
+                        <dt class="col-sm-4 text-muted">Định dạng:</dt>
+                        <dd class="col-sm-8">@Model.MaDdNavigation?.TenDd</dd>
+
+                        <dt class="col-sm-4 text-muted">Tài khoản tạo:</dt>
+                        <dd class="col-sm-8">@Model.MaTkNavigation?.TenDangNhap</dd>
+
+                        <dt class="col-sm-4 text-muted">Tổng Bản sao:</dt>
+                        <dd class="col-sm-8"><span class="badge bg-label-info">@Model.TBanSao.Count</span></dd>
+                    </dl>
+                </div>
+            </div>
+
+        </div> @* End card-body *@
+
+        @* FOOTER CỦA CARD: Nút Xác nhận và Quay lại (Trang Delete) *@
+        <div class="card-footer border-top pt-3">
+            <form asp-action="Delete">
+                @* Trường ẩn cần thiết để thực hiện hành động Delete *@
+                <input type="hidden" asp-for="MaTl" />
+                <div class="d-flex justify-content-between">
+
+                    @* NÚT QUAY LẠI (TRÁI) - Đã sửa style *@
+                    <a asp-action="Index" class="btn btn-outline-primary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+
+                    @* NÚT XÁC NHẬN XÓA (PHẢI CÙNG) *@
+                    <button type="submit" value="Delete" class="btn btn-danger">
+                        <i class="bx bx-trash me-1"></i> XÁC NHẬN XÓA
+                    </button>
+
+                </div>
+            </form>
+        </div>
+
+    </div> @* End card *@
+</div> @* End container-xxl *@

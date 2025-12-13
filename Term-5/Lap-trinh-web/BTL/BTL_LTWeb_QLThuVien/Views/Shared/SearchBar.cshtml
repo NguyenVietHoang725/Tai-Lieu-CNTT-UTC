@@ -1,0 +1,23 @@
+﻿<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+    <div class="navbar-nav align-items-center">
+        <div class="nav-item d-flex align-items-center">
+
+            @* 
+                Form này giờ sẽ submit về action "Index" của Controller hiện tại.
+            *@
+            <form asp-action="Index" method="get" class="d-flex align-items-center">
+                <button type="submit" class="btn btn-icon me-2 btn-label-primary">
+                    <span class="icon-base bx bx-search"></span>
+                </button>
+
+                <input type="text"
+                       name="searchString"
+                       value="@ViewBag.CurrentFilter"
+                       class="form-control border-0 shadow-none"
+                       placeholder="Tìm kiếm..."
+                       aria-label="Tìm kiếm..." />
+            </form>
+
+        </div>
+    </div>
+</div>

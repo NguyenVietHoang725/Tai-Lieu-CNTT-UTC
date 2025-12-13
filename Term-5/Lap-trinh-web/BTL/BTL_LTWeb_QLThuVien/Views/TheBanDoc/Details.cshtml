@@ -1,0 +1,175 @@
+﻿@model Library_Manager.Models.TTheBanDoc
+
+@{
+    ViewData["Title"] = "Chi tiết Thẻ: " + Model.MaTbd;
+}
+
+@* Logic hiển thị badge Trạng Thái *@
+@{
+    var trangThai = Model.TrangThai;
+    var badgeClass = "bg-label-secondary"; // Mặc định
+
+    if (trangThai == "Hoạt động" || trangThai == "Còn hạn")
+    {
+        badgeClass = "bg-label-success";
+    }
+    else if (trangThai == "Đã khóa" || trangThai == "Hết hạn" || trangThai == "Khóa")
+    {
+        badgeClass = "bg-label-danger";
+    }
+}
+@{
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLB");
+}
+
+@{
+    // Lấy đường dẫn và query string của trang hiện tại
+    var currentUrl = Context.Request.Path + Context.Request.QueryString;
+}
+
+@* ========================================================================
+    KHỐI 1: CẤU TRÚC BỐ CỤC CHÍNH (CONTAINER)
+    ======================================================================== *@
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* --- PHẦN 1.1: TIÊU ĐỀ TRANG --- *@
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-detail bxs-id-card fs-2 me-2'></i> Chi tiết Thẻ Bạn đọc
+    </h1>
+
+    @* --- KHỐI: CARD BAO QUANH DỮ LIỆU --- *@
+    <div class="card">
+
+        @* HEADER CỦA CARD: Hiển thị Mã Thẻ và Tên Bạn đọc *@
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                Thông tin chi tiết của Thẻ <span class="text-primary fw-bold">@Model.MaTbd</span>
+            </h5>
+            <small class="text-muted">
+                Bạn đọc: <span class="fw-bold">@(Model.MaBdNavigation != null ? Model.MaBdNavigation.HoDem + " " + Model.MaBdNavigation.Ten : "(Không rõ)")</span>
+            </small>
+        </div>
+
+        @* BODY CỦA CARD: CHIA THÀNH CÁC PHẦN DÙNG GRID *@
+        <div class="card-body">
+
+            @* === 1. THÔNG TIN THẺ === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-info-circle me-1'></i> Thông tin Thẻ
+            </h6>
+            <div class="row mb-4">
+
+                @* Cột 1 *@
+                <div class="col-md-6">
+                    @* Mã Thẻ *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Thẻ</label>
+                        <p class="text-primary fw-bold mb-0">@Model.MaTbd</p>
+                    </div>
+                    @* Ngày Cấp *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Ngày Cấp</label>
+                        <p class="mb-0">@Model.NgayCap.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+
+                @* Cột 2 *@
+                <div class="col-md-6">
+                    @* Trạng Thái *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Trạng Thái</label>
+                        <p class="mb-0">
+                            <span class="badge @badgeClass fs-6">@trangThai</span>
+                        </p>
+                    </div>
+
+                    @* Ngày Hết Hạn *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Ngày Hết Hạn</label>
+                        <p class="mb-0">@Model.NgayHetHan?.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+
+            @* === 2. THÔNG TIN BẠN ĐỌC SỞ HỮU === *@
+            <h6 class="text-muted text-uppercase mb-3">
+                <i class='bx bx-user me-1'></i> Bạn đọc sở hữu
+            </h6>
+            <div class="row">
+                @* Cột 1 (Thông tin) *@
+                <div class="col-md-6">
+                    @* Họ Tên Bạn đọc *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Họ Tên Bạn đọc</label>
+                        <p class="fw-semibold mb-0">@(Model.MaBdNavigation != null ? Model.MaBdNavigation.HoDem + " " + Model.MaBdNavigation.Ten : "(Không rõ)")</p>
+                    </div>
+                    @* Mã Bạn đọc *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Mã Bạn đọc</label>
+                        <p class="mb-0">@Model.MaBd</p>
+                    </div>
+                </div>
+
+                @* Cột 2 (Hành động) *@
+                <div class="col-md-6">
+                    @* Xem Chi tiết Người tạo Thẻ Bạn đọc *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">Người tạo</label>
+                        <p class="fw-semibold mb-0">
+                            @(Model.MaTkNavigation?.MaNvNavigation != null ? (Model.MaTkNavigation.MaNvNavigation.HoDem + " " + Model.MaTkNavigation.MaNvNavigation.Ten) : "(Không rõ)")
+                        </p>
+                    </div>
+                    @* Xem Chi tiết Bạn đọc *@
+                    <div class="mb-3">
+                        <label class="form-label d-block text-secondary">
+                            Xem Chi tiết Bạn đọc
+                            <p class="mb-0">
+                                <a asp-controller="BanDoc"
+                                   asp-action="Details"
+                                   asp-route-id="@Model.MaBd"
+                                   asp-route-returnUrl="@currentUrl"
+                                   class="btn btn-sm btn-outline-info">
+                                    <i class="bx bx-link-external me-1"></i> Xem chi tiết
+                                </a>
+                            </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        @* FOOTER CỦA CARD: Chứa các nút Hành động (ĐÃ SỬA BỐ CỤC) *@
+        <div class="card-footer border-top pt-3">
+            <div class="d-flex justify-content-between">
+
+                @* Nút Quay lại (TRÁI) *@
+                <div>
+                    @if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+                    {
+                        <a href="@ViewBag.ReturnUrl" class="btn btn-outline-primary">
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Index" class="btn btn-outline-primary">
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                        </a>
+                    }
+                </div>
+
+                @* KHỐI NÚT PHẢI (Sửa) *@
+                <div class="d-flex gap-2">
+                    <a asp-action="Edit" asp-route-id="@Model?.MaTbd" class="btn btn-primary @(canEdit ? "" : "disabled")">
+                        <i class="bx bx-pencil me-1"></i> Sửa thông tin thẻ
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

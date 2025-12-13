@@ -1,0 +1,107 @@
+﻿/* wwwroot/Assets/css/custom-filter.css */
+
+.filterable-header {
+    position: relative;
+    cursor: pointer;
+    padding-right: 25px;
+}
+
+    .filterable-header::after {
+        content: '▼';
+        font-size: 0.7em;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.6;
+    }
+
+.filter-active-badge {
+    position: absolute;
+    right: 22px;
+    top: 10px;
+    width: 8px;
+    height: 8px;
+    background-color: #0d6efd;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.filter-dropdown {
+    color: #212529;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease;
+    z-index: 9999;
+    width: 260px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.filter-dropdown.show {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.filterable-header.active .filter-dropdown {
+    display: block;
+}
+
+.filter-dropdown-header {
+    padding: 12px 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #e9ecef;
+    background-color: #f8f9fa;
+}
+
+.filter-options {
+    max-height: 300px;
+    overflow-y: auto;
+   /* overflow-y: auto;
+    pointer-events: auto;*/
+}
+
+.filter-option {
+    color: #212529;
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+
+    .filter-option:hover {
+        background-color: #f0f3f5;
+    }
+
+.filter-option-checkbox {
+    display : none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #adb5bd;
+    border-radius: 3px;
+    margin-right: 10px;
+
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.filter-option.selected .filter-option-checkbox {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+    .filter-option.selected .filter-option-checkbox::before {
+        content: '✔';
+        color: #ffffff;
+        font-size: 12px;
+    }
+
+.filter-option span {
+    white-space: normal;
+}

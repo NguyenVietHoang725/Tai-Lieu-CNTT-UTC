@@ -1,0 +1,177 @@
+﻿@using PagedList.Core.Mvc
+@model PagedList.Core.IPagedList<Library_Manager.Models.TNhaXuatBan>
+
+@{
+    ViewData["Title"] = "Quản lý Nhà Xuất Bản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+    // Lấy thông tin cho bộ lọc
+    var selectedCountry = ViewBag.SelectedCountry as string;
+    var countries = ViewBag.Countries as Dictionary<string, string>;
+}
+
+@section Styles {
+    @* Giả định bạn có CSS cho bộ lọc, tương tự như custom-filter.css *@
+    <link rel="stylesheet" href="~/Assets/css/custom-filter.css" />
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <partial name="_DanhMuc" />
+
+    @* --- PHẦN HIỂN THỊ THÔNG BÁO TỪ TEMP DATA --- *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="indexAlertMessage" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-building fa-border fs-1 me-2'></i> Thông tin Nhà Xuất Bản
+    </h1>
+
+    <div class="card">
+        <div class="card-header border-bottom">
+            <div class="d-flex justify-content-between align-items-center">
+
+                <div class="flex-grow-1 me-3">
+                    <partial name="SearchBar" />
+                </div>
+
+                <div class="flex-shrink-0 ">
+                    <p class="m-0">
+                        <a asp-action="Create" class="btn btn-primary text-nowrap @(canEdit ? "" : "disabled")">
+                            <i class="bx bx-plus me-1"></i> Thêm Nhà Xuất Bản mới
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered text-nowrap table-hover" id="myTable">
+
+                <thead id="myTableHead">
+                    <tr>
+                        <th style="min-width: 100px; white-space: nowrap;">Mã NXB</th>
+                        <th>Tên Nhà Xuất Bản</th>
+
+                        @* --- CỘT LỌC QUỐC GIA --- *@
+                        <th class="filterable-header" data-filter="maQg" style="min-width: 120px;">
+                            Quốc gia
+                            @if (!string.IsNullOrEmpty(selectedCountry))
+                            {
+                                <span class="filter-active-badge"></span>
+                            }
+                            <div class="filter-dropdown">
+                                <div class="filter-dropdown-header">Lọc theo Quốc gia</div>
+                                <div class="filter-options">
+                                    <div class="filter-option @(string.IsNullOrEmpty(selectedCountry) ? "selected" : "")" data-value="">
+                                        <div class="filter-option-checkbox"></div>
+                                        <span>Tất cả</span>
+                                    </div>
+                                    @if (countries != null)
+                                    {
+                                        @foreach (var kvp in countries)
+                                        {
+                                            <div class="filter-option @(selectedCountry == kvp.Key ? "selected" : "")" data-value="@kvp.Key">
+                                                <div class="filter-option-checkbox"></div>
+                                                <span>@kvp.Value</span>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </th>
+                        @* -------------------------------- *@
+
+                        <th style="min-width: 120px;">Hành động</th>
+                    </tr>
+                </thead>
+
+                @* --- PHẦN 3.2: NỘI DUNG BẢNG (SỬ DỤNG PARTIAL VIEW) --- *@
+                <tbody id="tableBodyContainer">
+                    @Html.Partial("_NhaXuatBanTable", Model)
+                </tbody>
+            </table>
+        </div>
+
+        @* --- PHẦN 3.3: PHÂN TRANG (PAGINATION) --- *@
+        <div class="card-footer pt-0">
+            <partial name="_Pagination" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Assets/js/custom-filter.js"></script> @* Giả định bạn có custom-filter.js *@
+
+    <script>
+        // Thời gian chờ (milliseconds) trước khi thông báo biến mất
+        const AUTO_CLOSE_DELAY = 5000; // 5 giây
+
+        // Hàm chuyển hướng URL để áp dụng bộ lọc và duy trì trạng thái tìm kiếm
+        function applyFilter(filterName, filterValue) {
+            const url = new URL(window.location.href);
+            // Lấy giá trị của ô tìm kiếm (Đảm bảo ô tìm kiếm có thuộc tính name="searchString")
+            const searchInput = document.querySelector('[name="searchString"]');
+            const currentSearch = searchInput ? searchInput.value : '';
+
+            // 1. Áp dụng bộ lọc Quốc gia
+            if (filterValue) {
+                url.searchParams.set(filterName, filterValue);
+            } else {
+                url.searchParams.delete(filterName);
+            }
+
+            // 2. Duy trì chuỗi tìm kiếm hiện tại (Quan trọng)
+            if (currentSearch) {
+                url.searchParams.set('searchString', currentSearch);
+            } else {
+                url.searchParams.delete('searchString');
+            }
+
+            url.searchParams.delete("page"); // Xóa tham số page để quay về trang 1
+
+            window.location.href = url.toString();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Logic tự động đóng thông báo (Giữ nguyên)
+            const alertElement = document.getElementById('indexAlertMessage');
+
+            if (alertElement && alertElement.classList.contains('alert-success')) {
+                setTimeout(() => {
+                    const alert = new bootstrap.Alert(alertElement);
+                    alert.close();
+                }, AUTO_CLOSE_DELAY);
+            }
+
+            // Bổ sung: Gắn lại sự kiện cho nút tìm kiếm (SearchBar)
+            const searchForm = document.querySelector('.navbar-nav-right form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', function(e) {
+                    // Lấy tham số maQg hiện tại từ URL
+                    const url = new URL(window.location.href);
+                    const countryFilter = url.searchParams.get('maQg');
+
+                    if (countryFilter) {
+                        // Thêm mã quốc gia vào form trước khi submit (nếu nó chưa có)
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'maQg';
+                        hiddenInput.value = countryFilter;
+                        searchForm.appendChild(hiddenInput);
+                    }
+                    // Xóa tham số page nếu có (để đảm bảo tìm kiếm bắt đầu từ trang 1)
+                    url.searchParams.delete("page");
+                });
+            }
+        });
+        // (LƯU Ý: Đảm bảo logic Event Delegation trong custom-filter.js đã được cập nhật để gọi hàm applyFilter mới này)
+    </script>
+}

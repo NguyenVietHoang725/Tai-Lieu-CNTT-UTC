@@ -1,0 +1,120 @@
+﻿@model Library_Manager.Models.TDinhDang
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Định dạng: " + Model.TenDd;
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-pencil fs-2 me-2'></i> Chỉnh sửa Định dạng
+    </h1>
+
+    @* 1. Vị trí hiển thị thông báo (Khối này hiển thị lỗi khi Controller return View) *@
+    @if (TempData["Message"] != null)
+    {
+        <div id="alertMessage" class="alert alert-@(TempData["StatusMessage"]) alert-dismissible" role="alert">
+            @Html.Raw(TempData["Message"])
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                Chỉnh sửa thông tin Định dạng: <span class="text-primary fw-bold">@Model.TenDd</span>
+            </h5>
+            <small class="text-muted">Mã DĐ: <span class="fw-bold">@Model.MaDd</span></small>
+        </div>
+
+        <form asp-action="Edit" id="editDinhDangForm">
+            <div class="card-body">
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <input type="hidden" asp-for="MaDd" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Mã Định dạng</label>
+                            @* *** VÔ HIỆU HÓA TRƯỜNG MÃ ĐỊNH DẠNG *** *@
+                            <input value="@Model.MaDd" class="form-control" disabled />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label asp-for="TenDd" class="form-label">Tên Định dạng</label>
+                            <input asp-for="TenDd" class="form-control" />
+                            <span asp-validation-for="TenDd" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <a asp-action="Index" class="btn btn-outline-primary">
+                            <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                        </a>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" value="Save" class="btn btn-primary @(canEdit ? "" : "disabled")" id="submitButton">
+                            <i class="bx bx-save me-1"></i> Lưu thay đổi
+                        </button>
+                        <a asp-action="Details" asp-route-id="@Model?.MaDd" class="btn btn-info">
+                            <i class='bx bx-detail'></i> Chi tiết
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Script này chỉ cần xử lý trạng thái loading/unloading cho nút Submit
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const editForm = document.getElementById('editDinhDangForm');
+            const submitButton = document.getElementById('submitButton');
+
+            if (editForm && submitButton) {
+                editForm.addEventListener('submit', function (e) {
+                    // Kiểm tra validation client-side
+                    if ($(editForm).valid()) {
+                        // Vô hiệu hóa nút Submit
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Đang lưu...';
+                    }
+                });
+            }
+
+            // Nếu Controller return View do lỗi, kích hoạt lại nút
+            @if (TempData["StatusMessage"] != null && TempData["StatusMessage"].ToString() == "danger")
+            {
+                    <text>
+                        setTimeout(function() {
+                            const submitBtn = document.getElementById('submitButton');
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = '<i class="bx bx-save me-1"></i> Lưu thay đổi';
+                            }
+                        }, 10);
+                    </text>
+            }
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,129 @@
+﻿@model Library_Manager.Models.TNgonNgu
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Ngôn ngữ: " + Model.TenNn;
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLS");
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-pencil fs-2 me-2'></i> Chỉnh sửa Ngôn ngữ
+    </h1>
+
+    @* 1. THÊM: Vị trí hiển thị thông báo *@
+    <div id="alertPlaceholder"></div>
+
+    <div class="card">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h5 class="card-title mb-0">
+                Chỉnh sửa thông tin Ngôn ngữ: <span class="text-primary fw-bold">@Model.TenNn</span>
+            </h5>
+            <small class="text-muted">Mã NN: <span class="fw-bold">@Model.MaNn</span></small>
+        </div>
+
+        @* 2. THÊM: ID cho Form *@
+        <form asp-action="Edit" id="editNgonNguForm">
+            <div class="card-body">
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                <input type="hidden" asp-for="MaNn" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label asp-for="TenNn" class="form-label">Tên Ngôn ngữ</label>
+                            <input asp-for="TenNn" class="form-control" />
+                            <span asp-validation-for="TenNn" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex gap-3">
+                    @* 3. THÊM: ID cho Nút Submit *@
+                    <button type="submit" value="Save" class="btn btn-primary @(canEdit ? "" : "disabled")" id="submitButton">
+                        <i class="bx bx-save me-1"></i> Lưu thay đổi
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* 4. THÊM: Toàn bộ khối Script cho thông báo *@
+@section Scripts {
+    <script>
+        // Hàm hiển thị thông báo (Toast)
+        function showToast(message, type = 'success') {
+            const alertPlaceholder = document.getElementById('alertPlaceholder');
+            alertPlaceholder.innerHTML = '';
+
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `  <div>${message}</div>`,
+                '  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('');
+
+            alertPlaceholder.appendChild(wrapper);
+            // Tự động ẩn sau 5 giây
+            setTimeout(() => {
+                $(wrapper).alert('close');
+            }, 5000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ==========================================================
+            // LOGIC FORM SUBMIT (Kiểm tra và báo cáo kết quả)
+            // ==========================================================
+
+            // SỬA: Trỏ đúng ID của Form
+            const editForm = document.getElementById('editNgonNguForm');
+            const submitButton = document.getElementById('submitButton');
+
+            // 1. Logic chặn submit và đổi text nút
+            if (editForm && submitButton) {
+                editForm.addEventListener('submit', function (e) {
+                    // Kiểm tra validation client-side
+                    if ($(editForm).valid()) {
+                        // Vô hiệu hóa nút Submit
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Đang lưu...';
+                    }
+                });
+            }
+
+            // 2. Logic hiển thị thông báo từ TempData
+            @if (TempData["StatusMessage"] != null && TempData["Message"] != null)
+            {
+                    <text>
+                        setTimeout(function() {
+                            // Hiển thị toast
+                            showToast('@Html.Raw(TempData["Message"])', '@TempData["StatusMessage"]');
+
+                            // Kích hoạt lại nút submit nếu có lỗi
+                            if ('@TempData["StatusMessage"]' === 'danger' && submitButton) {
+                                submitButton.disabled = false;
+                                submitButton.innerHTML = '<i class="bx bx-save me-1"></i> Lưu thay đổi';
+                            }
+                        }, 10);
+                    </text>
+            }
+        });
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

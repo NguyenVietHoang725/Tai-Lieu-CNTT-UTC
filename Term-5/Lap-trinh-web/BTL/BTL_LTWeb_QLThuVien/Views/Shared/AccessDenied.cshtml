@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Truy cập bị từ chối";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Sử dụng layout chung của bạn
+}
+
+<div class="container-xxl container-p-y">
+    <div class="misc-wrapper">
+        <h2 class="mb-2 mx-2">Truy cập bị từ chối (Access Denied)</h2>
+        <p class="mb-4 mx-2">
+            Rất tiếc, bạn không có quyền để truy cập chức năng này. 😥
+            <br />
+            Vui lòng liên hệ quản trị viên nếu bạn cho rằng đây là một sự nhầm lẫn.
+        </p>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Quay về trang chủ</a>
+        <div class="mt-4">
+            <img src="~/Assets/img/illustrations/page-misc-error-light.png"
+                 alt="page-misc-error-light"
+                 width="500"
+                 class="img-fluid" />
+        </div>
+    </div>
+</div>

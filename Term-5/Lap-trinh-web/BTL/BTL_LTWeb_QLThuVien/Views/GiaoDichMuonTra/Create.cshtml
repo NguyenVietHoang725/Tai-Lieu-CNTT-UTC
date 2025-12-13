@@ -1,0 +1,361 @@
+﻿@model Library_Manager.Models.TGiaoDichMuonTra
+
+@{
+    ViewData["Title"] = "Tạo mới Giao dịch Mượn/Trả";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    @* KHỐI HIỂN THỊ THÔNG BÁO TỪ TEMP DATA (ĐẢM BẢO LUÔN TỒN TẠI) *@
+    <div id="alertPlaceholder" class="mb-4">
+        @* NỘI DUNG SẼ ĐƯỢC JS ĐIỀN VÀO KHI CÓ LỖI HOẶC HIỂN THỊ LỖI RAZOR *@
+    </div>
+
+    <h1 class="fw-bold text-primary mb-4">
+        <i class='bx bx-plus fs-2 me-2 border p-1 rounded-2'></i> @ViewData["Title"]
+    </h1>
+
+    <div class="card">
+        <div class="card-header border-bottom">
+            <h5 class="card-title mb-0">Nhập thông tin giao dịch mới</h5>
+        </div>
+
+        <form asp-action="Create" id="createGdForm">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+                @* Các trường ẩn tự động điền trong Controller *@
+                <input type="hidden" asp-for="MaGd" />
+                <input type="hidden" asp-for="MaTk" />
+                <input type="hidden" asp-for="NgayTra" />
+                <input type="hidden" asp-for="TrangThai" value="Đang mượn" />
+
+                <div class="row">
+                    @* --- CỘT 1: THÔNG TIN CHÍNH (6/12) --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-info-circle me-1'></i> Thông tin chính
+                        </h6>
+
+                        @* Thẻ Bạn đọc (Thay thế Select bằng Input + Button) *@
+                        <div class="mb-3">
+                            <label asp-for="MaTbd" class="form-label">Thẻ Bạn đọc</label>
+                            <div class="input-group">
+                                <input type="text" id="selectedTbdDisplay" class="form-control" readonly placeholder="Mã Thẻ BD - Tên Bạn đọc" />
+                                <input type="hidden" asp-for="MaTbd" id="selectedTbdValue" />
+                                <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#tbdSearchModal">
+                                    <i class='bx bx-search-alt-2'></i> Chọn
+                                </button>
+                            </div>
+                            <span asp-validation-for="MaTbd" class="text-danger"></span>
+                        </div>
+
+                        @* Ngày Mượn (Không chỉnh sửa, mặc định là hôm nay) *@
+                        <div class="mb-3">
+                            <label asp-for="NgayMuon" class="form-label">Ngày Mượn</label>
+                            <input asp-for="NgayMuon" class="form-control" type="date" value="@Model.NgayMuon.ToString("yyyy-MM-dd")" readonly />
+                        </div>
+
+                        @* Ngày Hẹn Trả *@
+                        <div class="mb-3">
+                            <label asp-for="NgayHenTra" class="form-label">Ngày Hẹn Trả</label>
+                            <input asp-for="NgayHenTra" class="form-control" type="date" value="@Model.NgayHenTra.ToString("yyyy-MM-dd")" />
+                            <span asp-validation-for="NgayHenTra" class="text-danger"></span>
+                        </div>
+
+                        @* Bỏ hiển thị trường Trạng Thái *@
+                    </div>
+
+                    @* --- CỘT 2: THÔNG TIN BẢN SAO (6/12) --- *@
+                    <div class="col-md-6 pt-3">
+                        <h6 class="text-muted text-uppercase mb-3 mt-0">
+                            <i class='bx bx-book-bookmark me-1'></i> Bản sao tài liệu (Bắt buộc)
+                        </h6>
+
+                        @* Khung tìm kiếm Bản sao *@
+                        <div class="input-group mb-3">
+                            <input type="text" id="banSaoSearchTerm" class="form-control" placeholder="Nhập Mã BS hoặc Tên Tài liệu" />
+                            <button class="btn btn-outline-success" type="button" id="searchBanSaoBtn">
+                                <i class='bx bx-book-alt me-1'></i> Tìm Bản sao
+                            </button>
+                        </div>
+
+                        @* Kết quả tìm kiếm Bản sao (hiển thị danh sách và nút chọn) *@
+                        <div id="banSaoSearchResults" class="mb-3">
+                            @* Nội dung sẽ được điền bằng JavaScript *@
+                        </div>
+
+                        @* Danh sách Bản sao đã chọn *@
+                        <h6 class="text-muted text-uppercase mb-2 mt-4">
+                            <i class='bx bx-list-ul me-1'></i> Bản sao đã chọn
+                        </h6>
+                        <ul id="selectedBanSaoList" class="list-group">
+                            @* Các Bản sao đã chọn sẽ được thêm vào đây, kèm input hidden *@
+                        </ul>
+                    </div>
+                </div>
+            </div> @* End card-body *@
+
+            @* --- KHỐI FOOTER ĐÃ ĐIỀU CHỈNH VỊ TRÍ VÀ CSS NÚT --- *@
+            <div class="card-footer border-top pt-3">
+                <div class="d-flex justify-content-between">
+                    @* Dùng justify-content-between để căn 2 bên *@
+
+                    @* NÚT QUAY LẠI (TRÁI) *@
+                    <div>
+                        @if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+                        {
+                            <a href="@ViewBag.ReturnUrl" class="btn btn-outline-primary">
+                                <i class="bx bx-arrow-back me-1"></i> Quay lại
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Index" class="btn btn-outline-primary">
+                                <i class="bx bx-arrow-back me-1"></i> Quay lại danh sách
+                            </a>
+                        }
+                    </div>
+
+                    @* NÚT TẠO MỚI (PHẢI) *@
+                    <button type="submit" value="Create" class="btn btn-primary" id="submitButton">
+                        <i class="bx bx-plus me-1"></i> Tạo mới Giao dịch
+                    </button>
+                </div>
+            </div> @* End card-footer *@
+        </form>
+    </div> @* End card *@
+</div> @* End container-xxl *@
+
+
+@* ========================================================================
+    MODAL CHỌN THẺ BẠN ĐỌC (Giữ nguyên)
+    ======================================================================== *@
+<div class="modal fade" id="tbdSearchModal" tabindex="-1" aria-labelledby="tbdSearchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tbdSearchModalLabel">Tìm Thẻ Bạn đọc Hoạt động</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @* Input tìm kiếm *@
+                <div class="input-group mb-3">
+                    <input type="text" id="tbdSearchTerm" class="form-control" placeholder="Nhập Mã Thẻ hoặc Tên Bạn đọc" />
+                    <button class="btn btn-primary" type="button" id="searchTbdBtn">Tìm kiếm</button>
+                </div>
+
+                @* Kết quả tìm kiếm *@
+                <div id="tbdSearchResults">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Mã Thẻ BD</th>
+                                <th>Họ Tên Bạn đọc</th>
+                                <th>Hết Hạn</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbdTableBody">
+                            @* Kết quả sẽ được thêm vào đây *@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        // Hàm hiển thị thông báo (Toast/Alert)
+        function showToast(message, type = 'success') {
+            const alertPlaceholder = document.getElementById('alertPlaceholder');
+            if (!alertPlaceholder) return;
+            alertPlaceholder.innerHTML = '';
+
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('');
+            alertPlaceholder.appendChild(wrapper);
+        }
+
+        $(document).ready(function () {
+            const createForm = document.getElementById('createGdForm');
+            const submitButton = document.getElementById('submitButton');
+
+            // --- 1. Xử lý chọn Thẻ Bạn đọc (AJAX) ---
+
+            
+            // Hàm tìm kiếm Thẻ Bạn Đọc (được tách riêng để tái sử dụng)
+             
+            function searchActiveTbd(searchTerm) {
+                // Hiển thị loading
+                $('#tbdTableBody').html('<tr><td colspan="4" class="text-center"><i class="bx bx-loader bx-spin fs-4"></i> Đang tải...</td></tr>');
+
+                $.ajax({
+                    url: '@Url.Action("SearchActiveTheBanDoc", "GiaoDichMuonTra")',
+                    type: 'GET',
+                    data: { searchTerm: searchTerm },
+                    success: function (response) {
+                        var tbody = $('#tbdTableBody');
+                        tbody.empty();
+
+                        if (response.success && response.data.length > 0) {
+                            $.each(response.data, function (index, item) {
+                                var row = '<tr>' +
+                                    '<td>' + item.maTbd + '</td>' +
+                                    '<td>' + item.hoTen + '</td>' +
+                                    '<td>' + item.ngayHetHan + '</td>' +
+                                    '<td><button type="button" class="btn btn-sm btn-success select-tbd-btn" ' +
+                                    'data-matbd="' + item.maTbd + '" data-hoten="' + item.hoTen + '">Chọn</button></td>' +
+                                    '</tr>';
+                                tbody.append(row);
+                            });
+                        } else {
+                            tbody.append('<tr><td colspan="4" class="text-center">Không tìm thấy Thẻ Bạn đọc hoạt động nào.</td></tr>');
+                        }
+                    },
+                    error: function () {
+                        // Lỗi AJAX server side
+                        $('#tbdTableBody').html('<tr><td colspan="4" class="text-center text-danger">Đã xảy ra lỗi khi tìm kiếm.</td></tr>');
+                    }
+                });
+            }
+
+            // Gắn sự kiện click cho nút tìm kiếm Thẻ
+            $('#searchTbdBtn').click(function () {
+                var searchTerm = $('#tbdSearchTerm').val();
+                searchActiveTbd(searchTerm); // Gọi hàm tìm kiếm
+            });
+
+            // **[YÊU CẦU MỚI]**
+            // Tự động tải tất cả bạn đọc khi Modal được mở (nếu ô tìm kiếm rỗng)
+            $('#tbdSearchModal').on('show.bs.modal', function () {
+                var searchTerm = $('#tbdSearchTerm').val();
+                if (searchTerm === "") {
+                    // Chỉ gọi khi ô tìm kiếm rỗng
+                    searchActiveTbd("");
+                }
+            });
+
+
+            // Sự kiện chọn Thẻ bạn đọc (giữ nguyên)
+            $(document).on('click', '.select-tbd-btn', function () {
+                var maTbd = $(this).data('matbd');
+                var hoTen = $(this).data('hoten');
+
+                $('#selectedTbdValue').val(maTbd);
+                $('#selectedTbdDisplay').val(maTbd + ' - ' + hoTen);
+                $('#tbdSearchModal').modal('hide'); // Đóng modal
+            });
+
+            // --- 2. Xử lý tìm và chọn Bản sao (AJAX) ---
+            // (Giữ nguyên toàn bộ code tìm kiếm Bản sao của bạn)
+            $('#searchBanSaoBtn').click(function () {
+                var searchTerm = $('#banSaoSearchTerm').val();
+                if (searchTerm.length < 2) {
+                    $('#banSaoSearchResults').html('<div class="alert alert-warning">Vui lòng nhập ít nhất 2 ký tự để tìm kiếm.</div>');
+                    return;
+                }
+                $('#banSaoSearchResults').html('<div class="text-center"><i class="bx bx-loader bx-spin fs-4"></i> Đang tìm kiếm...</div>');
+                $.ajax({
+                    url: '@Url.Action("SearchAvailableBanSao", "GiaoDichMuonTra")',
+                    type: 'GET',
+                    data: { searchTerm: searchTerm },
+                    success: function (response) {
+                        var resultsHtml = '';
+                        if (response.success && response.data.length > 0) {
+                            resultsHtml += '<ul class="list-group">';
+                            $.each(response.data, function (index, item) {
+                                var isSelected = $('#selectedBanSaoList input[value="' + item.maBs + '"]').length > 0;
+                                var buttonHtml = isSelected ?
+                                    '<span class="badge bg-primary">Đã thêm</span>' :
+                                    '<button type="button" class="btn btn-sm btn-outline-primary select-bs-btn" data-mabs="' + item.maBs + '" data-tentl="' + item.tenTaiLieu + '">Thêm</button>';
+
+                                resultsHtml += '<li class="list-group-item d-flex justify-content-between align-items-center">' +
+                                    '<div><strong>' + item.maBs + '</strong> - ' + item.tenTaiLieu + '</div>' +
+                                    buttonHtml +
+                                    '</li>';
+                            });
+                            resultsHtml += '</ul>';
+                        } else {
+                            resultsHtml = '<div class="alert alert-info">Không tìm thấy Bản sao Sẵn có nào phù hợp.</div>';
+                        }
+                        $('#banSaoSearchResults').html(resultsHtml);
+                    },
+                    error: function () {
+                        $('#banSaoSearchResults').html('<div class="alert alert-danger">Lỗi khi tìm kiếm Bản sao.</div>');
+                    }
+                });
+            });
+
+            // (Giữ nguyên code .select-bs-btn và .remove-bs-btn...)
+            $(document).on('click', '.select-bs-btn', function () {
+                var btn = $(this);
+                var maBs = btn.data('mabs');
+                var tenTl = btn.data('tentl');
+                var listItem = '<li class="list-group-item d-flex justify-content-between align-items-center" data-mabs="' + maBs + '">' +
+                    '<div><strong>' + maBs + '</strong> - ' + tenTl + '</div>' +
+                    '<input type="hidden" name="selectedBanSaoList" value="' + maBs + '" />' +
+                    '<button type="button" class="btn btn-sm btn-danger remove-bs-btn" data-mabs="' + maBs + '"><i class="bx bx-trash"></i></button>' +
+                    '</li>';
+                $('#selectedBanSaoList').append(listItem);
+                btn.replaceWith('<span class="badge bg-primary">Đã thêm</span>');
+            });
+
+            $(document).on('click', '.remove-bs-btn', function () {
+                var maBsToRemove = $(this).data('mabs');
+                $('#selectedBanSaoList li[data-mabs="' + maBsToRemove + '"]').remove();
+                var currentResultItem = $('#banSaoSearchResults button[data-mabs="' + maBsToRemove + '"]').closest('li').find('.badge');
+                if (currentResultItem.length > 0) {
+                    var tenTl = currentResultItem.closest('li').find('div strong').text().replace(maBsToRemove + ' - ', '');
+                    currentResultItem.replaceWith('<button type="button" class="btn btn-sm btn-outline-primary select-bs-btn" data-mabs="' + maBsToRemove + '" data-tentl="' + tenTl + '">Thêm</button>');
+                }
+            });
+
+
+            // --- 3. Logic Vô hiệu hóa nút và Hiển thị thông báo lỗi (Giữ nguyên) ---
+            if (createForm && submitButton) {
+                createForm.addEventListener('submit', function (e) {
+                    if ($(createForm).valid()) {
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...';
+                    }
+                });
+            }
+            @if (TempData["StatusMessage"] != null && TempData["Message"] != null)
+            {
+                    if (TempData["StatusMessage"].ToString() == "danger")
+                    {
+                            <text>
+                                setTimeout(function() {
+                                    showToast('@Html.Raw(TempData["Message"])', '@TempData["StatusMessage"]');
+                                    if (submitButton) {
+                                        submitButton.disabled = false;
+                                        submitButton.innerHTML = '<i class="bx bx-plus me-1"></i> Tạo mới Giao dịch';
+                                    }
+                                }, 10);
+                            </text>
+                    }
+                    else if (TempData["StatusMessage"].ToString() == "success")
+                    {
+                             <text>
+                                setTimeout(function() {
+                                    showToast('@Html.Raw(TempData["Message"])', '@TempData["StatusMessage"]');
+                                }, 10);
+                            </text>
+                    }
+            }
+        });
+    </script>
+}

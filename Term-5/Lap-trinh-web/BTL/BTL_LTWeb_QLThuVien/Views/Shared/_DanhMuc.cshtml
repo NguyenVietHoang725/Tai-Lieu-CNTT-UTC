@@ -1,0 +1,67 @@
+﻿@*
+    PARTIAL VIEW: _DanhMuc.cshtml
+    Chức năng: Cung cấp menu Tabs chuyển đổi giữa các Controller quản lý danh mục.
+*@
+@using Microsoft.AspNetCore.Http
+@using System.Linq
+
+@{
+    // Lấy controller hiện tại (để đánh dấu mục đang được chọn)
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    // Đảm bảo Controller hiện tại được in hoa chữ cái đầu tiên (ví dụ: dinhdang -> DinhDang)
+    if (!string.IsNullOrEmpty(currentController))
+    {
+        currentController = char.ToUpper(currentController[0]) + currentController.Substring(1);
+    }
+
+    // Danh sách các Controller, tên hiển thị và Icon tương ứng
+    var categories = new List<(string Value, string DisplayName, string IconClass)>
+    {
+     ("TacGia", "Tác giả", "bx-pen"),
+     ("NhaXuatBan", "Nhà xuất bản", "bx-buildings"),
+     // ("NgonNgu", "Ngôn ngữ", "bx-globe"), <--- Đã loại bỏ
+     ("TheLoai", "Thể loại", "bx-book-bookmark"),
+     ("DinhDang", "Định dạng", "bx-tag-alt")
+    };
+}
+
+@* Sử dụng cấu trúc Card bao ngoài Nav-Pills để tạo khối điều hướng nổi bật *@
+<div class="card mb-4">
+    @* HEADER: Tiêu đề khối *@
+    <div class="card-header border-bottom pb-3">
+        <h5 class="m-0 text-primary">Danh mục quản lý nhanh</h5>
+    </div>
+
+    @* BODY: Nav-Pills *@
+    <div class="card-body pt-3 pb-2">
+        <ul class="nav nav-pills nav-fill flex-wrap" role="tablist">
+            @foreach (var category in categories)
+            {
+                var isActive = (currentController == category.Value) ? "active" : "";
+
+                // XÓA: Dòng var linkUrl = $"/{category.Value}/Index";
+
+                @* ĐIỀU CHỈNH: Sử dụng mx-1 để tạo khoảng cách nhỏ giữa các pill *@
+                <li class="nav-item mx-1 mb-1">
+
+                    <!-- SỬA ĐỔI: Thay thế href bằng asp-controller và asp-action -->
+                    <a asp-controller="@category.Value"
+                       asp-action="Index"
+                       class="nav-link @isActive"
+                       role="tab"
+                       aria-selected="@(currentController == category.Value ? "true" : "false")">
+
+                        <span class="d-none d-sm-inline-flex align-items-center">
+                            <i class='icon-base bx @category.IconClass icon-sm me-2'></i>
+                            @* KHÔNG THÊM CLASS TEXT NÀO ĐỂ THỪA HƯỞNG MÀU TỪ .nav-link (ĐÃ ĐỊNH NGHĨA TRONG CSS THEME) *@
+                            @category.DisplayName
+                        </span>
+
+                        @* Chỉ hiển thị icon cho màn hình nhỏ (mobile) *@
+                        <i class='icon-base bx @category.IconClass icon-sm d-sm-none'></i>
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

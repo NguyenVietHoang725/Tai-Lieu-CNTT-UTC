@@ -1,0 +1,62 @@
+﻿@model PagedList.Core.IPagedList<Library_Manager.Models.TNhaXuatBan>
+
+@{
+    // Lấy vai trò người dùng để kiểm tra quyền
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+}
+
+<tbody>
+    @if (Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <span class="badge bg-label-primary">
+                        @Html.DisplayFor(modelItem => item.MaNxb)
+                    </span>
+                </td>
+                <td style="white-space: nowrap;">
+                    @Html.DisplayFor(modelItem => item.TenNxb)
+                </td>
+                <td>
+                    @* Hiển thị Tên Quốc gia hoặc Mã Quốc gia nếu không tìm thấy Navigation *@
+                    @(item.MaQgNavigation?.TenQg ?? item.MaQg)
+                </td>
+                <td>
+                    <div class="d-flex w-100 justify-content-around">
+                        @* 1. Chi tiết (Details) *@
+                        <a asp-action="Details" asp-route-id="@item.MaNxb"
+                           class="btn btn-icon btn-label-info waves-effect"
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Chi tiết">
+                            <i class='bx bx-detail'></i>
+                        </a>
+
+                        @* 2. Sửa (Edit) *@
+                        <a asp-action="Edit" asp-route-id="@item.MaNxb"
+                           class="btn btn-icon btn-label-primary waves-effect @(canEdit ? "" : "disabled")"
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Sửa">
+                            <i class='bx bx-pencil'></i>
+                        </a>
+
+                        @* 3. Xóa (Delete) *@
+                        <a asp-action="Delete" asp-route-id="@item.MaNxb"
+                           class="btn btn-icon btn-label-danger waves-effect @(canEdit ? "" : "disabled")"
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Xóa">
+                            <i class='bx bx-trash'></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="4" class="text-center text-muted py-5">
+                <i class='bx bx-info-circle me-1'></i> Không tìm thấy Nhà Xuất Bản nào phù hợp.
+            </td>
+        </tr>
+    }
+</tbody>

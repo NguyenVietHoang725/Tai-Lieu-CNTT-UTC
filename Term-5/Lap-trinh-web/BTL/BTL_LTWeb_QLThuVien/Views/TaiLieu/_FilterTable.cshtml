@@ -1,0 +1,56 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model PagedList.Core.IPagedList<Library_Manager.Models.TTaiLieu>
+@{
+    var userRole = Context.Session.GetString("UserRole");
+    bool canEdit = (userRole == "QTV" || userRole == "QLT");
+}
+
+<tbody>
+    @if (Model.Any())
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TenTl)</td>
+
+                <td style="width: 250px; white-space: nowrap;">@item.MaThLNavigation?.TenThL</td>
+                <td style="width: 250px; white-space: nowrap;">@item.MaNxbNavigation?.TenNxb</td>
+                <td style="width: 100px; white-space: nowrap;">@item.MaNnNavigation?.TenNn</td>
+
+                <td style="width: 120px; white-space: nowrap;">
+                    <div class="d-flex w-100 justify-content-around">
+                        <a asp-action="Details" asp-route-id="@item.MaTl"
+                           class="btn btn-icon btn-label-info waves-effect "
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Chi tiết">
+                            <i class='bx bx-detail'></i>
+                        </a>
+
+                        <a asp-action="Edit" asp-route-id="@item.MaTl"
+                           class="btn btn-icon btn-label-primary waves-effect @(canEdit ? "" : "disabled")" "
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Sửa">
+                            <i class='bx bx-pencil'></i>
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.MaTl"
+                           class="btn btn-icon btn-label-danger waves-effect @(canEdit ? "" : "disabled")" "
+                           data-bs-toggle="tooltip" data-bs-placement="top" title="Xóa">
+                            <i class='bx bx-trash'></i>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="6" class="text-center text-muted py-5">
+                <i class='bx bx-info-circle me-1'></i> Không tìm thấy tài liệu nào.
+            </td>
+        </tr>
+    }
+</tbody>
+
