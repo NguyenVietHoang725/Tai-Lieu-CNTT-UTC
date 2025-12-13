@@ -1,0 +1,50 @@
+#----------------------------------------------------------------------
+# LINQ to SQL Files (Không nên theo dõi vì chúng được sinh tự động)
+#----------------------------------------------------------------------
+DAL/QLThuVien.dbml
+DAL/QLThuVien.dbml.layout
+DAL/QLThuVien.designer.cs
+
+#----------------------------------------------------------------------
+# WinForms/Visual Studio Generated Files
+#----------------------------------------------------------------------
+
+# Loại trừ các file Settings tự động sinh ra/cục bộ
+# Properties/Settings.Designer.cs
+# Properties/Settings.settings
+
+# File cấu hình ứng dụng (Thường cần được theo dõi, nhưng nếu có xung đột, bạn có thể loại trừ)
+# app.config 
+# => KHUYẾN NGHỊ: GIỮ app.config nếu nó chứa connection strings hoặc configs chung.
+# Nếu bạn muốn loại trừ nó, hãy thêm:
+# app.config 
+
+# Thư mục cache của Visual Studio (chứa cấu hình người dùng)
+.vs/
+*.user
+*.suo
+*.userprefs
+
+# Thư mục build output (sản phẩm đầu ra)
+[Bb]in/
+[Oo]bj/
+
+# Cấu hình NuGet và thư mục gói
+*.nuget.props
+*.nuget.targets
+packages/
+*.nupkg
+
+#----------------------------------------------------------------------
+# Database Files (LocalDB / SQL Server)
+#----------------------------------------------------------------------
+
+# Loại trừ các file Database cục bộ (MDF, LDF)
+*.mdf
+*.ldf
+
+#----------------------------------------------------------------------
+# Backup and Log Files
+#----------------------------------------------------------------------
+*.[Bb]ak
+*.log
