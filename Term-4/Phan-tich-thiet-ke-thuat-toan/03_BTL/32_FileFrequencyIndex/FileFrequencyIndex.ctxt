@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=FileFrequencyIndex
+comment0.text=\r\n\ FileFrequencyIndex\:\r\n\ Ch\u1EC9\ m\u1EE5c\ t\u1EA7n\ su\u1EA5t\ xu\u1EA5t\ hi\u1EC7n\ t\u1EEB\ trong\ nhi\u1EC1u\ file.\r\n\ Key\:\ t\u1EEB\r\n\ Value\:\ b\u1EA3ng\ t\u1EA7n\ su\u1EA5t\ xu\u1EA5t\ hi\u1EC7n\ theo\ file\ (fileName\ ->\ count)\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2

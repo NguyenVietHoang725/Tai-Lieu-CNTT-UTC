@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Vertex
+comment1.params=v
+comment1.target=boolean\ contains(Vertex)
+comment2.params=
+comment2.target=java.lang.String\ getName()
+comment3.params=other
+comment3.target=int\ compareTo(Vertex)
+numComments=4

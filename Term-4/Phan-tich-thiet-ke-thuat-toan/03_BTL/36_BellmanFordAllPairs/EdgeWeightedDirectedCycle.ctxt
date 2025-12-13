@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=EdgeWeightedDirectedCycle
+comment0.text=\r\n\ \ The\ {@code\ EdgeWeightedDirectedCycle}\ class\ represents\ a\ data\ type\ for\ \r\n\ \ determining\ whether\ an\ edge-weighted\ digraph\ has\ a\ directed\ cycle.\r\n\ \ The\ <em>hasCycle</em>\ operation\ determines\ whether\ the\ edge-weighted\r\n\ \ digraph\ has\ a\ directed\ cycle\ and,\ if\ so,\ the\ <em>cycle</em>\ operation\r\n\ \ returns\ one.\r\n\ \ <p>\r\n\ \ This\ implementation\ uses\ depth-first\ search.\r\n\ \ The\ constructor\ takes\ time\ proportional\ to\ <em>V</em>\ +\ <em>E</em>\r\n\ \ (in\ the\ worst\ case),\r\n\ \ where\ <em>V</em>\ is\ the\ number\ of\ vertices\ and\ <em>E</em>\ is\ the\ number\ of\ edges.\r\n\ \ Afterwards,\ the\ <em>hasCycle</em>\ operation\ takes\ constant\ time;\r\n\ \ the\ <em>cycle</em>\ operation\ takes\ time\ proportional\r\n\ \ to\ the\ length\ of\ the\ cycle.\r\n\ \ <p>\r\n\ \ See\ {@link\ Topological}\ to\ compute\ a\ topological\ order\ if\ the\ edge-weighted\r\n\ \ digraph\ is\ acyclic.\r\n\ \ <p>\r\n\ \ For\ additional\ documentation,\ \ \ \r\n\ \ see\ <a\ href\="https\://algs4.cs.princeton.edu/44sp">Section\ 4.4</a>\ of\ \ \ \r\n\ \ <i>Algorithms,\ 4th\ Edition</i>\ by\ Robert\ Sedgewick\ and\ Kevin\ Wayne.\ \r\n\r\n\ \ @author\ Robert\ Sedgewick\r\n\ \ @author\ Kevin\ Wayne\r\n
+comment1.params=G
+comment1.target=EdgeWeightedDirectedCycle(EdgeWeightedDigraph)
+comment1.text=\r\n\ Determines\ whether\ the\ edge-weighted\ digraph\ {@code\ G}\ has\ a\ directed\ cycle\ and,\r\n\ if\ so,\ finds\ such\ a\ cycle.\r\n\ @param\ G\ the\ edge-weighted\ digraph\r\n
+comment2.params=G\ v
+comment2.target=void\ dfs(EdgeWeightedDigraph,\ int)
+comment3.params=
+comment3.target=boolean\ hasCycle()
+comment3.text=\r\n\ Does\ the\ edge-weighted\ digraph\ have\ a\ directed\ cycle?\r\n\ @return\ {@code\ true}\ if\ the\ edge-weighted\ digraph\ has\ a\ directed\ cycle,\r\n\ {@code\ false}\ otherwise\r\n
+comment4.params=
+comment4.target=java.lang.Iterable\ cycle()
+comment4.text=\r\n\ Returns\ a\ directed\ cycle\ if\ the\ edge-weighted\ digraph\ has\ a\ directed\ cycle,\r\n\ and\ {@code\ null}\ otherwise.\r\n\ @return\ a\ directed\ cycle\ (as\ an\ iterable)\ if\ the\ edge-weighted\ digraph\r\n\ \ \ \ has\ a\ directed\ cycle,\ and\ {@code\ null}\ otherwise\r\n
+comment5.params=
+comment5.target=boolean\ check()
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+comment6.text=\r\n\ Unit\ tests\ the\ {@code\ EdgeWeightedDirectedCycle}\ data\ type.\r\n\r\n\ @param\ args\ the\ command-line\ arguments\r\n
+numComments=7

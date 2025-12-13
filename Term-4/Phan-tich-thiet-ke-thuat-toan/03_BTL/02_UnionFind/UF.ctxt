@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=UF
+comment0.text=\r\n\ L\u1EDBp\ {@code\ UF}\ (Union-Find)\ \u2013\ c\u00F2n\ \u0111\u01B0\u1EE3c\ g\u1ECDi\ l\u00E0\ Disjoint\ Set\ Union\ (DSU)\ \u2013\ d\u00F9ng\ \u0111\u1EC3\ qu\u1EA3n\ l\u00FD\ c\u00E1c\ t\u1EADp\ h\u1EE3p\ r\u1EDDi\ r\u1EA1c.\r\n\ H\u1ED7\ tr\u1EE3\ ki\u1EC3m\ tra\ hai\ ph\u1EA7n\ t\u1EED\ c\u00F3\ c\u00F9ng\ thu\u1ED9c\ m\u1ED9t\ t\u1EADp\ h\u1EE3p\ kh\u00F4ng\ v\u00E0\ h\u1EE3p\ nh\u1EA5t\ c\u00E1c\ t\u1EADp\ h\u1EE3p\ ch\u1EE9a\ hai\ ph\u1EA7n\ t\u1EED\ \u0111\u00F3.\r\n\r\n\ C\u1EA5u\ tr\u00FAc\ n\u00E0y\ \u0111\u1EB7c\ bi\u1EC7t\ h\u1EEFu\ \u00EDch\ trong\ c\u00E1c\ thu\u1EADt\ to\u00E1n\ \u0111\u1ED3\ th\u1ECB\ nh\u01B0\ Kruskal\ (Minimum\ Spanning\ Tree),\ ki\u1EC3m\ tra\ chu\ tr\u00ECnh,...\r\n\r\n\ Thu\u1EADt\ to\u00E1n\ s\u1EED\ d\u1EE5ng\:\r\n\ -\ Quick-Union\ c\u00F3\ tr\u1ECDng\ s\u1ED1\ d\u1EF1a\ tr\u00EAn\ \u0111\u1ED9\ s\u00E2u\ c\u00E2y\ (rank).\r\n\ -\ T\u1ED1i\ \u01B0u\ h\u00F3a\ b\u1EB1ng\ n\u00E9n\ \u0111\u01B0\u1EDDng\ \u0111i\ (path\ compression\ by\ halving).\r\n\r\n\ \u0110\u1ED9\ ph\u1EE9c\ t\u1EA1p\ g\u1EA7n\ nh\u01B0\ O(1)\ cho\ m\u1ED7i\ thao\ t\u00E1c\ trong\ th\u1EF1c\ t\u1EBF.\r\n
+comment1.params=n
+comment1.target=UF(int)
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ c\u1EA5u\ tr\u00FAc\ UF\ v\u1EDBi\ n\ ph\u1EA7n\ t\u1EED,\ m\u1ED7i\ ph\u1EA7n\ t\u1EED\ ban\ \u0111\u1EA7u\ l\u00E0\ m\u1ED9t\ t\u1EADp\ ri\u00EAng\ bi\u1EC7t.\r\n\ @param\ n\ s\u1ED1\ l\u01B0\u1EE3ng\ ph\u1EA7n\ t\u1EED\r\n\ @throws\ IllegalArgumentException\ n\u1EBFu\ n\ <\ 0\r\n
+comment2.params=p
+comment2.target=int\ find(int)
+comment2.text=\r\n\ T\u00ECm\ g\u1ED1c\ \u0111\u1EA1i\ di\u1EC7n\ c\u1EE7a\ ph\u1EA7n\ t\u1EED\ p.\ D\u00F9ng\ path\ compression\ \u0111\u1EC3\ t\u0103ng\ hi\u1EC7u\ su\u1EA5t.\r\n\ @param\ p\ ph\u1EA7n\ t\u1EED\ c\u1EA7n\ t\u00ECm\ g\u1ED1c\r\n\ @return\ g\u1ED1c\ \u0111\u1EA1i\ di\u1EC7n\ c\u1EE7a\ t\u1EADp\ ch\u1EE9a\ p\r\n\ @throws\ IllegalArgumentException\ n\u1EBFu\ p\ n\u1EB1m\ ngo\u00E0i\ gi\u1EDBi\ h\u1EA1n\r\n
+comment3.params=p\ q
+comment3.target=void\ union(int,\ int)
+comment3.text=\r\n\ H\u1EE3p\ nh\u1EA5t\ hai\ t\u1EADp\ ch\u1EE9a\ p\ v\u00E0\ q.\r\n\ @param\ p\ ph\u1EA7n\ t\u1EED\ \u0111\u1EA7u\ ti\u00EAn\r\n\ @param\ q\ ph\u1EA7n\ t\u1EED\ th\u1EE9\ hai\r\n\ @throws\ IllegalArgumentException\ n\u1EBFu\ p\ ho\u1EB7c\ q\ n\u1EB1m\ ngo\u00E0i\ gi\u1EDBi\ h\u1EA1n\r\n
+comment4.params=p\ q
+comment4.target=boolean\ connected(int,\ int)
+comment4.text=\r\n\ Ki\u1EC3m\ tra\ xem\ hai\ ph\u1EA7n\ t\u1EED\ c\u00F3\ c\u00F9ng\ thu\u1ED9c\ m\u1ED9t\ t\u1EADp\ kh\u00F4ng.\r\n\ @param\ p\ ph\u1EA7n\ t\u1EED\ \u0111\u1EA7u\ ti\u00EAn\r\n\ @param\ q\ ph\u1EA7n\ t\u1EED\ th\u1EE9\ hai\r\n\ @return\ true\ n\u1EBFu\ p\ v\u00E0\ q\ c\u00F9ng\ t\u1EADp,\ ng\u01B0\u1EE3c\ l\u1EA1i\ false\r\n
+comment5.params=
+comment5.target=int\ count()
+comment5.text=\r\n\ Tr\u1EA3\ v\u1EC1\ s\u1ED1\ l\u01B0\u1EE3ng\ t\u1EADp\ h\u1EE3p\ r\u1EDDi\ r\u1EA1c\ hi\u1EC7n\ t\u1EA1i.\r\n\ @return\ s\u1ED1\ t\u1EADp\ h\u1EE3p\r\n
+comment6.params=p
+comment6.target=void\ validate(int)
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+comment7.text=\r\n\ \u0110\u1ECDc\ d\u1EEF\ li\u1EC7u\ t\u1EEB\ file\ input\ v\u00E0\ th\u1EF1c\ hi\u1EC7n\ h\u1EE3p\ nh\u1EA5t\ c\u00E1c\ c\u1EB7p\ ph\u1EA7n\ t\u1EED.\r\n\ In\ ra\ c\u00E1c\ c\u1EB7p\ \u0111\u01B0\u1EE3c\ h\u1EE3p\ nh\u1EA5t\ v\u00E0\ s\u1ED1\ t\u1EADp\ h\u1EE3p\ c\u00F2n\ l\u1EA1i.\r\n\r\n\ @param\ args\ kh\u00F4ng\ d\u00F9ng\ trong\ ch\u01B0\u01A1ng\ tr\u00ECnh\ n\u00E0y\r\n\ @throws\ IOException\ n\u1EBFu\ l\u1ED7i\ \u0111\u1ECDc\ file\r\n
+numComments=8

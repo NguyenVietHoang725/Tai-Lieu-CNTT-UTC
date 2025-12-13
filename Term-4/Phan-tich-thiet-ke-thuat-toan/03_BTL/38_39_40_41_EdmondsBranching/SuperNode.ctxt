@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=SuperNode
+comment1.params=name
+comment1.target=SuperNode(java.lang.String)
+comment2.params=v
+comment2.target=void\ add(Vertex)
+comment3.params=
+comment3.target=java.util.Set\ getMembers()
+comment4.params=v
+comment4.target=boolean\ contains(Vertex)
+comment5.params=
+comment5.target=java.lang.String\ getName()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment7.params=obj
+comment7.target=boolean\ equals(java.lang.Object)
+comment8.params=
+comment8.target=int\ hashCode()
+numComments=9

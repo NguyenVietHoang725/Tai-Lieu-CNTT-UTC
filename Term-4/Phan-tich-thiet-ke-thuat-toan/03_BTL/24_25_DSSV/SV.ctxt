@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=SV
+comment1.params=maSV\ hoDem\ ten\ ngaySinh\ queQuan\ lop
+comment1.target=SV(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment10.params=
+comment10.target=java.lang.String\ toString()
+comment2.params=
+comment2.target=java.lang.String\ getMaSV()
+comment3.params=
+comment3.target=java.lang.String\ getTen()
+comment4.params=
+comment4.target=java.lang.String\ getHoTen()
+comment5.params=
+comment5.target=java.lang.String\ getLop()
+comment6.params=mh\ diem
+comment6.target=void\ themDiem(MonHoc,\ double)
+comment7.params=
+comment7.target=BST\ getBangDiem()
+comment8.params=kyHoc
+comment8.target=double\ tinhDiemTrungBinhHocKy(java.lang.String)
+comment9.params=
+comment9.target=double\ tinhDiemTrungBinh()
+numComments=11

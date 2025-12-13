@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=KnapsackSolver
+comment1.params=items\ maxWeight
+comment1.target=boolean[]\ solve(java.util.List,\ int)
+comment2.params=items\ take
+comment2.target=void\ printResult(java.util.List,\ boolean[])
+numComments=3

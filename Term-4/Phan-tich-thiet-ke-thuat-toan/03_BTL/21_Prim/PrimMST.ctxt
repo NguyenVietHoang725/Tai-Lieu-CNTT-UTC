@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=PrimMST
+comment1.params=
+comment1.target=double\ weight()
+comment1.text=\r\n\ Returns\ the\ sum\ of\ the\ edge\ weights\ in\ a\ minimum\ spanning\ tree\ (or\ forest).\r\n\ @return\ the\ sum\ of\ the\ edge\ weights\ in\ a\ minimum\ spanning\ tree\ (or\ forest)\r\n
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment2.text=\r\n\ Unit\ tests\ the\ {@code\ PrimMST}\ data\ type.\r\n\r\n\ @param\ args\ the\ command-line\ arguments\r\n
+numComments=3

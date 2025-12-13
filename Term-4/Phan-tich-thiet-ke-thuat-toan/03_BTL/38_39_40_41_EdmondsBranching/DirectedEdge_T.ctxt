@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=DirectedEdge_T
+comment1.params=from\ to\ weight
+comment1.target=DirectedEdge_T(Vertex,\ Vertex,\ double)
+comment2.params=from\ to\ weight\ originalEdge
+comment2.target=DirectedEdge_T(Vertex,\ Vertex,\ double,\ DirectedEdge_T)
+comment3.params=
+comment3.target=Vertex\ from()
+comment4.params=
+comment4.target=Vertex\ to()
+comment5.params=
+comment5.target=double\ weight()
+comment6.params=
+comment6.target=DirectedEdge_T\ originalEdge()
+comment7.params=
+comment7.target=java.lang.String\ toString()
+numComments=8

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Student
+comment1.params=fullName\ birthDate\ gpa
+comment1.target=Student(java.lang.String,\ VDate,\ double)
+comment10.params=args
+comment10.target=void\ main(java.lang.String[])
+comment2.params=input
+comment2.target=Student(java.lang.String)
+comment3.params=
+comment3.target=java.lang.String\ fullName()
+comment4.params=
+comment4.target=VDate\ birthDate()
+comment5.params=
+comment5.target=double\ gpa()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment7.params=that
+comment7.target=int\ compareTo(Student)
+comment8.params=other
+comment8.target=boolean\ equals(java.lang.Object)
+comment9.params=
+comment9.target=int\ hashCode()
+numComments=11

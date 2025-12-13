@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=EdmondsBranching
+comment1.params=G\ root
+comment1.target=EdmondsBranching(EdgeWeightedDigraph_T,\ Vertex)
+comment2.params=G
+comment2.target=void\ computeBranching(EdgeWeightedDigraph_T)
+comment3.params=v
+comment3.target=void\ dfs(Vertex)
+comment4.params=
+comment4.target=java.lang.Iterable\ edges()
+comment5.params=
+comment5.target=double\ weight()
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+numComments=7

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=KruskalMST
+comment0.text=\r\n\ \ The\ {@code\ KruskalMST}\ class\ represents\ a\ data\ type\ for\ computing\ a\r\n\ \ <em>minimum\ spanning\ tree</em>\ in\ an\ edge-weighted\ graph.\r\n\ \ The\ edge\ weights\ can\ be\ positive,\ zero,\ or\ negative\ and\ need\ not\r\n\ \ be\ distinct.\ If\ the\ graph\ is\ not\ connected,\ it\ computes\ a\ <em>minimum\r\n\ \ spanning\ forest</em>,\ which\ is\ the\ union\ of\ minimum\ spanning\ trees\r\n\ \ in\ each\ connected\ component.\ The\ {@code\ weight()}\ method\ returns\ the\ \r\n\ \ weight\ of\ a\ minimum\ spanning\ tree\ and\ the\ {@code\ edges()}\ method\r\n\ \ returns\ its\ edges.\r\n\ \ <p>\r\n\ \ This\ implementation\ uses\ <em>Krusal's\ algorithm</em>\ and\ the\r\n\ \ union-find\ data\ type.\r\n\ \ The\ constructor\ takes\ time\ proportional\ to\ <em>E</em>\ log\ <em>E</em>\r\n\ \ and\ extra\ space\ (not\ including\ the\ graph)\ proportional\ to\ <em>V</em>,\r\n\ \ where\ <em>V</em>\ is\ the\ number\ of\ vertices\ and\ <em>E</em>\ is\ the\ number\ of\ edges.\r\n\ \ Afterwards,\ the\ {@code\ weight()}\ method\ takes\ constant\ time\r\n\ \ and\ the\ {@code\ edges()}\ method\ takes\ time\ proportional\ to\ <em>V</em>.\r\n\ \ <p>\r\n\ \ For\ additional\ documentation,\r\n\ \ see\ <a\ href\="https\://algs4.cs.princeton.edu/43mst">Section\ 4.3</a>\ of\r\n\ \ <i>Algorithms,\ 4th\ Edition</i>\ by\ Robert\ Sedgewick\ and\ Kevin\ Wayne.\r\n\ \ For\ alternate\ implementations,\ see\ {@link\ LazyPrimMST},\ {@link\ PrimMST},\r\n\ \ and\ {@link\ BoruvkaMST}.\r\n\r\n\ \ @author\ Robert\ Sedgewick\r\n\ \ @author\ Kevin\ Wayne\r\n
+comment1.params=G
+comment1.target=KruskalMST(EdgeWeightedGraph)
+comment1.text=\r\n\ Compute\ a\ minimum\ spanning\ tree\ (or\ forest)\ of\ an\ edge-weighted\ graph.\r\n\ @param\ G\ the\ edge-weighted\ graph\r\n
+comment2.params=
+comment2.target=java.lang.Iterable\ edges()
+comment2.text=\r\n\ Returns\ the\ edges\ in\ a\ minimum\ spanning\ tree\ (or\ forest).\r\n\ @return\ the\ edges\ in\ a\ minimum\ spanning\ tree\ (or\ forest)\ as\r\n\ \ \ \ an\ iterable\ of\ edges\r\n
+comment3.params=
+comment3.target=double\ weight()
+comment3.text=\r\n\ Returns\ the\ sum\ of\ the\ edge\ weights\ in\ a\ minimum\ spanning\ tree\ (or\ forest).\r\n\ @return\ the\ sum\ of\ the\ edge\ weights\ in\ a\ minimum\ spanning\ tree\ (or\ forest)\r\n
+comment4.params=G
+comment4.target=boolean\ check(EdgeWeightedGraph)
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+comment5.text=\r\n\ Unit\ tests\ the\ {@code\ KruskalMST}\ data\ type.\r\n\r\n\ @param\ args\ the\ command-line\ arguments\r\n
+numComments=6

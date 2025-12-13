@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=MonHoc
+comment1.params=tenMH\ soTC\ kyHoc
+comment1.target=MonHoc(java.lang.String,\ int,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getTenMH()
+comment3.params=
+comment3.target=int\ getSoTC()
+comment4.params=
+comment4.target=java.lang.String\ getKyHoc()
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment6.params=o
+comment6.target=int\ compareTo(MonHoc)
+comment7.params=o
+comment7.target=boolean\ equals(java.lang.Object)
+comment8.params=
+comment8.target=int\ hashCode()
+numComments=9

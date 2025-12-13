@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Division
+comment1.params=leftExpression\ rightExpression
+comment1.target=Division(Expression,\ Expression)
+comment2.params=
+comment2.target=int\ interpret()
+numComments=3

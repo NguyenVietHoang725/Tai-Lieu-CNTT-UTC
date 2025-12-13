@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Job
+comment1.params=start\ finish\ profit
+comment1.target=Job(int,\ int,\ int)
+comment2.params=y
+comment2.target=int\ compareTo(Job)
+comment3.params=jobs\ n
+comment3.target=int\ findLastNonConflictingJob(java.util.List,\ int)
+comment4.params=jobs
+comment4.target=int\ maxProfit(java.util.List)
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+numComments=7

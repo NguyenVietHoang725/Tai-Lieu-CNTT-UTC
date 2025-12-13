@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=EdgeWeightedDigraph_T
+comment1.params=V
+comment1.target=EdgeWeightedDigraph_T(int)
+comment10.params=
+comment10.target=java.lang.Iterable\ edges()
+comment11.params=v
+comment11.target=void\ validateVertex(int)
+comment12.params=
+comment12.target=java.lang.String\ toString()
+comment2.params=G
+comment2.target=EdgeWeightedDigraph_T(EdgeWeightedDigraph)
+comment3.params=
+comment3.target=int\ V()
+comment4.params=
+comment4.target=int\ E()
+comment5.params=v
+comment5.target=java.lang.Iterable\ inEdges(int)
+comment6.params=e
+comment6.target=void\ addEdge(DirectedEdge)
+comment7.params=to\ e
+comment7.target=void\ addEdge(int,\ DirectedEdge)
+comment8.params=v
+comment8.target=java.lang.Iterable\ adj(int)
+comment9.params=v
+comment9.target=int\ outdegree(int)
+numComments=13
