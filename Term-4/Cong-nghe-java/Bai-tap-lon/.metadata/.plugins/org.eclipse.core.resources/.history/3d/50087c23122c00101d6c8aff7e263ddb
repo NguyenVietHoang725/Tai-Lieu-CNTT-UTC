@@ -1,0 +1,23 @@
+package com.battleship.core.strategy.bot;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.attack.AttackType;
+
+/**
+ * Interface định nghĩa các chiến lược cho bot
+ */
+public interface IBotStrategy {
+    /**
+     * Lấy vị trí tấn công tiếp theo dựa trên chiến lược
+     * @param board Bàn cờ đối thủ
+     * @return Vị trí tấn công tiếp theo
+     */
+    Position getNextAttackPosition(IBoard board);
+
+    /**
+     * Lấy loại tấn công phù hợp với chiến lược
+     * @return Loại tấn công
+     */
+    AttackType getAttackType();
+}

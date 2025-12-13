@@ -1,0 +1,22 @@
+package com.battleship.core.model.player;
+
+import java.util.List;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.AttackInventory;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.ship.Ship;
+
+public interface IPlayer {
+    String getName();
+    IBoard getBoard();
+    AttackInventory getInventory();
+    void attack(IPlayer opponent, Position position);
+    boolean isDefeated();
+    void addShip(Ship ship);
+    List<Ship> getShips();
+    AttackResult receiveAttack(Position position);
+    boolean canAttack(Position position);
+    boolean hasShipsRemaining();
+}

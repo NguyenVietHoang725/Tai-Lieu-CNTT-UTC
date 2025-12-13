@@ -1,0 +1,176 @@
+package com.battleship.core.service.impl;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.model.state.BoardState;
+import com.battleship.core.service.interfaces.IBoardService;
+
+public class BoardService implements IBoardService {
+    private final Board board;
+    private final ShipPlacementStrategy placementStrategy;
+    
+    public BoardService(Board board, ShipPlacementStrategy placementStrategy) {
+        this.board = board;
+        this.placementStrategy = placementStrategy;
+    }
+    
+    @Override
+    public boolean placeShip(Ship ship, Position position, ShipOrientation orientation) {
+        return placementStrategy.placeShip(board, ship, position, orientation);
+    }
+    
+    @Override
+    public boolean isValidPosition(Position position) {
+        return board.isValidPosition(position);
+    }
+    
+    @Override
+    public boolean isPositionOccupied(Position position) {
+        return board.isPositionOccupied(position);
+    }
+    
+    @Override
+    public boolean isPositionHit(Position position) {
+        return board.isPositionHit(position);
+    }
+    
+    @Override
+    public boolean isPositionMissed(Position position) {
+        return board.isPositionMissed(position);
+    }
+    
+    @Override
+    public boolean isPositionEmpty(Position position) {
+        return board.isPositionEmpty(position);
+    }
+    
+    @Override
+    public boolean isShipSunk(Ship ship) {
+        return board.isShipSunk(ship);
+    }
+    
+    @Override
+    public boolean areAllShipsSunk() {
+        return board.areAllShipsSunk();
+    }
+    
+    @Override
+    public List<Ship> getShips() {
+        return board.getShips();
+    }
+    
+    @Override
+    public List<Position> getHitPositions() {
+        return board.getHitPositions();
+    }
+    
+    @Override
+    public List<Position> getMissedPositions() {
+        return board.getMissedPositions();
+    }
+    
+    @Override
+    public List<Position> getEmptyPositions() {
+        return board.getEmptyPositions();
+    }
+    
+    @Override
+    public List<Position> getOccupiedPositions() {
+        return board.getOccupiedPositions();
+    }
+    
+    @Override
+    public List<Position> getUnhitPositions() {
+        return board.getUnhitPositions();
+    }
+    
+    @Override
+    public List<Position> getAdjacentPositions(Position position) {
+        return board.getAdjacentPositions(position);
+    }
+    
+    @Override
+    public List<Position> getDiagonalPositions(Position position) {
+        return board.getDiagonalPositions(position);
+    }
+    
+    @Override
+    public List<Position> getSurroundingPositions(Position position) {
+        return board.getSurroundingPositions(position);
+    }
+    
+    @Override
+    public List<Position> getShipPositions(Ship ship) {
+        return board.getShipPositions(ship);
+    }
+    
+    @Override
+    public List<Position> getShipHitPositions(Ship ship) {
+        return board.getShipHitPositions(ship);
+    }
+    
+    @Override
+    public List<Position> getShipUnhitPositions(Ship ship) {
+        return board.getShipUnhitPositions(ship);
+    }
+    
+    @Override
+    public List<Position> getShipAdjacentPositions(Ship ship) {
+        return board.getShipAdjacentPositions(ship);
+    }
+    
+    @Override
+    public List<Position> getShipDiagonalPositions(Ship ship) {
+        return board.getShipDiagonalPositions(ship);
+    }
+    
+    @Override
+    public List<Position> getShipSurroundingPositions(Ship ship) {
+        return board.getShipSurroundingPositions(ship);
+    }
+
+	@Override
+	public IBoard createBoard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean placeShip(IBoard board, Ship ship, Position position) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public AttackResult handleAttack(IBoard board, Position position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isValidPosition(IBoard board, Position position) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canPlaceShip(IBoard board, Ship ship, Position position) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public BoardState getBoardState(IBoard board) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void clearBoard(IBoard board) {
+		// TODO Auto-generated method stub
+		
+	}
+}

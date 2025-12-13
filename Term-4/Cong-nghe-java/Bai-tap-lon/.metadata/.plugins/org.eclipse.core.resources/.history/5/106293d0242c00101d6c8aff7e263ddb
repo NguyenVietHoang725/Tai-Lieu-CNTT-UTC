@@ -1,0 +1,10 @@
+package com.battleship.data;
+
+public class DataConstants {
+	// Đường dẫn file cho chế độ challenge
+    public static final String CHALLENGE_BOARD_PATH = "data/challenge/level_1.txt";
+    
+    // Đường dẫn file cho chế độ vsbot
+    public static final String BOT_BOARD_PATH = "data/vsbot/bot_board.txt";
+    public static final String PLAYER_BOARD_PATH = "data/vsbot/player_board.txt";
+}

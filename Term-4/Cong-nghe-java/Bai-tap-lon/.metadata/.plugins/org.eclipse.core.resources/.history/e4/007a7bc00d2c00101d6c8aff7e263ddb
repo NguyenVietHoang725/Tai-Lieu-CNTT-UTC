@@ -1,0 +1,20 @@
+package com.battleship.core.model.player;
+
+public class Bot extends Player {
+    private final IBotStrategy strategy;
+    private final String difficulty;
+    
+    public Bot(String name, String difficulty, IBotStrategy strategy) {
+        super(name);
+        this.difficulty = difficulty;
+        this.strategy = strategy;
+    }
+    
+    public Position getNextAttackPosition() {
+        return strategy.getNextAttackPosition(getBoard());
+    }
+    
+    public void updateStrategy(AttackResult result) {
+        strategy.updateStrategy(result);
+    }
+}

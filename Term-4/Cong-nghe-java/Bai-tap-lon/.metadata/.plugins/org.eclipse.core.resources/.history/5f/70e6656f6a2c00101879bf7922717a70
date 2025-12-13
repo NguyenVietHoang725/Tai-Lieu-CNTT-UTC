@@ -1,0 +1,31 @@
+package com.battleship.core.service.player;
+
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.board.Board;
+
+public interface IBotService {
+    /**
+     * Lấy vị trí tấn công tiếp theo của bot
+     */
+    Position getNextAttackPosition();
+    
+    /**
+     * Cập nhật trạng thái sau khi tấn công
+     */
+    void updateAttackResult(Position position, boolean isHit, boolean isSunk);
+    
+    /**
+     * Reset trạng thái của bot
+     */
+    void reset();
+    
+    /**
+     * Load bàn cờ cho bot từ file
+     */
+    boolean loadBoard(String filePath);
+    
+    /**
+     * Lấy bàn cờ của bot
+     */
+    Board getBoard();
+}

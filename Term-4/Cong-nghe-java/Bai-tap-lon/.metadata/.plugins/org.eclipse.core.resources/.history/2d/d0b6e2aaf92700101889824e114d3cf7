@@ -1,0 +1,26 @@
+package com.battleship.view.components.buttons;
+
+import java.awt.Dimension;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+import com.battleship.view.utils.ResourceLoader;
+
+public class MenuButton extends JButton {
+	public MenuButton(String iconPath) {
+        this(iconPath, null);
+    }
+
+    public MenuButton(String iconPath, String hoverPath) {
+        super(new ImageIcon(ResourceLoader.loadImage(iconPath)));
+        setBorderPainted(false);
+        setContentAreaFilled(false);
+        setFocusPainted(false);
+        setOpaque(false);
+
+        if (hoverPath != null) {
+            setRolloverIcon(new ImageIcon(ResourceLoader.loadImage(hoverPath)));
+        }
+    }
+}

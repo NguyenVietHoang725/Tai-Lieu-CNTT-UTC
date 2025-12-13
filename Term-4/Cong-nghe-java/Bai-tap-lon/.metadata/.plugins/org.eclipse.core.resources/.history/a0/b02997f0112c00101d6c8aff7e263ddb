@@ -1,0 +1,11 @@
+package com.battleship.core.strategy.bot;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.IBoard;
+
+public interface IBotStrategy {
+    Position getNextAttackPosition(IBoard board);
+    void updateStrategy(AttackResult result);
+    String getDifficulty();
+}

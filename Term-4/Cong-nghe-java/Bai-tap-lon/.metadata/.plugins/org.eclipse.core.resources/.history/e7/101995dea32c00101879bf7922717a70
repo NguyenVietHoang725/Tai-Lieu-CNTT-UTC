@@ -1,0 +1,134 @@
+package com.battleship.ui.controller;
+
+import com.battleship.ui.utils.ViewConstants;
+import com.battleship.ui.utils.ResourceLoader;
+import com.battleship.ui.view.MainMenuView;
+import com.battleship.ui.view.ChallengeView;
+import com.battleship.core.service.game.IGameService;
+import com.battleship.core.service.game.GameServiceImpl;
+import com.battleship.core.service.player.PlayerServiceImpl;
+import com.battleship.core.service.player.IPlayerService;
+import com.battleship.core.service.board.BoardServiceImpl;
+import com.battleship.core.service.board.IBoardService;
+import com.battleship.core.service.board.ShipPlacementServiceImpl;
+import com.battleship.core.service.board.IShipPlacementService;
+import com.battleship.core.service.attack.AttackServiceImpl;
+import com.battleship.core.service.attack.IAttackService;
+import com.battleship.core.service.game.GameStateServiceImpl;
+import com.battleship.core.service.game.IGameStateService;
+import com.battleship.core.service.player.BotServiceImpl;
+import com.battleship.core.service.player.IBotService;
+
+import java.awt.CardLayout;
+import java.awt.Font;
+
+import javax.swing.*;
+
+public class AppController {
+    private JFrame mainFrame;
+    private JPanel mainPanel; // Sử dụng CardLayout để chuyển đổi view
+    private CardLayout cardLayout;
+
+    // Controllers
+    private MainController mainController;
+    private ChallengeController challengeController;
+    // private VsBotController vsBotController;
+    // private SettingsController settingsController;
+    // private RulesController rulesController;
+    
+    private ChallengeView challengeView;
+    
+    // Các tên màn hình (key cho CardLayout)
+    public static final String MAIN_MENU = "MAIN_MENU";
+    public static final String CHALLENGE = "CHALLENGE";
+    // public static final String VSBOT = "VSBOT";
+    // public static final String SETTINGS = "SETTINGS";
+    // public static final String RULES = "RULES";
+
+    public AppController() {
+        // Khởi tạo frame chính
+        mainFrame = new JFrame("Battleship");
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setSize(ViewConstants.WINDOW_WIDTH, ViewConstants.WINDOW_HEIGHT);
+        mainFrame.setResizable(false);
+        mainFrame.setLocationRelativeTo(null);
+
+        // Khởi tạo panel chính với CardLayout
+        cardLayout = new CardLayout();
+        mainPanel = new JPanel(cardLayout);
+
+        // Khởi tạo và thêm MainMenuView
+        mainController = new MainController(this);
+        mainPanel.add(mainController.getMainMenuView(), MAIN_MENU);
+
+        // Thêm mainPanel vào frame
+        mainFrame.setContentPane(mainPanel);
+        mainFrame.setVisible(true);
+
+        // Hiển thị màn hình menu đầu tiên
+        showMainMenu();
+    }
+
+    public void showMainMenu() {
+        cardLayout.show(mainPanel, MAIN_MENU);
+    }
+
+    public void startChallengeMode() {
+        // Khởi tạo các service phụ với dependency đầy đủ
+        IShipPlacementService shipPlacementService = new ShipPlacementServiceImpl(null);
+        IPlayerService playerService = new PlayerServiceImpl(null, null, null, null);
+        IBoardService boardService1 = new BoardServiceImpl(shipPlacementService);
+        IBoardService boardService2 = new BoardServiceImpl(shipPlacementService);
+        IAttackService attackService = new AttackServiceImpl();
+        IGameStateService stateService = new GameStateServiceImpl(null);
+        IBotService botService = new BotServiceImpl(null);
+
+        // Khởi tạo GameService
+        IGameService gameService = new GameServiceImpl(
+            playerService,
+            boardService1,
+            boardService2,
+            attackService,
+            stateService,
+            botService
+        );
+
+        // Load font
+        Font font;
+        try {
+            font = ResourceLoader.loadFont(ViewConstants.MAIN_FONT_PATH, 18f);
+        } catch (Exception e) {
+            font = new Font("Arial", Font.BOLD, 18);
+        }
+
+        // Khởi tạo view và controller
+        challengeView = new ChallengeView(font);
+        challengeController = new ChallengeController(challengeView, gameService);
+
+        // Thêm vào mainPanel nếu chưa có
+        mainPanel.add(challengeView, CHALLENGE);
+
+        // Chuyển sang màn hình challenge
+        cardLayout.show(mainPanel, CHALLENGE);
+    }
+
+    public void startVsBotMode() {
+        // TODO: Triển khai sau
+        JOptionPane.showMessageDialog(mainFrame, "Chức năng VS Bot Mode sẽ được bổ sung!");
+    }
+
+    public void showSettings() {
+        // TODO: Triển khai sau
+        JOptionPane.showMessageDialog(mainFrame, "Chức năng Settings sẽ được bổ sung!");
+    }
+
+    public void showRules() {
+        // TODO: Triển khai sau
+        JOptionPane.showMessageDialog(mainFrame, "Chức năng Rules sẽ được bổ sung!");
+    }
+
+    // Getter cho mainFrame nếu cần
+    public JFrame getMainFrame() {
+        return mainFrame;
+    }
+}

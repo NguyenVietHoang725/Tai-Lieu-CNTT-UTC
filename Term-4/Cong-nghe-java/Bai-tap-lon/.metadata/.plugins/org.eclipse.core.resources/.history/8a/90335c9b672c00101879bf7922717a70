@@ -1,0 +1,30 @@
+package com.battleship.core.model.board;
+
+import java.util.List;
+
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.model.state.BoardState;
+
+public interface IBoard {
+	Node getNode(int x, int y);
+
+	boolean isValidPosition(int x, int y);
+
+	void placeShip(Ship ship, Position position);
+
+	List<Ship> getShips();
+
+	boolean isAllShipsSunk();
+
+	int getSize();
+
+	boolean isNodeHit(int x, int y);
+
+	void markNodeAsHit(int x, int y);
+
+	BoardState getBoardState();
+
+	boolean isPositionValidForAttack(Position position);
+
+	Node getNode(Position position);
+}

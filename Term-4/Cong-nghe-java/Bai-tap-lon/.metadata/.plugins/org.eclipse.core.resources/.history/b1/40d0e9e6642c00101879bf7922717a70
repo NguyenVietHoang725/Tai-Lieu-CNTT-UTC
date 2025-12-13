@@ -1,0 +1,186 @@
+package com.battleship.core.service.impl;
+
+import java.io.IOException;
+
+import com.battleship.core.model.attack.Attack;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.attack.AttackType;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.game.GameState;
+import com.battleship.core.model.game.GameStatus;
+import com.battleship.core.model.player.IPlayer;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.service.interfaces.IAttackService;
+import com.battleship.core.service.interfaces.IBoardService;
+import com.battleship.core.service.interfaces.IGameService;
+import com.battleship.core.service.interfaces.IPlayerService;
+import com.battleship.data.repository.IBoardRepository;
+
+public class GameServiceImpl implements IGameService {
+	private final IPlayerService playerService;
+    private final IAttackService attackService;
+    private final IBoardService boardService;
+    private final IBoardRepository boardRepository; // Thêm repository
+    
+    private GameState gameState;
+    private GameMode gameMode;
+    private int maxShots; // Thêm cho challenge mode
+    private int maxTimeSeconds; // Thêm cho challenge mode
+    
+    public GameServiceImpl(IPlayerService playerService, 
+                          IAttackService attackService,
+                          IBoardService boardService,
+                          IBoardRepository boardRepository) {
+        this.playerService = playerService;
+        this.attackService = attackService;
+        this.boardService = boardService;
+        this.boardRepository = boardRepository;
+    }
+ 
+    
+    @Override
+    public void startGame(GameMode mode) {
+        this.gameMode = mode;
+        
+        try {
+            if (mode == GameMode.CHALLENGE) {
+                // Load challenge board
+                IBoard challengeBoard = boardRepository.loadChallengeBoard("level1");
+                this.maxShots = challengeBoard.getMaxShots();
+                this.maxTimeSeconds = challengeBoard.getMaxTimeSeconds();
+                
+                IPlayer player = playerService.createPlayer("Player");
+                player.setBoard(challengeBoard);
+                
+                this.gameState = new GameState(player, null, mode);
+                this.gameState.setStatus(GameStatus.IN_PROGRESS);
+            } else {
+                // VSBot mode
+                IPlayer player = playerService.createPlayer("Player");
+                IPlayer bot = playerService.createBot("Bot", "MEDIUM");
+                
+                // Load bot board
+                IBoard botBoard = boardRepository.loadBotBoard("medium");
+                bot.setBoard(botBoard);
+                
+                // Try to load player board if exists
+                try {
+                    IBoard playerBoard = boardRepository.loadPlayerBoard(player);
+                    player.setBoard(playerBoard);
+                } catch (IOException e) {
+                    // If no saved board, create new one
+                    player.setBoard(new Board());
+                }
+                
+                this.gameState = new GameState(player, bot, mode);
+                this.gameState.setStatus(GameStatus.PLACING_SHIPS);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load game boards", e);
+        }
+    }
+    
+    @Override
+    public void handleAttack(Attack attack) {
+        if (gameState.getStatus() != GameStatus.IN_PROGRESS) {
+            throw new IllegalStateException("Game is not in progress");
+        }
+        
+        // Check shot limit for challenge mode
+        if (gameMode == GameMode.CHALLENGE) {
+            if (playerService.getShotsRemaining(gameState.getCurrentPlayer()) <= 0) {
+                throw new IllegalStateException("No shots remaining");
+            }
+        }
+        
+        // Force single attack in VSBot mode
+        if (gameMode == GameMode.VS_BOT) {
+            attack.setType(AttackType.SINGLE);
+        }
+        
+        AttackResult result = attackService.executeAttack(
+            gameState.getCurrentPlayer(), 
+            gameState.getOpponent(), 
+            attack.getPosition()
+        );
+        
+        if (result.getHitShip() != null || !result.isHit()) {
+            switchTurn();
+        }
+        
+        checkGameOver();
+    }
+    
+    @Override
+    public void endGame() {
+        if (playerService.isDefeated(gameState.getCurrentPlayer())) {
+            gameState.setStatus(GameStatus.BOT_WON);
+        } else if (playerService.isDefeated(gameState.getOpponent())) {
+            gameState.setStatus(GameStatus.PLAYER_WON);
+        } else {
+            gameState.setStatus(GameStatus.DRAW);
+        }
+    }
+    
+    @Override
+    public GameState getCurrentState() {
+        return gameState;
+    }
+    
+    @Override
+    public boolean isGameOver() {
+        return gameState.getStatus() != GameStatus.IN_PROGRESS;
+    }
+    
+    @Override
+    public IPlayer getCurrentPlayer() {
+        return gameState.getCurrentPlayer();
+    }
+    
+    @Override
+    public IPlayer getOpponent() {
+        return gameState.getOpponent();
+    }
+    
+    @Override
+    public void switchTurn() {
+        IPlayer temp = gameState.getCurrentPlayer();
+        gameState.setCurrentPlayer(gameState.getOpponent());
+        gameState.setOpponent(temp);
+    }
+    
+    @Override
+    public void placeShip(IPlayer player, Ship ship, Position position) {
+        if (gameState.getStatus() != GameStatus.PLACING_SHIPS) {
+            throw new IllegalStateException("Cannot place ships in current state");
+        }
+        
+        playerService.placeShip(player, ship, position);
+        
+        // Check if all ships are placed
+        if (areAllShipsPlaced(gameState.getCurrentPlayer())) {
+            // Save player board in VSBot mode
+            if (gameMode == GameMode.VS_BOT) {
+                try {
+                    boardRepository.savePlayerBoard(player);
+                } catch (IOException e) {
+                    throw new RuntimeException("Failed to save player board", e);
+                }
+            }
+            gameState.setStatus(GameStatus.IN_PROGRESS);
+        }
+    }
+    
+    private boolean areAllShipsPlaced(IPlayer player) {
+        return player.getBoard().getShips().size() == 5; // Assuming 5 ships per player
+    }
+    
+    private void checkGameOver() {
+        if (playerService.isDefeated(gameState.getCurrentPlayer()) || 
+            playerService.isDefeated(gameState.getOpponent())) {
+            endGame();
+        }
+    }
+}

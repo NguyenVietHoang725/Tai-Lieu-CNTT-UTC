@@ -1,0 +1,28 @@
+package com.battleship.core.service.interfaces;
+
+import com.battleship.core.model.attack.Attack;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.game.GameState;
+import com.battleship.core.model.player.IPlayer;
+import com.battleship.core.model.ship.Ship;
+
+public interface IGameService {
+	void startGame(GameMode mode);
+
+	void handleAttack(Attack attack);
+
+	void endGame();
+
+	GameState getCurrentState();
+
+	boolean isGameOver();
+
+	IPlayer getCurrentPlayer();
+
+	IPlayer getOpponent();
+
+	void switchTurn();
+
+	void placeShip(IPlayer player, Ship ship, Position position);
+}

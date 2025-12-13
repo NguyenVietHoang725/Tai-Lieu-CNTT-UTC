@@ -1,0 +1,5 @@
+package com.battleship.core.model.player;
+
+public class Player {
+
+}

@@ -1,0 +1,137 @@
+package com.battleship.ui.view;
+
+import com.battleship.ui.component.GameBoard;
+import com.battleship.ui.component.button.CustomButton;
+import com.battleship.ui.component.button.CustomToggleButton;
+import com.battleship.ui.utils.ViewConstants;
+import com.battleship.core.model.attack.AttackType;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.EnumMap;
+import java.util.Map;
+
+public class ChallengeView extends JPanel {
+    // Board (có thể tái sử dụng)
+    public final GameBoard boardPanel;
+
+    // Attack panel (panel chọn loại tấn công)
+    private final JPanel attackPanel;
+    private final Map<AttackType, CustomToggleButton> attackButtons;
+    private final ButtonGroup attackGroup;
+    private final Map<AttackType, JLabel> attackCountLabels;
+
+    // Info panel (hiển thị score, time, shots, message)
+    private final JPanel infoPanel;
+    private final JLabel scoreLabel;
+    private final JLabel timeLabel;
+    private final JLabel shotsLabel;
+    private final JLabel messageLabel;
+
+    public ChallengeView() {
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(ViewConstants.WINDOW_WIDTH, ViewConstants.WINDOW_HEIGHT));
+
+        // ========== BOARD ==========
+        boardPanel = new GameBoard(10, 10, ViewConstants.Challenge.CELL_SIZE);
+        add(boardPanel, BorderLayout.CENTER);
+
+        // ========== ATTACK PANEL ==========
+        attackPanel = new JPanel();
+        attackPanel.setOpaque(false);
+        attackPanel.setLayout(new BoxLayout(attackPanel, BoxLayout.Y_AXIS));
+        attackPanel.setBorder(BorderFactory.createTitledBorder("Attack Types"));
+
+        attackButtons = new EnumMap<>(AttackType.class);
+        attackGroup = new ButtonGroup();
+        attackCountLabels = new EnumMap<>(AttackType.class);
+
+        for (AttackType type : AttackType.values()) {
+            CustomToggleButton btn = new CustomToggleButton(
+                    ViewConstants.getAttackButtonIcon(type),
+                    ViewConstants.getAttackButtonHoverIcon(type),
+                    ViewConstants.getAttackButtonPressedIcon(type),
+                    ViewConstants.Challenge.ATTACK_BUTTON_WIDTH,
+                    ViewConstants.Challenge.ATTACK_BUTTON_HEIGHT
+            );
+            attackButtons.put(type, btn);
+            attackGroup.add(btn);
+
+            JPanel row = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+            row.setOpaque(false);
+            row.add(btn);
+
+            JLabel countLabel = new JLabel("x0");
+            attackCountLabels.put(type, countLabel);
+            row.add(countLabel);
+
+            attackPanel.add(row);
+            attackPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+        }
+
+        // ========== INFO PANEL ==========
+        infoPanel = new JPanel();
+        infoPanel.setOpaque(false);
+        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
+        infoPanel.setBorder(BorderFactory.createTitledBorder("Info"));
+
+        scoreLabel = new JLabel("Score: 0");
+        timeLabel = new JLabel("Time: 00:00");
+        shotsLabel = new JLabel("Shots: 0");
+        messageLabel = new JLabel("Welcome to Challenge Mode!");
+
+        infoPanel.add(scoreLabel);
+        infoPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+        infoPanel.add(timeLabel);
+        infoPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+        infoPanel.add(shotsLabel);
+        infoPanel.add(Box.createRigidArea(new Dimension(0, 8)));
+        infoPanel.add(messageLabel);
+
+        // ========== PANEL BÊN PHẢI ==========
+        JPanel rightPanel = new JPanel();
+        rightPanel.setOpaque(false);
+        rightPanel.setLayout(new BorderLayout());
+        rightPanel.setPreferredSize(new Dimension(300, ViewConstants.WINDOW_HEIGHT));
+        rightPanel.add(infoPanel, BorderLayout.NORTH);
+        rightPanel.add(attackPanel, BorderLayout.CENTER);
+
+        add(rightPanel, BorderLayout.EAST);
+    }
+
+    // ========== Các phương thức hỗ trợ cập nhật giao diện ==========
+    public void updateScore(int score) {
+        scoreLabel.setText("Score: " + score);
+    }
+
+    public void updateTime(String time) {
+        timeLabel.setText("Time: " + time);
+    }
+
+    public void updateShots(int shots) {
+        shotsLabel.setText("Shots: " + shots);
+    }
+
+    public void updateMessage(String msg) {
+        messageLabel.setText(msg);
+    }
+
+    public void updateAttackCount(AttackType type, int count) {
+        attackCountLabels.get(type).setText("x" + count);
+    }
+
+    public AttackType getSelectedAttackType() {
+        for (Map.Entry<AttackType, CustomToggleButton> entry : attackButtons.entrySet()) {
+            if (entry.getValue().isSelected()) return entry.getKey();
+        }
+        return AttackType.SINGLE; // mặc định
+    }
+
+    public void setAttackTypeSelected(AttackType type) {
+        attackButtons.get(type).setSelected(true);
+    }
+
+    public void setAttackButtonListener(AttackType type, java.awt.event.ActionListener listener) {
+        attackButtons.get(type).addActionListener(listener);
+    }
+}

@@ -1,0 +1,103 @@
+package com.battleship.core.service.game;
+
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.game.GameState;
+import com.battleship.core.model.player.Player;
+import com.battleship.core.service.attack.IAttackService;
+import com.battleship.core.service.board.IBoardService;
+import com.battleship.core.service.player.IPlayerService;
+
+public class GameServiceImpl implements IGameService {
+	private final IPlayerService playerService;
+    private final IBoardService boardService1;
+    private final IBoardService boardService2;
+    private final IAttackService attackService;
+    private final IGameStateService stateService;
+    private GameMode gameMode;
+    private GameState currentState;
+
+    public GameServiceImpl(
+        IPlayerService playerService,
+        IBoardService boardService1,
+        IBoardService boardService2,
+        IAttackService attackService,
+        IGameStateService stateService
+    ) {
+        this.playerService = playerService;
+        this.boardService1 = boardService1;
+        this.boardService2 = boardService2;
+        this.attackService = attackService;
+        this.stateService = stateService;
+        this.currentState = GameState.NOT_STARTED;
+    }
+    
+    @Override
+    public void initializeGame(GameMode gameMode) {
+        this.gameMode = gameMode;
+        this.currentState = GameState.INITIALIZING;
+        
+        // Khởi tạo bàn cờ cho cả hai người chơi
+        boardService1.resetBoard();
+        boardService2.resetBoard();
+        
+        // Nếu là chế độ VS Bot, load bàn cờ cho bot
+        if (gameMode == GameMode.VS_BOT) {
+            // Load bàn cờ cho bot
+        }
+        
+        this.currentState = GameState.READY;
+    }
+
+    @Override
+    public void startGame() {
+        if (currentState != GameState.READY) {
+            throw new IllegalStateException("Game is not ready to start");
+        }
+        currentState = GameState.PLAYING;
+    }
+
+    @Override
+    public void endGame() {
+        currentState = GameState.FINISHED;
+    }
+
+    @Override
+    public void pauseGame() {
+        if (currentState == GameState.PLAYING) {
+            currentState = GameState.PAUSED;
+        }
+    }
+
+    @Override
+    public void resumeGame() {
+        if (currentState == GameState.PAUSED) {
+            currentState = GameState.PLAYING;
+        }
+    }
+
+    @Override
+    public GameState getCurrentState() {
+        return currentState;
+    }
+
+    @Override
+    public boolean isGameOver() {
+        return currentState == GameState.FINISHED;
+    }
+
+    @Override
+    public Player getCurrentPlayer() {
+        return playerService.getCurrentPlayer();
+    }
+
+    @Override
+    public Player getOpponentPlayer() {
+        return playerService.getOpponentPlayer();
+    }
+
+    @Override
+    public GameMode getGameMode() {
+        return gameMode;
+    }
+
+}

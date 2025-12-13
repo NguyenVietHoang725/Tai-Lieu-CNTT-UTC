@@ -1,0 +1,101 @@
+package com.battleship.core.service.impl;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.model.state.BoardState;
+import com.battleship.core.service.interfaces.IBoardService;
+
+public class BoardServiceImpl implements IBoardService {
+    private final int BOARD_SIZE = 10;
+    
+    @Override
+    public IBoard createBoard() {
+        return new Board(BOARD_SIZE);
+    }
+    
+    @Override
+    public boolean placeShip(IBoard board, Ship ship, Position position) {
+        if (!canPlaceShip(board, ship, position)) {
+            return false;
+        }
+        
+        try {
+            board.placeShip(ship, position);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+    }
+    
+    @Override
+    public AttackResult handleAttack(IBoard board, Position position) {
+        if (!isValidPosition(board, position)) {
+            return AttackResult.INVALID;
+        }
+        
+        Node node = board.getNode(position.getX(), position.getY());
+        if (node.isHit()) {
+            return AttackResult.ALREADY_HIT;
+        }
+        
+        board.markNodeAsHit(position.getX(), position.getY());
+        
+        if (node.hasShip()) {
+            Ship ship = node.getShip();
+            if (ship.isSunk()) {
+                return AttackResult.SUNK;
+            }
+            return AttackResult.HIT;
+        }
+        
+        return AttackResult.MISS;
+    }
+    
+    @Override
+    public boolean isValidPosition(IBoard board, Position position) {
+        return board.isValidPosition(position.getX(), position.getY());
+    }
+    
+    @Override
+    public boolean canPlaceShip(IBoard board, Ship ship, Position position) {
+        if (!isValidPosition(board, position)) {
+            return false;
+        }
+        
+        // Check if ship can be placed at position
+        for (int i = 0; i < ship.getSize(); i++) {
+            Position checkPos = new Position(
+                position.getX() + (ship.isHorizontal() ? i : 0),
+                position.getY() + (ship.isHorizontal() ? 0 : i)
+            );
+            
+            if (!isValidPosition(board, checkPos)) {
+                return false;
+            }
+            
+            Node node = board.getNode(checkPos.getX(), checkPos.getY());
+            if (node.hasShip()) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    @Override
+    public BoardState getBoardState(IBoard board) {
+        if (board.isAllShipsSunk()) {
+            return BoardState.DEFEATED;
+        }
+        return BoardState.ACTIVE;
+    }
+    
+    @Override
+    public void clearBoard(IBoard board) {
+        // Implementation depends on Board class implementation
+        // This might need to be added to IBoard interface
+    }
+}

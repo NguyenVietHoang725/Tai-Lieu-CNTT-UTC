@@ -1,0 +1,5 @@
+package com.battleship.data.loader;
+
+public class ChallengeBoardLoader {
+
+}

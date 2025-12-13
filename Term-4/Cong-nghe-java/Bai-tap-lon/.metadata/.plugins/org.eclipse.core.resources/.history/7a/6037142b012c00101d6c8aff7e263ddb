@@ -1,0 +1,107 @@
+package com.battleship.core.model.board;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.battleship.core.enums.NodeState;
+import com.battleship.core.model.Node;
+import com.battleship.core.model.Position;
+import com.battleship.core.model.Ship;
+import com.battleship.core.model.interfaces.IBoard;
+
+public class Board implements IBoard {
+    private final Node[][] nodes;
+    private final List<Ship> ships;
+    private final int size;
+    
+    public Board() {
+        this.size = 10;
+        this.nodes = new Node[size][size];
+        this.ships = new ArrayList<>();
+        initializeBoard();
+    }
+    
+    private void initializeBoard() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                nodes[i][j] = new Node(i, j);
+            }
+        }
+    }
+    
+    @Override
+    public Node getNode(int x, int y) {
+        if (!isValidPosition(x, y)) {
+            throw new IllegalArgumentException("Invalid position");
+        }
+        return nodes[x][y];
+    }
+    
+    @Override
+    public boolean isValidPosition(int x, int y) {
+        return x >= 0 && x < size && y >= 0 && y < size;
+    }
+    
+    @Override
+    public void placeShip(Ship ship, Position position) {
+        if (!isValidPosition(position.getX(), position.getY())) {
+            throw new IllegalArgumentException("Invalid position");
+        }
+        
+        // Check if ship can be placed
+        if (!canPlaceShip(ship, position)) {
+            throw new IllegalStateException("Cannot place ship at this position");
+        }
+        
+        // Place ship
+        ship.setPosition(position);
+        for (int i = 0; i < ship.getLength(); i++) {
+            int x = position.getX() + (ship.isHorizontal() ? i : 0);
+            int y = position.getY() + (ship.isHorizontal() ? 0 : i);
+            Node node = getNode(x, y);
+            node.setShip(ship);
+            node.setState(NodeState.SHIP);
+            ship.getNodes().add(node);
+        }
+        
+        ships.add(ship);
+    }
+    
+    private boolean canPlaceShip(Ship ship, Position position) {
+        // Implementation of ship placement validation
+        // Check boundaries and adjacent cells
+        return true; // Placeholder
+    }
+
+	@Override
+	public List<Ship> getShips() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAllShipsSunk() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isNodeHit(int x, int y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void markNodeAsHit(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+    // Other IBoard implementations
+}

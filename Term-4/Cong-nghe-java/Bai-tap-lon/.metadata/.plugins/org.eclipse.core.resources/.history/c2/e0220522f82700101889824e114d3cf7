@@ -1,0 +1,19 @@
+package com.battleship.view.components.buttons;
+
+import java.awt.Dimension;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+import com.battleship.view.utils.ResourceLoader;
+
+public class MenuButton extends JButton {
+	public MenuButton(String imagePath) {
+        super(new ImageIcon(ResourceLoader.loadImage(imagePath)));
+        setBorderPainted(false);
+        setContentAreaFilled(false);
+        setFocusPainted(false);
+        setOpaque(false);
+        setPreferredSize(new Dimension(220, 60)); // hoặc kích thước phù hợp với ảnh
+    }
+}

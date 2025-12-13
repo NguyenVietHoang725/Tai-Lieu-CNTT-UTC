@@ -1,0 +1,91 @@
+package com.battleship.ui.controller;
+
+import com.battleship.ui.view.ChallengeView;
+import com.battleship.core.model.attack.AttackType;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.attack.AttackInventory;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.service.game.IGameService;
+
+public class ChallengeController {
+    private final ChallengeView view;
+    private final IGameService gameService;
+
+    public ChallengeController(ChallengeView view, IGameService gameService) {
+        this.view = view;
+        this.gameService = gameService;
+
+        // Lắng nghe click trên từng ô bàn cờ
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                int row = i, col = j;
+                view.boardPanel.getCell(i, j).addActionListener(e -> handleAttack(row, col));
+            }
+        }
+
+        // Lắng nghe chọn loại tấn công
+        for (AttackType type : AttackType.values()) {
+            view.setAttackButtonListener(type, e -> {
+                gameService.getCurrentPlayer().getInventory().setCurrentAttackType(type);
+            });
+        }
+
+        // Khởi tạo giao diện ban đầu
+        updateAll();
+    }
+
+    private void handleAttack(int row, int col) {
+        Position pos = new Position(row, col);
+        boolean success = gameService.performAttack(pos);
+
+        updateAll();
+
+        if (!success) {
+            view.setMessage("Invalid attack!");
+        } else {
+            view.setMessage("Attack at (" + row + "," + col + ")!");
+        }
+    }
+
+    private void updateAll() {
+        updateBoard();
+        updateInfo();
+    }
+
+    private void updateBoard() {
+        Board board = (Board) gameService.getOpponentPlayer().getBoard();
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++) {
+                // Lấy trạng thái node từ board, cập nhật icon
+                // Giả sử có các phương thức: isHit, isMiss, hasShip, isSunk
+                String state = "normal";
+                var node = board.getNode(i, j);
+                if (node.isHit()) {
+                    if (node.hasShip() && node.getShip().isSunk()) {
+                        state = "ship";
+                    } else {
+                        state = "hit";
+                    }
+                } else if (node.isMiss()) {
+                    state = "miss";
+                }
+                view.boardPanel.setCellState(i, j, state);
+            }
+    }
+
+    private void updateInfo() {
+        // Lấy thông tin từ service và cập nhật lên view
+        int score = 0; // Lấy từ service nếu có
+        String time = "00:00"; // Lấy từ service nếu có
+        int shots = 0; // Lấy từ service nếu có
+        view.setScore(score);
+        view.setTime(time);
+        view.setShots(shots);
+
+        // Cập nhật số lượng attack type còn lại
+        AttackInventory inv = gameService.getCurrentPlayer().getInventory();
+        for (AttackType type : AttackType.values()) {
+            view.setAttackCount(type, inv.getWeaponCount(type));
+        }
+    }
+}

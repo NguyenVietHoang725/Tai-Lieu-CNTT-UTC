@@ -1,0 +1,5 @@
+package com.battleship.core.model.game;
+
+public class GameStatus {
+
+}

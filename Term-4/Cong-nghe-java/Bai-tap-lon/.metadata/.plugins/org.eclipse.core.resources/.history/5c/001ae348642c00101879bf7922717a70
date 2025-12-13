@@ -1,0 +1,30 @@
+package com.battleship.core.strategy.bot;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.attack.AttackResult;
+
+/**
+ * Interface định nghĩa chiến lược của bot trong game
+ */
+public interface IBotStrategy {
+    /**
+     * Chọn vị trí tấn công tiếp theo dựa trên chiến lược
+     * @param board Bàn cờ đối thủ
+     * @return Vị trí tấn công được chọn
+     */
+    Position getNextAttackPosition(IBoard board);
+
+    /**
+     * Cập nhật chiến lược dựa trên kết quả tấn công
+     * @param result Kết quả của lần tấn công trước
+     * @param position Vị trí đã tấn công
+     */
+    void updateStrategy(AttackResult result, Position position);
+
+    /**
+     * Lấy độ khó của bot
+     * @return Chuỗi biểu thị độ khó (Easy, Medium, Hard)
+     */
+    String getDifficulty();
+}

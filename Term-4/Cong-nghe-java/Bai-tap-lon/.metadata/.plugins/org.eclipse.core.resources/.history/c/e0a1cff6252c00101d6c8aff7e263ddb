@@ -1,0 +1,8 @@
+package com.battleship.core.model.game;
+
+public enum GameStatus {
+    IN_PROGRESS,
+    PLAYER_WON,
+    BOT_WON,
+    DRAW
+}

@@ -1,0 +1,16 @@
+package com.battleship.core.service.interfaces;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.ship.IShip;
+
+public interface IBoardService {
+    IBoard createBoard();
+    boolean placeShip(IBoard board, Ship ship, Position position);
+    AttackResult handleAttack(IBoard board, Position position);
+    boolean isValidPosition(IBoard board, Position position);
+    boolean canPlaceShip(IBoard board, Ship ship, Position position);
+    BoardState getBoardState(IBoard board);
+    void clearBoard(IBoard board);
+}

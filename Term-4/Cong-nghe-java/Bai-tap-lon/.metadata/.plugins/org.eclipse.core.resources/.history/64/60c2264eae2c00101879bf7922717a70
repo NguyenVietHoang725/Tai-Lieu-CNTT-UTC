@@ -1,0 +1,235 @@
+package com.battleship.ui.view;
+
+import com.battleship.ui.component.board.GameBoard;
+import com.battleship.ui.component.button.CustomToggleButton;
+import com.battleship.ui.utils.ViewConstants;
+import com.battleship.core.model.attack.AttackType;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.util.EnumMap;
+import java.util.Map;
+
+public class ChallengeView extends JPanel {
+    // Board panel
+    public final GameBoard boardPanel;
+
+    // Info & Attack panel
+    private final JPanel infoAttackPanel;
+    private final JLabel timeLabel;
+    private final JLabel shotsLabel;
+    private final JLabel scoreLabel;
+    private final JLabel messageLabel;
+    private final Map<AttackType, CustomToggleButton> attackButtons;
+    private final Map<AttackType, JLabel> attackCountLabels;
+    private final ButtonGroup attackGroup;
+
+    public ChallengeView(Font font) {
+        setLayout(new BorderLayout());
+        setOpaque(false);
+        setPreferredSize(new Dimension(ViewConstants.WINDOW_WIDTH, ViewConstants.WINDOW_HEIGHT));
+
+        // ========== BOARD PANEL ==========
+        Border outerBorder = BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.WHITE, 3, true),
+                "CHALLENGE BOARD",
+                TitledBorder.CENTER,
+                TitledBorder.TOP,
+                font.deriveFont(Font.BOLD, 18f),
+                Color.WHITE
+            ),
+            BorderFactory.createEmptyBorder(12, 12, 12, 12)
+        );
+
+        boardPanel = new GameBoard(10, 10, ViewConstants.BOARD_CELL_SIZE);
+        boardPanel.setBorder(outerBorder);
+
+        // ========== INFO & ATTACK PANEL ==========
+        infoAttackPanel = new JPanel();
+        infoAttackPanel.setOpaque(false);
+        infoAttackPanel.setLayout(new BoxLayout(infoAttackPanel, BoxLayout.Y_AXIS));
+        infoAttackPanel.setPreferredSize(new Dimension(ViewConstants.CHALLENGE_INFO_PANEL_WIDTH, 0));
+        infoAttackPanel.setBorder(BorderFactory.createTitledBorder(
+            BorderFactory.createLineBorder(Color.WHITE, 3, true),
+            "INFO & ATTACK",
+            TitledBorder.CENTER,
+            TitledBorder.TOP,
+            font.deriveFont(Font.BOLD, 18f),
+            Color.WHITE
+        ));
+
+        // Info sub-panel
+        JPanel infoPanel = new JPanel();
+        infoPanel.setOpaque(false);
+        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
+        infoPanel.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.WHITE, 1, true),
+                "INFO",
+                TitledBorder.CENTER,
+                TitledBorder.TOP,
+                font.deriveFont(Font.BOLD, 15f),
+                Color.WHITE
+            ),
+            BorderFactory.createEmptyBorder(20, 10, 20, 10)
+        ));
+
+        timeLabel = new JLabel("Time Left: 02:00", SwingConstants.CENTER);
+        timeLabel.setFont(font.deriveFont(Font.BOLD, 24f));
+        timeLabel.setForeground(Color.WHITE);
+        timeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        shotsLabel = new JLabel("Shots Left: 30", SwingConstants.CENTER);
+        shotsLabel.setFont(font.deriveFont(Font.BOLD, 24f));
+        shotsLabel.setForeground(Color.WHITE);
+        shotsLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        scoreLabel = new JLabel("Score: 0", SwingConstants.CENTER);
+        scoreLabel.setFont(font.deriveFont(Font.BOLD, 20f));
+        scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        messageLabel = new JLabel("Welcome to Challenge Mode!", SwingConstants.CENTER);
+        messageLabel.setFont(font.deriveFont(Font.PLAIN, 16f));
+        messageLabel.setForeground(Color.YELLOW);
+        messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        infoPanel.add(Box.createVerticalStrut(10));
+        infoPanel.add(timeLabel);
+        infoPanel.add(Box.createVerticalStrut(10));
+        infoPanel.add(shotsLabel);
+        infoPanel.add(Box.createVerticalStrut(10));
+        infoPanel.add(scoreLabel);
+        infoPanel.add(Box.createVerticalStrut(10));
+        infoPanel.add(messageLabel);
+        infoPanel.add(Box.createVerticalStrut(10));
+
+        // Attack sub-panel
+        JPanel attackPanel = new JPanel(new GridLayout(2, 2, 16, 16));
+        attackPanel.setOpaque(false);
+        attackPanel.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder(
+                BorderFactory.createLineBorder(Color.WHITE, 1, true),
+                "ATTACK",
+                TitledBorder.CENTER,
+                TitledBorder.TOP,
+                font.deriveFont(Font.BOLD, 15f),
+                Color.WHITE
+            ),
+            BorderFactory.createEmptyBorder(30, 10, 30, 10)
+        ));
+
+        attackButtons = new EnumMap<>(AttackType.class);
+        attackCountLabels = new EnumMap<>(AttackType.class);
+        attackGroup = new ButtonGroup();
+
+        // Tạo các nút tấn công và label số lượng
+        AttackType[] types = {AttackType.SINGLE, AttackType.CROSS, AttackType.RANDOM, AttackType.DIAMOND};
+        String[] names = {"Single", "Cross", "Random", "Diamond"};
+        String[] btnIcons = {
+            ViewConstants.CHALLENGE_SINGLE_ATK_BTN,
+            ViewConstants.CHALLENGE_CROSS_ATK_BTN,
+            ViewConstants.CHALLENGE_RANDOM_ATK_BTN,
+            ViewConstants.CHALLENGE_DIAMOND_ATK_BTN
+        };
+        String[] btnHoverIcons = {
+            ViewConstants.CHALLENGE_SINGLE_ATK_HOVER_BTN,
+            ViewConstants.CHALLENGE_CROSS_ATK_HOVER_BTN,
+            ViewConstants.CHALLENGE_RANDOM_ATK_HOVER_BTN,
+            ViewConstants.CHALLENGE_DIAMOND_ATK_HOVER_BTN
+        };
+        String[] btnPressedIcons = {
+            ViewConstants.CHALLENGE_SINGLE_ATK_PRESSED_BTN,
+            ViewConstants.CHALLENGE_CROSS_ATK_PRESSED_BTN,
+            ViewConstants.CHALLENGE_RANDOM_ATK_PRESSED_BTN,
+            ViewConstants.CHALLENGE_DIAMOND_ATK_PRESSED_BTN
+        };
+
+        for (int i = 0; i < types.length; i++) {
+            JPanel atkPanel = new JPanel();
+            atkPanel.setLayout(new BoxLayout(atkPanel, BoxLayout.Y_AXIS));
+            atkPanel.setOpaque(false);
+
+            JLabel atkLabel = new JLabel(names[i]);
+            atkLabel.setFont(font.deriveFont(Font.BOLD, 14f));
+            atkLabel.setForeground(Color.WHITE);
+            atkLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            CustomToggleButton atkBtn = new CustomToggleButton(
+                btnIcons[i], btnHoverIcons[i], btnPressedIcons[i],
+                ViewConstants.CHALLENGE_ATK_BTN_WIDTH, ViewConstants.CHALLENGE_ATK_BTN_HEIGHT
+            );
+            atkBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+            attackButtons.put(types[i], atkBtn);
+            attackGroup.add(atkBtn);
+
+            JLabel countLabel = new JLabel(i == 0 ? "" : "x0");
+            countLabel.setFont(font.deriveFont(Font.BOLD, 13f));
+            countLabel.setForeground(Color.YELLOW);
+            countLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            attackCountLabels.put(types[i], countLabel);
+
+            atkPanel.add(atkLabel);
+            atkPanel.add(Box.createVerticalStrut(4));
+            atkPanel.add(atkBtn);
+            atkPanel.add(Box.createVerticalStrut(4));
+            atkPanel.add(countLabel);
+
+            attackPanel.add(atkPanel);
+        }
+        // Mặc định chọn Single
+        attackButtons.get(AttackType.SINGLE).setSelected(true);
+
+        // Thêm infoPanel và attackPanel vào infoAttackPanel
+        infoAttackPanel.add(Box.createVerticalStrut(20));
+        infoAttackPanel.add(infoPanel);
+        infoAttackPanel.add(Box.createVerticalStrut(30));
+        infoAttackPanel.add(attackPanel);
+        infoAttackPanel.add(Box.createVerticalGlue());
+
+        // ========== BỐ TRÍ LAYOUT ==========
+        add(boardPanel, BorderLayout.CENTER);
+        add(infoAttackPanel, BorderLayout.EAST);
+    }
+
+    // ========== Các phương thức hỗ trợ cập nhật giao diện ==========
+    public void setTime(String time) {
+        timeLabel.setText("Time Left: " + time);
+    }
+
+    public void setShots(int shots) {
+        shotsLabel.setText("Shots Left: " + shots);
+    }
+
+    public void setScore(int score) {
+        scoreLabel.setText("Score: " + score);
+    }
+
+    public void setMessage(String msg) {
+        messageLabel.setText(msg);
+    }
+
+    public void setAttackCount(AttackType type, int count) {
+        if (type != AttackType.SINGLE) {
+            attackCountLabels.get(type).setText("x" + count);
+        }
+    }
+
+    public AttackType getSelectedAttackType() {
+        for (Map.Entry<AttackType, CustomToggleButton> entry : attackButtons.entrySet()) {
+            if (entry.getValue().isSelected()) return entry.getKey();
+        }
+        return AttackType.SINGLE;
+    }
+
+    public void setAttackTypeSelected(AttackType type) {
+        attackButtons.get(type).setSelected(true);
+    }
+
+    public void setAttackButtonListener(AttackType type, java.awt.event.ActionListener listener) {
+        attackButtons.get(type).addActionListener(listener);
+    }
+}

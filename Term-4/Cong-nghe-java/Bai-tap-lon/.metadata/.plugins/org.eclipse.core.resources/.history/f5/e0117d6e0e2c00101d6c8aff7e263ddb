@@ -1,0 +1,31 @@
+package com.battleship.core.model.attack;
+
+import java.util.EnumMap;
+import java.util.Map;
+
+public class AttackInventory {
+    private final Map<AttackType, Integer> weapons;
+    
+    public AttackInventory() {
+        this.weapons = new EnumMap<>(AttackType.class);
+        initializeWeapons();
+    }
+    
+    private void initializeWeapons() {
+        weapons.put(AttackType.SINGLE, 1);
+        weapons.put(AttackType.CROSS, 1);
+        weapons.put(AttackType.DIAMOND, 1);
+        weapons.put(AttackType.RANDOM, 1);
+    }
+    
+    public boolean hasWeapon(AttackType type) {
+        return weapons.getOrDefault(type, 0) > 0;
+    }
+    
+    public void useWeapon(AttackType type) {
+        if (!hasWeapon(type)) {
+            throw new IllegalStateException("No weapon of type " + type + " available");
+        }
+        weapons.put(type, weapons.get(type) - 1);
+    }
+}

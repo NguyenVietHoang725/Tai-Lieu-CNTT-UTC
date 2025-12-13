@@ -1,0 +1,18 @@
+package com.battleship.core.model.interfaces;
+
+import java.util.List;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.Node;
+import com.battleship.core.model.ship.Ship;
+
+public interface IBoard {
+	Node getNode(int x, int y);
+    boolean isValidPosition(int x, int y);
+    void placeShip(Ship ship, Position position);
+    List<Ship> getShips();
+    boolean isAllShipsSunk();
+    int getSize();
+    boolean isNodeHit(int x, int y);
+    void markNodeAsHit(int x, int y);
+}

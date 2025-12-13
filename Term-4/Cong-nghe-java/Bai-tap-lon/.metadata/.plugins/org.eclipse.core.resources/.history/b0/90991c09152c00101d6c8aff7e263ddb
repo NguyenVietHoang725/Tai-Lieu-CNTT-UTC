@@ -1,0 +1,37 @@
+package com.battleship.core.service.impl;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.ship.Ship;
+
+public class ShipPlacementService {
+    private final Board board;
+    private final Set<Ship> placedShips;
+
+    public ShipPlacementService(Board board) {
+        this.board = board;
+        this.placedShips = new HashSet<>();
+    }
+
+    public boolean placeShip(Ship ship, Position position, ShipOrientation orientation) {
+        if (!isValidPlacement(ship, position, orientation)) {
+            return false;
+        }
+
+        // Place ship logic
+        placedShips.add(ship);
+        return true;
+    }
+
+    public boolean isValidPlacement(Ship ship, Position position, ShipOrientation orientation) {
+        // Check if ship can be placed at position with given orientation
+        return true; // Implement logic
+    }
+
+    public boolean areAllShipsPlaced() {
+        return placedShips.size() == gameConfig.getShips().size();
+    }
+}

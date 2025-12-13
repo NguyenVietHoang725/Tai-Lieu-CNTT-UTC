@@ -1,0 +1,10 @@
+INDEX VERSION 1.134+E:\00_UNIVERSITY\TERM_04\Cong_Nghe_Java\CNJV_Workspace\.metadata\.plugins\org.eclipse.jdt.core
+3172191975.index
+232379395.index
+2162600106.index
+1232799362.index
+3287385186.index
+56864764.index
+3413725848.index
+165647927.index
+1865797976.index

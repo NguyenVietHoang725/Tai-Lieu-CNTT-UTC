@@ -1,0 +1,5 @@
+package com.battleship.core.model;
+
+public class Ship {
+
+}

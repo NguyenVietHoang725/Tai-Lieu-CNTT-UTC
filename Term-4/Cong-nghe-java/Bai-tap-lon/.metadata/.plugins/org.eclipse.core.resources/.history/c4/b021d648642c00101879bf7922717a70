@@ -1,0 +1,139 @@
+package com.battleship.core.model.board;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.model.state.BoardState;
+
+public class Board implements IBoard {
+    private final Node[][] nodes;
+    private final List<Ship> ships;
+    private final int size;
+
+    public Board() {
+        this.size = 10;
+        this.nodes = new Node[size][size];
+        this.ships = new ArrayList<>();
+        initializeBoard();
+    }
+
+    private void initializeBoard() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                nodes[i][j] = new Node(i, j);
+            }
+        }
+    }
+
+    @Override
+    public Node getNode(int x, int y) {
+        if (!isValidPosition(x, y)) {
+            throw new IllegalArgumentException("Invalid position");
+        }
+        return nodes[x][y];
+    }
+
+    @Override
+    public boolean isValidPosition(int x, int y) {
+        return x >= 0 && x < size && y >= 0 && y < size;
+    }
+
+    @Override
+    public void placeShip(Ship ship, Position position) {
+        if (!isValidPosition(position.getX(), position.getY())) {
+            throw new IllegalArgumentException("Invalid position");
+        }
+
+        if (!canPlaceShipAt(ship, position)) {
+            throw new IllegalStateException("Cannot place ship at this position");
+        }
+
+        // Place ship
+        ship.setPosition(position);
+        for (int i = 0; i < ship.getLength(); i++) {
+            int x = position.getX() + (ship.isHorizontal() ? i : 0);
+            int y = position.getY() + (ship.isHorizontal() ? 0 : i);
+            Node node = getNode(x, y);
+            node.setShip(ship);
+            node.setState(NodeState.SHIP);
+            ship.getNodes().add(node);
+        }
+
+        ships.add(ship);
+    }
+
+    @Override
+    public List<Ship> getShips() {
+        return new ArrayList<>(ships);
+    }
+
+    @Override
+    public boolean isAllShipsSunk() {
+        return ships.stream().allMatch(Ship::isSunk);
+    }
+
+    @Override
+    public int getSize() {
+        return size;
+    }
+
+    @Override
+    public boolean isNodeHit(int x, int y) {
+        return getNode(x, y).isHit();
+    }
+
+    @Override
+    public void markNodeAsHit(int x, int y) {
+        getNode(x, y).hit();
+    }
+
+    public boolean canPlaceShipAt(Ship ship, Position position) {
+        if (!isValidPosition(position.getX(), position.getY())) {
+            return false;
+        }
+
+        // Check if ship fits within board
+        int endX = position.getX() + (ship.isHorizontal() ? ship.getLength() - 1 : 0);
+        int endY = position.getY() + (ship.isHorizontal() ? 0 : ship.getLength() - 1);
+
+        if (!isValidPosition(endX, endY)) {
+            return false;
+        }
+
+        // Check if space is available and no adjacent ships
+        for (int i = -1; i <= ship.getLength(); i++) {
+            for (int j = -1; j <= 1; j++) {
+                int checkX = position.getX() + (ship.isHorizontal() ? i : j);
+                int checkY = position.getY() + (ship.isHorizontal() ? j : i);
+                if (isValidPosition(checkX, checkY) && getNode(checkX, checkY).hasShip()) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public BoardState getBoardState() {
+        return new BoardState(nodes, ships);
+    }
+
+    public boolean isPositionValidForAttack(Position position) {
+        if (!isValidPosition(position.getX(), position.getY())) {
+            return false;
+        }
+        Node node = getNode(position.getX(), position.getY());
+        return !node.isHit() && !node.isMiss();
+    }
+
+    public void clear() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                nodes[i][j].clear();
+            }
+        }
+        ships.clear();
+    }
+}

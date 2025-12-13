@@ -1,0 +1,55 @@
+package com.battleship.core.service.attack;
+
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.Node;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.player.Player;
+import com.battleship.core.model.ship.Ship;
+
+public class AttackServiceImpl implements IAttackService {
+
+	@Override
+    public AttackResult attack(Position position, Player attacker, Board targetBoard) {
+        if (!isValidAttack(position, targetBoard)) {
+            throw new IllegalArgumentException("Invalid attack position");
+        }
+
+        Node targetNode = targetBoard.getNode(position);
+        boolean isHit = targetNode.hasShip();
+        boolean isSunk = false;
+        Ship hitShip = null;
+
+        if (isHit) {
+            hitShip = targetNode.getShip();
+            targetNode.hit();
+            isSunk = hitShip.isSunk();
+        } else {
+            targetNode.miss();
+        }
+
+        return new AttackResult(isHit, isSunk, hitShip, position);
+    }
+
+    @Override
+    public boolean isValidAttack(Position position, Board targetBoard) {
+        // Kiểm tra vị trí có nằm trong bàn cờ không
+        if (!targetBoard.isValidPosition(position.getX(), position.getY())) {
+            return false;
+        }
+
+        // Kiểm tra vị trí đã được tấn công chưa
+        if (isPositionAttacked(position, targetBoard)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean isPositionAttacked(Position position, Board targetBoard) {
+        Node node = targetBoard.getNode(position);
+        return node.isHit() || node.isMiss();
+    }
+
+}

@@ -1,0 +1,39 @@
+package com.battleship.core.model.game;
+
+import com.battleship.core.model.player.IPlayer;
+
+public class GameState {
+    private final IPlayer currentPlayer;
+    private final IPlayer opponent;
+    private final GameMode mode;
+    private GameStatus status;
+    
+    public GameState(IPlayer player1, IPlayer player2, GameMode mode) {
+        this.currentPlayer = player1;
+        this.opponent = player2;
+        this.mode = mode;
+        this.status = GameStatus.IN_PROGRESS;
+    }
+
+	public GameStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(GameStatus status) {
+		this.status = status;
+	}
+
+	public IPlayer getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public IPlayer getOpponent() {
+		return opponent;
+	}
+
+	public GameMode getMode() {
+		return mode;
+	}
+    
+    
+}

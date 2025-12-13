@@ -1,0 +1,51 @@
+package com.battleship.ui.utils;
+
+public class ViewConstants {
+	// Window size
+    public static final int WINDOW_WIDTH = 1280;
+    public static final int WINDOW_HEIGHT = 720;
+    
+    // ================= MAIN MENU =================
+    // Background GIF
+    public static final String MAINMENU_BG = "/images/backgrounds/menu_background.gif";
+    // Logo
+    public static final String MAINMENU_LOGO = "/images/logo/logo.png";
+    public static final int MAINMENU_LOGO_WIDTH = 128;
+    public static final int MAINMENU_LOGO_HEIGHT = 56;
+
+    // Challenge Button
+    public static final String CHALLENGE_BUTTON = "/images/buttons/menu/challenge_button.png";
+    public static final String CHALLENGE_BUTTON_HOVER = "/images/buttons/menu/challenge_hover_button.png";
+    public static final String CHALLENGE_BUTTON_PRESSED = "/images/buttons/menu/challenge_pressed_button.png";
+    public static final int CHALLENGE_BUTTON_WIDTH = 128;
+    public static final int CHALLENGE_BUTTON_HEIGHT = 32;
+
+    // VsBot Button
+    public static final String VSBOT_BUTTON = "/images/buttons/menu/vsbot_button.png";
+    public static final String VSBOT_BUTTON_HOVER = "/images/buttons/menu/vsbot_hover_button.png";
+    public static final String VSBOT_BUTTON_PRESSED = "/images/buttons/menu/vsbot_pressed_button.png";
+    public static final int VSBOT_BUTTON_WIDTH = 128;
+    public static final int VSBOT_BUTTON_HEIGHT = 32;
+
+    // Rule Button
+    public static final String RULE_BUTTON = "/images/buttons/menu/rule_button.png";
+    public static final String RULE_BUTTON_HOVER = "/images/buttons/menu/rule_hover_button.png";
+    public static final String RULE_BUTTON_PRESSED = "/images/buttons/menu/rule_pressed_button.png";
+    public static final int RULE_BUTTON_WIDTH = 96;
+    public static final int RULE_BUTTON_HEIGHT = 24;
+
+    // Setting Button
+    public static final String SETTING_BUTTON = "/images/buttons/menu/setting_button.png";
+    public static final String SETTING_BUTTON_HOVER = "/images/buttons/menu/setting_hover_button.png";
+    public static final String SETTING_BUTTON_PRESSED = "/images/buttons/menu/setting_pressed_button.png";
+    public static final int SETTING_BUTTON_WIDTH = 96;
+    public static final int SETTING_BUTTON_HEIGHT = 24;
+
+    // Quit Button
+    public static final String QUIT_BUTTON = "/images/buttons/menu/quit_button.png";
+    public static final String QUIT_BUTTON_HOVER = "/images/buttons/menu/quit_hover_button.png";
+    public static final String QUIT_BUTTON_PRESSED = "/images/buttons/menu/quit_pressed_button.png";
+    public static final int QUIT_BUTTON_WIDTH = 96;
+    public static final int QUIT_BUTTON_HEIGHT = 24;
+    // =============================================
+}

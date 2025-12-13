@@ -1,0 +1,11 @@
+Challenge mode
+3 1 4 true
+2 7 3 false
+4 4 2 true
+5 3 5 true
+7 6 3 true
+40
+1 2
+1 1
+1 1
+2:15

@@ -1,0 +1,6 @@
+package com.battleship.core.enums;
+
+public enum GameMode {
+	CHALLENGE,
+    VS_BOT
+}

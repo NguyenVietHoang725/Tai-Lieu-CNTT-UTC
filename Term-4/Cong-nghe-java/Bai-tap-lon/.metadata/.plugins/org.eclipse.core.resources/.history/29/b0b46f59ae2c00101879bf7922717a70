@@ -1,0 +1,101 @@
+package com.battleship.ui.controller;
+
+import com.battleship.ui.view.ChallengeView;
+import com.battleship.core.model.attack.AttackType;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.attack.AttackInventory;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.player.Player;
+import com.battleship.core.service.game.IGameService;
+import com.battleship.core.model.board.Node;
+
+public class ChallengeController {
+    private final ChallengeView view;
+    private final IGameService gameService;
+
+    public ChallengeController(ChallengeView view, IGameService gameService) {
+        this.view = view;
+        this.gameService = gameService;
+
+        // Khởi tạo game challenge
+        gameService.initializeGame(com.battleship.core.model.game.GameMode.CHALLENGE);
+        gameService.startGame();
+
+        // Lắng nghe click trên từng ô bàn cờ
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                int row = i, col = j;
+                view.boardPanel.getCell(i, j).addActionListener(e -> handleAttack(row, col));
+            }
+        }
+
+        // Lắng nghe chọn loại tấn công
+        for (AttackType type : AttackType.values()) {
+            view.setAttackButtonListener(type, e -> {
+                gameService.getCurrentPlayer().getInventory().setCurrentAttackType(type);
+            });
+        }
+
+        // Khởi tạo giao diện ban đầu
+        updateAll();
+    }
+
+    private void handleAttack(int row, int col) {
+        Position pos = new Position(row, col);
+        boolean success = gameService.performAttack(pos);
+
+        updateAll();
+
+        if (!success) {
+            view.setMessage("Invalid attack!");
+        } else {
+            view.setMessage("Attack at (" + row + "," + col + ")!");
+            if (gameService.isGameOver()) {
+                Player winner = gameService.getCurrentPlayer();
+                view.setMessage("Game Over! " + winner.getName() + " wins!");
+            }
+        }
+    }
+
+    private void updateAll() {
+        updateBoard();
+        updateInfo();
+    }
+
+    private void updateBoard() {
+    	Player player = gameService.getCurrentPlayer();
+    	Board board = (Board) player.getBoard();
+        for (int i = 0; i < 10; i++)
+            for (int j = 0; j < 10; j++) {
+                String state = "normal";
+                Node node = board.getNode(i, j);
+                if (node.isHit()) {
+                    if (node.hasShip() && node.getShip().isSunk()) {
+                        state = "ship";
+                    } else {
+                        state = "hit";
+                    }
+                } else if (node.isMiss()) {
+                    state = "miss";
+                }
+                view.boardPanel.setCellState(i, j, state);
+            }
+    }
+
+    private void updateInfo() {
+        // Nếu service có các getter cho score, time, shots thì lấy từ đó
+        // Nếu chưa có, bạn có thể bổ sung trong GameServiceImpl hoặc lấy từ Player/Inventory
+        int score = 0; // TODO: Lấy từ service nếu có
+        String time = "00:00"; // TODO: Lấy từ service nếu có
+        int shots = 0; // TODO: Lấy từ service nếu có
+        view.setScore(score);
+        view.setTime(time);
+        view.setShots(shots);
+
+        // Cập nhật số lượng attack type còn lại
+        AttackInventory inv = gameService.getCurrentPlayer().getInventory();
+        for (AttackType type : AttackType.values()) {
+            view.setAttackCount(type, inv.getWeaponCount(type));
+        }
+    }
+}

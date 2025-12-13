@@ -1,0 +1,6 @@
+package com.battleship.core.model.attack;
+
+public interface IAttackService {
+	AttackResult executeAttack(IPlayer attacker, IPlayer defender, Position position);
+    boolean isValidAttack(IPlayer attacker, Position position);
+}

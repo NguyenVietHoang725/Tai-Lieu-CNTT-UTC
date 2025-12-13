@@ -1,0 +1,34 @@
+1746431919064	Delete element
+1746431952922	Move compilation unit
+1746431957158	Delete element
+1746432394609	Rename resource 'challenge-background.png'
+1746432432391	Rename field 'BG_GIF_PATH'
+1746432932840	Rename field 'CHALLENGE_ATK_OFF_BUTTON_IMAGES'
+1746434085952	Delete element
+1746434383106	Rename method 'loadGif'
+1746434478195	Delete element
+1746446384358	Delete element
+1746452238415	Rename type 'INotifiableBóttrategy'
+1746452267575	Rename compilation unit 'INotifiableBotstrategy.java'
+1746455936098	Rename type 'GameController'
+1746509998258	Delete element
+1746511025742	Delete element
+1746518312893	Delete element
+1746545300946	Rename field 'CHALLENGE_CELL_NORMAL_IMG'
+1746545330276	Rename field 'CHALLENGE_CELL_HOVER_IMG'
+1746545340899	Rename field 'CHALLENGE_CELL_HIT_IMG'
+1746545351025	Rename field 'CHALLENGE_CELL_MISS_IMG'
+1746549882142	Rename resource 'level1.txt'
+1746815863257	Rename field 'MENU_ON_BUTTON_IMAGES'
+1746815875363	Rename field 'MENU_OFF_BUTTON_IMAGES'
+1746815885839	Rename field 'CHALLENGE_ATK_ON_BUTTON_IMAGES'
+1746822084958	Rename compilation unit 'ShipPlacementBoardPanel.java'
+1746822489478	Delete element
+1746823015761	Delete element
+1746852115617	Rename package 'txt'
+1746860645173	Delete element
+1746860801273	Move compilation unit
+1746860810087	Move compilation unit
+1746860813710	Delete element
+1746908238546	Rename type 'VsBotInfoAttackPanel'
+1746909065876	Rename method 'getInfoAttackPanel'

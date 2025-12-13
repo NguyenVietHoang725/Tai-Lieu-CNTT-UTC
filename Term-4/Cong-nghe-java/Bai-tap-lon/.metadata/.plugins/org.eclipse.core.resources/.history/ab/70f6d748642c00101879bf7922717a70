@@ -1,0 +1,82 @@
+package com.battleship.data.repository;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.player.IPlayer;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.data.DataConstants;
+import com.battleship.data.loader.BotBoardLoader;
+import com.battleship.data.loader.ChallengeBoardLoader;
+import com.battleship.data.loader.IBoardLoader;
+
+public class BoardRepository implements IBoardRepository {
+
+	private final IBoardLoader botLoader;
+    private final IBoardLoader challengeLoader;
+    
+    public BoardRepository() {
+        this.botLoader = new BotBoardLoader();
+        this.challengeLoader = new ChallengeBoardLoader();
+    }
+    
+    @Override
+    public Board loadChallengeBoard(int level) throws IOException {
+        String filePath = String.format(DataConstants.CHALLENGE_BOARD_PATTERN, level);
+        return challengeLoader.loadBoard(filePath);
+    }
+    
+    @Override
+    public Board loadBotBoard(int level) throws IOException {
+        String filePath = String.format(DataConstants.BOT_BOARD_PATTERN, level);
+        return botLoader.loadBoard(filePath);
+    }
+    
+    @Override
+    public void savePlayerBoard(IPlayer player) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(DataConstants.PLAYER_BOARD_FILE))) {
+            for (Ship ship : player.getBoard().getShips()) {
+                Position pos = ship.getPosition();
+                writer.write(String.format("%d %d %d %b\n", 
+                    pos.getX(), 
+                    pos.getY(), 
+                    ship.getLength(), 
+                    ship.isHorizontal()));
+            }
+        }
+    }
+    
+    @Override
+    public Board loadPlayerBoard() throws IOException {
+        File file = new File(DataConstants.PLAYER_BOARD_FILE);
+        if (!file.exists()) {
+            return null;
+        }
+        
+        Board board = new Board();
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null && !line.trim().isEmpty()) {
+                String[] parts = line.trim().split("\\s+");
+                if (parts.length < 4) continue;
+                
+                int x = Integer.parseInt(parts[0]);
+                int y = Integer.parseInt(parts[1]);
+                int length = Integer.parseInt(parts[2]);
+                boolean isHorizontal = Boolean.parseBoolean(parts[3]);
+                
+                Ship ship = new Ship(length);
+                ship.setHorizontal(isHorizontal);
+                board.placeShip(ship, new Position(x, y));
+            }
+        }
+        return board;
+    }
+
+}

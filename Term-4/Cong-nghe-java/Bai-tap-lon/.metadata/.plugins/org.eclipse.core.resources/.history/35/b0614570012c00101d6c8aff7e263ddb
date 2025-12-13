@@ -1,0 +1,17 @@
+package com.battleship.core.model;
+
+public class ShipPlacement {
+	private final Ship ship;
+    private final Position position;
+    private final boolean isValid;
+    
+    public ShipPlacement(Ship ship, Position position) {
+        this.ship = ship;
+        this.position = position;
+        this.isValid = validatePlacement();
+    }
+    
+    private boolean validatePlacement() {
+        // Validation logic
+    }
+}

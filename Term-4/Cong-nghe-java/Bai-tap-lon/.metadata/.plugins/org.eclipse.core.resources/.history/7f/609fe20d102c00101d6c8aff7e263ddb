@@ -1,0 +1,12 @@
+package com.battleship.core.service.interfaces;
+
+import com.battleship.core.model.attack.Attack;
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.game.GameState;
+
+public interface IGameService {
+	void startGame(GameMode mode);
+    void handleAttack(Attack attack);
+    void endGame();
+    GameState getCurrentState();
+}

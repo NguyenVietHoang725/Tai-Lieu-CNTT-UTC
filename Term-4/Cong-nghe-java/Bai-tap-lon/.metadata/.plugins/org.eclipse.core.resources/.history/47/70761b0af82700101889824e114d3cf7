@@ -1,0 +1,54 @@
+package com.battleship.view.panels.menu;
+
+import java.awt.Component;
+import java.awt.Dimension;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import com.battleship.view.components.buttons.MenuButton;
+import com.battleship.view.utils.ResourceLoader;
+import com.battleship.view.utils.ViewConstants;
+
+public class MenuButtonsPanel extends JPanel {
+	public MenuButtonsPanel() {
+		setOpaque(false);
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setBorder(BorderFactory.createEmptyBorder(40, 40, 40, 40));
+
+        // Logo nhỏ phía trên các button
+        JLabel logoLabel = new JLabel(new ImageIcon(ResourceLoader.loadImage(ViewConstants.LOGO_PATH)));
+        logoLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        add(logoLabel);
+
+        add(Box.createRigidArea(new Dimension(0, 30)));
+
+        // Tạo các button với kích thước cố định, sử dụng ViewConstants
+        String[] btnImages = {
+            "/images/buttons/menu/challenge_on_button.png",
+            "/images/buttons/menu/vsbot_on_button.png",
+            "/images/buttons/menu/rule_on_button.png",
+            "/images/buttons/menu/setting_on_button.png",
+            "/images/buttons/menu/quit_on_button.png"
+        };
+
+        for (String img : btnImages) {
+            MenuButton btn = new MenuButton(img);
+            btn.setAlignmentX(Component.LEFT_ALIGNMENT);
+            btn.setMaximumSize(new Dimension(220, 56));
+            btn.setPreferredSize(new Dimension(220, 56));
+            btn.setFont(ViewConstants.MENU_BUTTON_FONT);
+            btn.setBackground(ViewConstants.MENU_BUTTON_BG);
+            btn.setForeground(ViewConstants.MENU_BUTTON_FG);
+            btn.setBorder(ViewConstants.MENU_BUTTON_BORDER);
+            add(btn);
+            add(Box.createRigidArea(new Dimension(0, 18)));
+        }
+
+        add(Box.createVerticalGlue());
+	}
+}

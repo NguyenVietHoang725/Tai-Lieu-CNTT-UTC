@@ -1,0 +1,39 @@
+package com.battleship.core.model.state;
+
+import com.battleship.core.model.attack.AttackInventory;
+
+public class PlayerState {
+    private int shotsFired;
+    private int hits;
+    private int maxShots;
+    
+    public PlayerState(int maxShots) {
+        this.maxShots = maxShots;
+        this.shotsFired = 0;
+        this.hits = 0;
+    }
+    
+    public void incrementShotsFired() {
+        this.shotsFired++;
+    }
+    
+    public void incrementHits() {
+        this.hits++;
+    }
+    
+    public int getShotsRemaining() {
+        return maxShots - shotsFired;
+    }
+    
+    public int getShotsFired() {
+        return shotsFired;
+    }
+    
+    public int getHits() {
+        return hits;
+    }
+    
+    public int getMaxShots() {
+        return maxShots;
+    }
+}

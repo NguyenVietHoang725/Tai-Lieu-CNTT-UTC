@@ -1,0 +1,133 @@
+package com.battleship.ui.view;
+
+import com.battleship.ui.utils.ViewConstants;
+import com.battleship.ui.utils.ResourceLoader;
+import com.battleship.ui.component.button.CustomButton;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class MainMenuView extends JPanel {
+    public JButton challengeButton;
+    public JButton vsBotButton;
+    public JButton ruleButton;
+    public JButton settingButton;
+    public JButton quitButton;
+
+    private JLayeredPane layeredPane;
+    private JLabel bgLabel;
+    private JPanel leftPanel;
+
+    public MainMenuView() {
+        setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(ViewConstants.WINDOW_WIDTH, ViewConstants.WINDOW_HEIGHT));
+
+        // Tạo layered pane để xếp chồng background và left panel
+        layeredPane = new JLayeredPane();
+        layeredPane.setPreferredSize(new Dimension(ViewConstants.WINDOW_WIDTH, ViewConstants.WINDOW_HEIGHT));
+
+        // Background GIF (fill toàn bộ)
+        bgLabel = new JLabel(new ImageIcon(ResourceLoader.loadImageIcon(ViewConstants.MAINMENU_BG)
+                .getImage().getScaledInstance(ViewConstants.WINDOW_WIDTH, ViewConstants.WINDOW_HEIGHT, Image.SCALE_DEFAULT)));
+        bgLabel.setBounds(0, 0, ViewConstants.WINDOW_WIDTH, ViewConstants.WINDOW_HEIGHT);
+
+        // Panel chứa logo và các button (bên trái, nằm trên background)
+        leftPanel = new JPanel();
+        leftPanel.setOpaque(false);
+        leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
+        leftPanel.setBorder(BorderFactory.createEmptyBorder(80, 40, 0, 0));
+        leftPanel.setBounds(0, 0, 350, ViewConstants.WINDOW_HEIGHT);
+
+        // Logo
+        JLabel logoLabel = new JLabel(new ImageIcon(ResourceLoader.loadImageIcon(ViewConstants.MAINMENU_LOGO)
+                .getImage().getScaledInstance(ViewConstants.MAINMENU_LOGO_WIDTH, ViewConstants.MAINMENU_LOGO_HEIGHT, Image.SCALE_SMOOTH)));
+        logoLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftPanel.add(logoLabel);
+
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 32)));
+
+        // Challenge Button
+        challengeButton = new CustomButton(
+                ViewConstants.CHALLENGE_BUTTON,
+                ViewConstants.CHALLENGE_BUTTON_HOVER,
+                ViewConstants.CHALLENGE_BUTTON_PRESSED,
+                ViewConstants.CHALLENGE_BUTTON_WIDTH,
+                ViewConstants.CHALLENGE_BUTTON_HEIGHT
+        );
+        challengeButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftPanel.add(challengeButton);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
+
+        // VsBot Button
+        vsBotButton = new CustomButton(
+                ViewConstants.VSBOT_BUTTON,
+                ViewConstants.VSBOT_BUTTON_HOVER,
+                ViewConstants.VSBOT_BUTTON_PRESSED,
+                ViewConstants.VSBOT_BUTTON_WIDTH,
+                ViewConstants.VSBOT_BUTTON_HEIGHT
+        );
+        vsBotButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftPanel.add(vsBotButton);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
+
+        // Rule Button
+        ruleButton = new CustomButton(
+                ViewConstants.RULE_BUTTON,
+                ViewConstants.RULE_BUTTON_HOVER,
+                ViewConstants.RULE_BUTTON_PRESSED,
+                ViewConstants.RULE_BUTTON_WIDTH,
+                ViewConstants.RULE_BUTTON_HEIGHT
+        );
+        ruleButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftPanel.add(ruleButton);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
+
+        // Setting Button
+        settingButton = new CustomButton(
+                ViewConstants.SETTING_BUTTON,
+                ViewConstants.SETTING_BUTTON_HOVER,
+                ViewConstants.SETTING_BUTTON_PRESSED,
+                ViewConstants.SETTING_BUTTON_WIDTH,
+                ViewConstants.SETTING_BUTTON_HEIGHT
+        );
+        settingButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftPanel.add(settingButton);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, 12)));
+
+        // Quit Button
+        quitButton = new CustomButton(
+                ViewConstants.QUIT_BUTTON,
+                ViewConstants.QUIT_BUTTON_HOVER,
+                ViewConstants.QUIT_BUTTON_PRESSED,
+                ViewConstants.QUIT_BUTTON_WIDTH,
+                ViewConstants.QUIT_BUTTON_HEIGHT
+        );
+        quitButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        leftPanel.add(quitButton);
+
+        // Thêm background và leftPanel vào layeredPane
+        layeredPane.add(bgLabel, Integer.valueOf(0));      // Background ở layer thấp
+        layeredPane.add(leftPanel, Integer.valueOf(1));    // Left panel ở layer cao hơn
+
+        add(layeredPane, BorderLayout.CENTER);
+    }
+
+    @Override
+    public void doLayout() {
+        super.doLayout();
+        int width = getWidth();
+        int height = getHeight();
+
+        // Đảm bảo background fill toàn bộ
+        if (bgLabel != null) {
+            bgLabel.setBounds(0, 0, width, height);
+        }
+        // Đảm bảo leftPanel luôn cao bằng panel cha
+        if (leftPanel != null) {
+            leftPanel.setBounds(0, 0, 350, height);
+        }
+        if (layeredPane != null) {
+            layeredPane.setBounds(0, 0, width, height);
+        }
+    }
+}

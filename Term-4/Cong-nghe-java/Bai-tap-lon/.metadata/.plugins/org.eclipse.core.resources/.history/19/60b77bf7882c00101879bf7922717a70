@@ -1,0 +1,5 @@
+package com.battleship.ui.view;
+
+public class MainMenuView {
+
+}

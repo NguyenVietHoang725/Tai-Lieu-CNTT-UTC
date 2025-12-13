@@ -1,0 +1,20 @@
+package com.battleship.core.service.attack;
+
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.player.Player;
+
+public class AttackResultServiceImpl implements IAttackResultService {
+
+	@Override
+    public void processAttackResult(AttackResult result, Player attacker, Board targetBoard) {
+        // Cập nhật trạng thái bàn cờ đã được thực hiện trong AttackService
+        // Có thể thêm logic xử lý kết quả ở đây nếu cần
+    }
+
+    @Override
+    public boolean isGameWon(Board targetBoard) {
+        return targetBoard.isAllShipsSunk();
+    }
+
+}

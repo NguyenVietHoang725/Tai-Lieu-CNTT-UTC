@@ -1,0 +1,34 @@
+package com.battleship.core.service.attack;
+
+import com.battleship.core.model.board.Position;
+
+import java.util.List;
+
+import com.battleship.core.model.attack.AttackResult;
+
+public interface IAttackService {
+    /**
+     * Thực hiện tấn công vào vị trí
+     */
+    AttackResult attack(Position position);
+    
+    /**
+     * Kiểm tra vị trí tấn công có hợp lệ không
+     */
+    boolean isValidAttack(Position position);
+    
+    /**
+     * Xử lý kết quả tấn công
+     */
+    void processAttackResult(AttackResult result);
+    
+    /**
+     * Kiểm tra xem vị trí đã được tấn công chưa
+     */
+    boolean isPositionAttacked(Position position);
+    
+    /**
+     * Lấy lịch sử tấn công
+     */
+    List<AttackResult> getAttackHistory();
+}

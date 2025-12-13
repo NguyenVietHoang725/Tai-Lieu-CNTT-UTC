@@ -1,0 +1,34 @@
+package com.battleship.core.service.board;
+
+import com.battleship.core.model.ship.Ship;
+
+import java.util.List;
+
+import com.battleship.core.model.board.Position;
+
+public interface IShipPlacementService {
+    /**
+     * Đặt tàu vào vị trí
+     */
+    boolean placeShip(Ship ship, Position position);
+    
+    /**
+     * Kiểm tra vị trí đặt tàu có hợp lệ không
+     */
+    boolean isValidPlacement(Ship ship, Position position);
+    
+    /**
+     * Lấy danh sách vị trí đã đặt tàu
+     */
+    List<Position> getPlacedShipPositions();
+    
+    /**
+     * Xóa tàu khỏi vị trí
+     */
+    void removeShip(Position position);
+    
+    /**
+     * Kiểm tra xem tàu có thể đặt được không
+     */
+    boolean canPlaceShip(Ship ship, Position position);
+}

@@ -1,0 +1,78 @@
+package com.battleship.core.strategy.bot;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.attack.AttackResult;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Random;
+
+/**
+ * Chiến lược bot trung bình - tấn công ngẫu nhiên và truy đuổi khi trúng
+ */
+public class MediumBotStrategy implements IBotStrategy {
+    private final Random random = new Random();
+    private final Queue<Position> hitQueue = new LinkedList<>();
+    private static final String DIFFICULTY = "Medium";
+    private static final int[][] DIRECTIONS = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+    @Override
+    public Position getNextAttackPosition(IBoard board) {
+        // Nếu có vị trí đã trúng, kiểm tra các ô xung quanh
+        while (!hitQueue.isEmpty()) {
+            Position lastHit = hitQueue.peek();
+            List<Position> neighbors = getUnhitNeighbors(lastHit, board);
+            
+            if (!neighbors.isEmpty()) {
+                return neighbors.get(random.nextInt(neighbors.size()));
+            } else {
+                hitQueue.poll();
+            }
+        }
+
+        // Nếu không có vị trí trúng, tấn công ngẫu nhiên
+        return getRandomPosition(board);
+    }
+
+    @Override
+    public void updateStrategy(AttackResult result, Position position) {
+        if (result.isHit() && !result.isSunk()) {
+            hitQueue.offer(position);
+        }
+    }
+
+    private List<Position> getUnhitNeighbors(Position pos, IBoard board) {
+        List<Position> neighbors = new ArrayList<>();
+        
+        for (int[] dir : DIRECTIONS) {
+            int newX = pos.getX() + dir[0];
+            int newY = pos.getY() + dir[1];
+            
+            if (board.isValidPosition(newX, newY) && !board.isNodeHit(newX, newY)) {
+                neighbors.add(new Position(newX, newY));
+            }
+        }
+        
+        return neighbors;
+    }
+
+    private Position getRandomPosition(IBoard board) {
+        List<Position> available = new ArrayList<>();
+        for (int x = 0; x < board.getSize(); x++) {
+            for (int y = 0; y < board.getSize(); y++) {
+                if (!board.isNodeHit(x, y)) {
+                    available.add(new Position(x, y));
+                }
+            }
+        }
+        return available.isEmpty() ? null : 
+               available.get(random.nextInt(available.size()));
+    }
+
+    @Override
+    public String getDifficulty() {
+        return DIFFICULTY;
+    }
+}

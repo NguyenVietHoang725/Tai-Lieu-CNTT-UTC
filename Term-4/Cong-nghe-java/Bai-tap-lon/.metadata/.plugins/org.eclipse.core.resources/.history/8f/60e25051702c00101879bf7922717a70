@@ -1,0 +1,39 @@
+package com.battleship.core.service.board;
+
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.player.Player;
+import com.battleship.core.model.attack.AttackResult;
+
+public interface IBoardService {
+    /**
+     * Đặt tàu vào vị trí
+     */
+    boolean placeShip(Ship ship, Position position);
+    
+    /**
+     * Kiểm tra vị trí đặt tàu có hợp lệ không
+     */
+    boolean isValidPlacement(Ship ship, Position position);
+    
+    /**
+     * Cập nhật bàn cờ sau khi tấn công
+     */
+    void updateBoard(AttackResult result);
+    
+    /**
+     * Lấy bàn cờ của người chơi
+     */
+    Board getBoard(Player player);
+    
+    /**
+     * Kiểm tra xem tất cả tàu đã được đặt chưa
+     */
+    boolean areAllShipsPlaced();
+    
+    /**
+     * Reset bàn cờ
+     */
+    void resetBoard();
+}

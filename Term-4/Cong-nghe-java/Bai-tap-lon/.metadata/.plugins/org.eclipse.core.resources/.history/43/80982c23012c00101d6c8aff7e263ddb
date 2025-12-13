@@ -1,0 +1,9 @@
+package com.battleship.core.model.interfaces;
+
+public interface IPlayer {
+	String getName();
+    IBoard getBoard();
+    AttackInventory getInventory();
+    void attack(IPlayer opponent, Position position);
+    boolean isDefeated();
+}

@@ -1,0 +1,57 @@
+package com.battleship.core.service.game;
+
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.game.GameState;
+import com.battleship.core.model.player.Player;
+
+public interface IGameService {
+	/**
+     * Khởi tạo game mới
+     */
+    void initializeGame(GameMode gameMode);
+    
+    /**
+     * Bắt đầu game
+     */
+    void startGame();
+    
+    /**
+     * Kết thúc game
+     */
+    void endGame();
+    
+    /**
+     * Tạm dừng game
+     */
+    void pauseGame();
+    
+    /**
+     * Tiếp tục game
+     */
+    void resumeGame();
+    
+    /**
+     * Lấy trạng thái hiện tại của game
+     */
+    GameState getCurrentState();
+    
+    /**
+     * Kiểm tra xem game đã kết thúc chưa
+     */
+    boolean isGameOver();
+    
+    /**
+     * Lấy người chơi hiện tại
+     */
+    Player getCurrentPlayer();
+    
+    /**
+     * Lấy người chơi đối phương
+     */
+    Player getOpponentPlayer();
+    
+    /**
+     * Lấy chế độ chơi hiện tại
+     */
+    GameMode getGameMode();
+}

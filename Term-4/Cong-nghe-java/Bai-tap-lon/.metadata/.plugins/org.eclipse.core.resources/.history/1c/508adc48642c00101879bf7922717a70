@@ -1,0 +1,43 @@
+package com.battleship.core.strategy.attack;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.IBoard;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Chiến lược tấn công hình thoi - tấn công ô chính và các ô xung quanh theo hình thoi
+ */
+public class DiamondAttackStrategy implements IAttackStrategy {
+    private static final int[][] DELTAS = {
+        {0, 0},   // Ô chính
+        {0, 1},   // Phải
+        {0, 2},   // Phải x2
+        {0, -1},  // Trái
+        {0, -2},  // Trái x2
+        {1, 0},   // Dưới
+        {2, 0},   // Dưới x2
+        {-1, 0},  // Trên
+        {-2, 0},  // Trên x2
+        {1, 1},   // Góc phải dưới
+        {1, -1},  // Góc trái dưới
+        {-1, 1},  // Góc phải trên
+        {-1, -1}  // Góc trái trên
+    };
+
+    @Override
+    public List<Position> getAttackPositions(Position position, IBoard board) {
+        List<Position> positions = new ArrayList<>();
+        
+        for (int[] delta : DELTAS) {
+            int newX = position.getX() + delta[0];
+            int newY = position.getY() + delta[1];
+            
+            if (board.isValidPosition(newX, newY)) {
+                positions.add(new Position(newX, newY));
+            }
+        }
+        
+        return positions;
+    }
+}

@@ -1,0 +1,66 @@
+package com.battleship.core.service.impl;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.player.Bot;
+import com.battleship.core.model.player.IPlayer;
+import com.battleship.core.model.player.Player;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.model.state.PlayerState;
+import com.battleship.core.service.interfaces.IPlayerService;
+import com.battleship.core.strategy.bot.BotStrategyFactory;
+import com.battleship.core.strategy.bot.IBotStrategy;
+
+public class PlayerServiceImpl implements IPlayerService {
+    private final BotStrategyFactory botStrategyFactory;
+    
+    public PlayerServiceImpl(BotStrategyFactory botStrategyFactory) {
+        this.botStrategyFactory = botStrategyFactory;
+    }
+    
+    @Override
+    public IPlayer createPlayer(String name) {
+        return new Player(name);
+    }
+    
+    @Override
+    public IPlayer createBot(String name, String difficulty) {
+        IBotStrategy strategy = BotStrategyFactory.createStrategy(difficulty);
+        return new Bot(name, difficulty, strategy);
+    }
+    
+    @Override
+    public void placeShip(IPlayer player, Ship ship, Position position) {
+        IBoard board = player.getBoard();
+        if (board instanceof Board) {
+            ((Board) board).placeShip(ship, position);
+            player.addShip(ship);
+        }
+    }
+    
+    @Override
+    public boolean canAttack(IPlayer player, Position position) {
+        return player.canAttack(position);
+    }
+    
+    @Override
+    public void updatePlayerState(IPlayer player, AttackResult result) {
+        // Không cần cập nhật trạng thái vì PlayerState không có các phương thức increment
+        // Thay vào đó, trạng thái được cập nhật tự động thông qua Board và Ship
+    }
+    
+    @Override
+    public PlayerState getPlayerState(IPlayer player) {
+        if (player instanceof Player) {
+            return ((Player) player).getPlayerState();
+        }
+        return null;
+    }
+    
+    @Override
+    public boolean isDefeated(IPlayer player) {
+        return player.isDefeated();
+    }
+}

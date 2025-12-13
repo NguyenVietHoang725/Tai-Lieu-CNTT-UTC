@@ -1,0 +1,5 @@
+package com.battleship.ui.controller;
+
+public class AppController {
+
+}

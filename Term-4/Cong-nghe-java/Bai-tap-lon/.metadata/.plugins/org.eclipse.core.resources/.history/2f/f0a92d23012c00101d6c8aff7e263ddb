@@ -1,0 +1,5 @@
+package com.battleship.core.service.interfaces;
+
+public interface IBoardService {
+
+}

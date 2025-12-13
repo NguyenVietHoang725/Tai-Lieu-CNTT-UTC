@@ -1,0 +1,18 @@
+package com.battleship.view.panels.menu;
+
+import java.awt.GridLayout;
+
+import javax.swing.JPanel;
+
+import com.battleship.view.components.buttons.MenuButton;
+
+public class MenuButtonsPanel extends JPanel {
+	public MenuButtonsPanel() {
+		setOpaque(false);
+        setLayout(new GridLayout(4, 1, 0, 20));
+        add(new MenuButton("PLAY"));
+        add(new MenuButton("RULE"));
+        add(new MenuButton("SETTING"));
+        add(new MenuButton("QUIT"));
+	}
+}

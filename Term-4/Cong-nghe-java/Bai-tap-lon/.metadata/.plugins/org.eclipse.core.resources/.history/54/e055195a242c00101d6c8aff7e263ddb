@@ -1,0 +1,5 @@
+package com.battleship.data;
+
+public class DataConstants {
+
+}

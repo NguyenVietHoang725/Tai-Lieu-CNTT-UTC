@@ -1,0 +1,9 @@
+package com.battleship.core.model.interfaces;
+
+public interface IShip {
+	int getLength();
+    boolean isHorizontal();
+    List<Node> getNodes();
+    boolean isSunk();
+    void hit();
+}

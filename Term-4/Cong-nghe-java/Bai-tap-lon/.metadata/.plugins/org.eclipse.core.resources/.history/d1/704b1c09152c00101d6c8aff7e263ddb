@@ -1,0 +1,5 @@
+package com.battleship.core.service.impl;
+
+public class ShipPlacementService {
+
+}

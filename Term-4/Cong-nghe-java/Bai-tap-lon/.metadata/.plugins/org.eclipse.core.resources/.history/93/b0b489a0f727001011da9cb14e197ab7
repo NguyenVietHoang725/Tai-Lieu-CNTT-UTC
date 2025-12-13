@@ -1,0 +1,22 @@
+package com.battleship.view.utils;
+
+import javax.swing.*;
+import java.awt.*;
+import java.net.URL;
+
+public class ResourceLoader {
+	public static Image loadImage(String path) {
+	    URL url = ResourceLoader.class.getResource(path);
+	    if (url == null) throw new RuntimeException("Resource not found: " + path);
+	    return new ImageIcon(url).getImage();
+	}
+	
+	public static ImageIcon loadGif(String path) {
+        URL url = ResourceLoader.class.getResource(path);
+        System.out.println("DEBUG: Loading GIF: " + path + " => " + url);
+        if (url == null) {
+            throw new RuntimeException("Resource not found: " + path);
+        }
+        return new ImageIcon(url);
+    }
+}

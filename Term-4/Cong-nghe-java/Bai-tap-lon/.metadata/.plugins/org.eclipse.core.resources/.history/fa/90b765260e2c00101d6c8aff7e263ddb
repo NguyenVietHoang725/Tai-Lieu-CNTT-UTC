@@ -1,0 +1,8 @@
+package com.battleship.core.model.board;
+
+public enum NodeState {
+	EMPTY,
+    SHIP,
+    HIT,
+    MISS
+}

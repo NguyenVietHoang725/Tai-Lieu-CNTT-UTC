@@ -1,0 +1,8 @@
+package com.battleship.core.enums;
+
+public enum AttackType {
+	SINGLE,
+    CROSS,
+    DIAMOND,
+    RANDOM
+}

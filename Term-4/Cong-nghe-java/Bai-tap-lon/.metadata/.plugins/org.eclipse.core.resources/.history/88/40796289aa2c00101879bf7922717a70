@@ -1,0 +1,310 @@
+package com.battleship.core.service.game;
+
+import java.io.IOException;
+import java.util.Random;
+
+import com.battleship.core.model.attack.AttackInventory;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.attack.AttackType;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.game.GameState;
+import com.battleship.core.model.player.Player;
+import com.battleship.core.service.attack.IAttackService;
+import com.battleship.core.service.board.IBoardService;
+import com.battleship.core.service.player.IBotService;
+import com.battleship.core.service.player.IPlayerService;
+import com.battleship.data.DataConstants;
+import com.battleship.data.loader.BotBoardLoader;
+import com.battleship.data.loader.ChallengeBoardLoader;
+
+public class GameServiceImpl implements IGameService {
+	private final IPlayerService playerService;
+    private final IBoardService boardService1;
+    private final IBoardService boardService2;
+    private final IAttackService attackService;
+    private final IGameStateService stateService;
+    private final IBotService botService;
+    private final Random random;
+    private GameMode gameMode;
+    private GameState currentState;
+
+    public GameServiceImpl(
+        IPlayerService playerService,
+        IBoardService boardService1,
+        IBoardService boardService2,
+        IAttackService attackService,
+        IGameStateService stateService,
+        IBotService botService
+    ) {
+        this.playerService = playerService;
+        this.boardService1 = boardService1;
+        this.boardService2 = boardService2;
+        this.attackService = attackService;
+        this.stateService = stateService;
+        this.botService = botService;
+        this.random = new Random();
+        this.currentState = GameState.NOT_STARTED;
+    }
+
+    @Override
+    public void initializeGame(GameMode gameMode) {
+        this.gameMode = gameMode;
+        this.currentState = GameState.INITIALIZING;
+        stateService.setState(GameState.INITIALIZING);
+
+        // Reset boards
+        boardService1.resetBoard();
+        if (boardService2 != null) {
+            boardService2.resetBoard();
+        }
+
+        // Xử lý theo từng chế độ
+        if (gameMode == GameMode.VS_BOT) {
+            initializeVsBotMode();
+        } else if (gameMode == GameMode.CHALLENGE) {
+            initializeChallengeMode();
+        }
+
+        this.currentState = GameState.READY;
+        stateService.setState(GameState.READY);
+    }
+
+    private void initializeVsBotMode() {
+        // Load bàn cờ cho bot từ thư mục vsbot
+        String botBoardPath = DataConstants.VSBOT_DIR + "/" + 
+                            String.format(DataConstants.BOT_BOARD_PATTERN, 1);
+        
+        // Sử dụng BotBoardLoader để load board
+        BotBoardLoader loader = new BotBoardLoader();
+        try {
+            Board board = loader.loadBoard(botBoardPath);
+            boardService2.setBoard(board);
+            
+            // Set board cho player 2 (bot)
+            Player bot = getOpponentPlayer();
+            bot.setBoard(board);
+            
+            // Khởi tạo inventory cho người chơi với tấn công đơn lẻ
+            Player player1 = getCurrentPlayer();
+            AttackInventory inventory = player1.getInventory();
+            
+            // Reset inventory về mặc định
+            inventory.reset();
+            
+            // Chỉ cho phép sử dụng tấn công đơn lẻ
+            inventory.setWeaponCount(AttackType.SINGLE, 1);
+            inventory.setCurrentAttackType(AttackType.SINGLE);
+            
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load bot board: " + e.getMessage());
+        }
+    }
+
+    private void initializeChallengeMode() {
+        // Load ngẫu nhiên một bàn cờ từ thư mục challenge
+    	int randomLevel = 1;
+        String challengeBoardPath = DataConstants.CHALLENGE_DIR + "/" + String.format(DataConstants.CHALLENGE_BOARD_PATTERN, randomLevel);
+
+        // Sử dụng ChallengeBoardLoader để load board
+        ChallengeBoardLoader loader = new ChallengeBoardLoader();
+        try {
+            Board board = loader.loadBoard(challengeBoardPath);
+            if (boardService2 != null) {
+                boardService2.setBoard(board);
+            } else {
+                boardService1.setBoard(board); // Nếu chỉ có 1 boardService
+            }
+
+            // Cập nhật inventory cho người chơi dựa trên thông tin từ file
+            Player player1 = getCurrentPlayer();
+            AttackInventory inventory = player1.getInventory();
+
+            // Reset inventory về mặc định
+            inventory.reset();
+
+            // Cập nhật số lượng vũ khí dựa trên thông tin từ file
+            inventory.setWeaponCount(AttackType.CROSS, loader.getCrossCount());
+            inventory.setWeaponCount(AttackType.RANDOM, loader.getRandomCount());
+            inventory.setWeaponCount(AttackType.DIAMOND, loader.getDiamondCount());
+
+            // Set loại tấn công mặc định là SINGLE
+            inventory.setCurrentAttackType(AttackType.SINGLE);
+
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load challenge board: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void startGame() {
+        if (currentState != GameState.READY) {
+            throw new IllegalStateException("Game is not ready to start");
+        }
+        currentState = GameState.PLAYING;
+        stateService.setState(GameState.PLAYING);
+    }
+
+    @Override
+    public void endGame() {
+        currentState = GameState.FINISHED;
+        stateService.setState(GameState.FINISHED);
+    }
+
+    @Override
+    public void pauseGame() {
+        if (currentState == GameState.PLAYING) {
+            currentState = GameState.PAUSED;
+            stateService.setState(GameState.PAUSED);
+        }
+    }
+
+    @Override
+    public void resumeGame() {
+        if (currentState == GameState.PAUSED) {
+            currentState = GameState.PLAYING;
+            stateService.setState(GameState.PLAYING);
+        }
+    }
+
+    @Override
+    public GameState getCurrentState() {
+        return currentState;
+    }
+
+    @Override
+    public boolean isGameOver() {
+        return currentState == GameState.FINISHED;
+    }
+
+    @Override
+    public Player getCurrentPlayer() {
+        return playerService.getCurrentPlayer();
+    }
+
+    @Override
+    public Player getOpponentPlayer() {
+        return playerService.getOpponentPlayer();
+    }
+
+    @Override
+    public GameMode getGameMode() {
+        return gameMode;
+    }
+
+    /**
+     * Thực hiện lượt tấn công
+     * @param position Vị trí tấn công
+     * @return true nếu lượt tấn công thành công
+     */
+    @Override
+    public boolean performAttack(Position position) {
+        if (currentState != GameState.PLAYING) {
+            return false;
+        }
+
+        Player currentPlayer = getCurrentPlayer();
+        Player opponent = getOpponentPlayer();
+        Board targetBoard = (Board) opponent.getBoard();
+
+        // Kiểm tra vị trí tấn công hợp lệ
+        if (!attackService.isValidAttack(position, targetBoard)) {
+            return false;
+        }
+
+        // Kiểm tra loại tấn công dựa trên chế độ
+        if (gameMode == GameMode.VS_BOT) {
+            if (currentPlayer.getInventory().getCurrentAttackType() != AttackType.SINGLE) {
+                return false;
+            }
+        }
+
+        // Thực hiện tấn công
+        AttackResult result = attackService.attack(position, currentPlayer, targetBoard);
+        handleAttackResult(result, currentPlayer, opponent);
+
+        return true;
+    }
+
+    /**
+     * Xử lý kết quả tấn công
+     * @param result Kết quả tấn công
+     * @param attacker Người tấn công
+     * @param defender Người phòng thủ
+     */
+    @Override
+	public void handleAttackResult(AttackResult result, Player attacker, Player defender) {
+        // Xử lý kết quả tấn công
+        if (result.isHit()) {
+            if (result.isSunk()) {
+                System.out.println("Ship sunk at position: " + result.getPosition());
+                
+                if (defender.isDefeated()) {
+                    handleGameEnd(attacker);
+                    return;
+                }
+            } else {
+                System.out.println("Hit at position: " + result.getPosition());
+            }
+        } else {
+            System.out.println("Miss at position: " + result.getPosition());
+        }
+
+        // Xử lý lượt chơi tiếp theo
+        if (currentState == GameState.PLAYING) {
+            if (gameMode == GameMode.VS_BOT && attacker == getCurrentPlayer()) {
+                performBotAttack();
+            } else {
+                playerService.switchTurn();
+            }
+        }
+    }
+    
+    private void handleGameEnd(Player winner) {
+        System.out.println("Player " + winner.getName() + " wins!");
+        
+        if (gameMode == GameMode.CHALLENGE) {
+            System.out.println("Challenge completed! You can play again or exit.");
+        }
+        
+        endGame();
+    }
+    
+    private void performBotAttack() {
+        Player bot = getOpponentPlayer();
+        Player human = getCurrentPlayer();
+        Board targetBoard = (Board) human.getBoard();
+
+        // Lấy vị trí tấn công từ bot
+        Position attackPosition = botService.getAttackPositions(null, targetBoard).get(0);
+        
+        // Thực hiện tấn công
+        AttackResult result = attackService.attack(attackPosition, bot, targetBoard);
+        handleAttackResult(result, bot, human);
+    }
+
+    /**
+     * Kiểm tra xem game có thể tiếp tục không
+     * @return true nếu game có thể tiếp tục
+     */
+    public boolean canContinueGame() {
+        return stateService.canContinueGame();
+    }
+
+    /**
+     * Lưu trạng thái game hiện tại
+     */
+    public void saveGameState() {
+        stateService.saveGameState();
+    }
+
+    /**
+     * Tải trạng thái game đã lưu
+     */
+    public void loadGameState() {
+        stateService.loadGameState();
+        this.currentState = stateService.getCurrentState();
+    }
+
+}

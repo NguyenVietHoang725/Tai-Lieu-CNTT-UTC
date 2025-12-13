@@ -1,0 +1,98 @@
+package com.battleship.view.manager;
+
+import javax.swing.*;
+
+import com.battleship.view.screen.ChallengeScreen;
+import com.battleship.view.screen.MainMenuPanel;
+import com.battleship.view.screen.RulePanel;
+import com.battleship.view.screen.VsBotScreen;
+import com.battleship.view.screen.PlaceShipScreen;
+import com.battleship.view.screen.ShowShipScreen;
+
+import java.awt.*;
+
+//quản lí chuyển đổi giữa các màn hình
+//hiển thị background là ảnh động
+
+
+public class CardPanel extends JPanel {
+    public static final String MAIN_MENU = "mainMenu";
+    public static final String CHALLENGE = "challenge";
+    public static final String VSBOT = "vsbot";
+    public static final String RULE = "rule";
+    public static final String PLACE_SHIP = "placeShip";
+    public static final String SHOW_SHIP = "showShip";
+
+    private CardLayout cardLayout;
+    private JPanel cardsPanel; //panel chứa các màn hình con
+    private AnimatedScaledGifPanel backgroundPanel; //panel chứa background là ảnh động 
+
+    public CardPanel() {
+        setLayout(new OverlayLayout(this)); //panel lớn nhất dùng OverlayLayout
+
+        // Tạo background panel với GIF động
+        backgroundPanel = new AnimatedScaledGifPanel();
+        backgroundPanel.setAlignmentX(0.0f);
+        backgroundPanel.setAlignmentY(0.0f);
+
+        // Panel chứa các màn hình con, dùng CardLayout
+        cardLayout = new CardLayout();
+        cardsPanel = new JPanel(cardLayout);
+        cardsPanel.setOpaque(false);
+        cardsPanel.setAlignmentX(0.0f);
+        cardsPanel.setAlignmentY(0.0f);
+
+        // Thêm các màn hình vào cardsPanel
+        cardsPanel.add(new MainMenuPanel(), MAIN_MENU);
+        cardsPanel.add(new ChallengeScreen(), CHALLENGE);
+        cardsPanel.add(new VsBotScreen(), VSBOT);
+        cardsPanel.add(new RulePanel(), RULE);
+        cardsPanel.add(new PlaceShipScreen(), PLACE_SHIP);
+        cardsPanel.add(new ShowShipScreen(), SHOW_SHIP);
+
+        // Thứ tự add: cardsPanel trước để nó nằm trên, background sau để nó nằm dưới
+        add(cardsPanel);
+        add(backgroundPanel);
+
+        showScreen(PLACE_SHIP);
+    }
+
+    @Override
+    public void doLayout() {
+        super.doLayout();
+        // Đảm bảo các panel con fill hết CardPanel
+        if (backgroundPanel != null) {
+            backgroundPanel.setSize(getSize());
+        }
+        if (cardsPanel != null) {
+            cardsPanel.setSize(getSize());
+        }
+    }
+
+    public void showScreen(String name) {
+        cardLayout.show(cardsPanel, name);
+    }
+
+    private class AnimatedScaledGifPanel extends JPanel {
+        private final JLabel gifLabel;
+        
+        public AnimatedScaledGifPanel() {
+            setLayout(new BorderLayout());
+            setOpaque(false);
+            
+            ImageIcon gifIcon = new ImageIcon(getClass().getResource("/resources/images/background.gif"));
+            
+            gifLabel = new JLabel(gifIcon) {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    if (gifIcon.getImage() != null) {
+                        g.drawImage(gifIcon.getImage(), 0, 0, getWidth(), getHeight(), this);
+                    }
+                }
+            };
+            
+            add(gifLabel, BorderLayout.CENTER);
+        }
+    }
+}

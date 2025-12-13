@@ -1,0 +1,5 @@
+package com.battleship.core.model.interfaces;
+
+public interface IBoard {
+
+}

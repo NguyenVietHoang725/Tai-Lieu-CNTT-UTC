@@ -1,0 +1,44 @@
+package com.battleship.core.model;
+
+import com.battleship.core.enums.NodeState;
+
+public class Node {
+	private final int x;
+	private final int y;
+	private NodeState state;
+	private Ship ship;
+
+	public Node(int x, int y) {
+		this.x = x;
+		this.y = y;
+		this.state = NodeState.EMPTY;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public NodeState getState() {
+		return state;
+	}
+
+	public void setState(NodeState state) {
+		this.state = state;
+	}
+
+	public Ship getShip() {
+		return ship;
+	}
+
+	public void setShip(Ship ship) {
+		this.ship = ship;
+	}
+
+	public boolean hasShip() {
+		return ship != null;
+	}
+}

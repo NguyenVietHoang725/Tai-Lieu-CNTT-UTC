@@ -1,0 +1,7 @@
+package com.battleship.core.service.interfaces;
+
+public interface IBoardService {
+	IBoard createBoard();
+    boolean placeShip(IBoard board, IShip ship, Position position);
+    AttackResult handleAttack(IBoard board, Position position);
+}

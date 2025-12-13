@@ -1,0 +1,30 @@
+package com.battleship.core.service.game;
+
+import com.battleship.core.model.game.GameState;
+
+public interface IGameStateService {
+    /**
+     * Lấy trạng thái hiện tại của game
+     */
+    GameState getCurrentState();
+    
+    /**
+     * Cập nhật trạng thái game
+     */
+    void setState(GameState state);
+    
+    /**
+     * Lưu trạng thái game
+     */
+    void saveGameState();
+    
+    /**
+     * Tải trạng thái game
+     */
+    void loadGameState();
+    
+    /**
+     * Kiểm tra xem game có thể tiếp tục không
+     */
+    boolean canContinueGame();
+}

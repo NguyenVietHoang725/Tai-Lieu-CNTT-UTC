@@ -1,0 +1,29 @@
+package com.battleship.core.model.state;
+
+import com.battleship.core.model.attack.AttackInventory;
+
+public class PlayerState {
+    private final String name;
+    private final BoardState boardState;
+    private final AttackInventory inventory;
+    
+    public PlayerState(String name, BoardState boardState, AttackInventory inventory) {
+        this.name = name;
+        this.boardState = boardState;
+        this.inventory = inventory;
+    }
+
+	public String getName() {
+		return name;
+	}
+
+	public BoardState getBoardState() {
+		return boardState;
+	}
+
+	public AttackInventory getInventory() {
+		return inventory;
+	}
+    
+    
+}

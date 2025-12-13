@@ -1,0 +1,89 @@
+package com.battleship.ui.utils;
+
+public class ViewConstants {
+	// Window size
+    public static final int WINDOW_WIDTH = 1280;
+    public static final int WINDOW_HEIGHT = 720;
+    
+    // ================= FONTS =================
+    public static final String MAIN_FONT_PATH = "/fonts/groundhog.ttf";
+    
+    // ================= MAIN MENU =================
+    // Background GIF
+    public static final String MAINMENU_BG = "/images/backgrounds/menu_background.gif";
+    // Logo
+    public static final String MAINMENU_LOGO = "/images/logo/logo.png";
+    public static final int MAINMENU_LOGO_WIDTH = 256;
+    public static final int MAINMENU_LOGO_HEIGHT = 112;
+
+    // Challenge Button
+    public static final String CHALLENGE_BUTTON = "/images/buttons/menu/challenge_button.png";
+    public static final String CHALLENGE_BUTTON_HOVER = "/images/buttons/menu/challenge_hover_button.png";
+    public static final String CHALLENGE_BUTTON_PRESSED = "/images/buttons/menu/challenge_pressed_button.png";
+    public static final int CHALLENGE_BUTTON_WIDTH = 256;
+    public static final int CHALLENGE_BUTTON_HEIGHT = 64;
+
+    // VsBot Button
+    public static final String VSBOT_BUTTON = "/images/buttons/menu/vsbot_button.png";
+    public static final String VSBOT_BUTTON_HOVER = "/images/buttons/menu/vsbot_hover_button.png";
+    public static final String VSBOT_BUTTON_PRESSED = "/images/buttons/menu/vsbot_pressed_button.png";
+    public static final int VSBOT_BUTTON_WIDTH = 256;
+    public static final int VSBOT_BUTTON_HEIGHT = 64;
+
+    // Rule Button
+    public static final String RULE_BUTTON = "/images/buttons/menu/rule_button.png";
+    public static final String RULE_BUTTON_HOVER = "/images/buttons/menu/rule_hover_button.png";
+    public static final String RULE_BUTTON_PRESSED = "/images/buttons/menu/rule_pressed_button.png";
+    public static final int RULE_BUTTON_WIDTH = 192;
+    public static final int RULE_BUTTON_HEIGHT = 48;
+
+    // Setting Button
+    public static final String SETTING_BUTTON = "/images/buttons/menu/setting_button.png";
+    public static final String SETTING_BUTTON_HOVER = "/images/buttons/menu/setting_hover_button.png";
+    public static final String SETTING_BUTTON_PRESSED = "/images/buttons/menu/setting_pressed_button.png";
+    public static final int SETTING_BUTTON_WIDTH = 192;
+    public static final int SETTING_BUTTON_HEIGHT = 48;
+
+    // Quit Button
+    public static final String QUIT_BUTTON = "/images/buttons/menu/quit_button.png";
+    public static final String QUIT_BUTTON_HOVER = "/images/buttons/menu/quit_hover_button.png";
+    public static final String QUIT_BUTTON_PRESSED = "/images/buttons/menu/quit_pressed_button.png";
+    public static final int QUIT_BUTTON_WIDTH = 192;
+    public static final int QUIT_BUTTON_HEIGHT = 48;
+    // =============================================
+    
+ // ================= CHALLENGE MODE =================
+    // Background
+    public static final String CHALLENGE_BG = "/images/backgrounds/challenge_background.png";
+
+    // Board cell images (16x16)
+    public static final String BOARD_CELL = "/images/board/board_cell.png";
+    public static final String BOARD_CELL_HOVER = "/images/board/board_cell_hover.png";
+    public static final String BOARD_CELL_HIT = "/images/board/board_cell_hit.png";
+    public static final String BOARD_CELL_MISS = "/images/board/board_cell_miss.png";
+    public static final String BOARD_CELL_SHIP = "/images/board/board_cell_ship.png";
+    public static final int BOARD_CELL_SIZE = 32; // Bạn có thể đổi thành 16 nếu muốn nhỏ hơn
+
+    // Attack button images (96x48)
+    public static final String CHALLENGE_SINGLE_ATK_BTN = "/images/buttons/challenge_single_atk_btn.png";
+    public static final String CHALLENGE_SINGLE_ATK_HOVER_BTN = "/images/buttons/challenge_single_atk_hover_btn.png";
+    public static final String CHALLENGE_SINGLE_ATK_PRESSED_BTN = "/images/buttons/challenge_single_atk_pressed_btn.png";
+    public static final String CHALLENGE_CROSS_ATK_BTN = "/images/buttons/challenge_cross_atk_btn.png";
+    public static final String CHALLENGE_CROSS_ATK_HOVER_BTN = "/images/buttons/challenge_cross_atk_hover_btn.png";
+    public static final String CHALLENGE_CROSS_ATK_PRESSED_BTN = "/images/buttons/challenge_cross_atk_pressed_btn.png";
+    public static final String CHALLENGE_DIAMOND_ATK_BTN = "/images/buttons/challenge_diamond_atk_btn.png";
+    public static final String CHALLENGE_DIAMOND_ATK_HOVER_BTN = "/images/buttons/challenge_diamond_atk_hover_btn.png";
+    public static final String CHALLENGE_DIAMOND_ATK_PRESSED_BTN = "/images/buttons/challenge_diamond_atk_pressed_btn.png";
+    public static final String CHALLENGE_RANDOM_ATK_BTN = "/images/buttons/challenge_random_atk_btn.png";
+    public static final String CHALLENGE_RANDOM_ATK_HOVER_BTN = "/images/buttons/challenge_random_atk_hover_btn.png";
+    public static final String CHALLENGE_RANDOM_ATK_PRESSED_BTN = "/images/buttons/challenge_random_atk_pressed_btn.png";
+    public static final int CHALLENGE_ATK_BTN_WIDTH = 96;
+    public static final int CHALLENGE_ATK_BTN_HEIGHT = 48;
+
+    // Board border
+    public static final int CHALLENGE_BOARD_BORDER = 3;
+    public static final int CHALLENGE_BOARD_PANEL_SIZE = 480; // hoặc 10*cellSize + padding
+
+    // Info panel
+    public static final int CHALLENGE_INFO_PANEL_WIDTH = 320;
+}

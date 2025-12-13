@@ -1,0 +1,35 @@
+package com.battleship.core.service.player;
+
+import com.battleship.core.model.player.Player;
+
+public interface IPlayerService {
+    /**
+     * Tạo người chơi mới
+     */
+    Player createPlayer(String name);
+    
+    /**
+     * Chuyển lượt chơi
+     */
+    void switchTurn();
+    
+    /**
+     * Kiểm tra xem có phải lượt của người chơi không
+     */
+    boolean isPlayerTurn(Player player);
+    
+    /**
+     * Lấy người chơi hiện tại
+     */
+    Player getCurrentPlayer();
+    
+    /**
+     * Lấy người chơi đối phương
+     */
+    Player getOpponentPlayer();
+    
+    /**
+     * Kiểm tra xem người chơi đã thua chưa
+     */
+    boolean isPlayerDefeated(Player player);
+}

@@ -1,0 +1,5 @@
+0 0 2 false
+2 2 3 true
+6 3 4 false
+4 5 3 false
+5 9 5 false

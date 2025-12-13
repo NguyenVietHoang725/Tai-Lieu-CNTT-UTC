@@ -1,0 +1,27 @@
+package com.battleship.core.model.attack;
+
+import com.battleship.core.model.ship.Ship;
+
+public class AttackResult {
+	private final boolean hit;
+	private final boolean sunk;
+	private final Ship hitShip;
+
+	public AttackResult(boolean hit, boolean sunk, Ship hitShip) {
+		this.hit = hit;
+		this.sunk = sunk;
+		this.hitShip = hitShip;
+	}
+
+	public boolean isHit() {
+		return hit;
+	}
+
+	public boolean isSunk() {
+		return sunk;
+	}
+
+	public Ship getHitShip() {
+		return hitShip;
+	}
+}

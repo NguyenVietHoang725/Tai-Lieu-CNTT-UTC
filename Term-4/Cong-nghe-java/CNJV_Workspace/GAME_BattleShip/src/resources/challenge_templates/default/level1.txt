@@ -1,0 +1,25 @@
+# Template Info
+@NAME=Challenge Level 1
+@DIFFICULTY=EASY
+@DESCRIPTION=First challenge level for beginners
+@AUTHOR=System
+@CREATED=2024-03-21
+
+# Ship Placements
+@SHIPS
+0 0 2 true    # Tàu 2 ô nằm ngang tại (0,0)
+2 2 3 false   # Tàu 3 ô nằm dọc tại (2,2)
+5 1 3 true    # Tàu 3 ô nằm ngang tại (5,1)
+6 4 4 false   # Tàu 4 ô nằm dọc tại (6,4)
+0 5 5 true    # Tàu 5 ô nằm ngang tại (0,5)
+
+# Game Settings
+@SETTINGS
+MAX_SHOTS=30
+TIME_LIMIT=5:00
+
+# Attack Inventory
+@ATTACKS
+CROSS=3
+RANDOM=1
+DIAMOND=1

@@ -1,0 +1,31 @@
+package com.battleship.core.model.player;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.strategy.bot.IBotStrategy;
+
+public class Bot extends Player {
+    private final IBotStrategy strategy;
+    private final String difficulty;
+    
+    public Bot(String name, String difficulty, IBotStrategy strategy) {
+        super(name);
+        this.difficulty = difficulty;
+        this.strategy = strategy;
+    }
+    
+    public Position getNextAttackPosition() {
+        return strategy.getNextAttackPosition(getBoard());
+    }
+    
+    @Override
+    public void attack(IPlayer opponent, Position position) {
+        super.attack(opponent, position);
+        AttackResult result = opponent.receiveAttack(position);
+        strategy.updateStrategy(result, position);
+    }
+    
+    public String getDifficulty() {
+        return difficulty;
+    }
+}

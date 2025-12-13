@@ -1,0 +1,40 @@
+package com.battleship.core.model.attack;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.player.IPlayer;
+
+public class Attack {
+    private final IPlayer attacker;
+    private final Position position;
+    private final AttackType type;
+    private AttackResult result;
+    
+    public Attack(IPlayer attacker, Position position, AttackType type) {
+        this.attacker = attacker;
+        this.position = position;
+        this.type = type;
+    }
+    
+    public void execute(IPlayer defender) {
+        if (!isValid()) {
+            throw new IllegalStateException("Invalid attack configuration");
+        }
+        
+        if (!attacker.getInventory().hasWeapon(type)) {
+            throw new IllegalStateException("No weapon available");
+        }
+        
+        attacker.getInventory().useWeapon(type);
+        result = defender.receiveAttack(position);
+    }
+    
+    public boolean isValid() {
+        return attacker != null && position != null && type != null;
+    }
+    
+    // Getters
+    public IPlayer getAttacker() { return attacker; }
+    public Position getPosition() { return position; }
+    public AttackType getType() { return type; }
+    public AttackResult getResult() { return result; }
+}

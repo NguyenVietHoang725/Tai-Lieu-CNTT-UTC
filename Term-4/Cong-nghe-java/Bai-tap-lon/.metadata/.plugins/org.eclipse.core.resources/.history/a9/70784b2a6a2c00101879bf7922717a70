@@ -1,0 +1,32 @@
+package com.battleship.core.service.player;
+
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.ship.Ship;
+import java.util.List;
+
+public interface IBotService {
+    /**
+     * Lấy vị trí tấn công tiếp theo của bot
+     */
+    Position getNextAttackPosition();
+    
+    /**
+     * Lấy vị trí đặt tàu tiếp theo của bot
+     */
+    List<Position> getNextShipPlacement(Ship ship);
+    
+    /**
+     * Cập nhật trạng thái sau khi tấn công
+     */
+    void updateAttackResult(Position position, boolean isHit, boolean isSunk);
+    
+    /**
+     * Reset trạng thái của bot
+     */
+    void reset();
+    
+    /**
+     * Kiểm tra xem bot đã đặt hết tàu chưa
+     */
+    boolean areAllShipsPlaced();
+}

@@ -1,0 +1,5 @@
+package com.battleship.ui.component.board;
+
+public class GameBoard {
+
+}

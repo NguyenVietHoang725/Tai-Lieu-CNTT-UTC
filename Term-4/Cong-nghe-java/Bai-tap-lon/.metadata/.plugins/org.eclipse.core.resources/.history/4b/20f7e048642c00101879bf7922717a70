@@ -1,0 +1,18 @@
+package com.battleship.core.strategy.attack;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.IBoard;
+import java.util.List;
+
+/**
+ * Interface định nghĩa các chiến lược tấn công trong game
+ */
+public interface IAttackStrategy {
+    /**
+     * Lấy danh sách các vị trí cần tấn công dựa trên chiến lược
+     * @param position Vị trí tấn công chính
+     * @param board Bàn cờ đối thủ
+     * @return Danh sách các vị trí cần tấn công
+     */
+    List<Position> getAttackPositions(Position position, IBoard board);
+}

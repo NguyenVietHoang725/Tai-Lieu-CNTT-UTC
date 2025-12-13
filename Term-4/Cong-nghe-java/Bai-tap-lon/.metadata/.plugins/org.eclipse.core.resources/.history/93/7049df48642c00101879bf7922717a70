@@ -1,0 +1,98 @@
+package com.battleship.core.strategy.bot;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.attack.AttackResult;
+import java.util.*;
+
+/**
+ * Chiến lược bot khó - sử dụng xác suất và truy đuổi thông minh
+ */
+public class HardBotStrategy implements IBotStrategy {
+    private final Random random = new Random();
+    private final Queue<Position> hitQueue = new LinkedList<>();
+    private Position lastHit = null;
+    private static final String DIFFICULTY = "Hard";
+    private static final int[][] DIRECTIONS = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+    @Override
+    public Position getNextAttackPosition(IBoard board) {
+        // Nếu đang truy đuổi tàu
+        if (!hitQueue.isEmpty()) {
+            Position nextPos = getSmartHuntingPosition(board);
+            if (nextPos != null) return nextPos;
+        }
+
+        // Nếu không có hướng truy đuổi, tìm vị trí có xác suất cao nhất
+        return getProbabilityBasedPosition(board);
+    }
+
+    @Override
+    public void updateStrategy(AttackResult result, Position position) {
+        if (result.isHit()) {
+            if (!result.isSunk()) {
+                hitQueue.offer(position);
+                lastHit = position;
+            } else {
+                // Reset khi đánh chìm tàu
+                hitQueue.clear();
+                lastHit = null;
+            }
+        }
+    }
+
+    private Position getSmartHuntingPosition(IBoard board) {
+        if (lastHit != null) {
+            // Tìm hướng có khả năng cao có tàu
+            List<Position> potentialTargets = new ArrayList<>();
+            for (int[] dir : DIRECTIONS) {
+                int newX = lastHit.getX() + dir[0];
+                int newY = lastHit.getY() + dir[1];
+                if (board.isValidPosition(newX, newY) && !board.isNodeHit(newX, newY)) {
+                    potentialTargets.add(new Position(newX, newY));
+                }
+            }
+            if (!potentialTargets.isEmpty()) {
+                return potentialTargets.get(random.nextInt(potentialTargets.size()));
+            }
+        }
+        return null;
+    }
+
+    private Position getProbabilityBasedPosition(IBoard board) {
+        int[][] probabilityMap = calculateProbabilityMap(board);
+        int maxProb = 0;
+        List<Position> bestPositions = new ArrayList<>();
+
+        // Tìm các vị trí có xác suất cao nhất
+        for (int x = 0; x < board.getSize(); x++) {
+            for (int y = 0; y < board.getSize(); y++) {
+                if (!board.isNodeHit(x, y)) {
+                    if (probabilityMap[x][y] > maxProb) {
+                        maxProb = probabilityMap[x][y];
+                        bestPositions.clear();
+                        bestPositions.add(new Position(x, y));
+                    } else if (probabilityMap[x][y] == maxProb) {
+                        bestPositions.add(new Position(x, y));
+                    }
+                }
+            }
+        }
+
+        return bestPositions.isEmpty() ? null : 
+               bestPositions.get(random.nextInt(bestPositions.size()));
+    }
+
+    private int[][] calculateProbabilityMap(IBoard board) {
+        int[][] probMap = new int[board.getSize()][board.getSize()];
+        // Tính toán xác suất dựa trên kích thước tàu có thể có
+        // và khoảng cách giữa các hit
+        // ... (implementation details)
+        return probMap;
+    }
+
+    @Override
+    public String getDifficulty() {
+        return DIFFICULTY;
+    }
+}

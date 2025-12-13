@@ -1,0 +1,5 @@
+package com.tictactoe.utils;
+
+public class InputHandler {
+
+}

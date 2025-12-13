@@ -1,0 +1,8 @@
+package com.battleship.core.service.interfaces;
+
+public interface IGameService {
+	void startGame(GameMode mode);
+    void handleAttack(Attack attack);
+    void endGame();
+    GameState getCurrentState();
+}

@@ -1,0 +1,37 @@
+package com.battleship.view.utils;
+
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+
+public class ViewConstants {
+	// Màu sắc
+    public static final Color BUTTON_COLOR = new Color(45, 62, 80);
+    public static final Color TEXT_COLOR = new Color(236, 240, 241);
+
+    // Font
+    public static final Font BUTTON_FONT = new Font("Segoe UI", Font.BOLD, 18);
+
+    // Đường dẫn resource
+    public static final String BG_GIF_PATH = "/images/backgrounds/menu_background.gif";
+    public static final String LOGO_PATH = "/images/logo/logo.png";
+
+    // Tên panel cho CardPanel
+    public static final String MAIN_MENU = "mainMenu";
+
+    public static final Font MENU_BUTTON_FONT = new Font("Segoe UI", Font.BOLD, 24);
+    public static final Color MENU_BUTTON_BG = new Color(30, 144, 255);
+    public static final Color MENU_BUTTON_FG = Color.WHITE;
+    public static final Border MENU_BUTTON_BORDER = BorderFactory.createEmptyBorder(10, 40, 10, 40);
+    
+    public static final String[] MENU_BUTTON_IMAGES = {
+            "/images/buttons/menu/challenge_on_button.png",
+            "/images/buttons/menu/vsbot_on_button.png",
+            "/images/buttons/menu/rule_on_button.png",
+            "/images/buttons/menu/setting_on_button.png",
+            "/images/buttons/menu/quit_on_button.png"
+        };
+
+}

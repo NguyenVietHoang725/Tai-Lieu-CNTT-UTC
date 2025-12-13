@@ -1,0 +1,121 @@
+package com.battleship.core.service.impl;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.Attack;
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.game.GameState;
+import com.battleship.core.model.player.IPlayer;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.service.interfaces.IAttackService;
+import com.battleship.core.service.interfaces.IBoardService;
+import com.battleship.core.service.interfaces.IGameService;
+import com.battleship.core.service.interfaces.IPlayerService;
+
+public class GameServiceImpl implements IGameService {
+	private final IPlayerService playerService;
+    private final IAttackService attackService;
+    private final IBoardService boardService;
+    
+    private GameState currentState;
+    private IPlayer currentPlayer;
+    private IPlayer opponent;
+    private GameMode gameMode;
+    
+    public GameServiceImpl(IPlayerService playerService, 
+                          IAttackService attackService,
+                          IBoardService boardService) {
+        this.playerService = playerService;
+        this.attackService = attackService;
+        this.boardService = boardService;
+    }
+			    
+	@Override
+	public void startGame(GameMode mode) {
+		this.gameMode = mode;
+        this.currentState = GameState.PLACING_SHIPS;
+        
+        if (mode == GameMode.PVP) {
+            currentPlayer = playerService.createPlayer("Player 1");
+            opponent = playerService.createPlayer("Player 2");
+        } else {
+            currentPlayer = playerService.createPlayer("Player");
+            opponent = playerService.createBot("Bot", "MEDIUM");
+        }
+	}
+
+	@Override
+    public void handleAttack(Attack attack) {
+        if (currentState != GameState.IN_PROGRESS) {
+            throw new IllegalStateException("Game is not in progress");
+        }
+        
+        AttackResult result = attackService.executeAttack(
+            currentPlayer, 
+            opponent, 
+            attack.getPosition()
+        );
+        
+        if (result.getHitShip() != null || !result.isHit()) {
+            switchTurn();
+        }
+        
+        checkGameOver();
+    }
+    
+    @Override
+    public void endGame() {
+        currentState = GameState.FINISHED;
+    }
+    
+    @Override
+    public GameState getCurrentState() {
+        return currentState;
+    }
+    
+    @Override
+    public boolean isGameOver() {
+        return currentState == GameState.FINISHED;
+    }
+    
+    @Override
+    public IPlayer getCurrentPlayer() {
+        return currentPlayer;
+    }
+    
+    @Override
+    public IPlayer getOpponent() {
+        return opponent;
+    }
+    
+    @Override
+    public void switchTurn() {
+        IPlayer temp = currentPlayer;
+        currentPlayer = opponent;
+        opponent = temp;
+    }
+    
+    @Override
+    public void placeShip(IPlayer player, Ship ship, Position position) {
+        if (currentState != GameState.PLACING_SHIPS) {
+            throw new IllegalStateException("Cannot place ships in current state");
+        }
+        
+        playerService.placeShip(player, ship, position);
+        
+        // Check if all ships are placed
+        if (areAllShipsPlaced(currentPlayer) && areAllShipsPlaced(opponent)) {
+            currentState = GameState.IN_PROGRESS;
+        }
+    }
+    
+    private boolean areAllShipsPlaced(IPlayer player) {
+        return player.getBoard().getShips().size() == 5; // Assuming 5 ships per player
+    }
+    
+    private void checkGameOver() {
+        if (playerService.isDefeated(currentPlayer) || 
+            playerService.isDefeated(opponent)) {
+            endGame();
+        }
+    }
+}

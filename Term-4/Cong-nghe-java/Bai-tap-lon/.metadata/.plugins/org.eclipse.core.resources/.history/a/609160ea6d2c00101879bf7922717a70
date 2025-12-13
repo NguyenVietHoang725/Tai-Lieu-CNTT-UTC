@@ -1,0 +1,51 @@
+package com.battleship.core.model.game;
+
+import com.battleship.core.model.player.IPlayer;
+
+public class GameState {
+    private IPlayer currentPlayer;  // Bỏ final
+    private IPlayer opponent;       // Bỏ final
+    private final GameMode mode;    // Giữ final vì mode không thay đổi
+    private GameStatus status;
+    
+    public GameState(IPlayer player1, IPlayer player2, GameMode mode) {
+        this.currentPlayer = player1;
+        this.opponent = player2;
+        this.mode = mode;
+        this.status = GameStatus.IN_PROGRESS;
+    }
+
+    public GameStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(GameStatus status) {
+        this.status = status;
+    }
+
+    public IPlayer getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public IPlayer getOpponent() {
+        return opponent;
+    }
+
+    public GameMode getMode() {
+        return mode;
+    }
+
+    public void setCurrentPlayer(IPlayer player) {
+        if (player == null) {
+            throw new IllegalArgumentException("Player cannot be null");
+        }
+        this.currentPlayer = player;
+    }
+
+    public void setOpponent(IPlayer player) {
+        if (player == null) {
+            throw new IllegalArgumentException("Player cannot be null");
+        }
+        this.opponent = player;
+    }
+}

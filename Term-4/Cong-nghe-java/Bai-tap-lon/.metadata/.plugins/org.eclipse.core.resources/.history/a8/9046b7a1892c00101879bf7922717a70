@@ -1,0 +1,80 @@
+package com.battleship.ui.controller;
+
+import com.battleship.ui.utils.ViewConstants;
+import com.battleship.ui.view.MainMenuView;
+
+import javax.swing.*;
+
+public class AppController {
+    private JFrame mainFrame;
+    private JPanel mainPanel; // Sử dụng CardLayout để chuyển đổi view
+    private CardLayout cardLayout;
+
+    // Controllers
+    private MainController mainController;
+    // private ChallengeController challengeController;
+    // private VsBotController vsBotController;
+    // private SettingsController settingsController;
+    // private RulesController rulesController;
+
+    // Các tên màn hình (key cho CardLayout)
+    public static final String MAIN_MENU = "MAIN_MENU";
+    // public static final String CHALLENGE = "CHALLENGE";
+    // public static final String VSBOT = "VSBOT";
+    // public static final String SETTINGS = "SETTINGS";
+    // public static final String RULES = "RULES";
+
+    public AppController() {
+        // Khởi tạo frame chính
+        mainFrame = new JFrame("Battleship");
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setSize(ViewConstants.WINDOW_WIDTH, ViewConstants.WINDOW_HEIGHT);
+        mainFrame.setResizable(false);
+        mainFrame.setLocationRelativeTo(null);
+
+        // Khởi tạo panel chính với CardLayout
+        cardLayout = new CardLayout();
+        mainPanel = new JPanel(cardLayout);
+
+        // Khởi tạo và thêm MainMenuView
+        mainController = new MainController(this);
+        mainPanel.add(mainController.getMainMenuView(), MAIN_MENU);
+
+        // Thêm mainPanel vào frame
+        mainFrame.setContentPane(mainPanel);
+        mainFrame.setVisible(true);
+
+        // Hiển thị màn hình menu đầu tiên
+        showMainMenu();
+    }
+
+    public void showMainMenu() {
+        cardLayout.show(mainPanel, MAIN_MENU);
+    }
+
+    // Các phương thức chuyển màn hình khác sẽ bổ sung sau
+    public void startChallengeMode() {
+        // TODO: Triển khai sau
+        JOptionPane.showMessageDialog(mainFrame, "Chức năng Challenge Mode sẽ được bổ sung!");
+    }
+
+    public void startVsBotMode() {
+        // TODO: Triển khai sau
+        JOptionPane.showMessageDialog(mainFrame, "Chức năng VS Bot Mode sẽ được bổ sung!");
+    }
+
+    public void showSettings() {
+        // TODO: Triển khai sau
+        JOptionPane.showMessageDialog(mainFrame, "Chức năng Settings sẽ được bổ sung!");
+    }
+
+    public void showRules() {
+        // TODO: Triển khai sau
+        JOptionPane.showMessageDialog(mainFrame, "Chức năng Rules sẽ được bổ sung!");
+    }
+
+    // Getter cho mainFrame nếu cần
+    public JFrame getMainFrame() {
+        return mainFrame;
+    }
+}

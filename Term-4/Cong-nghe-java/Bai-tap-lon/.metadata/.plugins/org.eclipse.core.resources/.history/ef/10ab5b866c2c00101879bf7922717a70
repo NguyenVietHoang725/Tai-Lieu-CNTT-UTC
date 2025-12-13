@@ -1,0 +1,50 @@
+package com.battleship.core.service.attack;
+
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.player.Player;
+
+public class AttackResultServiceImpl implements IAttackResultService {
+
+	private final GameMode gameMode;
+
+    public AttackResultServiceImpl(GameMode gameMode) {
+        this.gameMode = gameMode;
+    }
+
+    @Override
+    public void processAttackResult(AttackResult result, Player attacker, Board targetBoard) {
+        if (gameMode == GameMode.CHALLENGE) {
+            processChallengeModeResult(result, attacker, targetBoard);
+        } else {
+            processVsBotModeResult(result, attacker, targetBoard);
+        }
+    }
+
+    private void processChallengeModeResult(AttackResult result, Player attacker, Board targetBoard) {
+        // Xử lý kết quả cho chế độ Challenge
+        // Có thể thêm các thông tin như:
+        // - Loại tấn công được sử dụng
+        // - Số lượng ô bị ảnh hưởng
+        // - Điểm số của người chơi
+        // - Các thông tin khác liên quan đến 4 loại tấn công
+    }
+
+    private void processVsBotModeResult(AttackResult result, Player attacker, Board targetBoard) {
+        // Xử lý kết quả cho chế độ VS Bot
+        // Chỉ xử lý kết quả tấn công single
+        if (result.isHit()) {
+            // Xử lý khi trúng tàu
+            if (result.isSunk()) {
+                // Xử lý khi đánh chìm tàu
+            }
+        }
+    }
+
+    @Override
+    public boolean isGameWon(Board targetBoard) {
+        return targetBoard.isAllShipsSunk();
+    }
+
+}

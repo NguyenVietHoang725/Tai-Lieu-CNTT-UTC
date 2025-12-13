@@ -1,0 +1,70 @@
+package com.battleship.ui.component;
+
+import com.battleship.ui.utils.ViewConstants;
+import com.battleship.ui.utils.ResourceLoader;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.event.ActionListener;
+
+public class GameBoard extends JPanel {
+    private final JButton[][] cells;
+    private int rows, cols;
+
+    public GameBoard(int rows, int cols, int cellSize) {
+        this.rows = rows;
+        this.cols = cols;
+        this.cells = new JButton[rows][cols];
+
+        setLayout(new GridLayout(rows, cols, 0, 0));
+        setOpaque(false);
+        setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.WHITE, ViewConstants.CHALLENGE_BOARD_BORDER, true),
+                BorderFactory.createEmptyBorder(12, 12, 12, 12)
+        ));
+
+        ImageIcon normalIcon = new ImageIcon(ResourceLoader.loadImage(ViewConstants.BOARD_CELL)
+                .getScaledInstance(cellSize, cellSize, Image.SCALE_SMOOTH));
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                JButton btn = new JButton(normalIcon);
+                btn.setPreferredSize(new Dimension(cellSize, cellSize));
+                btn.setBorder(BorderFactory.createLineBorder(new Color(60, 60, 60)));
+                btn.setContentAreaFilled(false);
+                btn.setFocusPainted(false);
+                btn.setOpaque(false);
+                cells[i][j] = btn;
+                add(btn);
+            }
+        }
+    }
+
+    public void setCellIcon(int row, int col, ImageIcon icon) {
+        cells[row][col].setIcon(icon);
+    }
+
+    public void setCellState(int row, int col, String state) {
+        // state: "normal", "hover", "hit", "miss", "ship"
+        String path = switch (state) {
+            case "hover" -> ViewConstants.BOARD_CELL_HOVER;
+            case "hit" -> ViewConstants.BOARD_CELL_HIT;
+            case "miss" -> ViewConstants.BOARD_CELL_MISS;
+            case "ship" -> ViewConstants.BOARD_CELL_SHIP;
+            default -> ViewConstants.BOARD_CELL;
+        };
+        ImageIcon icon = new ImageIcon(ResourceLoader.loadImage(path)
+                .getScaledInstance(ViewConstants.BOARD_CELL_SIZE, ViewConstants.BOARD_CELL_SIZE, Image.SCALE_SMOOTH));
+        setCellIcon(row, col, icon);
+    }
+
+    public void setCellListener(ActionListener listener) {
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++)
+                cells[i][j].addActionListener(listener);
+    }
+
+    public JButton getCell(int row, int col) {
+        return cells[row][col];
+    }
+}

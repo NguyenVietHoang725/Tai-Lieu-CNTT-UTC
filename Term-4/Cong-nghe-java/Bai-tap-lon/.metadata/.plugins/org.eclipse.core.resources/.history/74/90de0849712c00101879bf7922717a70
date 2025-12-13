@@ -1,0 +1,80 @@
+package com.battleship.core.service.board;
+
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.Node;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.player.Player;
+import com.battleship.core.model.ship.Ship;
+
+public class BoardServiceImpl implements IBoardService {
+	private final Board board;
+    private final IShipPlacementService shipPlacementService;
+    
+    public BoardServiceImpl(Board board, IShipPlacementService shipPlacementService) {
+        this.board = board;
+        this.shipPlacementService = shipPlacementService;
+    }
+    
+	@Override
+	public boolean placeShip(Ship ship, Position position) {
+		if (!isValidPlacement(ship, position)) {
+            return false;
+        }
+        return shipPlacementService.placeShip(ship, position);
+	}
+
+	@Override
+	public boolean isValidPlacement(Ship ship, Position position) {
+		return shipPlacementService.isValidPlacement(ship, position);
+	}
+
+	@Override
+	public void updateBoard(AttackResult result) {
+		Position position = result.getPosition();
+        Node node = board.getNode(position);
+        
+        if (result.isHit()) {
+            node.hit();
+        } else {
+            node.miss();
+        }
+	}
+
+	@Override
+	public Board getBoard(Player player) {
+		return board;
+	}
+
+	@Override
+	public boolean areAllShipsPlaced() {
+		return shipPlacementService.getPlacedShipPositions().size() == 
+	               board.getRequiredShipCount();
+	}
+
+	@Override
+	public void resetBoard() {
+		board.clear();
+        shipPlacementService.getPlacedShipPositions().clear();
+	}
+
+	@Override
+    public boolean loadBoard(String filePath) {
+        try {
+            // Implement logic load board từ file
+            // Có thể sử dụng BufferedReader để đọc file
+            // Format file có thể là: x y length isHorizontal
+            // Ví dụ: 1 2 3 true (tàu dài 3, nằm ngang, bắt đầu từ vị trí (1,2))
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+	@Override
+	public void setBoard(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,114 @@
+package com.battleship.core.model.player;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.attack.AttackInventory;
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.board.Node;
+import com.battleship.core.model.board.NodeState;
+import com.battleship.core.model.ship.Ship;
+import com.battleship.core.model.state.PlayerState;
+
+public class Player implements IPlayer {
+    private final String name;
+    private final IBoard board;
+    private final AttackInventory inventory;
+    private final List<Ship> ships;
+    
+    public Player(String name) {
+        this.name = name;
+        this.board = new Board();
+        this.inventory = new AttackInventory();
+        this.ships = new ArrayList<>();
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public IBoard getBoard() {
+        return board;
+    }
+
+    @Override
+    public AttackInventory getInventory() {
+        return inventory;
+    }
+
+    @Override
+    public void attack(IPlayer opponent, Position position) {
+        if (!canAttack(position)) {
+            throw new IllegalStateException("Invalid attack position");
+        }
+        
+        AttackResult result = opponent.receiveAttack(position);
+        updateAttackResult(result);
+    }
+
+    @Override
+    public boolean isDefeated() {
+        return ships.stream().allMatch(Ship::isSunk);
+    }
+
+    @Override
+    public void addShip(Ship ship) {
+        ships.add(ship);
+    }
+
+    @Override
+    public List<Ship> getShips() {
+        return new ArrayList<>(ships);
+    }
+    
+    public AttackResult receiveAttack(Position position) {
+        Node node = board.getNode(position.getX(), position.getY());
+        if (node.isHit()) {
+            return new AttackResult(false, false, null);
+        }
+        
+        node.setState(NodeState.HIT);
+        if (node.hasShip()) {
+            Ship ship = node.getShip();
+            ship.hit();
+            return new AttackResult(true, ship.isSunk(), ship);
+        }
+        
+        node.setState(NodeState.MISS);
+        return new AttackResult(false, false, null);
+    }
+    
+    public boolean canAttack(Position position) {
+        return board.isValidPosition(position.getX(), position.getY()) &&
+               !board.isNodeHit(position.getX(), position.getY());
+    }
+    
+    public boolean hasShipsRemaining() {
+        return ships.stream().anyMatch(ship -> !ship.isSunk());
+    }
+    
+    private void updateAttackResult(AttackResult result) {
+        // Có thể thêm logic cập nhật trạng thái người chơi dựa trên kết quả tấn công
+    }
+    
+    public PlayerState getPlayerState() {
+        return new PlayerState(name, board.getBoardState(), inventory);
+    }
+
+	@Override
+	public void setBoard(IBoard board) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setInventory(AttackInventory inventory) {
+		// TODO Auto-generated method stub
+		
+	}
+}

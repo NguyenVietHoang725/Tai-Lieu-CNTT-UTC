@@ -1,0 +1,17 @@
+package com.battleship.view.components.buttons;
+
+import javax.swing.JButton;
+
+import com.battleship.view.utils.ViewConstants;
+
+public class MenuButton extends JButton {
+	public MenuButton(String text) {
+        super(text);
+        setFont(ViewConstants.MENU_BUTTON_FONT);
+        setBackground(ViewConstants.MENU_BUTTON_BG);
+        setForeground(ViewConstants.MENU_BUTTON_FG);
+        setFocusPainted(false);
+        setBorder(ViewConstants.MENU_BUTTON_BORDER);
+        // ... thêm style khác nếu muốn
+    }
+}

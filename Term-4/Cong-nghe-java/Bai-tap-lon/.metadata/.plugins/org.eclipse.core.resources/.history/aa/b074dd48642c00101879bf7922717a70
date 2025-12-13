@@ -1,0 +1,44 @@
+package com.battleship.core.strategy.bot;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.IBoard;
+import com.battleship.core.model.attack.AttackResult;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/**
+ * Chiến lược bot dễ - tấn công hoàn toàn ngẫu nhiên
+ */
+public class EasyBotStrategy implements IBotStrategy {
+    private final Random random = new Random();
+    private static final String DIFFICULTY = "Easy";
+
+    @Override
+    public Position getNextAttackPosition(IBoard board) {
+        List<Position> availablePositions = new ArrayList<>();
+        
+        // Tìm tất cả các ô chưa bị tấn công
+        for (int x = 0; x < board.getSize(); x++) {
+            for (int y = 0; y < board.getSize(); y++) {
+                if (!board.isNodeHit(x, y)) {
+                    availablePositions.add(new Position(x, y));
+                }
+            }
+        }
+        
+        // Chọn ngẫu nhiên một ô
+        return availablePositions.isEmpty() ? null : 
+               availablePositions.get(random.nextInt(availablePositions.size()));
+    }
+
+    @Override
+    public void updateStrategy(AttackResult result, Position position) {
+        // Bot dễ không cần cập nhật chiến lược
+    }
+
+    @Override
+    public String getDifficulty() {
+        return DIFFICULTY;
+    }
+}

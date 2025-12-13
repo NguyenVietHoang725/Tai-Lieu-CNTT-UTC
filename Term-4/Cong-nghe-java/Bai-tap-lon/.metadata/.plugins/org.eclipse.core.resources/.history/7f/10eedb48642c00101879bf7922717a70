@@ -1,0 +1,35 @@
+package com.battleship.core.strategy.attack;
+
+import com.battleship.core.model.Position;
+import com.battleship.core.model.board.IBoard;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Chiến lược tấn công hình chữ thập - tấn công ô chính và 4 ô xung quanh
+ */
+public class CrossAttackStrategy implements IAttackStrategy {
+    private static final int[][] DELTAS = {
+        {0, 0},  // Ô chính
+        {0, 1},  // Phải
+        {0, -1}, // Trái
+        {1, 0},  // Dưới
+        {-1, 0}  // Trên
+    };
+
+    @Override
+    public List<Position> getAttackPositions(Position position, IBoard board) {
+        List<Position> positions = new ArrayList<>();
+        
+        for (int[] delta : DELTAS) {
+            int newX = position.getX() + delta[0];
+            int newY = position.getY() + delta[1];
+            
+            if (board.isValidPosition(newX, newY)) {
+                positions.add(new Position(newX, newY));
+            }
+        }
+        
+        return positions;
+    }
+}

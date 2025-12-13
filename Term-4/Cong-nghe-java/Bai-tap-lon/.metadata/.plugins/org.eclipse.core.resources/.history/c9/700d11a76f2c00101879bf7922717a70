@@ -1,0 +1,196 @@
+package com.battleship.core.service.game;
+
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.game.GameMode;
+import com.battleship.core.model.game.GameState;
+import com.battleship.core.model.player.Player;
+import com.battleship.core.service.attack.IAttackService;
+import com.battleship.core.service.board.IBoardService;
+import com.battleship.core.service.player.IPlayerService;
+
+public class GameServiceImpl implements IGameService {
+	private final IPlayerService playerService;
+    private final IBoardService boardService1;
+    private final IBoardService boardService2;
+    private final IAttackService attackService;
+    private final IGameStateService stateService;
+    private GameMode gameMode;
+    private GameState currentState;
+
+    public GameServiceImpl(
+        IPlayerService playerService,
+        IBoardService boardService1,
+        IBoardService boardService2,
+        IAttackService attackService,
+        IGameStateService stateService
+    ) {
+        this.playerService = playerService;
+        this.boardService1 = boardService1;
+        this.boardService2 = boardService2;
+        this.attackService = attackService;
+        this.stateService = stateService;
+        this.currentState = GameState.NOT_STARTED;
+    }
+
+    @Override
+    public void initializeGame(GameMode gameMode) {
+        this.gameMode = gameMode;
+        this.currentState = GameState.INITIALIZING;
+        stateService.setState(GameState.INITIALIZING);
+        
+        // Khởi tạo bàn cờ cho cả hai người chơi
+        boardService1.resetBoard();
+        boardService2.resetBoard();
+        
+        // Nếu là chế độ VS Bot, load bàn cờ cho bot
+        if (gameMode == GameMode.VS_BOT) {
+            // Load bàn cờ cho bot
+        }
+        
+        this.currentState = GameState.READY;
+        stateService.setState(GameState.READY);
+    }
+
+    @Override
+    public void startGame() {
+        if (currentState != GameState.READY) {
+            throw new IllegalStateException("Game is not ready to start");
+        }
+        currentState = GameState.PLAYING;
+        stateService.setState(GameState.PLAYING);
+    }
+
+    @Override
+    public void endGame() {
+        currentState = GameState.FINISHED;
+        stateService.setState(GameState.FINISHED);
+    }
+
+    @Override
+    public void pauseGame() {
+        if (currentState == GameState.PLAYING) {
+            currentState = GameState.PAUSED;
+            stateService.setState(GameState.PAUSED);
+        }
+    }
+
+    @Override
+    public void resumeGame() {
+        if (currentState == GameState.PAUSED) {
+            currentState = GameState.PLAYING;
+            stateService.setState(GameState.PLAYING);
+        }
+    }
+
+    @Override
+    public GameState getCurrentState() {
+        return currentState;
+    }
+
+    @Override
+    public boolean isGameOver() {
+        return currentState == GameState.FINISHED;
+    }
+
+    @Override
+    public Player getCurrentPlayer() {
+        return playerService.getCurrentPlayer();
+    }
+
+    @Override
+    public Player getOpponentPlayer() {
+        return playerService.getOpponentPlayer();
+    }
+
+    @Override
+    public GameMode getGameMode() {
+        return gameMode;
+    }
+
+    /**
+     * Thực hiện lượt tấn công
+     * @param position Vị trí tấn công
+     * @return true nếu lượt tấn công thành công
+     */
+    public boolean performAttack(Position position) {
+        if (currentState != GameState.PLAYING) {
+            return false;
+        }
+
+        Player currentPlayer = getCurrentPlayer();
+        Player opponent = getOpponentPlayer();
+        Board targetBoard = (Board) opponent.getBoard();
+
+        // Kiểm tra vị trí tấn công hợp lệ
+        if (!attackService.isValidAttack(position, targetBoard)) {
+            return false;
+        }
+
+        // Thực hiện tấn công
+        AttackResult result = attackService.attack(position, currentPlayer, targetBoard);
+
+        // Xử lý kết quả tấn công
+        handleAttackResult(result, currentPlayer, opponent);
+
+        return true;
+    }
+
+    /**
+     * Xử lý kết quả tấn công
+     * @param result Kết quả tấn công
+     * @param attacker Người tấn công
+     * @param defender Người phòng thủ
+     */
+    private void handleAttackResult(AttackResult result, Player attacker, Player defender) {
+        // Xử lý kết quả tấn công
+        if (result.isHit()) {
+            // Xử lý khi trúng tàu
+            if (result.isSunk()) {
+                // Xử lý khi đánh chìm tàu
+                System.out.println("Ship sunk at position: " + result.getPosition());
+                
+                // Kiểm tra điều kiện thắng
+                if (defender.isDefeated()) {
+                    System.out.println("Player " + attacker.getName() + " wins!");
+                    endGame();
+                    return;
+                }
+            } else {
+                System.out.println("Hit at position: " + result.getPosition());
+            }
+        } else {
+            System.out.println("Miss at position: " + result.getPosition());
+        }
+
+        // Chuyển lượt chơi nếu game chưa kết thúc
+        if (currentState == GameState.PLAYING) {
+            playerService.switchTurn();
+        }
+    }
+
+    /**
+     * Kiểm tra xem game có thể tiếp tục không
+     * @return true nếu game có thể tiếp tục
+     */
+    public boolean canContinueGame() {
+        return stateService.canContinueGame();
+    }
+
+    /**
+     * Lưu trạng thái game hiện tại
+     */
+    public void saveGameState() {
+        stateService.saveGameState();
+    }
+
+    /**
+     * Tải trạng thái game đã lưu
+     */
+    public void loadGameState() {
+        stateService.loadGameState();
+        this.currentState = stateService.getCurrentState();
+    }
+
+}

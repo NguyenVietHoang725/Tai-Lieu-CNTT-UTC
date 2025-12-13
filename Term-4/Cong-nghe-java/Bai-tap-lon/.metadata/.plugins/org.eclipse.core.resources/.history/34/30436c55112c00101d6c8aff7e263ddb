@@ -1,0 +1,5 @@
+package com.battleship.core.strategy.attack;
+
+public interface IAttackStrategy {
+
+}

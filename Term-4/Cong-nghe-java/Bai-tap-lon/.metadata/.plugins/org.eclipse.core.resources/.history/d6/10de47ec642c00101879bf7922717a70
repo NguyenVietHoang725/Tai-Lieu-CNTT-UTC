@@ -1,0 +1,18 @@
+package com.battleship.core.service.interfaces;
+
+import com.battleship.core.model.attack.AttackResult;
+import com.battleship.core.model.attack.AttackType;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.player.IPlayer;
+
+public interface IAttackService {
+	AttackResult executeAttack(IPlayer attacker, IPlayer defender, Position position);
+
+	boolean isValidAttack(IPlayer attacker, Position position);
+
+	void updateAttackInventory(IPlayer player, AttackType type);
+
+	boolean hasWeapon(IPlayer player, AttackType type);
+
+	void useWeapon(IPlayer player, AttackType type);
+}

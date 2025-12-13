@@ -1,0 +1,48 @@
+package com.battleship.core.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.battleship.core.model.board.Node;
+import com.battleship.core.model.interfaces.IShip;
+
+public class Ship implements IShip {
+    private final int length;
+    private boolean isHorizontal;
+    private final List<Node> nodes;
+    private int hitCount;
+    private Position position;
+    
+    public Ship(int length) {
+        this.length = length;
+        this.nodes = new ArrayList<>();
+        this.hitCount = 0;
+        this.isHorizontal = true;
+    }
+    
+    @Override
+    public int getLength() { return length; }
+    
+    @Override
+    public boolean isHorizontal() { return isHorizontal; }
+    
+    @Override
+    public void setHorizontal(boolean horizontal) { this.isHorizontal = horizontal; }
+    
+    @Override
+    public List<Node> getNodes() { return nodes; }
+    
+    @Override
+    public boolean isSunk() { return hitCount == length; }
+    
+    @Override
+    public void hit() {
+        hitCount++;
+    }
+    
+    @Override
+    public Position getPosition() { return position; }
+    
+    @Override
+    public void setPosition(Position position) { this.position = position; }
+}

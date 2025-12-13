@@ -1,0 +1,51 @@
+package com.battleship.ui.utils;
+
+public class ViewConstants {
+	// Window size
+    public static final int WINDOW_WIDTH = 1280;
+    public static final int WINDOW_HEIGHT = 720;
+    
+    // ================= MAIN MENU =================
+    // Background GIF
+    public static final String MAINMENU_BG = "/com/battleship/resources/images/backgrounds/menu_background.gif";
+    // Logo
+    public static final String MAINMENU_LOGO = "/com/battleship/resources/images/logo/logo.png";
+    public static final int MAINMENU_LOGO_WIDTH = 128;
+    public static final int MAINMENU_LOGO_HEIGHT = 56;
+
+    // Challenge Button
+    public static final String CHALLENGE_BUTTON = "/com/battleship/resources/images/buttons/challenge_button.png";
+    public static final String CHALLENGE_BUTTON_HOVER = "/com/battleship/resources/images/buttons/challenge_button_hover.png";
+    public static final String CHALLENGE_BUTTON_PRESSED = "/com/battleship/resources/images/buttons/challenge_button_pressed.png";
+    public static final int CHALLENGE_BUTTON_WIDTH = 128;
+    public static final int CHALLENGE_BUTTON_HEIGHT = 32;
+
+    // VsBot Button
+    public static final String VSBOT_BUTTON = "/com/battleship/resources/images/buttons/vsbot_button.png";
+    public static final String VSBOT_BUTTON_HOVER = "/com/battleship/resources/images/buttons/vsbot_button_hover.png";
+    public static final String VSBOT_BUTTON_PRESSED = "/com/battleship/resources/images/buttons/vsbot_button_pressed.png";
+    public static final int VSBOT_BUTTON_WIDTH = 128;
+    public static final int VSBOT_BUTTON_HEIGHT = 32;
+
+    // Rule Button
+    public static final String RULE_BUTTON = "/com/battleship/resources/images/buttons/rule_button.png";
+    public static final String RULE_BUTTON_HOVER = "/com/battleship/resources/images/buttons/rule_button_hover.png";
+    public static final String RULE_BUTTON_PRESSED = "/com/battleship/resources/images/buttons/rule_button_pressed.png";
+    public static final int RULE_BUTTON_WIDTH = 96;
+    public static final int RULE_BUTTON_HEIGHT = 24;
+
+    // Setting Button
+    public static final String SETTING_BUTTON = "/com/battleship/resources/images/buttons/setting_button.png";
+    public static final String SETTING_BUTTON_HOVER = "/com/battleship/resources/images/buttons/setting_button_hover.png";
+    public static final String SETTING_BUTTON_PRESSED = "/com/battleship/resources/images/buttons/setting_button_pressed.png";
+    public static final int SETTING_BUTTON_WIDTH = 96;
+    public static final int SETTING_BUTTON_HEIGHT = 24;
+
+    // Quit Button
+    public static final String QUIT_BUTTON = "/com/battleship/resources/images/buttons/quit_button.png";
+    public static final String QUIT_BUTTON_HOVER = "/com/battleship/resources/images/buttons/quit_button_hover.png";
+    public static final String QUIT_BUTTON_PRESSED = "/com/battleship/resources/images/buttons/quit_button_pressed.png";
+    public static final int QUIT_BUTTON_WIDTH = 96;
+    public static final int QUIT_BUTTON_HEIGHT = 24;
+    // =============================================
+}

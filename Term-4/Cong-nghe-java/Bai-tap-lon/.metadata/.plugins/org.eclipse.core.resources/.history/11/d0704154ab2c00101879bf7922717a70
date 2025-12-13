@@ -1,0 +1,233 @@
+package com.battleship.core.service.board;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
+import com.battleship.core.model.board.Board;
+import com.battleship.core.model.board.Node;
+import com.battleship.core.model.board.Position;
+import com.battleship.core.model.board.ShipPlacementAction;
+import com.battleship.core.model.ship.Ship;
+
+public class ShipPlacementServiceImpl implements IShipPlacementService {
+	private final Board board;
+    private final List<Position> placedShipPositions;
+    private final Stack<ShipPlacementAction> undoStack;
+    private final Stack<ShipPlacementAction> redoStack;
+    
+    public ShipPlacementServiceImpl(Board board) {
+        this.board = board;
+        this.placedShipPositions = new ArrayList<>();
+        this.undoStack = new Stack<>();
+        this.redoStack = new Stack<>();
+    }
+	
+    @Override
+    public boolean placeShip(Ship ship, Position position) {
+        if (!canPlaceShip(ship, position)) {
+            return false;
+        }
+
+        List<Position> affectedPositions = new ArrayList<>();
+        
+        // Đặt tàu vào các vị trí
+        for (int i = 0; i < ship.getLength(); i++) {
+            Position shipPosition;
+            if (ship.isHorizontal()) {
+                // Tàu nằm ngang: tăng X, giữ Y
+                shipPosition = new Position(position.getX() + i, position.getY());
+            } else {
+                // Tàu nằm dọc: giữ X, tăng Y
+                shipPosition = new Position(position.getX(), position.getY() + i);
+            }
+            
+            Node node = board.getNode(shipPosition);
+            node.setShip(ship);
+            placedShipPositions.add(shipPosition);
+            affectedPositions.add(shipPosition);
+        }
+
+        // Lưu action vào undo stack
+        ShipPlacementAction action = new ShipPlacementAction(ship, position, affectedPositions, true);
+        undoStack.push(action);
+        redoStack.clear();
+
+        return true;
+    }
+
+	@Override
+	public boolean isValidPlacement(Ship ship, Position position) {
+		// Kiểm tra xem tàu có nằm trong bàn cờ không
+        if (!isWithinBoard(ship, position)) {
+            return false;
+        }
+        
+        // Kiểm tra xem có tàu nào khác ở vị trí này không
+        if (hasOverlap(ship, position)) {
+            return false;
+        }
+        
+        // Kiểm tra khoảng cách với tàu khác
+        if (hasAdjacentShip(ship, position)) {
+            return false;
+        }
+        
+        return true;
+	}
+
+	@Override
+	public List<Position> getPlacedShipPositions() {
+		return new ArrayList<>(placedShipPositions);
+	}
+
+	@Override
+    public void removeShip(Position position) {
+        Node node = board.getNode(position);
+        if (node.hasShip()) {
+            Ship ship = node.getShip();
+            List<Position> affectedPositions = new ArrayList<>();
+            
+            // Xóa tàu khỏi tất cả các vị trí
+            for (Position pos : placedShipPositions) {
+                if (board.getNode(pos).getShip() == ship) {
+                    board.getNode(pos).clear();
+                    affectedPositions.add(pos);
+                }
+            }
+            
+            placedShipPositions.removeIf(pos -> board.getNode(pos).getShip() == ship);
+
+            // Lưu action vào undo stack
+            ShipPlacementAction action = new ShipPlacementAction(ship, position, affectedPositions, false);
+            undoStack.push(action);
+            redoStack.clear();
+        }
+    }
+
+	@Override
+	public boolean canPlaceShip(Ship ship, Position position) {
+		return isValidPlacement(ship, position);
+	}
+	
+	private boolean isWithinBoard(Ship ship, Position position) {
+	    // Kiểm tra vị trí bắt đầu
+	    if (position.getX() < 0 || position.getY() < 0) {
+	        return false;
+	    }
+	    
+	    int endX = position.getX() + (ship.isHorizontal() ? ship.getLength() - 1 : 0);
+	    int endY = position.getY() + (ship.isHorizontal() ? 0 : ship.getLength() - 1);
+	    
+	    return endX < board.getSize() && endY < board.getSize();
+	}
+
+    private boolean hasOverlap(Ship ship, Position position) {
+        for (int i = 0; i < ship.getLength(); i++) {  // Thay getSize() bằng getLength()
+            Position checkPos = new Position(
+                position.getX() + (ship.isHorizontal() ? i : 0),
+                position.getY() + (ship.isHorizontal() ? 0 : i)
+            );
+            
+            if (board.getNode(checkPos).hasShip()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hasAdjacentShip(Ship ship, Position position) {
+        for (int i = -1; i <= ship.getLength(); i++) {  // Thay getSize() bằng getLength()
+            for (int j = -1; j <= 1; j++) {
+                Position checkPos = new Position(
+                    position.getX() + (ship.isHorizontal() ? i : j),
+                    position.getY() + (ship.isHorizontal() ? j : i)
+                );
+                
+                if (isValidPosition(checkPos) && board.getNode(checkPos).hasShip()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    private boolean isValidPosition(Position position) {
+        return position.getX() >= 0 && position.getX() < board.getSize() &&
+               position.getY() >= 0 && position.getY() < board.getSize();
+    }
+
+    @Override
+    public boolean undo() {
+        if (!canUndo()) {
+            return false;
+        }
+
+        ShipPlacementAction action = undoStack.pop();
+        if (action.isPlacement()) {
+            // Undo đặt tàu = xóa tàu
+            for (Position pos : action.getAffectedPositions()) {
+                board.getNode(pos).clear();
+                placedShipPositions.remove(pos);
+            }
+        } else {
+            // Undo xóa tàu = đặt lại tàu
+            Ship ship = action.getShip();
+            Position position = action.getPosition();
+            for (int i = 0; i < ship.getLength(); i++) {
+                Position shipPosition = new Position(
+                    position.getX() + (ship.isHorizontal() ? i : 0),
+                    position.getY() + (ship.isHorizontal() ? 0 : i)
+                );
+                Node node = board.getNode(shipPosition);
+                node.setShip(ship);
+                placedShipPositions.add(shipPosition);
+            }
+        }
+
+        redoStack.push(action);
+        return true;
+    }
+
+    @Override
+    public boolean redo() {
+        if (!canRedo()) {
+            return false;
+        }
+
+        ShipPlacementAction action = redoStack.pop();
+        if (action.isPlacement()) {
+            // Redo đặt tàu
+            Ship ship = action.getShip();
+            Position position = action.getPosition();
+            for (int i = 0; i < ship.getLength(); i++) {
+                Position shipPosition = new Position(
+                    position.getX() + (ship.isHorizontal() ? i : 0),
+                    position.getY() + (ship.isHorizontal() ? 0 : i)
+                );
+                Node node = board.getNode(shipPosition);
+                node.setShip(ship);
+                placedShipPositions.add(shipPosition);
+            }
+        } else {
+            // Redo xóa tàu
+            for (Position pos : action.getAffectedPositions()) {
+                board.getNode(pos).clear();
+                placedShipPositions.remove(pos);
+            }
+        }
+
+        undoStack.push(action);
+        return true;
+    }
+
+    @Override
+    public boolean canUndo() {
+        return !undoStack.isEmpty();
+    }
+
+    @Override
+    public boolean canRedo() {
+        return !redoStack.isEmpty();
+    }
+}
