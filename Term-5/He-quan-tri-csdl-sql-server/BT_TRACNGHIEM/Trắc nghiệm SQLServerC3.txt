@@ -1,0 +1,106 @@
+1. Stored Procedure có thể gọi stored procedure khác không?
+	
+	B. Có, trực tiếp bằng EXEC
+
+2. Inline table-valued function (TVF) khác multi-statement TVF ở điểm nào?
+
+	A. Multi-statement TVF có BEGIN…END và có thể chứa nhiều logic
+
+	B. Tất cả các đáp án trên (TRUE)
+
+	C. Inline TVF nhanh hơn thường xuyên
+
+	D. Inline TVF chỉ có một SELECT duy nhất
+
+3. Khi muốn bắt lỗi trong stored procedure, dùng:
+
+	A. TRY…CATCH
+
+4. Lệnh nào sửa thủ tục hiện có?
+
+	C. ALTER PROCEDURE proc_name AS BEGIN ... END
+
+5. Lệnh nào sửa hàm hiện có?
+
+	C. ALTER FUNCTION func_name
+
+6. Khi muốn hàm trả về bảng duy nhất từ SELECT, dùng:
+
+	A. Inline table-valued function
+
+7. Hàm không thể chứa:
+
+	C. INSERT/UPDATE/DELETE vào bảng cơ sở
+
+8. Lệnh nào sửa stored procedure hiện có?
+
+	B. ALTER PROCEDURE proc_name AS BEGIN ... END
+
+9. OUTPUT parameter dùng để:
+
+	C. Trả về giá trị
+
+10. Hàm trong SQL Server có thể trả về:
+
+	A. Một bảng (table-valued function)
+
+	B. Không trả về gì
+
+	C. A và B đúng (TRUE)
+
+	D. Một giá trị scalar
+
+11. Stored Procedure có thể nhận tham số không?
+
+	D. Có
+
+12. Lệnh nào thực thi stored procedure?
+
+	A. A và B đúng (TRUE)
+
+	B. EXECUTE proc_name @param=1
+
+	C. CALL proc_name()
+
+	D. EXEC proc_name
+
+13. Hàm trong SQL Server có thể thay đổi dữ liệu bảng không?
+
+	A. Không
+
+14. Lệnh nào tạo hàm scalar?
+
+	B. CREATE FUNCTION func_name(@param INT) RETURNS INT AS BEGIN RETURN @param+1 END
+
+15. Hàm scalar có thể dùng trong:
+
+	A. Tất cả các đáp án trên (TRUE)
+	B. SELECT statement
+	C. JOIN condition
+	D. WHERE clause
+
+16. RETURN trong function dùng để:
+
+	D. Trả giá trị theo kiểu đã định (scalar hoặc table)
+
+17. Hàm có thể nhận tham số không?
+
+	B. Có
+
+18. Stored Procedure có thể trả về giá trị thông qua:
+
+	A. Tất cả các đáp án trên (TRUE)
+
+	B. SELECT bảng dữ liệu
+
+	C. OUTPUT parameter
+
+	D. RETURN
+
+19. Lệnh nào tạo stored procedure mới?
+
+	D. CREATE PROCEDURE proc_name AS BEGIN ... END
+
+20. Lệnh nào gọi TVF trong SELECT?
+
+	C. SELECT * FROM dbo.FuncName(@param)

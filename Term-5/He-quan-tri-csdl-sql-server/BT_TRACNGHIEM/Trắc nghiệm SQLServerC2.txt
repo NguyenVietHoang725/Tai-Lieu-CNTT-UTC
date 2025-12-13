@@ -1,0 +1,79 @@
+1. Khi một view cơ sở bị xóa, view tham chiếu đến bảng đó sẽ:
+
+	Vẫn tồn tại nhưng trở thành invalid
+
+2. Nếu muốn hạn chế cột và hàng mà người dùng nhìn thấy, bạn dùng:
+
+	View
+
+3. View có thể tham chiếu đến bảng trong database khác không?
+
+	Được, nếu chỉ định đầy đủ tên [database].[schema].[table]
+
+4. Quyền nào cần để tạo view trong database?
+
+	CREATE VIEW
+
+5. Để xem danh sách tất cả view trong database:
+
+	Tất cả các đáp án trên đều đúng
+
+6. VIEW có thể lấy dữ liệu từ:
+
+	Tất cả các đáp án trên đều đúng
+
+7. View có thể chứa lệnh ORDER BY không?
+
+	Chỉ khi dùng TOP hoặc OFFSET FETCH
+
+8. Khi xóa VIEW, dùng lệnh nào?
+
+	DROP VIEW view_name
+
+9. Một view phức tạp với nhiều JOIN, GROUP BY, subquery có thể:
+
+	B và C đúng
+
+10. View và Table-Valued Function (TVF) khác nhau ở điểm nào?
+
+	View không nhận tham số, còn TVF có thể nhận tham số
+
+11. Một view có thể chứa lệnh UNION không?
+
+	Có thể, nhưng view indexed thì không
+
+12. View có thể tham chiếu tới table-valued function không?
+
+	Chỉ khi function là inline TVF
+
+13. Lệnh nào xóa và tạo lại view một cách an toàn nếu đã tồn tại?
+
+	CREATE OR ALTER VIEW ...
+
+14. VIEW có thể cập nhật dữ liệu không?
+
+	Có thể, nếu view đơn giản và không chứa group by, join phức tạp
+
+15. Trong SQL Server, VIEW là gì?
+
+	Một bảng ảo dựa trên câu lệnh SELECT
+
+16. Lệnh nào dùng để đổi tên view?
+
+	EXEC sp_rename 'old_name', 'new_name'
+
+17. Có thể cấp quyền SELECT trên view mà không cấp quyền trực tiếp trên bảng cơ sở không?
+
+	Có
+
+18. Một view có thể tham chiếu tới chính nó không?
+
+	Không, SQL Server không cho phép view tự tham chiếu
+
+19. Lệnh nào tạo VIEW cơ bản?
+
+	CREATE VIEW view_name AS SELECT ...
+
+20. Để chỉnh sửa câu lệnh SELECT của một VIEW, bạn dùng:
+
+	ALTER VIEW view_name AS SELECT ...
