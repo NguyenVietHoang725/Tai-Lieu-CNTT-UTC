@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai16_HopThoaiOpenDialog\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BC4862FE-36D9-4CD9-B248-508F581928B5}|Bai16_HopThoaiOpenDialog.csproj|e:\\00_university\\term_05\\laptrinhtrucquan\\baitapbaigiang\\bai16_hopthoaiopendialog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BC4862FE-36D9-4CD9-B248-508F581928B5}|Bai16_HopThoaiOpenDialog.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC4862FE-36D9-4CD9-B248-508F581928B5}|Bai16_HopThoaiOpenDialog.csproj|e:\\00_university\\term_05\\laptrinhtrucquan\\baitapbaigiang\\bai16_hopthoaiopendialog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC4862FE-36D9-4CD9-B248-508F581928B5}|Bai16_HopThoaiOpenDialog.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai16_HopThoaiOpenDialog\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai16_HopThoaiOpenDialog\\Form1.cs*",
+              "RelativeToolTip": "Form1.cs*",
+              "ViewState": "AgIAAAEAAAAAAAAAAAApwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T07:11:02.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai16_HopThoaiOpenDialog\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai16_HopThoaiOpenDialog\\Form1.cs [Design]*",
+              "RelativeToolTip": "Form1.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T07:08:30.589Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

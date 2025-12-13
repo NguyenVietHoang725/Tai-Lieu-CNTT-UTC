@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai18_ColorDialog\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{79AB187E-C719-4111-A475-F2AB1A5C1B74}|Bai18_ColorDialog.csproj|e:\\00_university\\term_05\\laptrinhtrucquan\\baitapbaigiang\\bai18_colordialog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{79AB187E-C719-4111-A475-F2AB1A5C1B74}|Bai18_ColorDialog.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79AB187E-C719-4111-A475-F2AB1A5C1B74}|Bai18_ColorDialog.csproj|E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai18_ColorDialog\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79AB187E-C719-4111-A475-F2AB1A5C1B74}|Bai18_ColorDialog.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai18_ColorDialog\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai18_ColorDialog\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAADgvxwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T12:31:10.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai18_ColorDialog\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\BaiTapBaiGiang\\Bai18_ColorDialog\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-13T12:30:04.692Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

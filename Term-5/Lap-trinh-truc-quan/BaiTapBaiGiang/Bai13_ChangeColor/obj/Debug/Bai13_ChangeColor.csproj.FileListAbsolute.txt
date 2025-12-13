@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\bin\Debug\Bai13_ChangeColor.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\bin\Debug\Bai13_ChangeColor.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\bin\Debug\Bai13_ChangeColor.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\obj\Debug\Bai13_ChangeColor.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\obj\Debug\Bai13_ChangeColor.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\obj\Debug\Bai13_ChangeColor.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\obj\Debug\Bai13_ChangeColor.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\obj\Debug\Bai13_ChangeColor.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\obj\Debug\Bai13_ChangeColor.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\obj\Debug\Bai13_ChangeColor.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai13_ChangeColor\obj\Debug\Bai13_ChangeColor.exe.config

@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\bin\Debug\DanhSachSanPham.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\bin\Debug\DanhSachSanPham.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\bin\Debug\DanhSachSanPham.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\obj\Debug\DanhSachSanPham.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\obj\Debug\DanhSachSanPham.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\obj\Debug\DanhSachSanPham.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\obj\Debug\DanhSachSanPham.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\obj\Debug\DanhSachSanPham.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\obj\Debug\DanhSachSanPham.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\obj\Debug\DanhSachSanPham.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapTrenLop\DanhSachSanPham\obj\Debug\DanhSachSanPham.exe.config

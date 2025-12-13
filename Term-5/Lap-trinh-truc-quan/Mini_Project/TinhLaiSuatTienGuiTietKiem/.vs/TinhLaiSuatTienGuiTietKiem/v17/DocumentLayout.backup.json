@@ -1,0 +1,116 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|e:\\00_university\\term_05\\laptrinhtrucquan\\mini_project\\tinhlaisuattienguitietkiem\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|solutionrelative:form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\nguoigui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|solutionrelative:nguoigui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|solutionrelative:staticdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3BD8F46A-AEE5-450A-9AEF-410E5ADB9EB7}|TinhLaiSuatTienGuiTietKiem.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form2.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\Form2.cs",
+              "RelativeDocumentMoniker": "Form2.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\Form2.cs",
+              "RelativeToolTip": "Form2.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAuwCAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T14:35:17.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form2.cs [Design]",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\Form2.cs",
+              "RelativeDocumentMoniker": "Form2.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\Form2.cs [Design]",
+              "RelativeToolTip": "Form2.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T14:35:07.46Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "StaticData.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\StaticData.cs",
+              "RelativeDocumentMoniker": "StaticData.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\StaticData.cs",
+              "RelativeToolTip": "StaticData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T14:32:27.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NguoiGui.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\NguoiGui.cs",
+              "RelativeDocumentMoniker": "NguoiGui.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\NguoiGui.cs",
+              "RelativeToolTip": "NguoiGui.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAwwCUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T14:28:32.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAjwH0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T13:44:47.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\Mini_Project\\TinhLaiSuatTienGuiTietKiem\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-05T13:43:15.331Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

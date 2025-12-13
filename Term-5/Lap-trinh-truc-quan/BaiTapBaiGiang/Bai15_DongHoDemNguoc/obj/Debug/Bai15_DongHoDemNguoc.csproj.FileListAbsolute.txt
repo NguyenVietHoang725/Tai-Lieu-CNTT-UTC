@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\bin\Debug\Bai15_DongHoDemNguoc.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\bin\Debug\Bai15_DongHoDemNguoc.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\bin\Debug\Bai15_DongHoDemNguoc.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\obj\Debug\Bai15_DongHoDemNguoc.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\obj\Debug\Bai15_DongHoDemNguoc.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\obj\Debug\Bai15_DongHoDemNguoc.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\obj\Debug\Bai15_DongHoDemNguoc.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\obj\Debug\Bai15_DongHoDemNguoc.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\obj\Debug\Bai15_DongHoDemNguoc.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\obj\Debug\Bai15_DongHoDemNguoc.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai15_DongHoDemNguoc\obj\Debug\Bai15_DongHoDemNguoc.exe.config

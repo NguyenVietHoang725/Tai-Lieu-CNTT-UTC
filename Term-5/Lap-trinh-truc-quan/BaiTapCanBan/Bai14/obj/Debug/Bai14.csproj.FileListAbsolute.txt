@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\bin\Debug\Bai14.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\bin\Debug\Bai14.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\bin\Debug\Bai14.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\obj\Debug\Bai14.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\obj\Debug\Bai14.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\obj\Debug\Bai14.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\obj\Debug\Bai14.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\obj\Debug\Bai14.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\obj\Debug\Bai14.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\obj\Debug\Bai14.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapCanBan\Bai14\obj\Debug\Bai14.exe.config

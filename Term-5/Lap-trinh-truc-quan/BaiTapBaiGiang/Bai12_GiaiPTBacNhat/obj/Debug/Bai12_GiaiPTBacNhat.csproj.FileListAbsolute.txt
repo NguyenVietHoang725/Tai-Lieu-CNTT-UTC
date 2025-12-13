@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\bin\Debug\Bai12_GiaiPTBacNhat.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\bin\Debug\Bai12_GiaiPTBacNhat.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\bin\Debug\Bai12_GiaiPTBacNhat.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\obj\Debug\Bai12_GiaiPTBacNhat.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\obj\Debug\Bai12_GiaiPTBacNhat.frmPTBN.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\obj\Debug\Bai12_GiaiPTBacNhat.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\obj\Debug\Bai12_GiaiPTBacNhat.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\obj\Debug\Bai12_GiaiPTBacNhat.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\obj\Debug\Bai12_GiaiPTBacNhat.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\obj\Debug\Bai12_GiaiPTBacNhat.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai12_GiaiPTBacNhat\obj\Debug\Bai12_GiaiPTBacNhat.exe.config

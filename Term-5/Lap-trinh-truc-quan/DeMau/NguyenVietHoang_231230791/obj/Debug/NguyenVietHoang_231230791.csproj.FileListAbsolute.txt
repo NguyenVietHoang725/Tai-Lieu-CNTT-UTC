@@ -1,0 +1,13 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\bin\Debug\QLKH.mdf
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\bin\Debug\QLKH_log.ldf
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\bin\Debug\NguyenVietHoang_231230791.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\bin\Debug\NguyenVietHoang_231230791.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\bin\Debug\NguyenVietHoang_231230791.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\obj\Debug\NguyenVietHoang_231230791.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\obj\Debug\NguyenVietHoang_231230791.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\obj\Debug\NguyenVietHoang_231230791.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\obj\Debug\NguyenVietHoang_231230791.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\obj\Debug\NguyenVietHoang_231230791.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\obj\Debug\NguyenVietHoang_231230791.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\obj\Debug\NguyenVietHoang_231230791.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\DeMau\NguyenVietHoang_231230791\obj\Debug\NguyenVietHoang_231230791.exe.config

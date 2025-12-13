@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\bin\Debug\Bai9_ThayDoiFont.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\bin\Debug\Bai9_ThayDoiFont.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\bin\Debug\Bai9_ThayDoiFont.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\obj\Debug\Bai9_ThayDoiFont.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\obj\Debug\Bai9_ThayDoiFont.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\obj\Debug\Bai9_ThayDoiFont.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\obj\Debug\Bai9_ThayDoiFont.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\obj\Debug\Bai9_ThayDoiFont.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\obj\Debug\Bai9_ThayDoiFont.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\obj\Debug\Bai9_ThayDoiFont.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai9_ThayDoiFont\obj\Debug\Bai9_ThayDoiFont.exe.config

@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\bin\Debug\SimpleMarket.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\bin\Debug\SimpleMarket.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\bin\Debug\SimpleMarket.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\obj\Debug\SimpleMarket.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\obj\Debug\SimpleMarket.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\obj\Debug\SimpleMarket.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\obj\Debug\SimpleMarket.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\obj\Debug\SimpleMarket.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\obj\Debug\SimpleMarket.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\obj\Debug\SimpleMarket.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\SimpleMarket\obj\Debug\SimpleMarket.exe.config

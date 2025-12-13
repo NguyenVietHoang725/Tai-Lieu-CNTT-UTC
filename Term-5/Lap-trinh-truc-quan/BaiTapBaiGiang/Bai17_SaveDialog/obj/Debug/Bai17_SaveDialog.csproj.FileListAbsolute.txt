@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\bin\Debug\Bai17_SaveDialog.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\bin\Debug\Bai17_SaveDialog.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\bin\Debug\Bai17_SaveDialog.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\obj\Debug\Bai17_SaveDialog.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\obj\Debug\Bai17_SaveDialog.frmSave.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\obj\Debug\Bai17_SaveDialog.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\obj\Debug\Bai17_SaveDialog.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\obj\Debug\Bai17_SaveDialog.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\obj\Debug\Bai17_SaveDialog.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\obj\Debug\Bai17_SaveDialog.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai17_SaveDialog\obj\Debug\Bai17_SaveDialog.exe.config

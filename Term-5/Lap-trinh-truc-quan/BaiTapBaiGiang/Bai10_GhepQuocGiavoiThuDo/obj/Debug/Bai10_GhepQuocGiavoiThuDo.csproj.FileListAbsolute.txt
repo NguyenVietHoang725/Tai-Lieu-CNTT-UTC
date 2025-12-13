@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\bin\Debug\Bai10_GhepQuocGiavoiThuDo.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\bin\Debug\Bai10_GhepQuocGiavoiThuDo.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\bin\Debug\Bai10_GhepQuocGiavoiThuDo.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\obj\Debug\Bai10_GhepQuocGiavoiThuDo.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\obj\Debug\Bai10_GhepQuocGiavoiThuDo.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\obj\Debug\Bai10_GhepQuocGiavoiThuDo.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\obj\Debug\Bai10_GhepQuocGiavoiThuDo.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\obj\Debug\Bai10_GhepQuocGiavoiThuDo.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\obj\Debug\Bai10_GhepQuocGiavoiThuDo.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\obj\Debug\Bai10_GhepQuocGiavoiThuDo.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai10_GhepQuocGiavoiThuDo\obj\Debug\Bai10_GhepQuocGiavoiThuDo.exe.config

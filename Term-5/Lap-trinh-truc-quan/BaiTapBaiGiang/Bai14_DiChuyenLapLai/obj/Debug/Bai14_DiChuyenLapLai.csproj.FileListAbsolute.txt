@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\bin\Debug\Bai14_DiChuyenLapLai.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\bin\Debug\Bai14_DiChuyenLapLai.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\bin\Debug\Bai14_DiChuyenLapLai.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\obj\Debug\Bai14_DiChuyenLapLai.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\obj\Debug\Bai14_DiChuyenLapLai.FrmVDTimer.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\obj\Debug\Bai14_DiChuyenLapLai.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\obj\Debug\Bai14_DiChuyenLapLai.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\obj\Debug\Bai14_DiChuyenLapLai.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\obj\Debug\Bai14_DiChuyenLapLai.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\obj\Debug\Bai14_DiChuyenLapLai.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai14_DiChuyenLapLai\obj\Debug\Bai14_DiChuyenLapLai.exe.config

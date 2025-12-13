@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\bin\Debug\ChangeColor.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\bin\Debug\ChangeColor.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\bin\Debug\ChangeColor.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\obj\Debug\ChangeColor.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\obj\Debug\ChangeColor.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\obj\Debug\ChangeColor.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\obj\Debug\ChangeColor.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\obj\Debug\ChangeColor.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\obj\Debug\ChangeColor.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\obj\Debug\ChangeColor.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\ChangeColor\obj\Debug\ChangeColor.exe.config

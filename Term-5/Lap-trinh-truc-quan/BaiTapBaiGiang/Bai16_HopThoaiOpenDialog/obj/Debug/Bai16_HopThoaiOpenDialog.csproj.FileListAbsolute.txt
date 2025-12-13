@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\bin\Debug\Bai16_HopThoaiOpenDialog.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\bin\Debug\Bai16_HopThoaiOpenDialog.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\bin\Debug\Bai16_HopThoaiOpenDialog.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\obj\Debug\Bai16_HopThoaiOpenDialog.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\obj\Debug\Bai16_HopThoaiOpenDialog.frmPicture.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\obj\Debug\Bai16_HopThoaiOpenDialog.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\obj\Debug\Bai16_HopThoaiOpenDialog.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\obj\Debug\Bai16_HopThoaiOpenDialog.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\obj\Debug\Bai16_HopThoaiOpenDialog.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\obj\Debug\Bai16_HopThoaiOpenDialog.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai16_HopThoaiOpenDialog\obj\Debug\Bai16_HopThoaiOpenDialog.exe.config

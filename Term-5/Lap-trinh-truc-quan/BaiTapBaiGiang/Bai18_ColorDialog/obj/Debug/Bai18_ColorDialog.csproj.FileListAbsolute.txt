@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\bin\Debug\Bai18_ColorDialog.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\bin\Debug\Bai18_ColorDialog.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\bin\Debug\Bai18_ColorDialog.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\obj\Debug\Bai18_ColorDialog.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\obj\Debug\Bai18_ColorDialog.frmColor.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\obj\Debug\Bai18_ColorDialog.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\obj\Debug\Bai18_ColorDialog.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\obj\Debug\Bai18_ColorDialog.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\obj\Debug\Bai18_ColorDialog.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\obj\Debug\Bai18_ColorDialog.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai18_ColorDialog\obj\Debug\Bai18_ColorDialog.exe.config

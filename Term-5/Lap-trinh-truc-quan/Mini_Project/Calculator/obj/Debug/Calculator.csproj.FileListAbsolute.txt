@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\bin\Debug\Calculator.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\bin\Debug\Calculator.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\bin\Debug\Calculator.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\obj\Debug\Calculator.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\obj\Debug\Calculator.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\obj\Debug\Calculator.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\obj\Debug\Calculator.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\Calculator\obj\Debug\Calculator.exe.config

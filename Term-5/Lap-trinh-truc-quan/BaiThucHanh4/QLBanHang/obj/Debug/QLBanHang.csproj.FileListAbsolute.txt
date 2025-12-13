@@ -1,0 +1,13 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\bin\Debug\QLBanHang.mdf
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\bin\Debug\QLBanHang_log.ldf
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\bin\Debug\QLBanHang.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\bin\Debug\QLBanHang.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\bin\Debug\QLBanHang.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\obj\Debug\QLBanHang.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\obj\Debug\QLBanHang.frmMatHang.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\obj\Debug\QLBanHang.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\obj\Debug\QLBanHang.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\obj\Debug\QLBanHang.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\obj\Debug\QLBanHang.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\obj\Debug\QLBanHang.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiThucHanh4\QLBanHang\obj\Debug\QLBanHang.exe.config

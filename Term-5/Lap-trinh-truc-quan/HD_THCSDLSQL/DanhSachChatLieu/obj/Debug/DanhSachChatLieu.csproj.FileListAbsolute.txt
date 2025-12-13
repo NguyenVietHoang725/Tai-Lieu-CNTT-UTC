@@ -1,0 +1,13 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\bin\Debug\QLCL.mdf
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\bin\Debug\QLCL_log.ldf
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\bin\Debug\DanhSachChatLieu.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\bin\Debug\DanhSachChatLieu.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\bin\Debug\DanhSachChatLieu.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\obj\Debug\DanhSachChatLieu.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\obj\Debug\DanhSachChatLieu.frmChatLieu.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\obj\Debug\DanhSachChatLieu.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\obj\Debug\DanhSachChatLieu.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\obj\Debug\DanhSachChatLieu.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\obj\Debug\DanhSachChatLieu.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\obj\Debug\DanhSachChatLieu.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\HD_THCSDLSQL\DanhSachChatLieu\obj\Debug\DanhSachChatLieu.exe.config

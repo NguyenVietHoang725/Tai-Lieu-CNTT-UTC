@@ -1,0 +1,13 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\bin\Debug\Database1.mdf
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\bin\Debug\Database1_log.ldf
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\bin\Debug\KiemTraGiuaKy.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\bin\Debug\KiemTraGiuaKy.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\bin\Debug\KiemTraGiuaKy.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\obj\Debug\KiemTraGiuaKy.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\obj\Debug\KiemTraGiuaKy.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\obj\Debug\KiemTraGiuaKy.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\obj\Debug\KiemTraGiuaKy.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\obj\Debug\KiemTraGiuaKy.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\obj\Debug\KiemTraGiuaKy.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\obj\Debug\KiemTraGiuaKy.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\KiemTraGiuaKy\obj\Debug\KiemTraGiuaKy.exe.config

@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8411899E-4526-4571-A3D7-6F13965569A1}|Test.csproj|E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8411899E-4526-4571-A3D7-6F13965569A1}|Test.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8411899E-4526-4571-A3D7-6F13965569A1}|Test.csproj|E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\processdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8411899E-4526-4571-A3D7-6F13965569A1}|Test.csproj|solutionrelative:processdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8411899E-4526-4571-A3D7-6F13965569A1}|Test.csproj|e:\\00_university\\term_05\\laptrinhtrucquan\\tainguyenhotro\\test\\test\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8411899E-4526-4571-A3D7-6F13965569A1}|Test.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwB4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T14:02:23.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProcessDatabase.cs",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\ProcessDatabase.cs",
+              "RelativeDocumentMoniker": "ProcessDatabase.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\ProcessDatabase.cs",
+              "RelativeToolTip": "ProcessDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T12:43:08.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "E:\\00_UNIVERSITY\\TERM_05\\LapTrinhTrucQuan\\TaiNguyenHoTro\\Test\\Test\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-30T12:38:16.249Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

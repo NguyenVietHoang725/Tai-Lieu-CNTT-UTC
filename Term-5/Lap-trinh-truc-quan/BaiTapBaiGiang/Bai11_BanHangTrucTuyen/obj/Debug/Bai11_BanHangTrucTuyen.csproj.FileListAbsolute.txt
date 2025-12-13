@@ -1,0 +1,11 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\bin\Debug\Bai11_BanHangTrucTuyen.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\bin\Debug\Bai11_BanHangTrucTuyen.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\bin\Debug\Bai11_BanHangTrucTuyen.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\obj\Debug\Bai11_BanHangTrucTuyen.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\obj\Debug\Bai11_BanHangTrucTuyen.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\obj\Debug\Bai11_BanHangTrucTuyen.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\obj\Debug\Bai11_BanHangTrucTuyen.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\obj\Debug\Bai11_BanHangTrucTuyen.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\obj\Debug\Bai11_BanHangTrucTuyen.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\obj\Debug\Bai11_BanHangTrucTuyen.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\BaiTapBaiGiang\Bai11_BanHangTrucTuyen\obj\Debug\Bai11_BanHangTrucTuyen.exe.config

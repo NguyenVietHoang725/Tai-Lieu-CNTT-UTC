@@ -1,0 +1,12 @@
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\bin\Debug\TinhLaiSuatTienGuiTietKiem.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\bin\Debug\TinhLaiSuatTienGuiTietKiem.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\bin\Debug\TinhLaiSuatTienGuiTietKiem.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.csproj.AssemblyReference.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.Form1.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.Properties.Resources.resources
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.csproj.GenerateResource.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.csproj.CoreCompileInputs.cache
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.exe
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.pdb
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.exe.config
+E:\00_UNIVERSITY\TERM_05\LapTrinhTrucQuan\Mini_Project\TinhLaiSuatTienGuiTietKiem\obj\Debug\TinhLaiSuatTienGuiTietKiem.Form2.resources
