@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=VietnameseAlphabet
+comment0.text=\r\n\ L\u1EDBp\ {@code\ VietnameseAlphabet}\ cung\ c\u1EA5p\ m\u1ED9t\ ki\u1EC3u\ d\u1EEF\ li\u1EC7u\ cho\ b\u1EA3ng\ ch\u1EEF\ c\u00E1i\ ti\u1EBFng\ Vi\u1EC7t,\r\n\ k\u1EBF\ th\u1EEBa\ t\u1EEB\ l\u1EDBp\ {@code\ Alphabet}.\r\n\ C\u00E1c\ k\u00FD\ t\u1EF1\ ch\u1EEF\ c\u00E1i\ c\u00F3\ d\u1EA5u\ \u0111\u01B0\u1EE3c\ s\u1EAFp\ x\u1EBFp\ theo\ quy\ t\u1EAFc\ b\u1EA3ng\ ch\u1EEF\ c\u00E1i\ ti\u1EBFng\ Vi\u1EC7t.\r\n\ C\u00E1c\ k\u00FD\ t\u1EF1\ c\u00F2n\ l\u1EA1i\ (whitespace,\ d\u1EA5u\ c\u00E2u,\ ch\u1EEF\ s\u1ED1,\ k\u00FD\ hi\u1EC7u)\ \u0111\u01B0\u1EE3c\ s\u1EAFp\ x\u1EBFp\ theo\ th\u1EE9\ t\u1EF1\ m\u00E3\ ASCII\r\n\ (cho\ k\u00FD\ t\u1EF1\ ASCII)\ v\u00E0\ m\u00E3\ Unicode\ (cho\ k\u00FD\ t\u1EF1\ ngo\u00E0i\ ASCII).\r\n
+comment1.params=
+comment1.target=VietnameseAlphabet()
+numComments=2

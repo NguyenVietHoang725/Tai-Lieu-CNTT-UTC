@@ -1,0 +1,2 @@
+{ "-", "vanban.txt", "compress.txt" }
+{ "+", "compress.txt", "expand.txt" }

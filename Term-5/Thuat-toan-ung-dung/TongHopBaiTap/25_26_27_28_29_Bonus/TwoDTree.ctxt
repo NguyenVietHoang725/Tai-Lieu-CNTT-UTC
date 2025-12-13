@@ -1,0 +1,36 @@
+#BlueJ class context
+comment0.target=TwoDTree
+comment0.text=\r\n\ Compilation\:\ \ javac\ TwoDTree.java\r\n\ Execution\:\ \ \ \ java\ TwoDTree\r\n\ Dependencies\:\ Point2D.java,\ Interval1D.java,\ Interval2D.java,\ Queue.java\r\n\r\n\ B\u00E0i\ t\u1EADp\ 27\:\ 2D-Tree\ v\u1EDBi\ Range\ Search\ v\u00E0\ Nearest\ Neighbor\r\n
+comment1.params=
+comment1.target=TwoDTree()
+comment10.params=queryPoint
+comment10.target=Point2D\ nearest(Point2D)
+comment10.text=\r\n\ PH\u1EA6N\ 2\:\ Nearest\ Neighbor\ -\ T\u00ECm\ \u0111i\u1EC3m\ g\u1EA7n\ nh\u1EA5t\r\n\ @param\ queryPoint\ \u0111i\u1EC3m\ c\u1EA7n\ t\u00ECm\ l\u00E1ng\ gi\u1EC1ng\ g\u1EA7n\ nh\u1EA5t\r\n\ @return\ \u0111i\u1EC3m\ g\u1EA7n\ nh\u1EA5t\ trong\ c\u00E2y\r\n
+comment11.params=node\ query\ champion
+comment11.target=Point2D\ nearest(TwoDTree.Node,\ Point2D,\ Point2D)
+comment12.params=
+comment12.target=void\ printTree()
+comment12.text=\r\n\ In\ t\u1EA5t\ c\u1EA3\ c\u00E1c\ \u0111i\u1EC3m\ trong\ c\u00E2y\r\n
+comment13.params=node\ prefix\ isTail
+comment13.target=void\ printTree(TwoDTree.Node,\ java.lang.String,\ boolean)
+comment14.params=args
+comment14.target=void\ main(java.lang.String[])
+comment2.params=
+comment2.target=boolean\ isEmpty()
+comment3.params=
+comment3.target=int\ size()
+comment4.params=p
+comment4.target=void\ insert(Point2D)
+comment4.text=\r\n\ Th\u00EAm\ m\u1ED9t\ \u0111i\u1EC3m\ v\u00E0o\ 2D-Tree\r\n
+comment5.params=node\ p\ isVertical
+comment5.target=TwoDTree.Node\ insert(TwoDTree.Node,\ Point2D,\ boolean)
+comment6.params=rect
+comment6.target=Queue\ rangeSearch(Interval2D)
+comment6.text=\r\n\ PH\u1EA6N\ 1\:\ Range\ Search\ -\ T\u00ECm\ c\u00E1c\ \u0111i\u1EC3m\ trong\ h\u00ECnh\ ch\u1EEF\ nh\u1EADt\r\n\ @param\ rect\ h\u00ECnh\ ch\u1EEF\ nh\u1EADt\ t\u00ECm\ ki\u1EBFm\ (a\ <\=\ x\ <\=\ b,\ c\ <\=\ y\ <\=\ d)\r\n\ @return\ danh\ s\u00E1ch\ c\u00E1c\ \u0111i\u1EC3m\ n\u1EB1m\ trong\ h\u00ECnh\ ch\u1EEF\ nh\u1EADt\r\n
+comment7.params=node\ rect\ queue
+comment7.target=void\ rangeSearch(TwoDTree.Node,\ Interval2D,\ Queue)
+comment8.params=rect
+comment8.target=Interval1D\ getXInterval(Interval2D)
+comment9.params=rect
+comment9.target=Interval1D\ getYInterval(Interval2D)
+numComments=15

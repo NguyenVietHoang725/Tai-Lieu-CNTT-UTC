@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=RunLength
+comment0.text=\r\n\ L\u1EDBp\ RunLength\ th\u1EF1c\ hi\u1EC7n\ n\u00E9n\ v\u00E0\ gi\u1EA3i\ n\u00E9n\ d\u1EEF\ li\u1EC7u\ nh\u1ECB\ ph\u00E2n\ s\u1EED\ d\u1EE5ng\ thu\u1EADt\ to\u00E1n\ RLE.\r\n\ Phi\u00EAn\ b\u1EA3n\ n\u00E0y\ s\u1EED\ d\u1EE5ng\ BinaryIn\ v\u00E0\ BinaryOut\ \u0111\u1EC3\ \u0111\u1ECDc/ghi\ file\ tr\u1EF1c\ ti\u1EBFp,\ \r\n\ \u1ED5n\ \u0111\u1ECBnh\ h\u01A1n\ vi\u1EC7c\ \u0111i\u1EC1u\ h\u01B0\u1EDBng\ System.in.\r\n
+comment1.params=
+comment1.target=RunLength()
+comment2.params=inputFilename\ outputFilename
+comment2.target=void\ compress(java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ H\u00E0m\ n\u00E9n\ (Compress)\r\n\ @param\ inputFilename\ T\u00EAn\ file\ \u0111\u1EA7u\ v\u00E0o\ (v\u00ED\ d\u1EE5\:\ q32x48.bin)\r\n\ @param\ outputFilename\ T\u00EAn\ file\ \u0111\u1EA7u\ ra\ (v\u00ED\ d\u1EE5\:\ compressed.txt)\r\n
+comment3.params=inputFilename\ outputFilename
+comment3.target=void\ expand(java.lang.String,\ java.lang.String)
+comment3.text=\r\n\ H\u00E0m\ gi\u1EA3i\ n\u00E9n\ (Expand)\r\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\r\n\ H\u00E0m\ main\r\n
+numComments=5

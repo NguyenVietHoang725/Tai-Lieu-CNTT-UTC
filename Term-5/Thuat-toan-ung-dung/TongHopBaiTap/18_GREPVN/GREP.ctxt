@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=GREP
+comment0.text=\r\n\ \ The\ {@code\ GREP}\ class\ provides\ a\ client\ for\ reading\ in\ a\ sequence\ of\r\n\ \ lines\ from\ standard\ input\ and\ printing\ to\ standard\ output\ those\ lines\r\n\ \ that\ contain\ a\ substring\ matching\ a\ specified\ regular\ expression.\r\n\ \ <p>\r\n\ \ For\ additional\ documentation,\ see\ <a\ href\="https\://algs4.cs.princeton.edu/31elementary">Section\ 3.1</a>\ of\r\n\ \ <i>Algorithms,\ 4th\ Edition</i>\ by\ Robert\ Sedgewick\ and\ Kevin\ Wayne.\r\n\r\n\ \ @author\ Robert\ Sedgewick\r\n\ \ @author\ Kevin\ Wayne\r\n
+comment1.params=
+comment1.target=GREP()
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment2.text=\r\n\ Interprets\ the\ command-line\ argument\ as\ a\ regular\ expression\r\n\ (supporting\ closure,\ binary\ or,\ parentheses,\ and\ wildcard)\r\n\ reads\ in\ lines\ from\ standard\ input;\ writes\ to\ standard\ output\r\n\ those\ lines\ that\ contain\ a\ substring\ matching\ the\ regular\r\n\ expression.\r\n\r\n\ @param\ args\ the\ command-line\ arguments\r\n
+numComments=3

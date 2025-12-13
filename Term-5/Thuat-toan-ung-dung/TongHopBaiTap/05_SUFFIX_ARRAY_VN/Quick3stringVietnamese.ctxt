@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Quick3stringVietnamese
+comment1.params=
+comment1.target=Quick3stringVietnamese()
+comment2.params=s\ d
+comment2.target=int\ charAt(java.lang.String,\ int)
+comment3.params=v\ w\ d
+comment3.target=boolean\ less(java.lang.String,\ java.lang.String,\ int)
+numComments=4

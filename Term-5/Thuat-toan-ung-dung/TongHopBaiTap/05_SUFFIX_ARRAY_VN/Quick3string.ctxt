@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Quick3string
+comment1.params=alphabet
+comment1.target=Quick3string(Alphabet)
+comment2.params=a
+comment2.target=void\ sort(java.lang.String[])
+comment3.params=s\ d
+comment3.target=int\ charAt(java.lang.String,\ int)
+comment4.params=a\ lo\ hi\ d
+comment4.target=void\ sort(java.lang.String[],\ int,\ int,\ int)
+comment5.params=a\ lo\ hi\ d
+comment5.target=void\ insertion(java.lang.String[],\ int,\ int,\ int)
+comment6.params=a\ i\ j
+comment6.target=void\ exch(java.lang.String[],\ int,\ int)
+comment7.params=v\ w\ d
+comment7.target=boolean\ less(java.lang.String,\ java.lang.String,\ int)
+numComments=8

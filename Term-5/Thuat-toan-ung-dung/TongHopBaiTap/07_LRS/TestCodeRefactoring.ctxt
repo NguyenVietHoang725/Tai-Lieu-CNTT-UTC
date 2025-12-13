@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=TestCodeRefactoring
+comment0.text=\r\n\ Ch\u01B0\u01A1ng\ tr\u00ECnh\ ki\u1EC3m\ th\u1EED\:\ \u0110\u1ECDc\ file\ source\ code,\ t\u00ECm\ \u0111o\u1EA1n\ l\u1EB7p\ v\u00E0\ g\u1EE3i\ \u00FD\ t\u1EA1o\ h\u00E0m.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=substring
+comment2.target=boolean\ isLikelyCodeBlock(java.lang.String)
+comment3.params=substring
+comment3.target=void\ suggestFunctionSkeleton(java.lang.String)
+numComments=4

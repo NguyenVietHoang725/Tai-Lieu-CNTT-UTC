@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=MoreMath
+comment1.params=start\ end
+comment1.target=java.awt.geom.Point2D\ getNormal(java.awt.geom.Point2D,\ java.awt.geom.Point2D)
+comment2.params=start\ end
+comment2.target=double\ length(java.awt.geom.Point2D,\ java.awt.geom.Point2D)
+comment3.params=normal\ length
+comment3.target=java.awt.geom.Point2D\ normalize(java.awt.geom.Point2D,\ double)
+comment4.params=l1\ l2
+comment4.target=java.awt.geom.Point2D\ getIntersectionPoint(java.awt.geom.Line2D,\ java.awt.geom.Line2D)
+comment5.params=x1\ y1\ x2\ y2
+comment5.target=double\ getDotProduct(double,\ double,\ double,\ double)
+numComments=6

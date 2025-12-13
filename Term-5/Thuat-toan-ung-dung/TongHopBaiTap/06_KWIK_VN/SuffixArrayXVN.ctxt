@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=SuffixArrayXVN
+comment0.text=\r\n\ The\ {@code\ SuffixArrayXVN}\ class\ extends\ {@code\ SuffixArrayX}\ to\ support\r\n\ sorting\ suffixes\ using\ the\ Vietnamese\ alphabet.\r\n
+comment1.params=text
+comment1.target=SuffixArrayXVN(java.lang.String)
+comment1.text=\r\n\ Initializes\ a\ suffix\ array\ for\ the\ given\ {@code\ text}\ string\ using\ the\ Vietnamese\ alphabet.\r\n\ @param\ text\ the\ input\ string\r\n
+numComments=2

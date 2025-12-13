@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=LineIntersection
+comment1.params=horizontal\ vertical
+comment1.target=java.util.List\ findIntersections(java.util.List,\ java.util.List)
+comment1.text=\r\n\ T\u00ECm\ t\u1EA5t\ c\u1EA3\ c\u00E1c\ \u0111i\u1EC3m\ giao\ c\u1EAFt\ gi\u1EEFa\ \u0111o\u1EA1n\ ngang\ v\u00E0\ \u0111o\u1EA1n\ d\u1ECDc\r\n\ @param\ horizontal\ danh\ s\u00E1ch\ c\u00E1c\ \u0111o\u1EA1n\ ngang\r\n\ @param\ vertical\ danh\ s\u00E1ch\ c\u00E1c\ \u0111o\u1EA1n\ d\u1ECDc\r\n\ @return\ danh\ s\u00E1ch\ c\u00E1c\ \u0111i\u1EC3m\ giao\ c\u1EAFt\r\n
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+numComments=3

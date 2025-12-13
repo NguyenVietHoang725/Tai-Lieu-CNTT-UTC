@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=BinaryDump
+comment0.text=\r\n\ C\u00F4ng\ c\u1EE5\ hi\u1EC3n\ th\u1ECB\ n\u1ED9i\ dung\ file\ d\u01B0\u1EDBi\ d\u1EA1ng\ nh\u1ECB\ ph\u00E2n\ (0/1).\r\n\ D\u00F9ng\ \u0111\u1EC3\ ki\u1EC3m\ tra,\ so\ s\u00E1nh\ d\u1EEF\ li\u1EC7u\ gi\u1EEFa\ c\u00E1c\ file.\r\n
+comment1.params=
+comment1.target=BinaryDump()
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment2.text=\r\n\ H\u00E0m\ main\ th\u1EF1c\ hi\u1EC7n\ \u0111\u1ECDc\ file\ v\u00E0\ in\ bit.\r\n\ Tham\ s\u1ED1\:\ [s\u1ED1_bit_tr\u00EAn_d\u00F2ng]\ [t\u00EAn_file]\r\n
+numComments=3

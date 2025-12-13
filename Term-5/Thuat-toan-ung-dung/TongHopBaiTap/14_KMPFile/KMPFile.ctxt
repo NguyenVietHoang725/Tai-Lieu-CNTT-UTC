@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=KMPFile
+comment0.text=\r\n\ L\u1EDBp\ KMPFile\ m\u1EDF\ r\u1ED9ng\ thu\u1EADt\ to\u00E1n\ KMP\ \u0111\u1EC3\ h\u1ED7\ tr\u1EE3\ t\u00ECm\ ki\u1EBFm\ tr\u00EAn\ file\ .docx.\r\n\ *\ \u0110\u1EB7c\ \u0111i\u1EC3m\:\r\n\ 1.\ \u0110\u1ECDc\ v\u0103n\ b\u1EA3n\ t\u1EEB\ file\ Word\ s\u1EED\ d\u1EE5ng\ Apache\ POI.\r\n\ 2.\ Chuy\u1EC3n\ \u0111\u1ED5i\ k\u00FD\ t\u1EF1\ Ti\u1EBFng\ Vi\u1EC7t\ sang\ ch\u1EC9\ s\u1ED1\ (Index)\ c\u1EE7a\ VietnameseAlphabet.\r\n\ 3.\ T\u00ECm\ ki\u1EBFm\ m\u1EABu\ d\u00E0i\ (~30\ k\u00FD\ t\u1EF1)\ ch\u00EDnh\ x\u00E1c.\r\n
+comment1.params=pat\ alphabet
+comment1.target=KMPFile(java.lang.String,\ Alphabet)
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ KMPFile\ v\u1EDBi\ chu\u1ED7i\ m\u1EABu\ v\u00E0\ b\u1EA3ng\ ch\u1EEF\ c\u00E1i.\r\n\ @param\ pat\ Chu\u1ED7i\ m\u1EABu\ (Pattern)\r\n\ @param\ alphabet\ B\u1EA3ng\ ch\u1EEF\ c\u00E1i\ s\u1EED\ d\u1EE5ng\ (VietnameseAlphabet)\r\n
+comment2.params=s\ alphabet
+comment2.target=char[]\ toIndexedCharArray(java.lang.String,\ Alphabet)
+comment2.text=\r\n\ H\u00E0m\ ti\u1EC7n\ \u00EDch\:\ Chuy\u1EC3n\ \u0111\u1ED5i\ String\ ->\ m\u1EA3ng\ char\ ch\u1EE9a\ ch\u1EC9\ s\u1ED1\ (Index).\r\n\ \u0110i\u1EC1u\ n\u00E0y\ gi\u00FAp\ KMP\ x\u1EED\ l\u00FD\ \u0111\u01B0\u1EE3c\ c\u00E1c\ k\u00FD\ t\u1EF1\ Ti\u1EBFng\ Vi\u1EC7t\ n\u1EB1m\ ngo\u00E0i\ b\u1EA3ng\ m\u00E3\ ASCII.\r\n
+comment3.params=filePath
+comment3.target=java.lang.String\ readDocxFile(java.lang.String)
+comment3.text=\r\n\ \u0110\u1ECDc\ to\u00E0n\ b\u1ED9\ n\u1ED9i\ dung\ v\u0103n\ b\u1EA3n\ t\u1EEB\ file\ .docx.\r\n\ @param\ filePath\ \u0110\u01B0\u1EDDng\ d\u1EABn\ file\r\n\ @return\ N\u1ED9i\ dung\ v\u0103n\ b\u1EA3n\ (\u0111\u00E3\ chu\u1EA9n\ h\u00F3a\ kho\u1EA3ng\ tr\u1EAFng)\r\n
+comment4.params=filePath
+comment4.target=int\ searchInFile(java.lang.String)
+comment4.text=\r\n\ Th\u1EF1c\ hi\u1EC7n\ t\u00ECm\ ki\u1EBFm\ m\u1EABu\ trong\ file\ .docx.\r\n\ @param\ filePath\ \u0110\u01B0\u1EDDng\ d\u1EABn\ file\r\n\ @return\ V\u1ECB\ tr\u00ED\ b\u1EAFt\ \u0111\u1EA7u\ (index)\ c\u1EE7a\ m\u1EABu\ trong\ file,\ ho\u1EB7c\ -1\ n\u1EBFu\ l\u1ED7i/kh\u00F4ng\ t\u00ECm\ th\u1EA5y.\r\n
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+comment5.text=\r\n\ H\u00E0m\ main\ ch\u1EA1y\ th\u1EED\ nghi\u1EC7m.\r\n
+numComments=6

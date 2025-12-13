@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=RectangleIntersection
+comment1.params=rectangles
+comment1.target=Queue\ findIntersections(Interval2D[])
+comment1.text=\r\n\ T\u00ECm\ t\u1EA5t\ c\u1EA3\ c\u00E1c\ c\u1EB7p\ h\u00ECnh\ ch\u1EEF\ nh\u1EADt\ giao\ c\u1EAFt\ nhau\r\n\ @param\ rectangles\ m\u1EA3ng\ c\u00E1c\ h\u00ECnh\ ch\u1EEF\ nh\u1EADt\r\n\ @return\ Queue\ ch\u1EE9a\ c\u00E1c\ c\u1EB7p\ (i,\ j)\ v\u1EDBi\ i\ <\ j\ l\u00E0\ ch\u1EC9\ s\u1ED1\ c\u00E1c\ h\u00ECnh\ ch\u1EEF\ nh\u1EADt\ giao\ nhau\r\n
+comment2.params=rectangles
+comment2.target=Queue\ findIntersectionsBruteForce(Interval2D[])
+comment2.text=\r\n\ Phi\u00EAn\ b\u1EA3n\ \u0111\u01A1n\ gi\u1EA3n\ h\u01A1n\:\ Ki\u1EC3m\ tra\ t\u1EEBng\ c\u1EB7p\ (brute\ force)\r\n\ D\u00F9ng\ \u0111\u1EC3\ so\ s\u00E1nh\ k\u1EBFt\ qu\u1EA3\r\n
+comment3.params=rect
+comment3.target=Interval1D\ getXInterval(Interval2D)
+comment4.params=rect
+comment4.target=Interval1D\ getYInterval(Interval2D)
+comment5.params=rectangles
+comment5.target=void\ printRectangles(Interval2D[])
+comment5.text=\r\n\ In\ danh\ s\u00E1ch\ c\u00E1c\ h\u00ECnh\ ch\u1EEF\ nh\u1EADt\r\n
+comment6.params=pairs\ rectangles
+comment6.target=void\ printPairs(Queue,\ Interval2D[])
+comment6.text=\r\n\ In\ c\u00E1c\ c\u1EB7p\ giao\ nhau\r\n
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+numComments=8

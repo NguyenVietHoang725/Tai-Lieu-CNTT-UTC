@@ -1,0 +1,377 @@
+1. Kiến trúc một mạng LAN có thể là (Chọn nhiều đáp án):
+
+	A. Ring
+	B. Bus
+	C. Star
+
+2. Xác định địa chỉ trong mô hình TCP/IP thực hiện ở những tầng nào (Chọn nhiều đáp án):
+
+	A. Giao vận
+	C. Liên kết dữ liệu
+	D. Internet
+
+3. Các thành phần tạo nên mạng là (Chọn nhiều đáp án):
+
+	A. Máy tính, Hub, Switch
+	B. Network Adapter, Cable
+	C. Protocol
+
+4. Thiết bị định tuyến có chức năng tìm đường
+
+	Đúng
+
+5. Phát biểu nào sau đây mô tả đúng nhất cho cấu hình Sao
+
+	D. Dễ kiểm soát va quản lý tập trung
+
+6. Tầng Transport có thể thông tin trực tiếp với các tầng Network và Presentation:
+
+	Sai
+
+7. Ý nghĩa cơ bản nhất của mạng máy tính là gì?
+
+	D. Trao đổi và chia sẻ thông tin
+
+8. Các thành phần tạo nên mạng là:
+	
+	A. Máy tính, Hub, Switch
+	B. Network Adapter, Cable
+	C. Protocol
+	D. Tất cả đều đúng
+
+9. Nhược điểm của mạng dạng hình sao là :
+
+	D. Cần quá nhiều cáp để kết nối tới nút mạng trung tâm
+
+10. Định nghĩa quá trình đóng gói dữ liệu:
+
+	A. Là quá trình chuyển dữ liệu sang một định dạng thích hợp để truyền trên mạng.
+	B. Là quá trình dữ liệu di chuyển từ tầng Application xuống tầng Physical.
+	C. Là quá trình bổ sung vào PDU nhận được từ tầng trên một header và một trailer tạo thành PDU của tầng hiện hành, sau đó chuyển xuống tầng dưới.
+	D. Tất cả đều đúng
+
+11. Thiết bị nào sau đây KHÔNG được sử dụng tại trung tâm của mạng hình sao (Chọn nhiều đáp án):
+
+	A. Port
+	B. Repeater
+	C. Netcard
+
+12. Bất cứ một hệ thống truyền thông trên Internet nào, muốn truyền thông tin được cần phải cài đặt đủ 7 tầng của mô hình OSI:
+
+	Đúng
+
+13. Mạng Internet là sự phát triển của:
+
+	A. Các hệ thống mạng LAN
+	B. Các hệ thống mạng WAN
+	C. Các hệ thống mạng Intranet
+	D. Cả ba câu đều đúng
+
+14. Kỹ thuật dùng để kết nối nhiều máy tính với nhau trong một văn phòng là:
+
+	B. LAN
+
+15. Chọn các tầng trong mô hình tham chiếu OSI (Chọn nhiều đáp án):
+
+	B. Tầng Data Link
+	C. Tầng Session
+	D. Tầng Application
+
+16. Cáp UTP có thể kết nối tối đa bao nhiêu m:
+
+	D. 100
+
+17. Mô hình OSI có mấy tầng
+
+	C. 7
+
+18. Thiết bị bridge hoạt động tại tầng mạng
+	
+	Sai
+
+19. Thuật ngữ GAN là viết tắt của Mạng toàn cục. Đúng hay sai?
+
+	Đúng
+
+20. Thiết bị nào sau đây sử dụng tại trung tâm của mạng hình sao:
+
+	C. Switch
+
+21. Mô hình OSI được định nghĩa trong tiêu chuẩn nào?
+
+	A. ISO 7498-1
+
+22. Các giao thức tầng ứng dụng trong mô hình TCP/IP (Chọn nhiều đáp án):
+
+	A. SMTP
+	B. HTTP
+	D. DNS
+
+23. Cáp quang có thể kết nối tối đa bao nhiêu m:
+
+	B. 2000
+
+24. Tên gọi của mô hình tham chiếu 7 tầng:
+
+	D. OSI
+
+25. Thiết bị Repeater thông thường nằm ở tầng nào của mô hình OSI:
+
+	A. Tầng 1
+
+26. Công nghệ mạng LAN sử dụng phổ biến hiện nay là (Chọn nhiều đáp án):
+
+	A. Ethernet
+	B. FDDI
+	D. Token Ring
+
+27. Những loại nào dưới đây là topology của một mạng LAN (Chọn nhiều đáp án):
+
+	A. Bus
+	C. Star
+	D. Ring
+
+28. Các giao thức nào nằm ở tầng Transport
+
+	C. TCP
+
+29. Quá trình dữ liệu di chuyển từ hệ thống máy tính này sang hệ thống máy tính khác phải trải qua giai đoạn
+
+	D. Đóng gói
+
+30. Thiết bị Switch thông thường nằm ở tầng nào của mô hình OSI:
+
+	C. Tầng 2
+
+31. Thuật ngữ viết tắt bằng tiếng Anh của mạng diện rộng là gì?
+
+	B. WAN (Wide Area Network)
+
+32. Giao thức IP là giao thức họat động ở tầng:
+
+	C. Network Layer (tầng mạng)
+
+33. Trong mô hình OSI, tầng giao vận nằm giữa tầng Ứng dụng và tầng Trình diễn?
+
+	Sai
+
+34. Thứ tự các tầng (layer) của mô hình OSI theo thứ tự từ trên xuống là:
+
+	A. Application, Presentation,Session, Transport, Network, Data Link, Physical
+
+35. Các kiểu mạng LAN, MAN, WAN, GAN được phân biệt với nhau bởi tiêu chí phân loại nào?
+
+	C. Khoảng cách địa lý
+
+36. Ứng dụng Google Chrome có hỗ trợ chức năng truyền thông mạng?
+
+	Đúng
+
+37. Tầng Network có thể thông tin trực tiếp với các tầng Datalink và Transport :
+
+	Đúng
+
+38. Mạng Internet thuộc loại mạng GAN. Đúng hay sai?
+
+	Đúng
+
+39. Mạng Internet là sự phát triển của (Chọn nhiều đáp án):
+
+
+
+	A. Các hệ thống mạng LAN
+	B. Các hệ thống mạng WAN
+	C. Các hệ thống mạng Intranet
+
+40. Việc nhiều các gói tin bị đụng độ trên mạng sẽ làm cho:
+
+	A. Hiệu quả truyền thông của mạng kém đi
+
+41. Thiết bị Hub thông thường nằm ở tầng nào của mô hình OSI:
+
+	A. Tầng 1
+
+42. Phát biểu nào dưới đây là đúng:
+
+	A. TCP và HTTP là những giao thức được cài đặt ở tầng giao vận (Transport Layer).
+
+43. Tầng nào của mô hình OSI chịu trách nhiệm mã hóa dữ liệu theo dạng âm thanh, hình ảnh, văn bản …
+
+	A. Application
+
+44. Các thành phần tạo nên mạng máy tính là gì?
+	
+	A. Các máy tính, hệ thống đường truyền vật lý
+	B. Các thiết bị mạng như Hub, Switch, Router, ...
+	C. Giao thức mạng
+	D. Tất cả thành phần trên
+
+45. Các đơn vị dữ liệu giao thức là (Chọn nhiều đáp án):
+
+	B. Frame
+	C. Bits
+	D. Segment
+
+46. Trong mô hình mạng kiểu vòng (Ring Model), nếu một máy tính bị hỏng, các máy còn lại không thể truy nhập được đến nhau:
+
+	Đúng
+
+47. Thuật ngữ LAN (mạng cục bộ) là viết tắt của cụm từ nào?
+
+	B. Local Area Network
+
+48. Kỹ thuật dùng để kết nối nhiều máy tính với nhau trong phạm vi một văn phòng gọi là:
+
+	D. LAN
+
+49. Protocol nào được sử dụng cho mạng Internet:
+
+	A. TCP/IP
+
+50. Các thành phần của hệ thống mạng máy tính bao gồm ?
+	
+	A. Máy tính
+	B. Thiết bị truyền dẫn
+	C. Thiết bị trung gian
+	D. Tất cả các ý kiến trên
+
+51. Cấp Network trong OSI tương đương với cấp nào trong TCP/IP
+
+	B. Internet
+
+52. Nguyên nhân cơ bản nào dẫn đến sự ra đời của mạng máy tính
+	
+	A. Nhu cầu trao đổi thông tin ngày càng tăng
+	B. Khối lượng thông tin lưu trên máy tính ngày càng tăng
+	C. Khoa học và công nghệ về lĩnh vực máy tính và truyền thông phát triển
+	D. Cả ba câu trên đúng
+
+53. Thiết bị Router thông thường nằm ở tầng nào của mô hình OSI:
+
+	A. Tầng 1
+
+54. Tổ chức nào sau đây cung cấp dịch vụ truyền thông Internet?
+	
+	A. Viettel
+	B. FPT
+	C. VNPT
+	D. Cả ba tổ chức trên
+
+55. Các giao thức nào nằm ở tầng network của mô hình OSI
+
+	D. IP
+
+56. Thiết bị Bridge thông thường nằm ở tầng nào của mô hình OSI:
+
+	B. Tầng 2
+
+57. Để kết nối hai máy tính với nhau ta có thể sử dụng :
+	
+	A. Hub
+	B. Switch
+	C. Nối cáp trực tiếp
+	D. Tất cả đều đúng
+
+58. Để kết nối trực tiếp hai máy tính với nhau ta có thể dùng :
+
+	A. Cáp chéo (Cross - Cable)
+
+59. Quá trình dữ liệu di chuyển từ hệ thống máy tính này sang hệ thống máy tính khác phải trải qua giai đoạn nào?
+
+	B. Đóng gói
+
+60. Các protocol TCP và UDP hoạt động ở tầng nào:
+
+	C. Transport
+
+61. Nhiệm vụ nào dưới đây không phải là của tầng mạng (Network Layer):
+
+	C. Định địa chỉ vật lý
+
+62. Định nghĩa cách thức giao tiếp giữa các máy tính gồm cú pháp, ngữ nghĩa, vấn đề đồng bộ được gọi là gì?
+
+	C. Giao thức (protocol)
+
+63. Kiến trúc mạng máy tính là:
+
+	C. Bao gồm hai ý của câu a và b
+
+64. Cho biết ứng dụng nào thuộc loại Client/Server:
+
+	D. WWW (world wide web)
+
+65. Tầng nào trong mô hình OSI làm việc với các tín hiệu điện:
+
+	B. Physical
+
+66. Thứ tự các lớp tính từ trên xuống trong mô hình TCP/IP là:
+
+	A. Application – Transport – Internet – Network Access
+
+67. Đặc điểm quan trọng của kiến trúc mạng client/server (khách/chủ):
+
+	A. A và B đều đúng
+
+68. Khẳng định nào sau đây là đúng khi nói về mạng có cấu trúc điểm- điểm:
+
+	B. Mạng lưu và chuyển tiếp (Store - and - Forward)
+
+69. Mô tả nào thích hợp cho mạng Bus
+
+	C. Phương tiện rẻ tiền và dễ sử dụng
+
+70. Các mạng máy tính được thiết kế và cài đặt theo quan điểm:
+
+	D. Có cấu trúc đa tầng
+
+71. Topo mạng cục bộ nào mà tất cả các trạm phân chia chung một đường truyền chính:
+
+	C. Bus
+
+72. Dữ liệu sẽ truyền như thế nào trong mô hình OSI.
+
+	C. Application , Presentation, Session, Transport, Network , Data Link, Physical.
+
+73. Đặc điểm của mạng dạng Bus :
+
+	C. Tất cả các nối kết nối trên cùng một đường truyền vật lý.
+
+74. Protocol là:
+
+	A. Là các qui tắc để cho phép các máy tính có thể giao tiếp được với nhau
+
+75. Mô tả nào sau đây là cho mạng hình sao (star)
+
+	C. Có một nút trung tâm và các nút mạng khác kết nối đến
+
+76. Các tài nguyên nào có thể dùng chung được nhờ có mạng máy tính?
+	
+	A. Chương trình, dữ liệu
+	B. Máy in, máy scanner,...
+	C. Ổ đĩa CD ROM
+	D. Tất cả tài nguyên trên
+
+77. Các giao thức TCP và UDP làm việc trên tầng nào trong mô hình tham chiếu OSI:
+
+	D. Transport
+
+78. Môi trường truyền tin thông thường trong mạng máy tính là
+	
+	A. Các loại cáp như: đồng trục, xoắn đôi, Cáp quang, cáp điện thoại,...
+	B. Sóng điện từ,...
+	C. Sóng viễn thông
+	D. Tất cả các môi trường nêu trên
+
+79. Mô hình OSI được công nhận vào năm nào?
+
+	B. 1984
+
+80. Mạng Internet là
+
+	D. Mạng của các máy tính toàn cầu kết nối lại với nhau theo giao thức TCP/IP
+
+81. Phát biểu nào sau đây mô tả đúng nhất cho cấu hình Sao:
+
+	B. Dễ kiểm soát và quản lý tập trung
+
+

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=AutocompleteSystem
+comment0.text=\r\n\ B\u00E0i\ 9\:\ H\u1EC7\ th\u1ED1ng\ Autocomplete\ Ti\u1EBFng\ Vi\u1EC7t\ s\u1EED\ d\u1EE5ng\ TrieST.\r\n\ *\ Ch\u1EE9c\ n\u0103ng\:\r\n\ 1.\ \u0110\u1ECDc\ v\u0103n\ b\u1EA3n\ t\u1EEB\ file\ .docx.\r\n\ 2.\ T\u00E1ch\ t\u1EEB\ ng\u1EEF\ ti\u1EBFng\ Vi\u1EC7t\ (s\u1EED\ d\u1EE5ng\ VnCoreNLP).\r\n\ 3.\ X\u00E2y\ d\u1EF1ng\ c\u00E2y\ TrieST\ v\u1EDBi\ b\u1EA3ng\ ch\u1EEF\ c\u00E1i\ Ti\u1EBFng\ Vi\u1EC7t.\r\n\ 4.\ H\u1ED7\ tr\u1EE3\ tra\ c\u1EE9u\ g\u1EE3i\ \u00FD\ (Autocomplete)\ v\u00E0\ th\u00EAm\ t\u1EEB\ m\u1EDBi.\r\n
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+numComments=2

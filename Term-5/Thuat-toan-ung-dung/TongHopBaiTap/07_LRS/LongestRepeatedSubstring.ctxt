@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=LongestRepeatedSubstring
+comment0.text=\r\n\ L\u1EDBp\ ti\u1EC7n\ \u00EDch\ t\u00ECm\ x\u00E2u\ con\ l\u1EB7p\ l\u1EA1i\ d\u00E0i\ nh\u1EA5t\ (LRS)\ trong\ m\u1ED9t\ chu\u1ED7i\ v\u0103n\ b\u1EA3n.\r\n
+comment1.params=
+comment1.target=LongestRepeatedSubstring()
+comment2.params=text
+comment2.target=java.lang.String\ lrs(java.lang.String)
+comment2.text=\r\n\ T\u00ECm\ x\u00E2u\ con\ l\u1EB7p\ l\u1EA1i\ d\u00E0i\ nh\u1EA5t\ trong\ chu\u1ED7i\ text.\r\n\ *\ @param\ text\ Chu\u1ED7i\ \u0111\u1EA7u\ v\u00E0o\r\n\ @return\ X\u00E2u\ con\ l\u1EB7p\ l\u1EA1i\ d\u00E0i\ nh\u1EA5t\ (tr\u1EA3\ v\u1EC1\ chu\u1ED7i\ r\u1ED7ng\ n\u1EBFu\ kh\u00F4ng\ c\u00F3)\r\n
+numComments=3

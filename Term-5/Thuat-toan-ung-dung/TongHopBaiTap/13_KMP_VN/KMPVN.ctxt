@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=KMPVN
+comment0.text=\r\n\ L\u1EDBp\ KMPVN\ m\u1EDF\ r\u1ED9ng\ KMP\ \u0111\u1EC3\ h\u1ED7\ tr\u1EE3\ t\u00ECm\ ki\u1EBFm\ v\u0103n\ b\u1EA3n\ Ti\u1EBFng\ Vi\u1EC7t.\r\n\ *\ C\u01A1\ ch\u1EBF\:\ Chuy\u1EC3n\ \u0111\u1ED5i\ k\u00FD\ t\u1EF1\ Unicode\ Ti\u1EBFng\ Vi\u1EC7t\ sang\ ch\u1EC9\ s\u1ED1\ nguy\u00EAn\ (0\ ->\ R-1)\r\n\ d\u1EF1a\ tr\u00EAn\ b\u1EA3ng\ ch\u1EEF\ c\u00E1i\ VietnameseAlphabet\ tr\u01B0\u1EDBc\ khi\ \u0111\u01B0a\ v\u00E0o\ thu\u1EADt\ to\u00E1n\ KMP.\r\n
+comment1.params=pat
+comment1.target=KMPVN(java.lang.String)
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ KMPVN\ v\u1EDBi\ chu\u1ED7i\ m\u1EABu\ Ti\u1EBFng\ Vi\u1EC7t.\r\n\ S\u1EED\ d\u1EE5ng\ m\u1EB7c\ \u0111\u1ECBnh\ VietnameseAlphabet.\r\n\ @param\ pat\ Chu\u1ED7i\ m\u1EABu\r\n
+comment2.params=pat\ alphabet
+comment2.target=KMPVN(java.lang.String,\ Alphabet)
+comment2.text=\r\n\ Constructor\ chi\ ti\u1EBFt\ v\u1EDBi\ b\u1EA3ng\ ch\u1EEF\ c\u00E1i\ t\u00F9y\ ch\u1ECDn.\r\n
+comment3.params=s\ alphabet
+comment3.target=char[]\ toIndexedCharArray(java.lang.String,\ Alphabet)
+comment3.text=\r\n\ H\u00E0m\ ti\u1EC7n\ \u00EDch\:\ Chuy\u1EC3n\ \u0111\u1ED5i\ String\ ->\ char[]\ ch\u1EE9a\ index.\r\n\ V\u00ED\ d\u1EE5\:\ 'a'\ ->\ 0,\ '\u0103'\ ->\ 5,\ ...\ (t\u00F9y\ theo\ \u0111\u1ECBnh\ ngh\u0129a\ trong\ Alphabet)\r\n
+comment4.params=txt
+comment4.target=int\ search(java.lang.String)
+comment4.text=\r\n\ Ghi\ \u0111\u00E8\ ph\u01B0\u01A1ng\ th\u1EE9c\ search\ \u0111\u1EC3\ x\u1EED\ l\u00FD\ v\u0103n\ b\u1EA3n\ \u0111\u1EA7u\ v\u00E0o.\r\n\ Chuy\u1EC3n\ \u0111\u1ED5i\ v\u0103n\ b\u1EA3n\ sang\ d\u1EA1ng\ index\ tr\u01B0\u1EDBc\ khi\ t\u00ECm\ ki\u1EBFm.\r\n
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+comment5.text=\r\n\ H\u00E0m\ main\ \u0111\u1EC3\ ch\u1EA1y\ ki\u1EC3m\ th\u1EED\ (Demo).\r\n
+numComments=6

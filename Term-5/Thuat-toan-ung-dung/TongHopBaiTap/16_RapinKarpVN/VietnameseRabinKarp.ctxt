@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=VietnameseRabinKarp
+comment1.params=pat
+comment1.target=VietnameseRabinKarp(java.lang.String)
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ thu\u1EADt\ to\u00E1n\ v\u1EDBi\ chu\u1ED7i\ m\u1EABu\ Ti\u1EBFng\ Vi\u1EC7t.\r\n\ @param\ pat\ Chu\u1ED7i\ m\u1EABu\r\n
+comment2.params=key\ m
+comment2.target=long\ hash(java.lang.String,\ int)
+comment2.text=\r\n\ H\u00E0m\ t\u00EDnh\ Hash\ cho\ chu\u1ED7i\ key\ \u0111\u1ED9\ d\u00E0i\ m.\r\n\ C\u00F4ng\ th\u1EE9c\:\ (key[0]*R^(m-1)\ +\ ...\ +\ key[m-1]*R^0)\ %\ q\r\n
+comment3.params=txt\ i
+comment3.target=boolean\ check(java.lang.String,\ int)
+comment3.text=\r\n\ Ki\u1EC3m\ tra\ ch\u00EDnh\ x\u00E1c\ (Las\ Vegas\ check)\:\r\n\ Khi\ 2\ gi\u00E1\ tr\u1ECB\ Hash\ b\u1EB1ng\ nhau,\ c\u1EA7n\ so\ s\u00E1nh\ t\u1EEBng\ k\u00FD\ t\u1EF1\ \u0111\u1EC3\ tr\u00E1nh\ xung\ \u0111\u1ED9t\ Hash.\r\n
+comment4.params=txt
+comment4.target=int\ search(java.lang.String)
+comment4.text=\r\n\ T\u00ECm\ ki\u1EBFm\ m\u1EABu\ trong\ v\u0103n\ b\u1EA3n.\r\n\ @param\ txt\ V\u0103n\ b\u1EA3n\r\n\ @return\ V\u1ECB\ tr\u00ED\ t\u00ECm\ th\u1EA5y\ \u0111\u1EA7u\ ti\u00EAn,\ ho\u1EB7c\ n\ n\u1EBFu\ kh\u00F4ng\ th\u1EA5y.\r\n
+comment5.params=
+comment5.target=long\ longRandomPrime()
+comment6.params=args
+comment6.target=void\ main(java.lang.String[])
+comment6.text=\r\n\ H\u00E0m\ Main\ \u0111\u1EC3\ ki\u1EC3m\ th\u1EED.\r\n
+numComments=7

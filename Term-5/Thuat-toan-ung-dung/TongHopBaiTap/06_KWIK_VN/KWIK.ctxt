@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=KWIK
+comment0.text=\r\n\ L\u1EDBp\ {@code\ KWIK}\ cung\ c\u1EA5p\ m\u1ED9t\ client\ s\u1EED\ d\u1EE5ng\ {@link\ SuffixArrayXVN}\ \u0111\u1EC3\ t\u00EDnh\ to\u00E1n\r\n\ v\u00E0\ t\u00ECm\ ki\u1EBFm\ t\u1EA5t\ c\u1EA3\ c\u00E1c\ l\u1EA7n\ xu\u1EA5t\ hi\u1EC7n\ c\u1EE7a\ m\u1ED9t\ t\u1EEB\ kh\u00F3a\ trong\ v\u0103n\ b\u1EA3n\ t\u1EEB\ file\ .docx,\r\n\ k\u00E8m\ theo\ ng\u1EEF\ c\u1EA3nh\ xung\ quanh\ (context).\r\n\ *\ Thu\u1EADt\ to\u00E1n\ s\u1EED\ d\u1EE5ng\ M\u1EA3ng\ h\u1EADu\ t\u1ED1\ (Suffix\ Array)\ \u0111\u1EC3\ \u0111\u1EA1t\ t\u1ED1c\ \u0111\u1ED9\ t\u00ECm\ ki\u1EBFm\ t\u1ED1i\ \u01B0u.\r\n
+comment1.params=
+comment1.target=KWIK()
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment2.text=\r\n\ H\u00E0m\ main\ th\u1EF1c\ hi\u1EC7n\ c\u00E1c\ b\u01B0\u1EDBc\:\r\n\ 1.\ \u0110\u1ECDc\ v\u0103n\ b\u1EA3n\ t\u1EEB\ file\ .docx\ (tham\ s\u1ED1\ d\u00F2ng\ l\u1EC7nh\ th\u1EE9\ nh\u1EA5t).\r\n\ 2.\ \u0110\u1ECDc\ s\u1ED1\ nguy\u00EAn\ k\ (tham\ s\u1ED1\ d\u00F2ng\ l\u1EC7nh\ th\u1EE9\ hai)\ quy\ \u0111\u1ECBnh\ \u0111\u1ED9\ d\u00E0i\ ng\u1EEF\ c\u1EA3nh.\r\n\ 3.\ X\u00E2y\ d\u1EF1ng\ Suffix\ Array\ cho\ v\u0103n\ b\u1EA3n\ Ti\u1EBFng\ Vi\u1EC7t.\r\n\ 4.\ Nh\u1EADn\ t\u1EEB\ kh\u00F3a\ t\u1EEB\ b\u00E0n\ ph\u00EDm\ v\u00E0\ in\ ra\ c\u00E1c\ \u0111o\u1EA1n\ v\u0103n\ b\u1EA3n\ ch\u1EE9a\ t\u1EEB\ kh\u00F3a\ \u0111\u00F3.\r\n\r\n\ @param\ args\ tham\ s\u1ED1\ d\u00F2ng\ l\u1EC7nh\:\ [0]\ \u0111\u01B0\u1EDDng\ d\u1EABn\ file\ .docx,\ [1]\ \u0111\u1ED9\ d\u00E0i\ ng\u1EEF\ c\u1EA3nh\ (context)\r\n
+numComments=3

@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=NFAVN
+comment0.text=\r\n\ \ Compilation\:\ \ javac\ NFAVN.java\r\n\ \ Execution\:\ \ \ \ java\ NFAVN\ regexp\ text\r\n\ \ Dependencies\:\ NFA.java\ VietnameseAlphabet.java\ Stack.java\ Bag.java\ Digraph.java\ DirectedDFS.java\r\n\r\n\ \ A\ class\ that\ extends\ NFA\ to\ support\ Vietnamese\ regular\ expressions\ and\ text,\r\n\ \ using\ the\ VietnameseAlphabet\ for\ character\ mapping.\r\n\r\n
+comment1.params=regexp
+comment1.target=NFAVN(java.lang.String)
+comment1.text=\r\n\ Initializes\ the\ NFAVN\ from\ the\ specified\ regular\ expression\ using\ the\ Vietnamese\ alphabet.\r\n\r\n\ @param\ regexp\ the\ regular\ expression\ (using\ characters\ from\ VietnameseAlphabet)\r\n
+comment2.params=s
+comment2.target=java.lang.String\ convertToIndices(java.lang.String)
+comment2.text=\r\n\ Converts\ a\ string\ to\ a\ regular\ expression\ string\ using\ indices\ from\ VietnameseAlphabet.\r\n\ Metacharacters\ (|,\ *,\ (,\ ))\ are\ preserved\ as\ is.\r\n\r\n\ @param\ s\ the\ input\ string\r\n\ @return\ the\ converted\ string\ with\ characters\ replaced\ by\ their\ indices\r\n
+comment3.params=txt
+comment3.target=boolean\ recognizes(java.lang.String)
+comment3.text=\r\n\ Returns\ true\ if\ the\ text\ is\ matched\ by\ the\ regular\ expression.\r\n\ The\ text\ is\ converted\ to\ indices\ based\ on\ the\ Vietnamese\ alphabet\ before\ matching.\r\n\r\n\ @param\ txt\ the\ text\ to\ match\r\n\ @return\ true\ if\ the\ text\ is\ matched\ by\ the\ regular\ expression,\ false\ otherwise\r\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\r\n\ Unit\ tests\ the\ {@code\ NFAVN}\ data\ type.\r\n\r\n\ @param\ args\ the\ command-line\ arguments\ (regexp,\ text)\r\n
+numComments=5

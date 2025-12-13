@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=NFAVN
+comment0.text=\r\n\ Compilation\:\ \ javac\ NFAVN.java\r\n\ Execution\:\ \ \ \ java\ NFAVN\ "regex"\ "text"\r\n\ Dependencies\:\ NFA.java,\ VietnameseAlphabet.java\r\n\r\n\ M\u00F4\ t\u1EA3\:\ M\u1EDF\ r\u1ED9ng\ NFA\ \u0111\u1EC3\ h\u1ED7\ tr\u1EE3\ bi\u1EC3u\ th\u1EE9c\ ch\u00EDnh\ quy\ v\u1EDBi\ k\u00FD\ t\u1EF1\ Ti\u1EBFng\ Vi\u1EC7t.\r\n
+comment1.params=regexp
+comment1.target=NFAVN(java.lang.String)
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ NFAVN\ v\u1EDBi\ bi\u1EC3u\ th\u1EE9c\ ch\u00EDnh\ quy\ Ti\u1EBFng\ Vi\u1EC7t.\r\n\ @param\ regexp\ Bi\u1EC3u\ th\u1EE9c\ ch\u00EDnh\ quy\r\n
+comment2.params=s
+comment2.target=java.lang.String\ convertToIndices(java.lang.String)
+comment2.text=\r\n\ H\u00E0m\ ti\u1EC7n\ \u00EDch\:\ Chuy\u1EC3n\ \u0111\u1ED5i\ chu\u1ED7i\ k\u00FD\ t\u1EF1\ Unicode\ sang\ chu\u1ED7i\ ch\u1EC9\ s\u1ED1.\r\n\ Gi\u1EEF\ nguy\u00EAn\ c\u00E1c\ k\u00FD\ t\u1EF1\ \u0111\u1EB7c\ bi\u1EC7t\ c\u1EE7a\ Regex\:\ (,\ ),\ *,\ |\r\n
+comment3.params=txt
+comment3.target=boolean\ recognizes(java.lang.String)
+comment3.text=\r\n\ Ki\u1EC3m\ tra\ xem\ v\u0103n\ b\u1EA3n\ c\u00F3\ kh\u1EDBp\ v\u1EDBi\ bi\u1EC3u\ th\u1EE9c\ ch\u00EDnh\ quy\ kh\u00F4ng.\r\n\ @param\ txt\ V\u0103n\ b\u1EA3n\ c\u1EA7n\ ki\u1EC3m\ tra\r\n\ @return\ true\ n\u1EBFu\ kh\u1EDBp,\ false\ n\u1EBFu\ kh\u00F4ng\r\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\r\n\ H\u00E0m\ Main\ \u0111\u1EC3\ ki\u1EC3m\ th\u1EED.\r\n
+numComments=5

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=LongestCommonSubstring
+comment0.text=\r\n\ Compilation\:\ \ javac\ LongestCommonSubstring.java\r\n\ Dependencies\:\ SuffixArrayXVN.java\ VietnameseAlphabet.java\r\n\r\n\ M\u00F4\ t\u1EA3\:\ T\u00ECm\ x\u00E2u\ con\ chung\ d\u00E0i\ nh\u1EA5t\ (LCS)\ gi\u1EEFa\ hai\ chu\u1ED7i\ v\u0103n\ b\u1EA3n,\r\n\ s\u1EED\ d\u1EE5ng\ b\u1EA3ng\ ch\u1EEF\ c\u00E1i\ Ti\u1EBFng\ Vi\u1EC7t\ \u0111\u1EC3\ x\u1EED\ l\u00FD\ ch\u00EDnh\ x\u00E1c.\r\n
+comment1.params=
+comment1.target=LongestCommonSubstring()
+comment2.params=s\ p\ t\ q
+comment2.target=java.lang.String\ lcp(java.lang.String,\ int,\ java.lang.String,\ int)
+comment2.text=\r\n\ T\u00EDnh\ \u0111\u1ED9\ d\u00E0i\ ti\u1EC1n\ t\u1ED1\ chung\ d\u00E0i\ nh\u1EA5t\ (Longest\ Common\ Prefix\ -\ LCP)\r\n\ gi\u1EEFa\ h\u1EADu\ t\u1ED1\ b\u1EAFt\ \u0111\u1EA7u\ t\u1EA1i\ p\ c\u1EE7a\ chu\u1ED7i\ s\ v\u00E0\ h\u1EADu\ t\u1ED1\ b\u1EAFt\ \u0111\u1EA7u\ t\u1EA1i\ q\ c\u1EE7a\ chu\u1ED7i\ t.\r\n
+comment3.params=s\ p\ t\ q
+comment3.target=int\ compare(java.lang.String,\ int,\ java.lang.String,\ int)
+comment3.text=\r\n\ So\ s\u00E1nh\ hai\ h\u1EADu\ t\u1ED1\:\ s[p..]\ v\u00E0\ t[q..]\r\n\ Tr\u1EA3\ v\u1EC1\ -1\ n\u1EBFu\ s\ <\ t,\ +1\ n\u1EBFu\ s\ >\ t,\ 0\ n\u1EBFu\ b\u1EB1ng\ nhau.\r\n
+comment4.params=s\ t
+comment4.target=java.lang.String\ lcs(java.lang.String,\ java.lang.String)
+comment4.text=\r\n\ CH\u1EE8C\ N\u0102NG\ CH\u00CDNH\:\ T\u00ECm\ x\u00E2u\ con\ chung\ d\u00E0i\ nh\u1EA5t\ c\u1EE7a\ s\ v\u00E0\ t.\r\n\ Thu\u1EADt\ to\u00E1n\:\r\n\ 1.\ X\u00E2y\ d\u1EF1ng\ Suffix\ Array\ cho\ s\ v\u00E0\ t\ ri\u00EAng\ bi\u1EC7t.\r\n\ 2.\ Duy\u1EC7t\ song\ song\ hai\ m\u1EA3ng\ h\u1EADu\ t\u1ED1\ (t\u01B0\u01A1ng\ t\u1EF1\ thu\u1EADt\ to\u00E1n\ Merge\ Sort).\r\n\ 3.\ T\u1EA1i\ m\u1ED7i\ b\u01B0\u1EDBc,\ t\u00EDnh\ LCP\ c\u1EE7a\ hai\ h\u1EADu\ t\u1ED1\ \u0111ang\ x\u00E9t.\r\n\ 4.\ C\u1EADp\ nh\u1EADt\ k\u1EBFt\ qu\u1EA3\ n\u1EBFu\ t\u00ECm\ th\u1EA5y\ LCP\ d\u00E0i\ h\u01A1n.\r\n\r\n\ @param\ \ s\ Chu\u1ED7i\ th\u1EE9\ nh\u1EA5t\r\n\ @param\ \ t\ Chu\u1ED7i\ th\u1EE9\ hai\r\n\ @return\ X\u00E2u\ con\ chung\ d\u00E0i\ nh\u1EA5t\ (tr\u1EA3\ v\u1EC1\ chu\u1ED7i\ r\u1ED7ng\ n\u1EBFu\ kh\u00F4ng\ c\u00F3)\r\n
+numComments=5

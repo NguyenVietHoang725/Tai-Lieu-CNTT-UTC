@@ -1,0 +1,3 @@
+KWIK ("tale.txt", "15");
+LongestcommonSubstring {"tinyTale.txt", "tale.txt")
+FordFulkerson("tinyFN.txt")

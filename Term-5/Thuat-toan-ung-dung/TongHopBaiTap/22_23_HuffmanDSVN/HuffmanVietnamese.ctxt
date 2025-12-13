@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=HuffmanVietnamese
+comment0.text=\r\n\ Phi\u00EAn\ b\u1EA3n\ t\u1ED1i\ \u01B0u\ c\u1EE7a\ Huffman\ cho\ ti\u1EBFng\ Vi\u1EC7t\r\n\ S\u1EED\ d\u1EE5ng\ VietnameseAlphabet\ \u0111\u1EC3\ gi\u1EA3m\ k\u00EDch\ th\u01B0\u1EDBc\ c\u00E2y\r\n
+comment1.params=inputFile\ outputFile
+comment1.target=void\ compressWithAlphabet(java.lang.String,\ java.lang.String)
+comment1.text=\r\n\ N\u00E9n\ file\ v\u1EDBi\ Vietnamese\ Alphabet\r\n
+comment2.params=inputFile\ outputFile
+comment2.target=void\ expandWithAlphabet(java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Gi\u1EA3i\ n\u00E9n\ file\ v\u1EDBi\ Vietnamese\ Alphabet\r\n
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4

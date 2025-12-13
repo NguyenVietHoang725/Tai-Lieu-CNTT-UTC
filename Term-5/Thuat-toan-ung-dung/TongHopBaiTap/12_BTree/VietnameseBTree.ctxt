@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=VietnameseBTree
+comment0.text=\r\n\ L\u1EDBp\ VietnameseBTree\ m\u00F4\ ph\u1ECFng\ qu\u1EA3n\ l\u00FD\ \u0111i\u1EC3m\ sinh\ vi\u00EAn.\r\n\ D\u1EEF\ li\u1EC7u\:\ 17\ sinh\ vi\u00EAn\ Vi\u1EC7t\ Nam.\r\n\ \u0110i\u1EC3m\ s\u1ED1\:\ Random\ (0.0\ -\ 10.0).\r\n
+comment1.params=
+comment1.target=VietnameseBTree()
+comment1.text=\r\n\ Constructor\:\ Kh\u1EDFi\ t\u1EA1o\ v\u00E0\ n\u1EA1p\ d\u1EEF\ li\u1EC7u\ ngay\ l\u1EADp\ t\u1EE9c.\r\n
+comment2.params=
+comment2.target=void\ initialize()
+comment2.text=\r\n\ N\u1EA1p\ d\u1EEF\ li\u1EC7u\ v\u00E0o\ c\u00E2y.\r\n
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+comment3.text=\r\n\ H\u00E0m\ Main\ \u0111\u1EC3\ ch\u1EA1y\ ki\u1EC3m\ th\u1EED.\r\n
+numComments=4

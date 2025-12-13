@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=GREPVN
+comment0.text=\r\n\ B\u00E0i\ 18\:\ Ch\u01B0\u01A1ng\ tr\u00ECnh\ GREP\ h\u1ED7\ tr\u1EE3\ Ti\u1EBFng\ Vi\u1EC7t\ (Generalized\ Regular\ Expression\ Parser).\r\n\ *\ Ch\u1EE9c\ n\u0103ng\:\r\n\ 1.\ Nh\u1EADn\ v\u00E0o\ m\u1ED9t\ bi\u1EC3u\ th\u1EE9c\ ch\u00EDnh\ quy\ (Regex)\ v\u00E0\ t\u00EAn\ file.\r\n\ 2.\ \u0110\u1ECDc\ t\u1EEBng\ d\u00F2ng\ c\u1EE7a\ file.\r\n\ 3.\ S\u1EED\ d\u1EE5ng\ NFAVN\ \u0111\u1EC3\ ki\u1EC3m\ tra\ xem\ d\u00F2ng\ \u0111\u00F3\ c\u00F3\ ch\u1EE9a\ chu\u1ED7i\ con\ kh\u1EDBp\ v\u1EDBi\ Regex\ kh\u00F4ng.\r\n\ 4.\ In\ ra\ c\u00E1c\ d\u00F2ng\ th\u1ECFa\ m\u00E3n.\r\n
+comment1.params=
+comment1.target=GREPVN()
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment2.text=\r\n\ H\u00E0m\ main\ th\u1EF1c\ thi\ ch\u01B0\u01A1ng\ tr\u00ECnh.\r\n\ @param\ args\ tham\ s\u1ED1\ d\u00F2ng\ l\u1EC7nh\:\ [0]\ \=\ Regex,\ [1]\ \=\ T\u00EAn\ file\r\n
+numComments=3

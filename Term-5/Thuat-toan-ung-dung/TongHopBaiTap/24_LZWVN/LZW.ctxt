@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=LZW
+comment1.params=
+comment1.target=LZW()
+comment2.params=inputFile\ outputFile
+comment2.target=void\ compress(java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Compresses\ the\ input\ file\ and\ writes\ to\ the\ output\ file\ using\ LZW\ compression.\r\n\ @param\ inputFile\ \ the\ input\ file\ path\r\n\ @param\ outputFile\ the\ output\ file\ path\r\n
+comment3.params=inputFile\ outputFile
+comment3.target=void\ expand(java.lang.String,\ java.lang.String)
+comment3.text=\r\n\ Expands\ the\ input\ file\ and\ writes\ to\ the\ output\ file\ using\ LZW\ decompression.\r\n\ @param\ inputFile\ \ the\ input\ file\ path\r\n\ @param\ outputFile\ the\ output\ file\ path\r\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\r\n\ Main\ method\ to\ handle\ command-line\ arguments\ for\ compression\ or\ expansion.\r\n\ @param\ args\ command-line\ arguments\:\ [-/+]\ [input\ file]\ [output\ file]\r\n
+numComments=5

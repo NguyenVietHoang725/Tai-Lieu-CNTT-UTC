@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=KDTree
+comment1.params=
+comment1.target=KDTree()
+comment2.params=root\ point\ depth
+comment2.target=KDTree.Node\ insertRec(KDTree.Node,\ int[],\ int)
+comment3.params=point
+comment3.target=void\ insert(int[])
+comment4.params=root\ point\ depth
+comment4.target=boolean\ searchRec(KDTree.Node,\ int[],\ int)
+comment5.params=point
+comment5.target=boolean\ search(int[])
+comment6.params=root\ lower\ upper\ depth
+comment6.target=void\ rangeSearchRec(KDTree.Node,\ int[],\ int[],\ int)
+comment7.params=lower\ upper
+comment7.target=void\ rangeSearch(int[],\ int[])
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+numComments=9

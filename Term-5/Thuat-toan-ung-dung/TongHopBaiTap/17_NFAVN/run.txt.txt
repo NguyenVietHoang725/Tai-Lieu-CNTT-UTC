@@ -1,0 +1,5 @@
+"Hà*Nội", "HààNội"
+true
+
+"Hà*Nội", "HàNộ"
+false

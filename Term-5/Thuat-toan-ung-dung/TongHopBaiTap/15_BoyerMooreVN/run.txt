@@ -1,0 +1,2 @@
+"chào", "xin chào thế giới"
+"tốt", "chúc bạn một ngày tốt lành"

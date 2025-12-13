@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=TestVNTST
+comment0.text=\r\n\ B\u00E0i\ 10\:\ Qu\u1EA3n\ l\u00FD\ H\u1ECD\ t\u00EAn\ v\u00E0\ \u0110i\u1EC3m\ trung\ b\u00ECnh\ sinh\ vi\u00EAn\ s\u1EED\ d\u1EE5ng\ VietnameseTST.\r\n\ *\ Ch\u01B0\u01A1ng\ tr\u00ECnh\ th\u1EF1c\ hi\u1EC7n\:\r\n\ 1.\ \u0110\u1ECDc\ file\ .docx\ ch\u1EE9a\ danh\ s\u00E1ch\ sinh\ vi\u00EAn.\r\n\ 2.\ T\u00E1ch\ t\u00EAn\ v\u00E0\ \u0111i\u1EC3m,\ n\u1EA1p\ v\u00E0o\ c\u00E2y\ VietnameseTST.\r\n\ 3.\ Th\u1EF1c\ hi\u1EC7n\ c\u00E1c\ thao\ t\u00E1c\ tra\ c\u1EE9u\ v\u00E0\ in\ danh\ s\u00E1ch\ \u0111\u00E3\ s\u1EAFp\ x\u1EBFp.\r\n
+comment1.params=
+comment1.target=TestVNTST()
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+numComments=3

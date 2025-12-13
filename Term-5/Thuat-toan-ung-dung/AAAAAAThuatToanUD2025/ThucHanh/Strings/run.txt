@@ -1,0 +1,7 @@
+count ("ABCDR")
+count ("0123456789")
+KMP ("ABABAC", "ABAABACABABACAABC")
+ByoerMoor("bcara", "abacadabrabracabracadabrabrabracad")
+GREP("(A*B|AC)D")
+NFA ("(a|(bc)*d)*", "abcbcd")
+Jfex ("sample.java")

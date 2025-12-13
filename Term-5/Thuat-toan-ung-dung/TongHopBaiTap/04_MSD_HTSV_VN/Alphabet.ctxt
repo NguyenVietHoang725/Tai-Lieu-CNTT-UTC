@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Alphabet
+comment1.params=alpha
+comment1.target=Alphabet(java.lang.String)
+comment2.params=radix
+comment2.target=Alphabet(int)
+comment3.params=
+comment3.target=Alphabet()
+comment4.params=c
+comment4.target=boolean\ contains(char)
+comment5.params=
+comment5.target=int\ radix()
+comment6.params=c
+comment6.target=int\ toIndex(char)
+comment7.params=index
+comment7.target=char\ toChar(int)
+numComments=8

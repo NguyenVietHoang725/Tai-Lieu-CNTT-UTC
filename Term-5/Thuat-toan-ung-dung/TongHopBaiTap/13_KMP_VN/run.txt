@@ -1,0 +1,1 @@
+"thuật toán KMP", "Trong lập trình, thuật toán KMP là một phương pháp tìm kiếm chuỗi hiệu quả, được sử dụng rộng rãi trong xử lý văn bản tiếng Việt và các ngôn ngữ khác."

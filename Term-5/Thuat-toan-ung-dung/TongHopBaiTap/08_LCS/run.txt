@@ -1,0 +1,2 @@
+eng: "tale.txt", "mobydick.txt"
+vn: "baocao1.docx", "baocao2.docx"

@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=HuffmanUTF8
+comment1.params=in\ out
+comment1.target=void\ compress(BinaryIn,\ BinaryOut)
+comment1.text=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\ N\u00C9N\ \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=
+comment2.params=in\ out
+comment2.target=void\ expand(BinaryIn,\ BinaryOut)
+comment2.text=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\ GI\u1EA2I\ N\u00C9N\ \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=
+comment3.params=freq
+comment3.target=HuffmanUTF8.Node\ buildTrie(int[])
+comment3.text=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\ H\u1ED6\ TR\u1EE2\ \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=
+comment4.params=x\ out
+comment4.target=void\ writeTrie(HuffmanUTF8.Node,\ BinaryOut)
+comment5.params=in
+comment5.target=HuffmanUTF8.Node\ readTrie(BinaryIn)
+comment6.params=st\ x\ s
+comment6.target=void\ buildCode(java.lang.String[],\ HuffmanUTF8.Node,\ java.lang.String)
+comment7.params=args
+comment7.target=void\ main(java.lang.String[])
+comment7.text=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\ MAIN\ DEMO\ \=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=\=
+numComments=8

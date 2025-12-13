@@ -1,0 +1,36 @@
+#BlueJ class context
+comment0.target=SuffixArrayX
+comment0.text=\r\n\ \ The\ {@code\ SuffixArrayX}\ class\ represents\ a\ suffix\ array\ of\ a\ string\ of\r\n\ \ length\ <em>n</em>.\ It\ supports\ custom\ alphabets\ for\ sorting\ and\ is\ designed\r\n\ \ to\ be\ extensible\ via\ inheritance.\r\n\ \ It\ supports\ the\ <em>selecting</em>\ the\ <em>i</em>th\ smallest\ suffix,\r\n\ \ getting\ the\ <em>index</em>\ of\ the\ <em>i</em>th\ smallest\ suffix,\r\n\ \ computing\ the\ length\ of\ the\ <em>longest\ common\ prefix</em>\ between\ the\r\n\ \ <em>i</em>th\ smallest\ suffix\ and\ the\ <em>i</em>-1st\ smallest\ suffix,\r\n\ \ and\ determining\ the\ <em>rank</em>\ of\ a\ query\ string\ (which\ is\ the\ number\r\n\ \ of\ suffixes\ strictly\ less\ than\ the\ query\ string).\r\n\ \ <p>\r\n\ \ This\ implementation\ uses\ 3-way\ radix\ quicksort\ to\ sort\ the\ array\ of\ suffixes.\r\n\ \ For\ a\ simpler\ (but\ less\ efficient)\ implementation\ of\ the\ same\ API,\ see\r\n\ \ {@link\ SuffixArray}.\r\n\ \ The\ <em>index</em>\ and\ <em>length</em>\ operations\ take\ constant\ time\r\n\ \ in\ the\ worst\ case.\ The\ <em>lcp</em>\ operation\ takes\ time\ proportional\ to\ the\r\n\ \ length\ of\ the\ longest\ common\ prefix.\r\n\ \ The\ <em>select</em>\ operation\ takes\ time\ proportional\r\n\ \ to\ the\ length\ of\ the\ suffix\ and\ should\ be\ used\ primarily\ for\ debugging.\r\n\ \ <p>\r\n\ \ This\ implementation\ uses\ '\\0'\ as\ a\ sentinel\ and\ assumes\ that\ the\ character\r\n\ \ '\\0'\ does\ not\ appear\ in\ the\ text.\r\n\ \ <p>\r\n\ \ For\ additional\ documentation,\ see\ <a\ href\="https\://algs4.cs.princeton.edu/63suffix">Section\ 6.3</a>\ of\r\n\ \ <i>Algorithms,\ 4th\ Edition</i>\ by\ Robert\ Sedgewick\ and\ Kevin\ Wayne.\r\n
+comment1.params=text
+comment1.target=SuffixArrayX(java.lang.String)
+comment1.text=\r\n\ Initializes\ a\ suffix\ array\ for\ the\ given\ {@code\ text}\ string\ with\ default\ Unicode\ ordering.\r\n\ @param\ text\ the\ input\ string\r\n
+comment10.params=i
+comment10.target=int\ lcp(int)
+comment10.text=\r\n\ Returns\ the\ length\ of\ the\ longest\ common\ prefix\ of\ the\ <em>i</em>th\r\n\ smallest\ suffix\ and\ the\ <em>i</em>-1st\ smallest\ suffix.\r\n\ @param\ i\ an\ integer\ between\ 1\ and\ <em>n</em>-1\r\n\ @return\ the\ length\ of\ the\ longest\ common\ prefix\r\n\ @throws\ java.lang.IllegalArgumentException\ unless\ {@code\ 1\ <\=\ i\ <\ n}\r\n
+comment11.params=i\ j
+comment11.target=int\ lcp(int,\ int)
+comment12.params=query
+comment12.target=int\ rank(java.lang.String)
+comment12.text=\r\n\ Returns\ the\ <em>i</em>th\ smallest\ suffix\ as\ a\ string.\r\n\ @param\ i\ the\ index\r\n\ @return\ the\ <em>i</em>\ smallest\ suffix\ as\ a\ string\r\n\ @throws\ java.lang.IllegalArgumentException\ unless\ {@code\ 0\ <\=\ i\ <\ n}\r\n
+comment13.params=query\ i
+comment13.target=int\ compare(java.lang.String,\ int)
+comment2.params=text\ alphabet
+comment2.target=SuffixArrayX(java.lang.String,\ Alphabet)
+comment2.text=\r\n\ Initializes\ a\ suffix\ array\ for\ the\ given\ {@code\ text}\ string\ using\ the\ specified\ {@code\ alphabet}.\r\n\ @param\ text\ the\ input\ string\r\n\ @param\ alphabet\ the\ alphabet\ for\ character\ indexing\ (null\ for\ default\ Unicode\ ordering)\r\n
+comment3.params=lo\ hi\ d
+comment3.target=void\ sort(int,\ int,\ int)
+comment4.params=lo\ hi\ d
+comment4.target=void\ insertion(int,\ int,\ int)
+comment5.params=i\ j\ d
+comment5.target=boolean\ less(int,\ int,\ int)
+comment6.params=i\ j
+comment6.target=void\ exch(int,\ int)
+comment7.params=pos\ offset
+comment7.target=int\ charAt(int,\ int)
+comment8.params=
+comment8.target=int\ length()
+comment8.text=\r\n\ Returns\ the\ length\ of\ the\ input\ string.\r\n\ @return\ the\ length\ of\ the\ input\ string\r\n
+comment9.params=i
+comment9.target=int\ index(int)
+comment9.text=\r\n\ Returns\ the\ index\ into\ the\ original\ string\ of\ the\ <em>i</em>th\ smallest\ suffix.\r\n\ @param\ i\ an\ integer\ between\ 0\ and\ <em>n</em>-1\r\n\ @return\ the\ index\ into\ the\ original\ string\ of\ the\ <em>i</em>th\ smallest\ suffix\r\n\ @throws\ java.lang.IllegalArgumentException\ unless\ {@code\ 0\ <\=\ i\ <\ n}\r\n
+numComments=14

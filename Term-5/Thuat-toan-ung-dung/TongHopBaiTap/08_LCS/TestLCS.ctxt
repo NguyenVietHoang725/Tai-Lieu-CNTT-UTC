@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.target=TestLCS
+comment0.text=\r\n\ Ch\u01B0\u01A1ng\ tr\u00ECnh\ ki\u1EC3m\ th\u1EED\:\ \u0110\u1ECDc\ hai\ file\ b\u00E1o\ c\u00E1o\ .docx\ v\u00E0\ t\u00ECm\ \u0111o\u1EA1n\ tr\u00F9ng\ l\u1EB7p.\r\n\ S\u1EED\ d\u1EE5ng\ th\u01B0\ vi\u1EC7n\ Apache\ POI\ \u0111\u1EC3\ \u0111\u1ECDc\ file\ Word.\r\n
+comment1.params=
+comment1.target=TestLCS()
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+numComments=3

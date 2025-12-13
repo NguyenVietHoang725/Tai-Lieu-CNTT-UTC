@@ -1,0 +1,4 @@
+"Nguyễn|Đặng", "tinyL.txt"
+"Th.*", "tinyL.txt"
+"Văn|Thị", "tinyL.txt"
+

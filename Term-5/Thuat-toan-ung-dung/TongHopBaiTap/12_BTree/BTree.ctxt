@@ -1,0 +1,34 @@
+#BlueJ class context
+comment0.target=BTree
+comment0.text=\r\n\ Compilation\:\ \ javac\ BTree.java\r\n\ Execution\:\ \ \ \ java\ BTree\r\n\r\n\ M\u00F4\ t\u1EA3\:\ C\u1EA5u\ tr\u00FAc\ d\u1EEF\ li\u1EC7u\ B-Tree\ (C\u00E2y\ B).\r\n\ *\ \u0110\u00E2y\ l\u00E0\ m\u1ED9t\ c\u00E2y\ t\u00ECm\ ki\u1EBFm\ c\u00E2n\ b\u1EB1ng\ \u0111a\ nh\u00E1nh.\r\n\ *\ M\ \=\ 4\:\ B-Tree\ b\u1EADc\ 4\ (c\u00F2n\ g\u1ECDi\ l\u00E0\ c\u00E2y\ 2-3-4).\r\n\ M\u1ED7i\ n\u00FAt\ c\u00F3\ t\u1ED1i\ \u0111a\ 3\ kh\u00F3a\ v\u00E0\ 4\ con.\r\n\ M\u1ED7i\ n\u00FAt\ c\u00F3\ t\u1ED1i\ thi\u1EC3u\ 2\ con\ (tr\u1EEB\ n\u00FAt\ g\u1ED1c).\r\n
+comment1.params=
+comment1.target=BTree()
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ c\u00E2y\ B-Tree\ r\u1ED7ng.\r\n
+comment10.params=
+comment10.target=java.lang.String\ toString()
+comment10.text=\r\n\ Chuy\u1EC3n\ \u0111\u1ED5i\ c\u00E2y\ sang\ chu\u1ED7i\ String\ \u0111\u1EC3\ in\ ra\ m\u00E0n\ h\u00ECnh.\r\n\ S\u1EED\ d\u1EE5ng\ th\u1EE5t\ \u0111\u1EA7u\ d\u00F2ng\ (indent)\ \u0111\u1EC3\ bi\u1EC3u\ di\u1EC5n\ c\u1EA5p\ \u0111\u1ED9\ c\u00E2y.\r\n
+comment11.params=h\ ht\ indent
+comment11.target=java.lang.String\ toString(BTree.Node,\ int,\ java.lang.String)
+comment12.params=k1\ k2
+comment12.target=boolean\ less(java.lang.Comparable,\ java.lang.Comparable)
+comment13.params=k1\ k2
+comment13.target=boolean\ eq(java.lang.Comparable,\ java.lang.Comparable)
+comment2.params=
+comment2.target=int\ size()
+comment3.params=
+comment3.target=boolean\ isEmpty()
+comment4.params=
+comment4.target=int\ height()
+comment5.params=key
+comment5.target=java.lang.Object\ get(java.lang.Comparable)
+comment5.text=\r\n\ L\u1EA5y\ gi\u00E1\ tr\u1ECB\ (Value)\ t\u01B0\u01A1ng\ \u1EE9ng\ v\u1EDBi\ Key.\r\n
+comment6.params=x\ key\ ht
+comment6.target=java.lang.Object\ search(BTree.Node,\ java.lang.Comparable,\ int)
+comment7.params=key\ val
+comment7.target=void\ put(java.lang.Comparable,\ java.lang.Object)
+comment7.text=\r\n\ Th\u00EAm\ c\u1EB7p\ Key-Value\ v\u00E0o\ c\u00E2y.\r\n
+comment8.params=h\ key\ val\ ht
+comment8.target=BTree.Node\ insert(BTree.Node,\ java.lang.Comparable,\ java.lang.Object,\ int)
+comment9.params=h
+comment9.target=BTree.Node\ split(BTree.Node)
+numComments=14

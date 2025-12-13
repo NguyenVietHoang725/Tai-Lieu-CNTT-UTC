@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=VietnameseBoyerMoore
+comment0.text=\r\n\ Compilation\:\ \ javac\ VietnameseBoyerMoore.java\r\n\ Execution\:\ \ \ \ java\ VietnameseBoyerMoore\ "m\u1EABu"\ "v\u0103n\ b\u1EA3n"\r\n\ Dependencies\:\ VietnameseAlphabet.java,\ Alphabet.java,\ BoyerMoore.java\r\n\r\n\ M\u00F4\ t\u1EA3\:\ M\u1EDF\ r\u1ED9ng\ BoyerMoore\ \u0111\u1EC3\ h\u1ED7\ tr\u1EE3\ Ti\u1EBFng\ Vi\u1EC7t.\r\n
+comment1.params=pat
+comment1.target=VietnameseBoyerMoore(java.lang.String)
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ v\u1EDBi\ chu\u1ED7i\ m\u1EABu,\ s\u1EED\ d\u1EE5ng\ VietnameseAlphabet.\r\n
+comment2.params=
+comment2.target=void\ initialize()
+comment2.text=\r\n\ X\u00E2y\ d\u1EF1ng\ b\u1EA3ng\ nh\u1EA3y\ b\u01B0\u1EDBc\ (Skip\ Table)\ cho\ Ti\u1EBFng\ Vi\u1EC7t.\r\n
+comment3.params=txt
+comment3.target=int\ search(java.lang.String)
+comment3.text=\r\n\ Ghi\ \u0111\u00E8\ ph\u01B0\u01A1ng\ th\u1EE9c\ search\ \u0111\u1EC3\ x\u1EED\ l\u00FD\ v\u0103n\ b\u1EA3n\ Ti\u1EBFng\ Vi\u1EC7t.\r\n
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\r\n\ H\u00E0m\ Main\ ch\u1EA1y\ ki\u1EC3m\ th\u1EED.\r\n
+numComments=5

@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=Huffman
+comment1.params=
+comment1.target=Huffman()
+comment2.params=outputFile
+comment2.target=void\ compress(java.lang.String)
+comment2.text=\r\n\ Reads\ a\ sequence\ of\ 8-bit\ bytes\ from\ standard\ input;\ compresses\ them\r\n\ using\ Huffman\ codes\ with\ an\ 8-bit\ alphabet;\ and\ writes\ the\ results\r\n\ to\ standard\ output.\r\n
+comment3.params=freq
+comment3.target=Huffman.Node\ buildTrie(int[])
+comment4.params=x
+comment4.target=void\ writeTrie(Huffman.Node)
+comment5.params=st\ x\ s
+comment5.target=void\ buildCode(java.lang.String[],\ Huffman.Node,\ java.lang.String)
+comment6.params=outputFile
+comment6.target=void\ expand(java.lang.String)
+comment6.text=\r\n\ Reads\ a\ sequence\ of\ bits\ that\ represents\ a\ Huffman-compressed\ message\ from\r\n\ standard\ input;\ expands\ them;\ and\ writes\ the\ results\ to\ standard\ output.\r\n
+comment7.params=
+comment7.target=Huffman.Node\ readTrie()
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+comment8.text=\r\n\ Sample\ client\ that\ calls\ {@code\ compress()}\ or\ {@code\ expand()}\ based\ on\ command-line\ arguments.\r\n\r\n\ @param\ args\ the\ command-line\ arguments\r\n
+numComments=9

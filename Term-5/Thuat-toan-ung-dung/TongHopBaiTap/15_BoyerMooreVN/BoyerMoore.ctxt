@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=BoyerMoore
+comment0.text=\r\n\ Compilation\:\ \ javac\ BoyerMoore.java\r\n\ M\u00F4\ t\u1EA3\:\ Thu\u1EADt\ to\u00E1n\ Boyer-Moore\ t\u00ECm\ ki\u1EBFm\ chu\u1ED7i\ (Quy\ t\u1EAFc\ Bad\ Character).\r\n
+comment1.params=pat
+comment1.target=BoyerMoore(java.lang.String)
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ v\u1EDBi\ chu\u1ED7i\ m\u1EABu\ (M\u1EB7c\ \u0111\u1ECBnh\ ASCII\ 256).\r\n
+comment2.params=pattern\ R
+comment2.target=BoyerMoore(char[],\ int)
+comment3.params=txt
+comment3.target=int\ search(java.lang.String)
+comment3.text=\r\n\ T\u00ECm\ ki\u1EBFm\ m\u1EABu\ trong\ v\u0103n\ b\u1EA3n\ txt.\r\n\ @return\ index\ t\u00ECm\ th\u1EA5y\ ho\u1EB7c\ n\ n\u1EBFu\ kh\u00F4ng\ th\u1EA5y.\r\n
+comment4.params=text
+comment4.target=int\ search(char[])
+numComments=5

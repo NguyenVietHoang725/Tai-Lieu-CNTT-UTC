@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=KMP
+comment0.text=\r\n\ Compilation\:\ \ javac\ KMP.java\r\n\ Execution\:\ \ \ \ java\ KMP\ pattern\ text\r\n\ Dependencies\:\ StdOut.java\r\n\r\n\ M\u00F4\ t\u1EA3\:\ Thu\u1EADt\ to\u00E1n\ Knuth-Morris-Pratt\ (KMP)\ t\u00ECm\ ki\u1EBFm\ chu\u1ED7i\ con.\r\n\ S\u1EED\ d\u1EE5ng\ DFA\ (Deterministic\ Finite\ Automaton)\ \u0111\u1EC3\ x\u1EED\ l\u00FD\ vi\u1EC7c\ kh\u00F4ng\ kh\u1EDBp\ k\u00FD\ t\u1EF1.\r\n
+comment1.params=pat
+comment1.target=KMP(java.lang.String)
+comment1.text=\r\n\ Kh\u1EDFi\ t\u1EA1o\ KMP\ v\u00E0\ x\u00E2y\ d\u1EF1ng\ DFA\ t\u1EEB\ chu\u1ED7i\ m\u1EABu.\r\n\ M\u1EB7c\ \u0111\u1ECBnh\ s\u1EED\ d\u1EE5ng\ b\u1EA3ng\ m\u00E3\ Extended\ ASCII\ (256\ k\u00FD\ t\u1EF1).\r\n\ @param\ pat\ Chu\u1ED7i\ m\u1EABu\r\n
+comment2.params=pattern\ R
+comment2.target=KMP(char[],\ int)
+comment2.text=\r\n\ Constructor\ h\u1ED7\ tr\u1EE3\ m\u1EA3ng\ k\u00FD\ t\u1EF1\ v\u00E0\ c\u01A1\ s\u1ED1\ R\ t\u00F9y\ ch\u1EC9nh.\r\n\ D\u00F9ng\ cho\ c\u00E1c\ l\u1EDBp\ con\ mu\u1ED1n\ m\u1EDF\ r\u1ED9ng\ (nh\u01B0\ KMPVN).\r\n\ *\ @param\ pattern\ M\u1EA3ng\ k\u00FD\ t\u1EF1\ m\u1EABu\ (\u0111\u00E3\ chuy\u1EC3n\ sang\ d\u1EA1ng\ index\ s\u1ED1\ nguy\u00EAn)\r\n\ @param\ R\ K\u00EDch\ th\u01B0\u1EDBc\ b\u1EA3ng\ ch\u1EEF\ c\u00E1i\r\n
+comment3.params=txt
+comment3.target=int\ search(java.lang.String)
+comment3.text=\r\n\ T\u00ECm\ ki\u1EBFm\ v\u1ECB\ tr\u00ED\ xu\u1EA5t\ hi\u1EC7n\ \u0111\u1EA7u\ ti\u00EAn\ c\u1EE7a\ m\u1EABu\ trong\ v\u0103n\ b\u1EA3n.\r\n\ @param\ txt\ V\u0103n\ b\u1EA3n\ c\u1EA7n\ t\u00ECm\ ki\u1EBFm\r\n\ @return\ Ch\u1EC9\ s\u1ED1\ (index)\ b\u1EAFt\ \u0111\u1EA7u,\ ho\u1EB7c\ \u0111\u1ED9\ d\u00E0i\ v\u0103n\ b\u1EA3n\ N\ n\u1EBFu\ kh\u00F4ng\ t\u00ECm\ th\u1EA5y.\r\n
+comment4.params=text
+comment4.target=int\ search(char[])
+comment4.text=\r\n\ Ph\u01B0\u01A1ng\ th\u1EE9c\ search\ n\u1EA1p\ ch\u1ED3ng\ cho\ m\u1EA3ng\ k\u00FD\ t\u1EF1\ (d\u00F9ng\ cho\ l\u1EDBp\ con).\r\n
+numComments=5
