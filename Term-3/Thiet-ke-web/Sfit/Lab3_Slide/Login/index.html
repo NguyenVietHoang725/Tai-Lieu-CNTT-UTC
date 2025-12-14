@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sfit</title>
+    <link rel="icon" type="image" href="./SFIT.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-[#F1F2F6]">
+    <div
+      class="flex flex-row items-center justify-center h-screen mx-40 gap-16"
+    >
+      <div class="w-full mb-20">
+        <h1 class="text-[#0866FF] text-6xl font-bold mb-2">facebook</h1>
+        <p class="text-2xl">
+          Facebook giúp bạn kết nối và chia sẻ với mọi người trong cuộc sống của
+          bạn.
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center justify-center w-3/4 p-6 bg-white rounded-md gap-3"
+      >
+        <input
+          type="text"
+          id="username"
+          placeholder="Email hoặc số điện thoại"
+          class="w-full h-14 p-2 border-2 border-[#dddfe2] rounded-md focus:outline-none focus:border-[#0866FF]"
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Mật khẩu"
+          class="w-full h-14 p-2 border-2 border-[#dddfe2] rounded-md focus:outline-none focus:border-[#0866FF]"
+        />
+        <button
+          onclick="login()"
+          class="w-full p-2 bg-[#0866FF] text-white rounded-md h-14 text-xl font-bold"
+        >
+          Đăng nhập
+        </button>
+        <a href="#" class="text-[#0866FF] text-sm hover:underline"
+          >Quên mật khẩu?</a
+        >
+        <div class="w-full h-[1px] bg-[#DADDE1] rounded-md my-4"></div>
+        <button
+          class="w-1/2 h-14 text-xl font-bold p-2 bg-[#36A420] text-white rounded-md"
+        >
+          Tạo tài khoản mới
+        </button>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

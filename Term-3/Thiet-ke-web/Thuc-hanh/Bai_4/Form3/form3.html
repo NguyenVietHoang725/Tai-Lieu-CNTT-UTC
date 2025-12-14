@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi tiết cá nhân</title>
+    <link href="form3.css" rel="stylesheet" />
+    <style>
+      .error-message {
+        color: red; /* Màu đỏ cho thông báo lỗi */
+        font-size: 0.9em; /* Kích thước chữ nhỏ hơn */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>1. Chi tiết cá nhân</h1>
+      <form id="personalInfoForm">
+        <div class="form-group">
+          <label for="firstName">Tên</label>
+          <span class="required-star">*</span>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Họ</label>
+          <span class="required-star">*</span>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Địa Chỉ Email</label>
+          <span class="required-star">*</span>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            oninput="validateEmail()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="confirmEmail">Xác Nhận Email</label>
+          <span class="required-star">*</span>
+          <input
+            type="email"
+            id="confirmEmail"
+            name="confirmEmail"
+            required
+            oninput="validateEmail()"
+          />
+          <small class="error-message" id="emailHint"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Giới tính</label>
+          <span class="required-star">*</span>
+          <div class="gender-group">
+            <input type="radio" id="male" name="gender" value="Nam" required />
+            <label for="male">Nam</label>
+            <input type="radio" id="female" name="gender" value="Nữ" required />
+            <label for="female">Nữ</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="birthdate">Ngày Sinh</label>
+          <span class="required-star">*</span>
+          <div>
+            <select id="month" name="month" required onchange="updateDays()">
+              <option value="" disabled selected hidden>Chọn tháng</option>
+              <option value="1">Tháng 1</option>
+              <option value="2">Tháng 2</option>
+              <option value="3">Tháng 3</option>
+              <option value="4">Tháng 4</option>
+              <option value="5">Tháng 5</option>
+              <option value="6">Tháng 6</option>
+              <option value="7">Tháng 7</option>
+              <option value="8">Tháng 8</option>
+              <option value="9">Tháng 9</option>
+              <option value="10">Tháng 10</option>
+              <option value="11">Tháng 11</option>
+              <option value="12">Tháng 12</option>
+            </select>
+
+            <select id="day" name="day" required>
+              <option value="" disabled selected hidden>Chọn ngày</option>
+            </select>
+
+            <select id="year" name="year" required>
+              <option value="" disabled selected hidden>Chọn năm</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="country">Quốc gia</label>
+          <span class="required-star">*</span>
+          <select id="country" name="country" required>
+            <option value="" disabled selected hidden>Chọn quốc gia</option>
+            <option value="Thái Lan">Thái Lan</option>
+            <option value="Việt Nam">Việt Nam</option>
+            <option value="Lào">Lào</option>
+            <option value="Campuchia">Campuchia</option>
+            <option value="Singapore">Singapore</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Địa chỉ</label>
+          <span class="required-star">*</span>
+          <input type="text" id="address" name="address" required />
+        </div>
+
+        <div class="form-group">
+          <label for="city">Thành Phố/Tỉnh</label>
+          <span class="required-star">*</span>
+          <input type="text" id="city" name="city" required />
+        </div>
+
+        <div class="form-group">
+          <label for="district">Phường/Thị xã</label>
+          <span class="required-star">*</span>
+          <input type="text" id="district" name="district" required />
+        </div>
+
+        <div class="form-group">
+          <label for="zipcode">Mã Zip</label>
+          <span class="required-star">*</span>
+          <input type="text" id="zipcode" name="zipcode" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Số Điện Thoại</label>
+          <span class="required-star">*</span>
+          <input type="tel" id="phone" name="phone" required />
+          <small class="error-message" id="phoneError"></small>
+        </div>
+
+        <button type="submit">Gửi</button>
+      </form>
+    </div>
+
+    <script src="form3.js"></script>
+  </body>
+</html>

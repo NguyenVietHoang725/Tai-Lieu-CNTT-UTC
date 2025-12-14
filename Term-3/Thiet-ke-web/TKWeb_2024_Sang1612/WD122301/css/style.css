@@ -1,0 +1,215 @@
+/* CSS Document */
+body
+{font-family:Arial, Helvetica, sans-serif;
+font-size:11px;
+background:#EEEFF3 url(../images/bodybg1.jpg) repeat-x;
+margin:0px;
+padding:0px;
+}
+*{margin:0; padding:0}
+#wrapper
+{margin:0 auto;
+width:904px;
+}
+.clear
+{clear:both;
+margin:0px;
+padding:0px;
+}
+
+/* Begin header */
+
+/* End header */
+
+#banner
+{width:904px;
+height:250px;
+background:url(../images/mainbanner.jpg);
+}
+h1
+{margin:0px;
+padding:26px 0px 0px 47px;
+font-size:21px;
+color:#FFFFFF;
+font-family:Arial, Helvetica, sans-serif;
+}
+h2
+{margin:0px;
+padding:10px 0px 0px 47px;
+color:#FFFFFF;
+font-weight:200;
+font:25px Gill Sans Condensed, Myriad Pro, Arial, Helvetica, sans-serif;
+}
+.features
+{ width:408px;
+padding:10px 0px 0px 0px;
+}
+.features ul
+{margin:0px;
+padding:0px;
+}
+.features li
+{list-style-type:none;
+padding:10px 30px 12px 86px;
+font-size:12px;
+color:#7DC6F1;
+font-weight:bold;
+}
+
+.bannertxt {
+	color:#ffffff; 
+	font-size:11px; 
+	font-weight:100;
+}
+.readMore
+{
+padding:0px 0px 0px 86px;
+margin:0px;
+}
+.readMore a
+{
+color:#7DC6F1;
+font-size:12px;
+margin:0px;
+font-weight:bold;
+text-decoration:none;
+}
+.compatibility
+{width:904px;
+
+text-align:center;
+padding:0px 0px 0px 0px;
+margin:0px;
+background-color: white;
+background-repeat:no-repeat;
+font-weight:bold;
+}
+
+.compatibilitybox {
+	width:250px;
+	float:right;
+	
+}
+
+.compatibilitytxt {
+	float:left;
+	padding:20px 0px 0px 0px;
+	margin-right:10px;
+}
+
+.compatibilityicon {
+	float:left;
+	margin-right:10px;
+}
+#columZone
+{width:904px;
+background:#EEEFF3 url(../images/piccontainerbg.jpg) left  bottom no-repeat;
+padding:0px 0px 20px 0px;
+}
+#container2
+{width:650px;
+padding:40px 0px 40px 0px;
+float:left;
+
+}
+.column1 {
+	width:226px;
+	float:left;
+	background:url(../images/verticalline.jpg) right top no-repeat;
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+	text-align:center;
+}
+.columnText
+{ text-align:left;
+
+padding:10px 0px 0px 46px;
+}
+.columnText1
+{ text-align:left;
+
+padding:10px 0px 0px 20px;
+}
+.columnLink
+{ text-align:center;
+width:226px;
+padding:10px 0px 0px 0px;
+font-weight:bold;
+font-size:12px;
+color:#E93B0C;
+}
+.order
+{font-weight:bold;
+font-size:12px;
+color:#000;
+padding:0px 0px 0px 10px;
+}
+.order a
+{color:#000000;
+}
+.column2 {
+	width:226px;
+	float:left;
+	padding:0px 0px 0px 0px;
+	margin:0px 0px 0px 0px;
+	text-align:center;
+}
+h3
+{text-align:center;
+color:#000000;
+font-size:12px;
+font-weight:bold;
+margin:0px;
+padding:25px 0px 22px 0px;
+}
+.blueDot
+{width:904px;
+height:33px;
+background-image: url(../images/bluebg.png);
+}
+
+
+#footer{width:904px; float:left; border-top:2px solid #bfbfbf}
+#footer ul{width:904px; float:left; text-align:center; list-style:none; padding:20px 0 50px 0 }
+#footer li{width:auto; font:bold 11px/13px Arial, Helvetica, sans-serif; color:#4564a7; padding:0 10px 0 10px ; border-left: 1px solid #4564a7; display:inline}
+#footer li.first{border:none}
+#footer li a{color:#4564a7; text-decoration:none}
+#footer li a:hover{color:#4564a7; text-decoration:underline}
+#footer li a.current{text-decoration:underline}
+
+
+
+
+
+
+
+/* inner pages css start */
+h1.inner{font:24px tahoma, Arial; color:#4564a7; width:auto; font-weight:bold; margin:0px; padding:8px 0px 10px 0px; text-decoration:none}
+h1.inner span{font:24px tahoma, Arial; color:#4564a7; font-weight:bold; margin:0px; padding:25px 0px 10px 0px; background:none}
+.aboutus-img{float:right; border:4px solid #dcdcda;	margin:0px 0px 10px 20px;}
+h5{font:15px Myriad Pro, Arial, Helvetica, sans-serif; color:#555555; font-weight:100; padding:0px 0px 5px 0px;	border-bottom:1px dotted #000; margin:0px 0px 10px 0px; background:none }
+h6.inner{font:17px Myriad Pro, Arial, Helvetica, sans-serif; color:#555555; font-weight:100; padding:0px 0px 5px 0px;	margin:0px 0px 0px 0px; background:none }
+.aboutcolumnzone{padding:20px 0px 16px 0px;}
+.aboutcolumn1{width:48%; float:left; margin:0px 0px 10px 0px;}
+.aboutcolumn2{width:48%; float:right; margin:0px 0px 10px 0px;}
+.abouticon{float:left; margin:0px 20px 0px 0px;}
+.insidereadmore{padding:10px 0px 10px 0px;}
+.insidereadmore a{color:#5D2D23; font-size:14px; text-decoration:none}
+.insidereadmore a:hover{text-decoration:underline}
+
+a.projects{color:#5D2D23; font-size:14px; text-decoration:underline}
+a:hover.projects{text-decoration:none}
+
+input.button{color:#ffffff;	background:#414141;	font:bold 11px Arial, Helvetica, sans-serif; text-decoration:none; padding:10px 10px; margin:0px 5px 5px 0;	border:1px solid #000;}
+input.button:hover{cursor:pointer; color:#cccccc;}
+.project-img{float:right; margin-left:20px;	border: 6px solid #dcdcda;}
+.whiteheading{font:30px Myriad Pro, Arial; color:#000; font-weight:100;	padding:0px; margin:25px 0px 20px 0px;}
+.ourprojectrow{margin-bottom:20px; border-bottom:1px dotted #000; padding-bottom:10px;}
+.servicecolumnzone{padding:20px 0px 16px 0px;}
+.servicecolumn1{width:48%; float:left; margin:0px 0px 10px 0px;}
+.servicecolumn2{width:48%; float:right;	margin:0px 0px 10px 0px;}
+.blog-posted-row{padding:3px; background:#dcdcda}
+
+.blog-posted-row a{color:#5D2D23; font-size:14px; text-decoration:underline; padding:0 0 0 8px}
+.blog-posted-row a:hover{text-decoration:none}
+/* inner pages css ends */

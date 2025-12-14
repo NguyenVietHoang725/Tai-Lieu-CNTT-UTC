@@ -1,0 +1,17 @@
+.img {
+  width: 500px;
+}
+
+.hidden {
+  display: none;
+}
+
+button {
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-size: 2vw;
+  margin: 1vw;
+}

@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.left-column {
+  flex: 1;
+  padding: 20px;
+}
+
+.right-column {
+  flex: 2;
+  padding: 20px;
+}
+
+.profile-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.profile-header img {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.profile-details p {
+  margin: 5px 0;
+}
+
+.skill-bar {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 5px 0;
+}
+
+.skill-level {
+  background-color: #4caf50;
+  height: 20px;
+  border-radius: 8px;
+}
+
+.application-bar {
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  height: 10px;
+  margin: 5px 0;
+}
+
+.application-level {
+  background-color: #2196f3;
+  height: 100%;
+}
+
+.footer {
+  background-color: #2196f3;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

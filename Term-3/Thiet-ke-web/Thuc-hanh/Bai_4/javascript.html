@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en' xml:lang='en:us'>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>JavaScript Examples</title>
+    <style type="text/css" media="screen">
+    body {
+      font-size: 62.5%;
+      background: #fff;
+      color: #111;
+    }
+    a {
+      color: #00c;
+    }
+    #doc {
+      width: 70em;
+      font-size: 130%;
+      margin: 0 auto;
+      font-family: georgia, times, serif;
+    }
+    #ft {
+      text-align: center;
+      padding: 1em 0;
+    }
+    h1,h2,h3, p {
+      font-weight: normal;
+      margin: 0;
+      padding: 0 0 .5em 0;
+    }
+    pre {
+      font-size: 150%;
+      background: #eee;
+      padding: 1em;
+      border: 1px dotted #999;
+    }
+    .example {
+      padding: 1em 0;
+      border-bottom: 1px dotted #999;
+    }
+      .inactive {
+        display: none;
+      }
+      .active {
+        display: block;
+      }
+    </style>
+    <script type="text/javascript">
+      var Dom = {
+        get: function(el) {
+          return document.getElementById(el);
+        },
+        setStyle: function(el, prop, val) {
+          this.get(el).style[prop] = val;
+        }
+      };
+      var Event = {
+        add: function(el, type, fn) {
+          if (window.addEventListener) {
+            el.addEventListener(type, fn, false);
+          } else if (window.attachEvent) {
+            el.attachEvent('on'+type, fn);
+          }
+        },
+        remove: function(el, type, fn) {
+          if (window.addEventListener) {
+            el.removeEventListener(type, fn, false);
+          } else if (window.attachEvent) {
+            el.detachEvent('on'+type, fn);
+          }
+        },
+        stopEvent: function(e) {
+          if (e.preventDefault) {
+            e.preventDefault();
+          } else {
+            event.returnValue = false;
+          }
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <div id="doc">
+      <h1>JavaScript Examples</h1>
+      <div class="example">
+        <h2>Event Attachment</h2>
+        <div class="demo">
+          <p>
+            <a href="#" id="hello">Say Hello</a>
+          </p>
+          <pre><code>
+function sayHello(e) {
+  Event.stopEvent(e);
+  alert('Hello World');
+}
+Event.add(Dom.get('hello'), 'click', sayHello);
+          </code></pre>
+        </div>
+      </div>
+      <div class="example">
+        <h2>Manipulating Styles</h2>
+        <div class="demo">
+          <p>
+            <a href="#" id="change-color">Change Color</a> |
+            <a href="#" id="change-size">Change Font Size</a> |
+            <a href="#" id="reset">Reset</a>
+          </p>
+          <p id="demo-content-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint
+            occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+          </p>
+          <pre><code>
+function changeColor (element, color) {
+  return function(e) {
+    Event.stopEvent(e);
+    Dom.setStyle(element, 'color', color);
+  };
+}
+function changeSize (element, size) {
+  return function(e) {
+    Event.stopEvent(e);
+    Dom.setStyle(element, 'fontSize', size);
+  };
+}
+Event.add(Dom.get('change-color'), 'click', changeColor('demo-content-2', 'red'));
+Event.add(Dom.get('change-size'), 'click', changeSize('demo-content-2', '18px'));
+          </code></pre>
+        </div>
+      </div>
+      <div class="example">
+        <h2>Toggling an Element</h2>
+        <div class="demo">
+          <p>
+            <a href="#" id="demo-1">Toggle the Content Below</a>
+          </p>
+          <div id="demo-content" class="active">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+              ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint
+              occaecat cupidatat non proident, sunt in culpa qui officia
+              deserunt mollit anim id est laborum.
+            </p>
+          </div>
+          <pre><code>
+&lt;style&gt;
+.inactive {
+  display: none;
+}
+.active {
+  display: block;
+}
+&lt;/style&gt;
+.
+.
+.
+&lt;script&gt;
+function toggleContent(element) {
+  return function(e) {
+    Event.stopEvent(e);
+    var el = Dom.get(element);
+    if (el.className == 'active') {
+      el.className = 'inactive';
+    } else {
+      el.className = 'active';
+    }
+  };
+}
+Event.add(Dom.get('demo-1'), 'click', showContent('demo-content');
+&lt;/script&gt;
+          </code></pre>
+        </div>
+      </div>
+      <script type="text/javascript">
+        // example 1
+        function sayHello(e) {
+          Event.stopEvent(e);
+          alert('Hello World');
+        }
+        Event.add(Dom.get('hello'), 'click', sayHello);
+
+        // example 2
+        function changeColor (element, color) {
+          return function(e) {
+            Event.stopEvent(e);
+            Dom.setStyle(element, 'color', color);
+          };
+        }
+        function changeSize (element, size) {
+          return function(e) {
+            Event.stopEvent(e);
+            Dom.setStyle(element, 'fontSize', size);
+          };
+        }
+        Event.add(Dom.get('change-color'), 'click', changeColor('demo-content-2', 'red'));
+        Event.add(Dom.get('change-size'), 'click', changeSize('demo-content-2', '18px'));
+        Event.add(Dom.get('reset'), 'click', function(e) {
+          Event.stopEvent(e);
+          Dom.setStyle('demo-content-2', 'color', '');
+          Dom.setStyle('demo-content-2', 'fontSize', '');
+        });
+
+
+        // example 3
+        function toggleContent(element) {
+          return function(e) {
+            Event.stopEvent(e);
+            var el = Dom.get(element);
+            if (el.className == 'active') {
+              el.className = 'inactive';
+            } else {
+              el.className = 'active';
+            }
+          };
+        }
+        Event.add(Dom.get('demo-1'), 'click', toggleContent('demo-content'));
+      </script>
+      <div id="ft">
+        <p>
+          Copyright Gooooooooogle &copy; 2007. Learning is fun.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
