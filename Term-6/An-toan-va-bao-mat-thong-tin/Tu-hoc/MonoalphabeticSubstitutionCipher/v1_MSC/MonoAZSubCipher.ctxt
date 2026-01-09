@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=MonoAZSubCipher
+comment1.params=mal
+comment1.target=MonoAZSubCipher(MonoAlphabet)
+comment2.params=c\ k
+comment2.target=char\ shiftChar(char,\ int)
+comment3.params=plainText\ k
+comment3.target=java.lang.String\ encrypt(java.lang.String,\ int)
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+numComments=5

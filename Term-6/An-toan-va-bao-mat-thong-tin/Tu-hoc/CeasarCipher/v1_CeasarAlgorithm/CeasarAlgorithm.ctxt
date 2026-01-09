@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=CeasarAlgorithm
+comment1.params=al
+comment1.target=CeasarAlgorithm(IndexAlphabet)
+comment2.params=plainText\ key
+comment2.target=java.lang.String\ encrypt(java.lang.String,\ int)
+comment3.params=cipherText\ key
+comment3.target=java.lang.String\ decrypt(java.lang.String,\ int)
+comment4.params=c\ k
+comment4.target=char\ shiftChar(char,\ int)
+numComments=5

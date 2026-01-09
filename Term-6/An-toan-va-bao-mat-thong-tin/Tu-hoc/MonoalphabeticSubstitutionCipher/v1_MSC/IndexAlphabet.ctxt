@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=IndexAlphabet
+comment1.params=
+comment1.target=IndexAlphabet()
+comment2.params=
+comment2.target=int\ getSize()
+comment3.params=c
+comment3.target=int\ getIndexOf(char)
+comment4.params=idx
+comment4.target=char\ getCharAt(int)
+comment5.params=
+comment5.target=void\ print()
+numComments=6
